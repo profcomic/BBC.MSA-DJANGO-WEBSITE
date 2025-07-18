@@ -1,0 +1,639 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Give - Berean Bible Church</title>
+    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Custom Tailwind configuration for colors and fonts
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // These are example color definitions. Adjust to your actual brand colors.
+                        'berean-blue': '#2A6F97',
+                        'berean-red': '#CC0000',
+                        'berean-lightblue': '#8CD0D2',
+                        'berean-skyblue': '#E0F2F7',
+                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
+                        primary: '#2A6F97', // Example primary color
+                        background: '#FFFFFF', // Example background color
+                        muted: '#F1F5F9', // Example muted background
+                        'muted-foreground': '#64748B', // Example muted text color
+                        'primary-foreground': '#FFFFFF', // Text color on primary background
+                        'card': '#FFFFFF', // Card background
+                        'card-foreground': '#0F172A', // Text color on card background
+                        'input': '#E2E8F0', // Input border color
+                        'ring': '#2A6F97', // Focus ring color
+                        'accent': '#F1F5F9', // Accent background for hover states
+                        'accent-foreground': '#0F172A', // Text color on accent background
+                    },
+                    fontFamily: {
+                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
+                        // You'd need to link Montserrat from Google Fonts or self-host it.
+                        inter: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Link for Inter and Montserrat fonts, if used -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the toast notification */
+        .toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .toast {
+            background-color: #333;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Additional styles for custom select/dropdown */
+        .custom-select-wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+        .custom-select-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0; /* border-input */
+            border-radius: 0.375rem; /* rounded-md */
+            background-color: #fff; /* bg-background */
+            cursor: pointer;
+            min-height: 2.5rem; /* h-10 */
+        }
+
+        .custom-select-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            display: none; /* Hidden by default */
+        }
+
+        .custom-select-content.open {
+            display: block;
+        }
+
+        .custom-select-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .custom-select-item:hover {
+            background-color: #f0f4f8; /* hover:bg-accent */
+        }
+
+        /* Custom button variant for 'bereanBlue' */
+        .btn-bereanBlue {
+            background-color: var(--tw-colors-berean-blue);
+            color: var(--tw-colors-primary-foreground);
+            /* Add hover styles if needed */
+            --tw-bg-opacity: 1;
+            background-color: rgb(42 111 151 / var(--tw-bg-opacity));
+        }
+        .btn-bereanBlue:hover {
+            --tw-bg-opacity: 0.9;
+            background-color: rgb(42 111 151 / var(--tw-bg-opacity));
+        }
+
+        /* Styles for outline buttons */
+        .btn-outline {
+            border: 1px solid var(--tw-colors-input);
+            background-color: var(--tw-colors-background);
+            color: var(--tw-colors-foreground);
+        }
+        .btn-outline:hover {
+            background-color: var(--tw-colors-accent);
+            color: var(--tw-colors-accent-foreground);
+        }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-[400px] flex items-center justify-center text-center">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="https://www.tithing.com/wp-content/uploads/2007/06/give.jpg"
+                alt="Church giving"
+                class="object-cover w-full h-full brightness-50"
+                loading="eager"
+            />
+        </div>
+        <div class="relative z-10 container mx-auto px-4 text-white">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Give to God's Work</h1>
+            <p class="text-xl max-w-2xl mx-auto">
+                Your generosity helps us continue our mission of Prayer, Word, and Mission in our community and beyond
+            </p>
+        </div>
+    </section>
+
+    <!-- Giving Form Section -->
+    <section class="py-16 bg-berean-skyblue">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Donation Form -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground border-berean-lightblue/30">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold mb-2 text-berean-blue">Make a Donation</h2>
+                        <p class="text-muted-foreground">Choose your giving amount and method</p>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <form id="givingForm" class="space-y-6">
+                            <!-- Giving Type -->
+                            <div>
+                                <label class="text-base font-medium mb-3 block">What would you like to support?</label>
+                                <div class="flex flex-col space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="tithe" name="givingType" value="tithe" checked class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="tithe" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Tithe & Offerings</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="missions" name="givingType" value="missions" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="missions" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Missions & Outreach</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="building" name="givingType" value="building" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="building" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Building Fund</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="youth" name="givingType" value="youth" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="youth" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Youth Ministry</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="general" name="givingType" value="general" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="general" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">General Fund</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Amount Selection -->
+                            <div>
+                                <label class="text-base font-medium mb-3 block">Select Amount</label>
+                                <div class="grid grid-cols-3 gap-3 mb-4">
+                                    <button type="button" class="amount-btn inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 border border-berean-blue text-berean-blue hover:bg-berean-blue/10" data-amount="25">$25</button>
+                                    <button type="button" class="amount-btn inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 border border-berean-blue text-berean-blue hover:bg-berean-blue/10" data-amount="50">$50</button>
+                                    <button type="button" class="amount-btn inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 border border-berean-blue text-berean-blue hover:bg-berean-blue/10" data-amount="100">$100</button>
+                                    <button type="button" class="amount-btn inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 border border-berean-blue text-berean-blue hover:bg-berean-blue/10" data-amount="250">$250</button>
+                                    <button type="button" class="amount-btn inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 border border-berean-blue text-berean-blue hover:bg-berean-blue/10" data-amount="500">$500</button>
+                                    <button type="button" class="amount-btn inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 border border-berean-blue text-berean-blue hover:bg-berean-blue/10" data-amount="1000">$1000</button>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">💲</span> <!-- DollarSign icon placeholder -->
+                                    <input
+                                        type="number"
+                                        id="customAmountInput"
+                                        placeholder="Enter custom amount"
+                                        class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    />
+                                </div>
+                            </div>
+
+                            <!-- Frequency -->
+                            <div>
+                                <label class="text-base font-medium mb-3 block">Frequency</label>
+                                <div class="custom-select-wrapper">
+                                    <div class="custom-select-trigger">
+                                        <span class="select-value" id="frequencySelectValue">One-time Gift</span>
+                                        <span>▼</span>
+                                    </div>
+                                    <div class="custom-select-content">
+                                        <div class="custom-select-item" data-value="one-time">One-time Gift</div>
+                                        <div class="custom-select-item" data-value="weekly">Weekly</div>
+                                        <div class="custom-select-item" data-value="monthly">Monthly</div>
+                                        <div class="custom-select-item" data-value="quarterly">Quarterly</div>
+                                        <div class="custom-select-item" data-value="annually">Annually</div>
+                                    </div>
+                                    <input type="hidden" name="frequency" id="frequencySelect" value="one-time">
+                                </div>
+                            </div>
+
+                            <!-- Personal Information -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">First Name</label>
+                                    <input type="text" id="firstName" required class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Last Name</label>
+                                    <input type="text" id="lastName" required class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="email" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email Address</label>
+                                <input type="email" id="email" required class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                            </div>
+
+                            <div>
+                                <label for="phone" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Phone Number (Optional)</label>
+                                <input type="tel" id="phone" class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                            </div>
+
+                            <!-- Payment Information -->
+                            <div class="border-t pt-6">
+                                <h3 class="text-lg font-medium mb-4 text-berean-blue">Payment Information</h3>
+
+                                <div>
+                                    <label for="cardNumber" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Card Number</label>
+                                    <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4 mt-4">
+                                    <div>
+                                        <label for="expiry" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Expiry Date</label>
+                                        <input type="text" id="expiry" placeholder="MM/YY" required class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                                    </div>
+                                    <div>
+                                        <label for="cvv" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">CVV</label>
+                                        <input type="text" id="cvv" placeholder="123" required class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                                    </div>
+                                </div>
+
+                                <div class="mt-4">
+                                    <label for="billingAddress" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Billing Address</label>
+                                    <textarea id="billingAddress" placeholder="Enter your billing address" class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"></textarea>
+                                </div>
+                            </div>
+
+                            <!-- Special Notes -->
+                            <div>
+                                <label for="notes" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Special Notes (Optional)</label>
+                                <textarea id="notes" placeholder="Any special instructions or dedication..." class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"></textarea>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button
+                                type="submit"
+                                id="submitGiveButton"
+                                class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-12 px-6 py-3 w-full bg-berean-blue text-primary-foreground hover:bg-berean-blue/90"
+                            >
+                                <span class="mr-2 h-5 w-5">❤️</span> <!-- Heart icon placeholder -->
+                                Give $<span id="finalAmountDisplay">0</span> <span id="frequencyDisplay"></span>
+                            </button>
+
+                            <p class="text-sm text-muted-foreground text-center">
+                                Your donation is secure and encrypted. You will receive a receipt via email.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Impact Information -->
+                <div class="space-y-6">
+                    <div class="border rounded-lg shadow-sm bg-card text-card-foreground border-berean-lightblue/30">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-berean-blue">Your Impact</h3>
+                            <p class="text-muted-foreground">See how your generosity makes a difference</p>
+                        </div>
+                        <div class="p-6 pt-0 space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <span class="h-6 w-6 text-berean-blue mt-1">👥</span> <!-- Users icon placeholder -->
+                                <div>
+                                    <h4 class="font-medium">Community Outreach</h4>
+                                    <p class="text-sm text-muted-foreground">
+                                        Supporting local families in need through food banks and assistance programs
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="h-6 w-6 text-berean-blue mt-1">🌍</span> <!-- Globe icon placeholder -->
+                                <div>
+                                    <h4 class="font-medium">Global Missions</h4>
+                                    <p class="text-sm text-muted-foreground">
+                                        Spreading the Gospel worldwide through missionary support and evangelism
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <span class="h-6 w-6 text-berean-blue mt-1">⛪</span> <!-- Building icon placeholder -->
+                                <div>
+                                    <h4 class="font-medium">Church Growth</h4>
+                                    <p class="text-sm text-muted-foreground">
+                                        Maintaining and expanding our facilities to serve more people
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border rounded-lg shadow-sm bg-card text-card-foreground border-berean-lightblue/30">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-berean-blue">Other Ways to Give</h3>
+                        </div>
+                        <div class="p-6 pt-0 space-y-4">
+                            <div>
+                                <h4 class="font-medium mb-2">Bank Transfer</h4>
+                                <p class="text-sm text-muted-foreground mb-2">You can also give via direct bank transfer:</p>
+                                <div class="bg-berean-skyblue p-3 rounded text-sm">
+                                    <p>
+                                        <strong>Bank:</strong> First National Bank
+                                    </p>
+                                    <p>
+                                        <strong>Account:</strong> Berean Bible Church
+                                    </p>
+                                    <p>
+                                        <strong>Account #:</strong> 123-456-7890
+                                    </p>
+                                    <p>
+                                        <strong>Routing #:</strong> 987654321
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-medium mb-2">Mail a Check</h4>
+                                <p class="text-sm text-muted-foreground mb-2">
+                                    Send checks payable to "Berean Bible Church" to:
+                                </p>
+                                <div class="bg-berean-skyblue p-3 rounded text-sm">
+                                    <p>Berean Bible Church</p>
+                                    <p>1824 Kengeleni Road</p>
+                                    <p>80100, Mombasa - Kenya</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-medium mb-2">Mobile Money</h4>
+                                <p class="text-sm text-muted-foreground mb-2">
+                                    Give via M-Pesa or other mobile money services:
+                                </p>
+                                <div class="bg-berean-skyblue p-3 rounded text-sm">
+                                    <p>
+                                        <strong>M-Pesa:</strong> 741-080-904
+                                    </p>
+                                    <p>
+                                        <strong>Account:</strong> Berean Bible Church
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border rounded-lg shadow-sm bg-card text-card-foreground border-berean-lightblue/30">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-berean-blue">Tax Information</h3>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <p class="text-sm text-muted-foreground">
+                                Berean Bible Church is a registered religious organization. All donations are tax-deductible to the
+                                extent allowed by law. You will receive a receipt for your records and tax purposes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bible Verse Section -->
+    <section class="py-16 bg-berean-blue text-white">
+        <div class="container mx-auto px-4 text-center">
+            <blockquote class="text-2xl md:text-3xl font-light mb-4 italic">
+                "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion,
+                for God loves a cheerful giver."
+            </blockquote>
+            <cite class="text-berean-lightblue text-lg">2 Corinthians 9:7</cite>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12 text-berean-blue">Frequently Asked Questions</h2>
+
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">Is my donation secure?</h3>
+                        <p class="text-muted-foreground">
+                            Yes, all donations are processed through secure, encrypted payment systems. We never store your
+                            payment information on our servers.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">Will I receive a receipt?</h3>
+                        <p class="text-muted-foreground">
+                            Yes, you will receive an email receipt immediately after your donation is processed. This receipt can
+                            be used for tax purposes.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">Can I cancel a recurring donation?</h3>
+                        <p class="text-muted-foreground">
+                            Yes, you can cancel or modify your recurring donations at any time by contacting our church office or
+                            sending an email to bbcmsaheadquarters@gmail.com.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">How is my donation used?</h3>
+                        <p class="text-muted-foreground">
+                            Your donations support our three core areas: Prayer (worship and spiritual growth), Word (teaching and
+                            discipleship), and Mission (local and global outreach). We provide annual financial reports showing
+                            how funds are allocated.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+        // Simple "toast" notification function
+        function showToast(title, description) {
+            const toastContainer = document.getElementById('toast-container');
+            if (!toastContainer) return;
+
+            const toastElement = document.createElement('div');
+            toastElement.className = 'toast';
+            toastElement.innerHTML = `<strong>${title}</strong><p>${description}</p>`;
+            toastContainer.appendChild(toastElement);
+
+            setTimeout(() => {
+                toastElement.classList.add('show');
+            }, 10);
+
+            setTimeout(() => {
+                toastElement.classList.remove('show');
+                toastElement.addEventListener('transitionend', () => {
+                    toastElement.remove();
+                }, { once: true });
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const givingForm = document.getElementById('givingForm');
+            const submitButton = document.getElementById('submitGiveButton');
+            const amountButtons = document.querySelectorAll('.amount-btn');
+            const customAmountInput = document.getElementById('customAmountInput');
+            const givingTypeRadios = document.querySelectorAll('input[name="givingType"]');
+            const frequencySelectTrigger = document.querySelector('.custom-select-wrapper .custom-select-trigger');
+            const frequencySelectContent = document.querySelector('.custom-select-wrapper .custom-select-content');
+            const frequencySelectValueSpan = document.querySelector('.custom-select-wrapper .select-value');
+            const frequencyHiddenInput = document.querySelector('.custom-select-wrapper input[type="hidden"]');
+            const finalAmountDisplay = document.getElementById('finalAmountDisplay');
+            const frequencyDisplay = document.getElementById('frequencyDisplay');
+
+            let selectedAmount = "";
+            let customAmount = "";
+            let givingType = "tithe"; // Default
+            let frequency = "one-time"; // Default
+            let isSubmitting = false;
+
+            // Function to update the submit button text and state
+            function updateSubmitButton() {
+                const currentAmount = customAmount || selectedAmount;
+                const currentFrequencyText = frequency !== "one-time" ? `(${frequency})` : "";
+                submitButton.disabled = !currentAmount || isSubmitting;
+                if (isSubmitting) {
+                    submitButton.innerHTML = `Processing...`;
+                } else {
+                    submitButton.innerHTML = `<span class="mr-2 h-5 w-5">❤️</span> Give $${currentAmount || "0"} ${currentFrequencyText}`;
+                }
+            }
+
+            // Amount button click handler
+            amountButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    selectedAmount = button.dataset.amount;
+                    customAmount = ""; // Clear custom amount when predefined is selected
+                    customAmountInput.value = ""; // Clear custom amount input field
+                    
+                    // Update button styles
+                    amountButtons.forEach(btn => {
+                        if (btn.dataset.amount === selectedAmount) {
+                            btn.classList.remove('border-berean-blue', 'text-berean-blue', 'hover:bg-berean-blue/10');
+                            btn.classList.add('btn-bereanBlue'); // Apply active style
+                        } else {
+                            btn.classList.remove('btn-bereanBlue');
+                            btn.classList.add('border-berean-blue', 'text-berean-blue', 'hover:bg-berean-blue/10');
+                        }
+                    });
+                    updateSubmitButton();
+                });
+            });
+
+            // Custom amount input handler
+            customAmountInput.addEventListener('input', (e) => {
+                customAmount = e.target.value;
+                selectedAmount = ""; // Clear selected amount when custom is entered
+                // Remove active style from all predefined buttons
+                amountButtons.forEach(btn => {
+                    btn.classList.remove('btn-bereanBlue');
+                    btn.classList.add('border-berean-blue', 'text-berean-blue', 'hover:bg-berean-blue/10');
+                });
+                updateSubmitButton();
+            });
+
+            // Giving type radio change handler
+            givingTypeRadios.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    givingType = e.target.value;
+                });
+            });
+
+            // Custom Select/Dropdown functionality for Frequency
+            if (frequencySelectTrigger && frequencySelectContent && frequencySelectValueSpan && frequencyHiddenInput) {
+                frequencySelectTrigger.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    frequencySelectContent.classList.toggle('open');
+                });
+
+                frequencySelectContent.querySelectorAll('.custom-select-item').forEach(item => {
+                    item.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        frequency = item.dataset.value;
+                        frequencySelectValueSpan.textContent = item.textContent;
+                        frequencyHiddenInput.value = frequency;
+                        frequencySelectContent.classList.remove('open');
+                        updateSubmitButton();
+                    });
+                });
+
+                document.addEventListener('click', (event) => {
+                    if (!frequencySelectTrigger.contains(event.target) && !frequencySelectContent.contains(event.target)) {
+                        frequencySelectContent.classList.remove('open');
+                    }
+                });
+            }
+
+
+            // Form submission handler
+            givingForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                isSubmitting = true;
+                updateSubmitButton();
+
+                // Simulate payment processing
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+
+                showToast("Thank You for Your Generosity!", "Your donation has been processed successfully. God bless you!");
+
+                // Reset form state
+                selectedAmount = "";
+                customAmount = "";
+                givingType = "tithe";
+                frequency = "one-time";
+                isSubmitting = false;
+
+                // Reset form fields and UI
+                givingForm.reset();
+                document.getElementById('tithe').checked = true; // Reset default radio
+                customAmountInput.value = "";
+                amountButtons.forEach(btn => { // Reset button styles
+                    btn.classList.remove('btn-bereanBlue');
+                    btn.classList.add('border-berean-blue', 'text-berean-blue', 'hover:bg-berean-blue/10');
+                });
+                if (frequencySelectValueSpan) {
+                    frequencySelectValueSpan.textContent = "One-time Gift";
+                }
+                if (frequencyHiddenInput) {
+                    frequencyHiddenInput.value = "one-time";
+                }
+
+
+                updateSubmitButton();
+            });
+
+            // Initial update of the submit button text
+            updateSubmitButton();
+        });
+    </script>
+
+
+{% endblock %}

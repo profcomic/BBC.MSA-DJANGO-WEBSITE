@@ -1,0 +1,504 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sermons - Berean Bible Church</title>
+    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Custom Tailwind configuration for colors and fonts
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // These are example color definitions. Adjust to your actual brand colors.
+                        'berean-blue': '#2A6F97',
+                        'berean-red': '#CC0000',
+                        'berean-lightblue': '#8CD0D2',
+                        'berean-skyblue': '#E0F2F7',
+                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
+                        primary: '#2A6F97', // Example primary color
+                        background: '#FFFFFF', // Example background color
+                        muted: '#F1F5F9', // Example muted background
+                        'muted-foreground': '#64748B', // Example muted text color
+                        'primary-foreground': '#FFFFFF', // Text color on primary background
+                        'card': '#FFFFFF', // Card background
+                        'card-foreground': '#0F172A', // Text color on card background
+                        'input': '#E2E8F0', // Input border color
+                        'ring': '#2A6F97', // Focus ring color
+                        'accent': '#F1F5F9', // Accent background for hover states
+                        'accent-foreground': '#0F172A', // Text color on accent background
+                    },
+                    fontFamily: {
+                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
+                        // You'd need to link Montserrat from Google Fonts or self-host it.
+                        inter: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Link for Inter and Montserrat fonts, if used -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the toast notification (if still needed from previous contexts) */
+        .toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .toast {
+            background-color: #333;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Additional styles for custom select/dropdown */
+        .custom-select-wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+        .custom-select-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0; /* border-input */
+            border-radius: 0.375rem; /* rounded-md */
+            background-color: #fff; /* bg-background */
+            cursor: pointer;
+            min-height: 2.5rem; /* h-10 */
+        }
+
+        .custom-select-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            display: none; /* Hidden by default */
+        }
+
+        .custom-select-content.open {
+            display: block;
+        }
+
+        .custom-select-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .custom-select-item:hover {
+            background-color: #f0f4f8; /* hover:bg-accent */
+        }
+
+        /* Custom button variant for 'bereanBlue' (if needed) */
+        .btn-bereanBlue {
+            background-color: var(--tw-colors-berean-blue);
+            color: var(--tw-colors-primary-foreground);
+            --tw-bg-opacity: 1;
+            background-color: rgb(42 111 151 / var(--tw-bg-opacity));
+        }
+        .btn-bereanBlue:hover {
+            --tw-bg-opacity: 0.9;
+            background-color: rgb(42 111 151 / var(--tw-bg-opacity));
+        }
+
+        /* Styles for outline buttons */
+        .btn-outline {
+            border: 1px solid var(--tw-colors-input);
+            background-color: var(--tw-colors-background);
+            color: var(--tw-colors-foreground);
+        }
+        .btn-outline:hover {
+            background-color: var(--tw-colors-accent);
+            color: var(--tw-colors-accent-foreground);
+        }
+    </style>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-[300px] flex items-center justify-center text-center">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="https://342931.fs1.hubspotusercontent-na1.net/hub/342931/hubfs/images/blog/4-tips-to-make-an-okay-sermon-slide-an-awesome-one.jpeg?width=660&height=371&name=4-tips-to-make-an-okay-sermon-slide-an-awesome-one.jpeg"
+                alt="Sermon"
+                class="object-cover w-full h-full brightness-50"
+                loading="eager"
+            />
+        </div>
+        <div class="relative z-10 container mx-auto px-4 text-white">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Sermons</h1>
+            <p class="text-xl max-w-2xl mx-auto">Listen to our latest messages and grow in your faith</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="py-8 bg-muted/50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="relative flex-1">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">🔍</span> <!-- Search icon placeholder -->
+                    <input type="text" placeholder="Search sermons..." class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="custom-select-wrapper w-full sm:w-[180px]">
+                        <div class="custom-select-trigger">
+                            <span class="select-value">Speaker</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="custom-select-content">
+                            <div class="custom-select-item" data-value="all">All Speakers</div>
+                            <div class="custom-select-item" data-value="bishop-ibrahim">BISHOP IBRAHIM A.O</div>
+                            <div class="custom-select-item" data-value="rev-lorine">REVEREND LORINE PAMELA</div>
+                            <div class="custom-select-item" data-value="rev-constant">REVEREND CONSTANT ODANGA</div>
+                            <div class="custom-select-item" data-value="rev-moses">REVEREND MOSES OYOTI</div>
+                            <div class="custom-select-item" data-value="pastor-salvestin">PASTOR SALVESTIN KINZI</div>
+                            <div class="custom-select-item" data-value="pastor-agness">PASTOR AGNESS KAZOSI</div>
+                            <div class="custom-select-item" data-value="pastor-alfred">PASTOR ALFRED MATAI</div>
+                            <div class="custom-select-item" data-value="guest">GUEST SPEAKERS</div>
+                            <div class="custom-select-item" data-value="other">OTHER SPEAKERS</div>
+                        </div>
+                        <input type="hidden" name="speaker" id="speakerSelect" value="all">
+                    </div>
+                    <div class="custom-select-wrapper w-full sm:w-[180px]">
+                        <div class="custom-select-trigger">
+                            <span class="select-value">Series</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="custom-select-content">
+                            <div class="custom-select-item" data-value="all">ALL SERIES</div>
+                            <div class="custom-select-item" data-value="divine-exaltation">DIVINE EXALTATION</div>
+                            <div class="custom-select-item" data-value="hunger-for-god">HUNGER FOR GOD</div>
+                            <div class="custom-select-item" data-value="repairing-image">REPAIRING THE IMAGE AND LIKENESS OF GOD</div>
+                            <div class="custom-select-item" data-value="pentecostal-message">PENTECOSTAL MESSAGE</div>
+                            <div class="custom-select-item" data-value="launching-into-deep">LAUNCHING INTO THE DEEP</div>
+                            <div class="custom-select-item" data-value="prayers">PRAYERS</div>
+                            <div class="custom-select-item" data-value="redeeming-youth">REEDEMING THE IMAGE OF A YOUTH IN THE CHURCH</div>
+                            <div class="custom-select-item" data-value="victorious-crisis">HOW TO BE VICTORIOUS AMID CRISIS</div>
+                        </div>
+                        <input type="hidden" name="series" id="seriesSelect" value="all">
+                    </div>
+                    <div class="custom-select-wrapper w-full sm:w-[180px]">
+                        <div class="custom-select-trigger">
+                            <span class="select-value">Date</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="custom-select-content">
+                            <div class="custom-select-item" data-value="newest">Newest First</div>
+                            <div class="custom-select-item" data-value="oldest">Oldest First</div>
+                            <div class="custom-select-item" data-value="2025">2025</div>
+                            <div class="custom-select-item" data-value="2024">2024</div>
+                            <div class="custom-select-item" data-value="2023">2023</div>
+                            <div class="custom-select-item" data-value="2022">2022</div>
+                            <div class="custom-select-item" data-value="2021">2021</div>
+                        </div>
+                        <input type="hidden" name="date" id="dateSelect" value="newest">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Sermon -->
+    <section class="py-12 bg-background">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Featured Message</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="relative aspect-video rounded-lg overflow-hidden">
+                    <iframe
+                        class="w-full h-full"
+                        src="https://www.youtube.com/embed/JLqlaUd6Iws"
+                        title="SUNDAY SERVICE || PENTECOSTAL REVIVAL -DAY 4 || PRAISE SESSION || 08.JUNE.2025"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">PROFITS THATS COMES FROM DIVINE TRANSACTIONS</h3>
+                    <p class="text-primary mb-2"> REV CONSTANT ODANGA</p>
+                    <p class="text-muted-foreground mb-4">June 8, 2025 • Revelation 3:18</p>
+                    <p class="text-muted-foreground mb-6">
+                        In this powerful message, the speaker emphasizes benefits of dwelling in the prayer room and serving God
+                        diligently.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="https://youtu.be/JLqlaUd6Iws" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
+                            Watch Now
+                            <span class="h-4 w-4">➡️</span> <!-- ChevronRight icon placeholder -->
+                        </a>
+                        <button type="button" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-2">
+                            <span class="h-4 w-4">⬇️</span> <!-- Download icon placeholder -->
+                            Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sermon Series -->
+    <section class="py-12 bg-muted/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Current Series</h2>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Series 1 -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="/images/leadership/bishop-ibrahim.jpg" alt="DEVELOPING A HUNGER FOR PRAYER" class="object-cover w-full h-full" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">DEVELOPING A HUNGER FOR PRAYER</h3>
+                        <p class="text-muted-foreground mb-4">Explore the mysteries of how to move deeper with God.</p>
+                        <a href="/sermons/series/developing-a-hunger-for-prayer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Series</a>
+                    </div>
+                </div>
+
+                <!-- Series 2 -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="/images/leadership/bishop-ibrahim.jpg" alt="REPAIRING THE IMAGE AND LIKENESS OF GOD IN MY LIFE THIS LENT" class="object-cover w-full h-full" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">REPAIRING THE IMAGE AND LIKENESS OF GOD IN MY LIFE THIS LENT</h3>
+                        <p class="text-muted-foreground mb-4">Its time to reshuffle and get back to the one who created you though thorough repentance..Follow this series to learn more ..</p>
+                        <a href="/sermons/series/repairing-the-image-and-likeness-of-God-in-my-lif-this-lent" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Series</a>
+                    </div>
+                </div>
+
+                <!-- Series 3 -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="relative h-48">
+                        <img src="/images/leadership/bishop-ibrahim.jpg" alt="DIVINE EXALTATION" class="object-cover w-full h-full" />
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">DIVINE EXALTATION</h3>
+                        <p class="text-muted-foreground mb-4">Explore everything about divine exaltation and know Practical ways to be exalted by God.</p>
+                        <a href="/sermons/series/divine-exaltation" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Series</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recent Sermons -->
+    <section class="py-12 bg-background">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Recent Messages</h2>
+
+            <div class="space-y-6">
+                <!-- Sermon 1 -->
+                <div class="flex flex-col md:flex-row gap-6 p-6 bg-muted/30 rounded-lg">
+                    <div class="relative w-full md:w-48 h-32 rounded-md overflow-hidden shrink-0">
+                        <img
+                            src="static/images/leadership/reverend-constant.jpg"
+                            alt="PROFITS THATS COMES FROM DIVINE TRANSACTIONS"
+                            class="object-cover w-full h-full"
+                        />
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-1">PROFITS THATS COMES FROM DIVINE TRANSACTIONS</h3>
+                        <p class="text-primary mb-1"> REV CONSTANT ODANGA</p>
+                        <div class="flex items-center text-muted-foreground mb-3">
+                            <span class="h-4 w-4 mr-1">⏰</span> <!-- Clock icon placeholder -->
+                            <span>June 8, 2025 • Revelation 3:18</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">Discover how to enjoy unending blessings from God.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="https://youtu.be/JLqlaUd6Iws" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                Watch
+                            </a>
+                            <button type="button" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                <span class="h-4 w-4 mr-1">⬇️</span> <!-- Download icon placeholder -->
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermon 2 -->
+                <div class="flex flex-col md:flex-row gap-6 p-6 bg-muted/30 rounded-lg">
+                    <div class="relative w-full md:w-48 h-32 rounded-md overflow-hidden shrink-0">
+                        <img
+                            src="static/images/leadership/reverend-constant.jpg"
+                            alt="SEALING OF THE HOLY SPIRIT"
+                            class="object-cover w-full h-full"
+                        />
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-1">SEALING OF THE HOLY SPIRIT</h3>
+                        <p class="text-primary mb-1"> REV CONSTANT ODANGA</p>
+                        <div class="flex items-center text-muted-foreground mb-3">
+                            <span class="h-4 w-4 mr-1">⏰</span> <!-- Clock icon placeholder -->
+                            <span>June 7, 2025 • Ephesians 1:13-</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">Explore what it means to live in the holy spirit and having an intimacy with Him.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="/sermons/sealing-of-the-holy-spirit" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                Listen
+                            </a>
+                            <button type="button" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                <span class="h-4 w-4 mr-1">⬇️</span> <!-- Download icon placeholder -->
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermon 3 -->
+                <div class="flex flex-col md:flex-row gap-6 p-6 bg-muted/30 rounded-lg">
+                    <div class="relative w-full md:w-48 h-32 rounded-md overflow-hidden shrink-0">
+                        <img
+                            src="static/images/leadership/reverend-constant.jpg"
+                            alt="WHAT IS YOUR INSTRUCTION"
+                            class="object-cover w-full h-full"
+                        />
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-1">WHAT IS YOUR INSTRUCTION</h3>
+                        <p class="text-primary mb-1"> REV CONSTANT ODANGA</p>
+                        <div class="flex items-center text-muted-foreground mb-3">
+                            <span class="h-4 w-4 mr-1">⏰</span> <!-- Clock icon placeholder -->
+                            <span>June 6, 2025 • joshua 6:1</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">If you abide and follow the instructions given to you, you'll prosper in everything you do.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="/sermons/WHAT-IS-YOUR-INSTRUCTION?" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                Listen
+                            </a>
+                            <button type="button" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                <span class="h-4 w-4 mr-1">⬇️</span> <!-- Download icon placeholder -->
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sermon 4 -->
+                <div class="flex flex-col md:flex-row gap-6 p-6 bg-muted/30 rounded-lg">
+                    <div class="relative w-full md:w-48 h-32 rounded-md overflow-hidden shrink-0">
+                        <img
+                            src="static/images/leadership/reverend-constant.jpg"
+                            alt="POSITIONING IN THE DIVINE SEASON"
+                            class="object-cover w-full h-full"
+                        />
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-1">POSITIONING IN THE DIVINE SEASON</h3>
+                        <p class="text-primary mb-1"> REV CONSTANT ODANGA</p>
+                        <div class="flex items-center text-muted-foreground mb-3">
+                            <span class="h-4 w-4 mr-1">⏰</span> <!-- Clock icon placeholder -->
+                            <span>June 05, 2025 • Acts 3:1-10</span>
+                        </div>
+                        <p class="text-muted-foreground mb-4">Understanding how God's grace is sufficient for every challenge we face.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <a href="/sermons/positioning-in-the-divine-season" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                Listen
+                            </a>
+                            <button type="button" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3">
+                                <span class="h-4 w-4 mr-1">⬇️</span> <!-- Download icon placeholder -->
+                                Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a href="/sermons/archive" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">View All Sermons</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Container (if needed) -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Custom Select/Dropdown functionality ---
+            document.querySelectorAll('.custom-select-wrapper').forEach(wrapper => {
+                const trigger = wrapper.querySelector('.custom-select-trigger');
+                const content = wrapper.querySelector('.custom-select-content');
+                const selectValueSpan = trigger.querySelector('.select-value');
+                const hiddenInput = wrapper.querySelector('input[type="hidden"]');
+
+                trigger.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Prevent document click from closing immediately
+                    // Close other open dropdowns
+                    document.querySelectorAll('.custom-select-content.open').forEach(openContent => {
+                        if (openContent !== content) {
+                            openContent.classList.remove('open');
+                        }
+                    });
+                    content.classList.toggle('open');
+                });
+
+                content.querySelectorAll('.custom-select-item').forEach(item => {
+                    item.addEventListener('click', (event) => {
+                        event.stopPropagation(); // Prevent bubbling up to trigger
+                        const value = item.dataset.value;
+                        const text = item.textContent;
+
+                        selectValueSpan.textContent = text;
+                        hiddenInput.value = value;
+                        content.classList.remove('open');
+                    });
+                });
+
+                // Close dropdown if clicked outside
+                document.addEventListener('click', (event) => {
+                    if (!wrapper.contains(event.target)) {
+                        content.classList.remove('open');
+                    }
+                });
+            });
+
+            // --- Simple "toast" notification function (if still needed from previous contexts) ---
+            function showToast(title, description) {
+                const toastContainer = document.getElementById('toast-container');
+                if (!toastContainer) return;
+
+                const toastElement = document.createElement('div');
+                toastElement.className = 'toast';
+                toastElement.innerHTML = `<strong>${title}</strong><p>${description}</p>`;
+                toastContainer.appendChild(toastElement);
+
+                setTimeout(() => {
+                    toastElement.classList.add('show');
+                }, 10);
+
+                setTimeout(() => {
+                    toastElement.classList.remove('show');
+                    toastElement.addEventListener('transitionend', () => {
+                        toastElement.remove();
+                    }, { once: true });
+                }, 3000);
+            }
+        });
+    </script>
+
+{% endblock %}

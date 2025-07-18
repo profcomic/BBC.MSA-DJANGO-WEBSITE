@@ -1,0 +1,512 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berean Bible Church - Home</title>
+    <style>
+        /* Placeholder for Berean specific colors and fonts if not using Tailwind's extended theme */
+        .text-shadow-modern {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .text-shadow-professional {
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        /* Assuming 'berean-blue', 'berean-red', 'berean-lightblue', 'berean-skyblue' are defined in your Tailwind config or custom CSS */
+        .from-berean-blue { --tw-gradient-from: #2a6f97 var(--tw-gradient-stops); }
+        .to-berean-blue { --tw-gradient-to: #2a6f97 var(--tw-gradient-stops); }
+        .from-berean-red { --tw-gradient-from: #cc0000 var(--tw-gradient-stops); }
+        .to-berean-red { --tw-gradient-to: #cc0000 var(--tw-gradient-stops); }
+        .from-berean-lightblue { --tw-gradient-from: #8cd0d2 var(--tw-gradient-stops); }
+        .to-berean-lightblue { --tw-gradient-to: #8cd0d2 var(--tw-gradient-stops); }
+        .from-berean-skyblue { --tw-gradient-from: #e0f2f7 var(--tw-gradient-stops); }
+        .to-berean-skyblue { --tw-gradient-to: #e0f2f7 var(--tw-gradient-stops); }
+        /* Add more custom styles as needed for specific classes like welcome-text, church-name-hero, tagline-text, modern-body, section-heading, font-montserrat if they aren't covered by Tailwind or default fonts */
+        
+        /* Basic animations for placeholder divine light effects and background patterns */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.05); }
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-1000 { animation-delay: 1s; }
+
+        /* For the absolute positioned image to fill its parent */
+        .object-cover {
+            object-fit: cover;
+        }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+        .h-auto { height: auto; }
+        .fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Responsive images for events section: */
+        .group-hover\:scale-110:hover {
+            transform: scale(1.1);
+        }
+        .transition-transform {
+            transition-property: transform;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 500ms;
+        }
+        .transition-opacity {
+            transition-property: opacity;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+
+        /* Button hover effects */
+        .transform {
+            transform: var(--tw-transform);
+        }
+        .hover\:scale-105:hover {
+            --tw-scale-x: 1.05;
+            --tw-scale-y: 1.05;
+            transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+        }
+        .transition-all {
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+    </style>
+
+    <section class="relative w-full h-[700px] flex items-center justify-center text-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="static/images/church/building-exterior.jpg"
+                alt="Church building"
+                width="1600"
+                height="800"
+                class="object-cover w-full h-full"
+                loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-r from-berean-blue/85 via-berean-blue/70 to-berean-blue/85"></div>
+        </div>
+
+        <div class="absolute top-10 left-10 w-32 h-32 bg-gradient-radial from-white/20 to-transparent rounded-full blur-2xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-16 w-40 h-40 bg-gradient-radial from-berean-lightblue/30 to-transparent rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-gradient-radial from-yellow-200/20 to-transparent rounded-full blur-xl animate-pulse delay-500"></div>
+
+        <div class="relative z-10 container mx-auto px-4 text-white">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-8">
+                    <h1 class="welcome-text text-3xl md:text-4xl mb-4 text-white/90 text-shadow-modern">Welcome to</h1>
+                    <div class="church-name-hero church-name-animated text-6xl md:text-8xl lg:text-9xl font-bold leading-none mb-6">
+                        BEREAN
+                        <br />
+                        BIBLE CHURCH
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center gap-6 mb-10">
+                    <div class="h-px w-20 bg-gradient-to-r from-transparent via-white to-transparent"></div>
+                    <p class="tagline-text text-xl md:text-2xl text-white/95 font-light text-shadow-professional">
+                        Prayer • Word • Mission
+                    </p>
+                    <div class="h-px w-20 bg-gradient-to-r from-transparent via-white to-transparent"></div>
+                </div>
+
+                <p class="modern-body text-xl md:text-2xl mb-12 max-w-4xl mx-auto leading-relaxed text-white/90 font-light">
+                    A community where faith grows, hearts are transformed, and lives are changed through God's eternal love
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                    <a href="/contact" class="bg-gradient-to-r from-berean-red to-red-600 hover:from-berean-red/90 hover:to-red-600/90 text-white px-10 py-5 text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-md">
+                        <span class="mr-3 h-6 w-6">👥</span> Join Us This Sunday
+                    </a>
+                    <a href="https://youtube.com/@bereanbiblechurchmsa?si=rXvdeX3xqQbGbrwC" target="_blank" rel="noopener noreferrer" class="bg-white/15 backdrop-blur-md border-2 border-white/50 text-white hover:bg-white/25 px-10 py-5 text-lg font-semibold shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-md">
+                        <span class="mr-3 h-6 w-6">▶️</span> Watch Us Live
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gradient-to-r from-berean-blue via-berean-blue to-berean-lightblue text-white py-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fillOpacity%3D%220.05%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E')] opacity-30"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="text-center md:text-left">
+                    <h2 class="text-4xl font-bold mb-3 font-montserrat">Join Our Family</h2>
+                    <p class="text-white/90 text-lg">Everyone is welcome in God's house</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-8 justify-center">
+                    <div class="text-center">
+                        <div class="flex items-center justify-center gap-3 mb-3">
+                            <div class="bg-white/20 p-2 rounded-full">
+                                <span class="h-6 w-6 text-white">⏰</span> </div>
+                            <p class="font-bold text-xl font-montserrat">Sunday Services</p>
+                        </div>
+                        <p class="text-white/95 text-lg font-medium">9:00 AM & 11:00 AM</p>
+                        <p class="text-sm text-white/80">1st & 2nd Service</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="flex items-center justify-center gap-3 mb-3">
+                            <div class="bg-white/20 p-2 rounded-full">
+                                <span class="h-6 w-6 text-white">📍</span> </div>
+                            <p class="font-bold text-xl font-montserrat">Location</p>
+                        </div>
+                        <p class="text-white/95 text-lg font-medium">1824 Kengeleni Road</p>
+                        <p class="text-sm text-white/80">Mombasa, Kenya</p>
+                    </div>
+                </div>
+
+                <div class="text-center md:text-right">
+                    <a href="/contact" class="bg-white text-berean-blue hover:bg-white/90 font-semibold px-8 py-3 text-xl shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center rounded-md">
+                        Get Directions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-b from-berean-skyblue to-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <img
+                        src="static/images/banners/divine-exaltation-banner.jpg"
+                        alt="The Year of Divine Exaltation & Magnification - For God's Glory"
+                        width="1200"
+                        height="600"
+                        class="w-full h-auto object-cover"
+                        loading="eager"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
+                </div>
+
+                <div class="text-center mt-8">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-berean-blue font-montserrat">Our 2025 Theme</h2>
+                    <p class="text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
+                        "That He will set you High in Praise and Name and Honor Above all the Nations He has made, and that you
+                        will be a Holy People to the LORD your God, as He has Promised."
+                    </p>
+                    <p class="text-lg font-semibold text-berean-blue mt-4">Deuteronomy 26:19</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gradient-to-b from-white to-berean-skyblue">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="section-heading text-5xl font-bold mb-6 text-berean-blue">Our Foundation</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    Three sacred pillars that guide everything we do as a church community
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12 max-w-7xl mx-auto">
+                <div class="text-center group">
+                    <div class="bg-gradient-to-br from-berean-blue/10 to-berean-blue/20 w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:from-berean-blue/20 group-hover:to-berean-blue/30 transition-all duration-300 shadow-lg">
+                        <span class="h-14 w-14 text-berean-blue">📖</span> </div>
+                    <h3 class="text-3xl font-bold mb-6 text-berean-blue font-montserrat">Prayer</h3>
+                    <p class="text-muted-foreground leading-relaxed text-lg">
+                        We believe in the transformative power of prayer to heal hearts, change lives, and align us with God's
+                        divine will for our community.
+                    </p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="bg-gradient-to-br from-berean-red/10 to-berean-red/20 w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:from-berean-red/20 group-hover:to-berean-red/30 transition-all duration-300 shadow-lg">
+                        <span class="h-14 w-14 text-berean-red">📖</span> </div>
+                    <h3 class="text-3xl font-bold mb-6 text-berean-blue font-montserrat">Word</h3>
+                    <p class="text-muted-foreground leading-relaxed text-lg">
+                        Like the noble Bereans, we study Scripture with eager hearts, examining God's Word daily for eternal
+                        truth and divine wisdom.
+                    </p>
+                </div>
+
+                <div class="text-center group">
+                    <div class="bg-gradient-to-br from-berean-lightblue/20 to-berean-lightblue/30 w-28 h-28 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:from-berean-lightblue/30 group-hover:to-berean-lightblue/40 transition-all duration-300 shadow-lg">
+                        <span class="h-14 w-14 text-berean-blue">🌍</span> </div>
+                    <h3 class="text-3xl font-bold mb-6 text-berean-blue font-montserrat">Mission</h3>
+                    <p class="text-muted-foreground leading-relaxed text-lg">
+                        We are called to share God's love through action, reaching our community and the world with the
+                        life-changing Gospel message.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-20 items-center max-w-7xl mx-auto">
+                <div class="order-2 lg:order-1">
+                    <div class="relative">
+                        <div class="absolute -top-6 -left-6 w-full h-full bg-gradient-to-br from-berean-lightblue/30 to-berean-blue/20 rounded-2xl"></div>
+                        <div class="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="static/images/church/sanctuary.jpg" alt="Church congregation" class="object-cover w-full h-full" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <div class="inline-block bg-gradient-to-r from-berean-red/10 to-berean-red/20 text-berean-red px-6 py-3 rounded-full text-sm font-semibold mb-8 font-montserrat">
+                        Welcome Home
+                    </div>
+                    <h2 class="section-heading text-5xl font-bold mb-8 text-berean-blue leading-tight">
+                        A Place Where Faith Comes Alive
+                    </h2>
+                    <p class="text-xl text-muted-foreground mb-8 leading-relaxed">
+                        Berean Bible Church is more than a place of worship—it's a spiritual family where people discover their
+                        divine purpose, grow in faith, and make a lasting impact in their community and beyond.
+                    </p>
+                    <p class="text-xl text-muted-foreground mb-10 leading-relaxed">
+                        Whether you're taking your first steps in faith or have been walking with God for years, you'll find a
+                        warm welcome and countless opportunities to grow, serve, and truly belong.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-6">
+                        <a href="/about" class="bg-gradient-to-r from-berean-blue to-berean-lightblue hover:from-berean-blue/90 hover:to-berean-lightblue/90 font-semibold px-8 py-4 text-lg shadow-lg transform hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-md">
+                            Learn Our Story <span class="ml-2 h-5 w-5">➡️</span> </a>
+                        <a href="/contact" class="border-2 border-berean-blue text-berean-blue hover:bg-berean-blue hover:text-white font-semibold px-8 py-4 text-lg shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center rounded-md">
+                            Plan Your Visit
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-berean-skyblue">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-heading text-5xl font-bold mb-6 text-berean-blue">Latest Message</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    Catch up on our most recent sermon and be encouraged in your faith journey
+                </p>
+            </div>
+
+            <div class="max-w-6xl mx-auto">
+                <div class="relative aspect-video rounded-2xl overflow-hidden bg-berean-blue/20 shadow-2xl">
+                    <iframe
+                        class="w-full h-full"
+                        src="https://www.youtube.com/embed/JLqlaUd6Iws"
+                        title="SUNDAY SERVICE || PENTECOSTAL REVIVAL -DAY 4 || PRAISE SESSION || 08.JUNE.2025"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+
+                <div class="text-center mt-10">
+                    <h3 class="text-3xl font-bold mb-3 text-berean-blue font-montserrat">
+                        PROFITS THAT COMES FROM DIVINE TRANSACTIONS
+                    </h3>
+                    <p class="text-muted-foreground mb-6 text-lg">REV CONSTANT ODANGA • Revelation 3:18</p>
+                    <a href="/sermons" class="border-2 border-berean-blue text-berean-blue hover:bg-berean-blue hover:text-white font-semibold px-8 py-3 text-lg shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center rounded-md">
+                        View All Sermons
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-20">
+                <h2 class="section-heading text-5xl font-bold mb-6 text-berean-blue">Upcoming Events</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                    Join us for these exciting opportunities to connect, grow, and serve together in Christian fellowship
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
+                <div class="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:scale-105 rounded-md">
+                    <div class="relative h-64">
+                        <img
+                            src="static/images/church/fellowship-hall.jpg"
+                            alt="Prayer Vigil"
+                            class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-berean-red to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                            Every Friday
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-berean-blue font-montserrat">Prayer Vigil</h3>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-5 w-5 mr-3">⏰</span> <span class="text-lg">9:30 PM - 4:00 AM</span>
+                        </div>
+                        <p class="text-muted-foreground mb-8 leading-relaxed text-lg">A night of worship and fellowship designed to help believers grow in their faith and resist the devil.</p>
+                        <a href="/events" class="w-full border-2 border-berean-blue text-berean-blue hover:bg-berean-blue hover:text-white transition-all duration-300 font-semibold py-3 text-lg inline-flex items-center justify-center rounded-md">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:scale-105 rounded-md">
+                    <div class="relative h-64">
+                        <img
+                            src="static/images/events/community-outreach.jpg"
+                            alt="Community Outreach"
+                            class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-berean-red to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                            To be confirmed
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-berean-blue font-montserrat">Community Outreach</h3>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-5 w-5 mr-3">⏰</span> <span class="text-lg">9:00 AM - 4:00 PM</span>
+                        </div>
+                        <p class="text-muted-foreground mb-8 leading-relaxed text-lg">Join us as we serve our neighbors through food distribution, prayer, and practical support for families in need.</p>
+                        <a href="/events" class="w-full border-2 border-berean-blue text-berean-blue hover:bg-berean-blue hover:text-white transition-all duration-300 font-semibold py-3 text-lg inline-flex items-center justify-center rounded-md">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:scale-105 rounded-md">
+                    <div class="relative h-64">
+                        <img
+                            src="static/images/logo.png"
+                            alt="Midweek Service"
+                            class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-berean-red to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                            Thursday
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-berean-blue font-montserrat">Midweek Service</h3>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-5 w-5 mr-3">⏰</span> <span class="text-lg">4:00 PM - 6:00 PM</span>
+                        </div>
+                        <p class="text-muted-foreground mb-8 leading-relaxed text-lg">Apart from Sunday, we always have our service on Thursdays evening mainly for fellowship.</p>
+                        <a href="/events" class="w-full border-2 border-berean-blue text-berean-blue hover:bg-berean-blue hover:text-white transition-all duration-300 font-semibold py-3 text-lg inline-flex items-center justify-center rounded-md">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+
+                <div class="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden group transform hover:scale-105 rounded-md">
+                    <div class="relative h-64">
+                        <img
+                            src="static/images/church/bible-study.jpg"
+                            alt="Bible Study"
+                            class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                        />
+                        <div class="absolute top-4 left-4 bg-gradient-to-r from-berean-red to-red-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                            Daily[Monday - Friday]
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-2xl font-bold mb-4 text-berean-blue font-montserrat">Bible Study</h3>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-5 w-5 mr-3">⏰</span> <span class="text-lg">6:00 PM - 7:30 PM</span>
+                        </div>
+                        <p class="text-muted-foreground mb-8 leading-relaxed text-lg">Dive deeper into God's Word with our daily study.</p>
+                        <a href="/events" class="w-full border-2 border-berean-blue text-berean-blue hover:bg-berean-blue hover:text-white transition-all duration-300 font-semibold py-3 text-lg inline-flex items-center justify-center rounded-md">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="/events" class="bg-gradient-to-r from-berean-blue to-berean-lightblue hover:from-berean-blue/90 hover:to-berean-lightblue/90 font-semibold px-10 py-4 text-lg shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center rounded-md">
+                    View All Events <span class="ml-2 h-5 w-5">➡️</span> </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-gradient-to-r from-berean-blue via-berean-blue to-berean-lightblue text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-16 left-16 w-40 h-40 border-2 border-white rounded-full animate-pulse"></div>
+            <div class="absolute bottom-24 right-24 w-32 h-32 border-2 border-white rounded-full animate-pulse delay-1000"></div>
+            <div class="absolute top-1/2 left-1/3 w-24 h-24 border-2 border-white rounded-full animate-pulse delay-500"></div>
+        </div>
+
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="section-heading text-5xl md:text-6xl font-bold mb-8">Support God's Work</h2>
+                <p class="text-2xl md:text-3xl mb-12 opacity-95 leading-relaxed font-light">
+                    Your generosity helps us continue our sacred mission of Prayer, Word, and Mission in our community and
+                    around the world
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-8 justify-center items-center">
+                    <a href="/give" class="gap-4 bg-white text-berean-blue hover:bg-white/90 px-12 py-6 text-xl font-bold shadow-2xl transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center rounded-md">
+                        <span class="h-7 w-7">❤️</span> Give Now
+                    </a>
+
+                    <div class="text-center">
+                        <p class="text-lg opacity-90">Secure • Tax-deductible • Multiple options</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-berean-skyblue">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-16 max-w-7xl mx-auto">
+                <div>
+                    <h3 class="section-heading text-4xl font-bold mb-8 text-berean-blue">Get Connected</h3>
+                    <p class="text-xl text-muted-foreground mb-10 leading-relaxed">
+                        Have questions? Want to learn more? We'd love to hear from you and help you take your next step in
+                        faith.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-br from-berean-blue/10 to-berean-blue/20 p-3 rounded-full">
+                                <span class="h-6 w-6 text-berean-blue">📍</span> </div>
+                            <div>
+                                <p class="font-semibold text-lg">1824 Kengeleni Road</p>
+                                <p class="text-muted-foreground">80100, Mombasa - Kenya</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <div class="bg-gradient-to-br from-berean-blue/10 to-berean-blue/20 p-3 rounded-full">
+                                <span class="h-6 w-6 text-berean-blue">⏰</span> </div>
+                            <div>
+                                <p class="font-semibold text-lg">Sunday Services</p>
+                                <p class="text-muted-foreground">9:00 AM & 11:00 AM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="border-0 shadow-xl rounded-md">
+                        <div class="p-10">
+                            <h4 class="text-2xl font-bold mb-6 text-berean-blue font-montserrat">Quick Contact</h4>
+                            <div class="space-y-6">
+                                <a href="/contact" class="w-full bg-gradient-to-r from-berean-blue to-berean-lightblue hover:from-berean-blue/90 hover:to-berean-lightblue/90 font-semibold py-4 text-lg shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center rounded-md">
+                                    Send us a Message
+                                </a>
+                                <a href="/contact" class="w-full border-2 border-berean-blue text-berean-blue hover:bg-berean-blue hover:text-white font-semibold py-4 text-lg shadow-lg transform hover:scale-105 transition-all duration-300 inline-flex items-center justify-center rounded-md">
+                                    Plan Your Visit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

@@ -1,0 +1,674 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Berean Bible Church</title>
+    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Custom Tailwind configuration for colors and fonts
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // These are example color definitions. Adjust to your actual brand colors.
+                        'berean-blue': '#2A6F97',
+                        'berean-red': '#CC0000',
+                        'berean-lightblue': '#8CD0D2',
+                        'berean-skyblue': '#E0F2F7',
+                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
+                        primary: '#2A6F97', // Example primary color
+                        background: '#FFFFFF', // Example background color
+                        muted: '#F1F5F9', // Example muted background
+                        'muted-foreground': '#64748B', // Example muted text color
+                    },
+                    fontFamily: {
+                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
+                        // You'd need to link Montserrat from Google Fonts or self-host it.
+                        inter: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Link for Inter and Montserrat fonts, if used -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the toast notification (if still needed from previous context) */
+        .toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .toast {
+            background-color: #333;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Additional styles for select/dropdown if Tailwind's default doesn't cover all visual aspects */
+        .custom-select-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%; /* or sm:w-[180px] */
+        }
+
+        .custom-select-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0; /* border-input */
+            border-radius: 0.375rem; /* rounded-md */
+            background-color: #fff; /* bg-background */
+            cursor: pointer;
+            min-height: 2.5rem; /* h-10 */
+        }
+
+        .custom-select-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            display: none; /* Hidden by default */
+        }
+
+        .custom-select-content.open {
+            display: block;
+        }
+
+        .custom-select-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .custom-select-item:hover {
+            background-color: #f0f4f8; /* hover:bg-accent */
+        }
+
+        /* Basic styles for tabs */
+        .tabs-list {
+            display: flex;
+            border-bottom: 1px solid #e2e8f0; /* border-b */
+        }
+        .tabs-trigger {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: #64748B; /* text-muted-foreground */
+            font-weight: 500; /* font-medium */
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .tabs-trigger.active {
+            color: #2A6F97; /* text-foreground or text-primary */
+            border-bottom: 2px solid #2A6F97; /* border-primary */
+        }
+        .tabs-content {
+            display: none; /* Hidden by default */
+        }
+        .tabs-content.active {
+            display: block;
+        }
+    </style>
+
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-[300px] flex items-center justify-center text-center">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="https://cdn.vectorstock.com/i/500p/59/67/colorful-event-spectrum-word-sign-vector-48365967.jpg"
+                alt="Event"
+                class="object-cover w-full h-full brightness-50"
+                loading="eager"
+            />
+        </div>
+        <div class="relative z-10 container mx-auto px-4 text-white">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Events</h1>
+            <p class="text-xl max-w-2xl mx-auto">Join us for upcoming events and activities</p>
+        </div>
+    </section>
+
+    <!-- Search and Filter -->
+    <section class="py-8 bg-muted/50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="relative flex-1">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">🔍</span> <!-- Search icon placeholder -->
+                    <input type="text" placeholder="Search events..." class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                </div>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="custom-select-wrapper w-full sm:w-[180px]">
+                        <div class="custom-select-trigger">
+                            <span class="select-value">Category</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="custom-select-content">
+                            <div class="custom-select-item" data-value="all">All Categories</div>
+                            <div class="custom-select-item" data-value="worship">Worship</div>
+                            <div class="custom-select-item" data-value="community">Community</div>
+                            <div class="custom-select-item" data-value="youth">Youth & Children</div>
+                            <div class="custom-select-item" data-value="outreach">Outreach</div>
+                            <div class="custom-select-item" data-value="music">Music Ministry</div>
+                        </div>
+                        <input type="hidden" name="category" id="categorySelect" value="all">
+                    </div>
+                    <div class="custom-select-wrapper w-full sm:w-[180px]">
+                        <div class="custom-select-trigger">
+                            <span class="select-value">Month</span>
+                            <span>▼</span>
+                        </div>
+                        <div class="custom-select-content">
+                            <div class="custom-select-item" data-value="all">All Months</div>
+                            <div class="custom-select-item" data-value="june">June 2025</div>
+                            <div class="custom-select-item" data-value="july">July 2025</div>
+                            <div class="custom-select-item" data-value="august">August 2025</div>
+                        </div>
+                        <input type="hidden" name="month" id="monthSelect" value="all">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Event -->
+    <section class="py-12 bg-background">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Featured Event</h2>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="relative aspect-video rounded-lg overflow-hidden">
+                    <img src="static/images/church/fellowship-hall.jpg" alt="Featured event" class="object-cover w-full h-full" />
+                    <div class="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-md text-sm font-medium">
+                        January 19, 2025
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Random Worship Experiences</h3>
+                    <div class="flex items-center text-muted-foreground mb-2">
+                        <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
+                        <span>Random Sundays as the spirit Leads</span>
+                    </div>
+                    <div class="flex items-center text-muted-foreground mb-4">
+                        <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
+                        <span>BBC Sanctuary</span>
+                    </div>
+                    <p class="text-muted-foreground mb-6">
+                        We always have worship encounters throughtout our services but some sundays the spirit always takes us
+                        deeper in worship as according to Isaiah 6:1- .
+                    </p>
+                    <a href="/events/summer-festival" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
+                        Learn More
+                        <span class="h-4 w-4">➡️</span> <!-- ChevronRight icon placeholder -->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Calendar -->
+    <section class="py-12 bg-muted/50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold">Upcoming Events</h2>
+            </div>
+
+            <div class="w-full">
+                <div class="flex justify-center md:justify-end mb-6">
+                    <div class="tabs-list flex rounded-md shadow-sm bg-background p-1">
+                        <button type="button" class="tabs-trigger px-4 py-2 rounded-md active" data-tab="list">List View</button>
+                        <button type="button" class="tabs-trigger px-4 py-2 rounded-md" data-tab="calendar">Calendar View</button>
+                    </div>
+                </div>
+
+                <div id="listView" class="tabs-content active mt-0">
+                    <div class="space-y-6">
+                        <!-- Event 1 -->
+                        <div class="border rounded-lg shadow-sm bg-card text-card-foreground flex flex-col md:flex-row">
+                            <div class="relative w-full md:w-64 h-48 md:h-auto">
+                                <img
+                                    src="static/images/events/open-air-worship.jpg"
+                                    alt="Open Airs"
+                                    class="object-cover w-full h-full"
+                                />
+                            </div>
+                            <div class="flex-1 p-6">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                    <h3 class="text-xl font-bold">Open Airs</h3>
+                                    <div class="text-primary font-medium mt-2 md:mt-0">Last week of Every Month</div>
+                                </div>
+                                <div class="flex items-center text-muted-foreground mb-2">
+                                    <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
+                                    <span>3:30 PM - 6:30 PM</span>
+                                </div>
+                                <div class="flex items-center text-muted-foreground mb-4">
+                                    <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
+                                    <span>Church Ground</span>
+                                </div>
+                                <p class="text-muted-foreground mb-4">A session of worship, Praise and sermon as we spread the gospel to the community</p>
+                                <a href="/events/open-airs" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Event Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Event 2 -->
+                        <div class="border rounded-lg shadow-sm bg-card text-card-foreground flex flex-col md:flex-row">
+                            <div class="relative w-full md:w-64 h-48 md:h-auto">
+                                <img
+                                    src="static/images/events/community-outreach.jpg"
+                                    alt="Community Outreach"
+                                    class="object-cover w-full h-full"
+                                />
+                            </div>
+                            <div class="flex-1 p-6">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                    <h3 class="text-xl font-bold">Community Outreach</h3>
+                                    <div class="text-primary font-medium mt-2 md:mt-0">Date to be confirmed</div>
+                                </div>
+                                <div class="flex items-center text-muted-foreground mb-2">
+                                    <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
+                                    <span>9:00 AM - 12:00 PM</span>
+                                </div>
+                                <div class="flex items-center text-muted-foreground mb-4">
+                                    <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
+                                    <span>To be Confirmed</span>
+                                </div>
+                                <p class="text-muted-foreground mb-4">Join us as we visit our community.</p>
+                                <a href="/events/community-outreach" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Event Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Event 3 -->
+                        <div class="border rounded-lg shadow-sm bg-card text-card-foreground flex flex-col md:flex-row">
+                            <div class="relative w-full md:w-64 h-48 md:h-auto">
+                                <img
+                                    src="static/images/church/fellowship-hall.jpg"
+                                    alt="Worship Encounters"
+                                    class="object-cover w-full h-full"
+                                />
+                            </div>
+                            <div class="flex-1 p-6">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                    <h3 class="text-xl font-bold">Worship Encounters</h3>
+                                    <div class="text-primary font-medium mt-2 md:mt-0">Random Sundays</div>
+                                </div>
+                                <div class="flex items-center text-muted-foreground mb-2">
+                                    <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
+                                    <span>9:00 AM - 2:00 PM</span>
+                                </div>
+                                <div class="flex items-center text-muted-foreground mb-4">
+                                    <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
+                                    <span>Church Sanctuary</span>
+                                </div>
+                                <p class="text-muted-foreground mb-4">Worship encounters...Lets worship in truth and spirit</p>
+                                <a href="/events/worship-encounters" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Event Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Event 4 -->
+                        <div class="border rounded-lg shadow-sm bg-card text-card-foreground flex flex-col md:flex-row">
+                            <div class="relative w-full md:w-64 h-48 md:h-auto">
+                                <img
+                                    src="static/images/church/bible-study.jpg"
+                                    alt="Bible Study & Prayers"
+                                    class="object-cover w-full h-full"
+                                />
+                            </div>
+                            <div class="flex-1 p-6">
+                                <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                    <h3 class="text-xl font-bold">Bible Study & Prayers</h3>
+                                    <div class="text-primary font-medium mt-2 md:mt-0">Daily From Monday to Friday</div>
+                                </div>
+                                <div class="flex items-center text-muted-foreground mb-2">
+                                    <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
+                                    <span>6:00 PM - 7:30 PM</span>
+                                </div>
+                                <div class="flex items-center text-muted-foreground mb-4">
+                                    <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
+                                    <span>Fellowship Hall</span>
+                                </div>
+                                <p class="text-muted-foreground mb-4">Dive deeper into God's word with our weekly study. We call this the berean culture and its practical wisdom for everyday life.</p>
+                                <a href="/events/bible-study-&-prayers" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Event Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="calendarView" class="tabs-content mt-0">
+                    <div class="bg-background rounded-lg p-6">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold">June 2025</h3>
+                        </div>
+                        <div class="grid grid-cols-7 gap-1">
+                            <!-- Calendar header -->
+                            <div class="p-2 text-center font-medium">Sun</div>
+                            <div class="p-2 text-center font-medium">Mon</div>
+                            <div class="p-2 text-center font-medium">Tue</div>
+                            <div class="p-2 text-center font-medium">Wed</div>
+                            <div class="p-2 text-center font-medium">Thu</div>
+                            <div class="p-2 text-center font-medium">Fri</div>
+                            <div class="p-2 text-center font-medium">Sat</div>
+
+                            <!-- Calendar days (hardcoded for June 2025, starting on a Sunday) -->
+                            <!-- May 2025 (prev month) -->
+                            <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">29</div>
+                            <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">30</div>
+                            <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">31</div>
+
+                            <!-- June 2025 -->
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">1</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">2</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">3</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">4</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">5</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">6</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">7</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">8</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">9</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">10</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">11</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">12</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">13</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">14</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">15</div>
+                                <div class="mt-1 p-1 text-xs bg-primary/10 text-primary rounded">Youth Group</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">16</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">17</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">18</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">19</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">20</div>
+                                <div class="mt-1 p-1 text-xs bg-primary/10 text-primary rounded">Outreach</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">21</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">22</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">23</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">24</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">25</div>
+                                <div class="mt-1 p-1 text-xs bg-primary/10 text-primary rounded">Encounters</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">26</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">27</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">28</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">29</div>
+                            </div>
+                            <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
+                                <div class="font-medium">30</div>
+                            </div>
+                            <!-- July 2025 (next month) -->
+                            <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">1</div>
+                            <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">2</div>
+                            <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">3</div>
+                            <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">4</div>
+                            <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">5</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <a href="/events/calendar" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-2">
+                    <span class="h-4 w-4">🗓️</span> <!-- Calendar icon placeholder -->
+                    View Full Calendar
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Categories -->
+    <section class="py-12 bg-background">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Event Categories</h2>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Category 1 -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="relative h-40">
+                        <img
+                            src="static/images/church/fellowship-hall.jpg"
+                            alt="Worship Services"
+                            class="object-cover w-full h-full"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                            <h3 class="text-xl font-bold text-white">Worship Services</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-muted-foreground mb-4">Sunday services and special worship events throughout the year.</p>
+                        <a href="/events/category/worship" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Events</a>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="relative h-40">
+                        <img
+                            src="static/images/church/bible-study.jpg"
+                            alt="Community Groups"
+                            class="object-cover w-full h-full"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                            <h3 class="text-xl font-bold text-white">Community Groups</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-muted-foreground mb-4">Small groups, Bible studies, and fellowship opportunities.</p>
+                        <a href="/events/category/community" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Events</a>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="relative h-40">
+                        <img
+                            src="static/images/church/building-exterior.jpg"
+                            alt="Youth & Children"
+                            class="object-cover w-full h-full"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                            <h3 class="text-xl font-bold text-white">Youth & Children</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-muted-foreground mb-4">Programs and events for kids and teenagers of all ages.</p>
+                        <a href="/events/category/youth" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Events</a>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="relative h-40">
+                        <img
+                            src="static/images/events/youth-music-ministry.jpg"
+                            alt="Music Ministry"
+                            class="object-cover w-full h-full"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                            <h3 class="text-xl font-bold text-white">Music Ministry</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-muted-foreground mb-4">Serving God through musical gifts and talents.</p>
+                        <a href="/events/category/music-ministry" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Events</a>
+                    </div>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="relative h-40">
+                        <img
+                            src="static/images/events/community-outreach.jpg"
+                            alt="Outreach & Missions"
+                            class="object-cover w-full h-full"
+                        />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
+                            <h3 class="text-xl font-bold text-white">Outreach & Missions</h3>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-muted-foreground mb-4">Serving our local community and global mission initiatives.</p>
+                        <a href="/events/category/outreach" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Tabs functionality ---
+            const tabsList = document.querySelector('.tabs-list');
+            const tabsTriggers = tabsList ? tabsList.querySelectorAll('.tabs-trigger') : [];
+            const tabsContents = document.querySelectorAll('.tabs-content');
+
+            tabsTriggers.forEach(trigger => {
+                trigger.addEventListener('click', () => {
+                    const targetTab = trigger.dataset.tab;
+
+                    // Deactivate all triggers and hide all contents
+                    tabsTriggers.forEach(t => t.classList.remove('active'));
+                    tabsContents.forEach(c => c.classList.remove('active'));
+
+                    // Activate the clicked trigger and show its content
+                    trigger.classList.add('active');
+                    document.getElementById(targetTab + 'View').classList.add('active');
+                });
+            });
+
+            // --- Custom Select/Dropdown functionality ---
+            document.querySelectorAll('.custom-select-wrapper').forEach(wrapper => {
+                const trigger = wrapper.querySelector('.custom-select-trigger');
+                const content = wrapper.querySelector('.custom-select-content');
+                const selectValueSpan = trigger.querySelector('.select-value');
+                const hiddenInput = wrapper.querySelector('input[type="hidden"]');
+
+                trigger.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Prevent document click from closing immediately
+                    content.classList.toggle('open');
+                });
+
+                content.querySelectorAll('.custom-select-item').forEach(item => {
+                    item.addEventListener('click', (event) => {
+                        event.stopPropagation(); // Prevent bubbling up to trigger
+                        const value = item.dataset.value;
+                        const text = item.textContent;
+
+                        selectValueSpan.textContent = text;
+                        hiddenInput.value = value;
+                        content.classList.remove('open');
+                    });
+                });
+
+                // Close dropdown if clicked outside
+                document.addEventListener('click', (event) => {
+                    if (!wrapper.contains(event.target)) {
+                        content.classList.remove('open');
+                    }
+                });
+            });
+
+            // --- Simple "toast" notification function (if still needed) ---
+            function showToast(title, description) {
+                const toastContainer = document.getElementById('toast-container');
+                if (!toastContainer) return; // Ensure container exists
+
+                const toastElement = document.createElement('div');
+                toastElement.className = 'toast';
+                toastElement.innerHTML = `<strong>${title}</strong><p>${description}</p>`;
+                toastContainer.appendChild(toastElement);
+
+                setTimeout(() => {
+                    toastElement.classList.add('show');
+                }, 10);
+
+                setTimeout(() => {
+                    toastElement.classList.remove('show');
+                    toastElement.addEventListener('transitionend', () => {
+                        toastElement.remove();
+                    }, { once: true });
+                }, 3000);
+            }
+
+            // Example of how to trigger a toast (not directly used by this page's logic, but available)
+            // showToast("Page Loaded", "Welcome to the Events page!");
+        });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+<<<<<<< HEAD
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Berean Bible Church{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="flex flex-col min-h-screen font-inter" data-theme="light">
+    <nav class="flex top-0 left-0 w-full z-50 flex items-center justify-between px-8 py-4 bg-white shadow main-nav">
+        <div class="flex items-center gap-8 nav-center">
+            <a href="{% url 'home' %}" class="font-bold text-berean-blue site-name">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'sermons' %}">Sermons</a>
+            <a href="{% url 'events' %}">Events</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+        <div class="flex items-center gap-4 nav-right">
+            <!-- Dark/Light Mode Toggle -->
+            <button id="theme-toggle" class="toggle-switch w-12 h-6 bg-gray-300 rounded-full relative focus:outline-none">
+                <span id="toggle-knob" class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transition"></span>
+            </button>
+            <!-- Give Button -->
+            <a href="{% url 'give' %}" class="ml-4 px-4 py-2 bg-berean-blue text-white rounded-lg shadow font-semibold hover:bg-berean-lightblue transition">Give</a>
+        </div>
+    </nav>
+    {% block content %}{% endblock %}
+
+      <!-- Your footer here -->
+    <footer class="bg-berean-blue text-white py-6 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-2">
+                <span class="text-xl">📍</span>
+                <span>1824 Kengeleni Road</span><br>
+                <span>80100, Mombasa - Kenya</span>
+            </div>
+            <div>
+                <span class="text-xl">⏰</span>
+                <span>Sunday Services</span><br>
+                <span>9:00 AM &amp; 11:00 AM</span>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Simple dark/light mode toggle
+        const toggle = document.getElementById('theme-toggle');
+        const knob = document.getElementById('toggle-knob');
+        toggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                knob.style.left = '0.25rem';
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                knob.style.left = '2.25rem';
+            }
+        });
+    </script>
+</body>
+</html>
+=======
+<nav>
+  <a href="{% url 'home' %}">Home</a>
+  <a href="{% url 'about' %}">About</a>
+  <a href="{% url 'sermons' %}">Sermons</a>
+  <a href="{% url 'events' %}">Events</a>
+  <a href="{% url 'contacts' %}">Contacts</a>
+</nav>
+>>>>>>> 0bf4b630fa1318caf786ac0e69a9ea06922ce338

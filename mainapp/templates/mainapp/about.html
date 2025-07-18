@@ -1,0 +1,283 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Berean Bible Church</title>
+    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Custom Tailwind configuration for colors and fonts
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // These are example color definitions. Adjust to your actual brand colors.
+                        'berean-blue': '#2A6F97',
+                        'berean-red': '#CC0000',
+                        'berean-lightblue': '#8CD0D2',
+                        'berean-skyblue': '#E0F2F7',
+                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
+                        primary: '#2A6F97', // Example primary color
+                        background: '#FFFFFF', // Example background color
+                        muted: '#F1F5F9', // Example muted background
+                        'muted-foreground': '#64748B', // Example muted text color
+                        'primary-foreground': '#FFFFFF', // Text color on primary background
+                        'card': '#FFFFFF', // Card background
+                        'card-foreground': '#0F172A', // Text color on card background
+                    },
+                    fontFamily: {
+                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
+                        // You'd need to link Montserrat from Google Fonts or self-host it.
+                        inter: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Link for Inter and Montserrat fonts, if used -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Any custom styles not directly covered by Tailwind classes can go here if needed */
+    </style>
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-[400px] flex items-center justify-center text-center">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="static/images/logo.png"
+                alt="BBC Logo"
+                class="object-cover w-full h-full brightness-50"
+                loading="eager"
+            />
+        </div>
+        <div class="relative z-10 container mx-auto px-4 text-white">
+            <h1 class="text-5xl font-bold mb-6">About Berean Bible Church</h1>
+            <p class="text-xl max-w-2xl mx-auto">Learn about our history, mission, and vision</p>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section class="py-16 bg-berean-skyblue">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6 text-center text-berean-blue">Our Story</h2>
+                <p class="text-muted-foreground mb-6">
+                    Berean Bible Church was founded with a heart for deep Biblical study and global mission. Like the noble
+                    Bereans mentioned in Acts 17:11, we are committed to examining the Scriptures daily to see if what we hear
+                    aligns with God's Word. Our church has grown from a small Bible study group into a thriving community
+                    dedicated to Prayer, Word, and Mission.
+                </p>
+                <p class="text-muted-foreground mb-6">
+                    Our name "Berean" reflects our commitment to being people of the Word - studying Scripture with eager
+                    hearts and noble minds. We believe that through faithful study of God's Word, fervent prayer, and active
+                    mission work, we can impact our community and the world for Christ.
+                </p>
+                <p class="text-muted-foreground">
+                    Today, Berean Bible Church continues to be a place where people can dive deep into Scripture, grow in
+                    prayer, and participate in God's mission to reach the world with the Gospel. We welcome all who desire to
+                    grow in their knowledge of God's Word and their relationship with Jesus Christ.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Values -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-berean-blue">Our Mission & Values</h2>
+                <p class="text-muted-foreground max-w-2xl mx-auto">
+                    Guiding principles that shape our community and ministry
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="bg-berean-skyblue p-8 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold mb-4 text-berean-blue">Our Mission</h3>
+                    <p class="text-muted-foreground">
+                        To love God, love people, and make disciples who transform communities through the power of the Gospel.
+                    </p>
+                </div>
+
+                <div class="bg-berean-skyblue p-8 rounded-lg shadow-sm">
+                    <h3 class="text-2xl font-bold mb-4 text-berean-blue">Our Vision</h3>
+                    <p class="text-muted-foreground">
+                        To be a church that reflects the love of Christ, reaches the lost, and raises up leaders who impact the
+                        world.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold mb-6 text-center text-berean-blue">Our Core Values</h3>
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    <!-- Core Value 1 -->
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Biblical Teaching</h4>
+                        <p class="text-muted-foreground">We are committed to teaching the Bible as God's authoritative Word.</p>
+                    </div>
+                    <!-- Core Value 2 -->
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Authentic Worship</h4>
+                        <p class="text-muted-foreground">We value heartfelt worship that honors God in spirit and truth.</p>
+                    </div>
+                    <!-- Core Value 3 -->
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Loving Community</h4>
+                        <p class="text-muted-foreground">We foster genuine relationships where people are known and loved.</p>
+                    </div>
+                    <!-- Core Value 4 -->
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Missional Living</h4>
+                        <p class="text-muted-foreground">We equip people to share God's love in word and deed.</p>
+                    </div>
+                    <!-- Core Value 5 -->
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Servant Leadership</h4>
+                        <p class="text-muted-foreground">We develop humble leaders who serve others as Christ served us.</p>
+                    </div>
+                    <!-- Core Value 6 -->
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Generous Giving</h4>
+                        <p class="text-muted-foreground">We practice joyful generosity with our time, talents, and resources.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="py-16 bg-berean-skyblue">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-berean-blue">Our Leadership Team</h2>
+                <p class="text-muted-foreground max-w-2xl mx-auto">
+                    Meet the dedicated individuals who guide our church
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Leader 1 -->
+                <div class="text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden border-4 border-berean-blue">
+                        <img src="static/images/leadership/bishop-ibrahim.jpg" alt="BISHOP IBRAHIM ANG'ANA OYOTI" class="object-cover w-full h-full" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">BISHOP IBRAHIM ANG'ANA OYOTI</h3>
+                    <p class="text-berean-red mb-2">PRESIDING BISHOP</p>
+                    <p class="text-muted-foreground">Bishop Ibrahim A.O is the founder of Berean Bible Church ministries having branches all over East african countries i.e Kenya and Tanzania.</p>
+                </div>
+                <!-- Leader 2 -->
+                <div class="text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden border-4 border-berean-blue">
+                        <img src="static/images/leadership/reverend-lorine.jpg" alt="REVEREND LORINE PAMELA ANG'ANA" class="object-cover w-full h-full" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">REVEREND LORINE PAMELA ANG'ANA</h3>
+                    <p class="text-berean-red mb-2">SENIOR PASTOR//WOMEN LEADER</p>
+                    <p class="text-muted-foreground">Reverend Lorine is the wife to Bishop Ibrahim and is the senior pastor of BBC Mombasa and also a dynamic leader of an interdenominational forum called Women Of Value.</p>
+                </div>
+                <!-- Leader 3 -->
+                <div class="text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden border-4 border-berean-blue">
+                        <img src="static/images/leadership/reverend-constant.jpg" alt="REVEREND CONSTANT OJWANG ODANGA" class="object-cover w-full h-full" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">REVEREND CONSTANT OJWANG ODANGA</h3>
+                    <p class="text-berean-red mb-2">SENIOR PASTOR//YOUTHS PASTOR</p>
+                    <p class="text-muted-foreground">Reverend Odanga is a senior pastor, passionate about helping young people grow in their faith journey serving as Teens patron of the Youth department and also is part of the senior pastoring team serving as the team lead.</p>
+                </div>
+                <!-- Leader 4 -->
+                <div class="text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden border-4 border-berean-blue">
+                        <img src="static/images/leadership/reverend-moses.jpg" alt="REVEREND MOSES OYOTI" class="object-cover w-full h-full" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">REVEREND MOSES OYOTI</h3>
+                    <p class="text-berean-red mb-2">DEPARTMENTAL OVERSEER</p>
+                    <p class="text-muted-foreground">Reverend Moses oversees all activities happening in and around the ministries through the church departments.</p>
+                </div>
+                <!-- Leader 5 -->
+                <div class="text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden border-4 border-berean-blue">
+                        <img src="static/images/leadership/pastor-salvestin.jpg" alt="PASTOR SALVESTIN KINZI" class="object-cover w-full h-full" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">PASTOR SALVESTIN KINZI</h3>
+                    <p class="text-berean-red mb-2">CHURCH COORDINATOR//YOUTH PASTOR//WORSHIP LEADER</p>
+                    <p class="text-muted-foreground">Pst Kinzi organizes our community service initiatives and mission trips and also oversee the Young adults of the youth department and also leads the worship team.</p>
+                </div>
+                <!-- Leader 6 -->
+                <div class="text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden border-4 border-berean-blue">
+                        <img src="static/images/leadership/pastor-agness.jpg" alt="PASTOR AGNESS KAZOSI" class="object-cover w-full h-full" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">PASTOR AGNESS KAZOSI</h3>
+                    <p class="text-berean-red mb-2">DEPARTMENTAL PASTOR//ASSISTANT COORDINATOR</p>
+                    <p class="text-muted-foreground">Pst Kazosi helps in planning church initiatives and programs and also helps in pastoring one of the home based church.</p>
+                </div>
+                <!-- Leader 7 -->
+                <div class="text-center">
+                    <div class="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden border-4 border-berean-blue">
+                        <img src="static/images/leadership/pastor-alfred.jpg" alt="PASTOR ALFRED MATAI" class="object-cover w-full h-full" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">PASTOR ALFRED MATAI</h3>
+                    <p class="text-berean-red mb-2">CHURCH TREASURER//INSTRUMENT TECHNICIAN</p>
+                    <p class="text-muted-foreground">Pst Alfred helps in counting and analysizing the church's offerings and monetary assets while also plays a huge part in ensuring wellbeing of church instruments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Believe -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6 text-center text-berean-blue">What We Believe</h2>
+                <p class="text-muted-foreground mb-8">
+                    At Berean Bible Church, we are committed to Prayer, Mission, and the Word as our core codes of conduct. We
+                    believe:
+                </p>
+
+                <div class="space-y-6">
+                    <!-- Belief 1 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">The Bible</h3>
+                        <p class="text-muted-foreground">
+                            We believe the Bible is God's Word, fully inspired and without error, written under the inspiration of the Holy Spirit, and has supreme authority in all matters of faith and conduct.
+                        </p>
+                    </div>
+                    <!-- Belief 2 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">God</h3>
+                        <p class="text-muted-foreground">
+                            We believe there is one living and true God, eternally existing in three persons—Father, Son, and Holy Spirit—who are equal in every divine perfection and who execute distinct but harmonious offices in the work of creation, providence, and redemption.
+                        </p>
+                    </div>
+                    <!-- Belief 3 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">Jesus Christ</h3>
+                        <p class="text-muted-foreground">
+                            We believe Jesus Christ is the eternal Son of God who became man without ceasing to be God, was conceived by the Holy Spirit, born of the Virgin Mary, and lived a sinless life. He died on the cross as a sacrifice for our sins, rose bodily from the dead, and ascended to heaven where He is now our High Priest and Advocate.
+                        </p>
+                    </div>
+                    <!-- Belief 4 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">Salvation</h3>
+                        <p class="text-muted-foreground">
+                            We believe salvation is a gift from God to humanity. People can never make up for their sin by self-improvement or good works. Only by trusting in Jesus Christ as God's offer of forgiveness can anyone be saved from sin's penalty.
+                        </p>
+                    </div>
+                    <!-- Belief 5 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">The Church</h3>
+                        <p class="text-muted-foreground">
+                            We believe the church is the body of Christ, of which Jesus Christ is the head. The members are those who have trusted by faith in the finished work of Christ. The purpose of the church is to glorify God by loving Him and by making Him known to a lost world.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}

@@ -1,0 +1,318 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Berean Bible Church</title>
+    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Custom Tailwind configuration for colors and fonts
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // These are example color definitions. Adjust to your actual brand colors.
+                        'berean-blue': '#2A6F97',
+                        'berean-red': '#CC0000',
+                        'berean-lightblue': '#8CD0D2',
+                        'berean-skyblue': '#E0F2F7',
+                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
+                        // You might need to define these if your original project had them customized
+                        // For simplicity, using common shades for demonstration.
+                        primary: '#2A6F97', // Example primary color
+                        background: '#FFFFFF', // Example background color
+                        muted: '#F1F5F9', // Example muted background
+                        'muted-foreground': '#64748B', // Example muted text color
+                    },
+                    fontFamily: {
+                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
+                        // You'd need to link Montserrat from Google Fonts or self-host it.
+                        inter: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Link for Inter and Montserrat fonts, if used -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for the toast notification */
+        .toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .toast {
+            background-color: #333;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+  
+ <!-- Contact Info Section -->
+    <section class="py-16 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
+                <p class="text-muted-foreground max-w-2xl mx-auto">
+                    We'd love to hear from you. Reach out with any questions or prayer requests.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground">
+                    <div class="p-6 text-center">
+                        <div class="mx-auto bg-primary/10 w-12 h-12 flex items-center justify-center rounded-full mb-4">
+                            <span class="h-6 w-6 text-primary">📞</span> <!-- Phone icon placeholder -->
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Phone</h3>
+                        <p class="text-muted-foreground">(254) 741-080-904</p>
+                    </div>
+                </div>
+
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground">
+                    <div class="p-6 text-center">
+                        <div class="mx-auto bg-primary/10 w-12 h-12 flex items-center justify-center rounded-full mb-4">
+                            <span class="h-6 w-6 text-primary">📧</span> <!-- Mail icon placeholder -->
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Email</h3>
+                        <p class="text-muted-foreground">bbcmsaheadquarters@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground">
+                    <div class="p-6 text-center">
+                        <div class="mx-auto bg-primary/10 w-12 h-12 flex items-center justify-center rounded-full mb-4">
+                            <span class="h-6 w-6 text-primary">📍</span> <!-- MapPin icon placeholder -->
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Address</h3>
+                        <p class="text-muted-foreground">
+                            1824 Kengeleni Road, Mshomoroni
+                            <br />
+                            80100, Mombasa, Kenya
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="py-16 bg-muted/50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl mx-auto">
+                <div class="border rounded-lg shadow-sm bg-card text-card-foreground">
+                    <div class="p-8">
+                        <h2 class="text-2xl font-bold mb-6 text-center">Send us a Message</h2>
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="space-y-2">
+                                    <label for="name" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Name *</label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        required
+                                        placeholder="Your full name"
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    />
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="email" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Email *</label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        required
+                                        placeholder="your.email@example.com"
+                                        class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="phone" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Phone</label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="(123) 456-7890"
+                                    class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                />
+                            </div>
+
+                            <div class="space-y-3">
+                                <label class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Subject *</label>
+                                <div class="flex flex-col space-y-2">
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="general" name="subject" value="general" checked class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="general" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">General Inquiry</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="prayer" name="subject" value="prayer" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="prayer" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Prayer Request</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="pastoral" name="subject" value="pastoral" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="pastoral" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Pastoral Care</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="ministry" name="subject" value="ministry" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="ministry" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Ministry Information</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="message" class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Message *</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    required
+                                    placeholder="How can we help you?"
+                                    rows="5"
+                                    class="flex min-h-[80px] w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                ></textarea>
+                            </div>
+
+                            <button type="submit" id="submitButton" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 w-full bg-primary text-primary-foreground hover:bg-primary/90">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-background">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold mb-4">Visit Us</h2>
+                <p class="text-muted-foreground">Join us for our services and programs</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-muted rounded-lg h-96 flex items-center justify-center">
+                    <div class="text-center">
+                        <span class="h-12 w-12 text-primary mx-auto mb-4">📍</span> <!-- MapPin icon placeholder -->
+                        <p class="text-lg font-semibold">Interactive Map</p>
+                        <p class="text-muted-foreground">1824,Mombasa-Mshomoroni Area Just past Baba Mlezi stage on your way to Kadzonzo football ground.</p>
+                        <p class="mt-4">
+                           <a href="https://maps.app.goo.gl/ynPgseF7WEbWPudq6" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors duration-200">View on Map</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script>
+        // Simple "toast" notification function
+        function showToast(title, description) {
+            const toastContainer = document.getElementById('toast-container');
+            const toastElement = document.createElement('div');
+            toastElement.className = 'toast';
+            toastElement.innerHTML = `<strong>${title}</strong><p>${description}</p>`;
+            toastContainer.appendChild(toastElement);
+
+            // Show the toast
+            setTimeout(() => {
+                toastElement.classList.add('show');
+            }, 10); // Small delay to ensure reflow for transition
+
+            // Hide and remove after 3 seconds
+            setTimeout(() => {
+                toastElement.classList.remove('show');
+                toastElement.addEventListener('transitionend', () => {
+                    toastElement.remove();
+                }, { once: true });
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const submitButton = document.getElementById('submitButton');
+
+            // Initialize form data
+            let formData = {
+                name: "",
+                email: "",
+                phone: "",
+                subject: "general", // Default subject
+                message: "",
+            };
+
+            // Function to update form data on input change
+            function handleChange(event) {
+                const { name, value, type, checked } = event.target;
+                if (type === 'radio') {
+                    formData[name] = value;
+                } else {
+                    formData[name] = value;
+                }
+                // console.log('Form Data:', formData); // For debugging
+            }
+
+            // Attach change listeners to all form elements
+            contactForm.querySelectorAll('input, textarea').forEach(element => {
+                element.addEventListener('input', handleChange);
+            });
+            contactForm.querySelectorAll('input[type="radio"]').forEach(radio => {
+                radio.addEventListener('change', handleChange);
+            });
+
+            // Handle form submission
+            contactForm.addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent default form submission
+
+                submitButton.disabled = true;
+                submitButton.textContent = "Sending...";
+
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Display toast notification
+                showToast("Message Sent", "Thank you for contacting us. We'll get back to you soon!");
+
+                // Reset form fields
+                formData = {
+                    name: "",
+                    email: "",
+                    phone: "",
+                    subject: "general",
+                    message: "",
+                };
+                contactForm.reset(); // Resets all form fields to their initial state
+                // Manually set the default radio button back to 'general'
+                document.getElementById('general').checked = true;
+
+
+                submitButton.disabled = false;
+                submitButton.textContent = "Send Message";
+            });
+        });
+    </script>
+
+
+{% endblock %}
