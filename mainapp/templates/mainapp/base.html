@@ -7,68 +7,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main_style.css' %}">
 </head>
+
 <body class="flex flex-col min-h-screen font-inter" data-theme="light">
-   <nav class="fixed top-0 left-0 w-full z-50 bg-white shadow px-8 py-4 main-nav">
-       <div class="max-w-7xl mx-auto flex items-center justify-start">
-           <!-- Left: Logo and Church Name -->
-           <div class="flex items-center gap-3">
-             <img src="{% static 'images/logo.png' %}" alt="BBC Logo" class="h-12 w-12 object-contain" />
-             <span class="font-bold text-2xl text-berean-blue">BEREAN BIBLE CHURCH</span>
-           </div>
-              <!-- Center: Menu -->
-           <div class="flex-1 flex justify-center">
-               <div class="flex items-center gap-3 bg-blue-100 rounded-full px-8 py-2 shadow-md">
-                 <a href="{% url 'home' %}" class="font-semibold hover:text-berean-blue">Home</a>
-                 <a href="{% url 'about' %}" class="font-semibold hover:text-berean-blue">About</a>
-                 <a href="{% url 'sermons' %}" class="font-semibold hover:text-berean-blue">Sermons</a>
-                 <a href="{% url 'events' %}" class="font-semibold hover:text-berean-blue">Events</a>
-                 <a href="{% url 'contact' %}" class="font-semibold hover:text-berean-blue">Contact</a>
-               </div>
-           </div>
-             <!-- Right: Dark/Light Toggle and Give Button -->
-           <div class="flex items-center gap-4 justify-end">
-              <button id="theme-toggle" class="toggle-switch w-12 h-6 bg-gray-300 rounded-full relative focus:outline-none">
-               <span id="toggle-knob" class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transition"></span>
-              </button>
-              <a href="{% url 'give' %}" class="ml-2 px-4 py-2 bg-berean-blue text-white rounded-lg shadow font-semibold hover:bg-berean-lightblue transition">Give</a>
-           </div>
-       </div>
-   </nav>
-<main class="flex-1 pt-24">
-   {% block content %}{% endblock %}
-</main>
-   
-      <!-- Your footer here -->
-    <footer class="bg-berean-blue text-white py-6 mt-auto">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-2">
-                <span class="text-xl">📍</span>
-                <span>1824 Kengeleni Road</span><br>
-                <span>80100, Mombasa - Kenya</span>
+    <nav id="mainNav" class="fixed top-0 left-0 w-full z-50 bg-white shadow px-4 py-4 transition-all duration-300">
+        <div class="max-w-6xl mx-auto flex flex-col">
+            <div class="flex items-center justify-center text-sm whitespace-nowrap">
+                <ul class="main-menu-links flex flex-wrap justify-center gap-x-4 font-semibold tracking-wide uppercase">
+                    <li>
+                        <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">HOME</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">ABOUT US</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'leadership' %}" class="{% if request.resolver_match.url_name == 'leadership' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">OUR LEADERSHIP</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ministries' %}" class="{% if request.resolver_match.url_name == 'ministries' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">MINISTRIES</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'sermons' %}" class="{% if request.resolver_match.url_name == 'sermons' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">SERMONS</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'blog' %}" class="{% if request.resolver_match.url_name == 'blog' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">BLOG</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'events' %}" class="{% if request.resolver_match.url_name == 'events' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">EVENTS</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">CONTACT US</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'berean_times_magazine' %}" class="{% if request.resolver_match.url_name == 'berean_times_magazine' %}text-sky-700{% else %}text-black hover:text-sky-700{% endif %} font-bold">BEREAN TIMES MAGAZINE</a>
+                    </li>
+                </ul>
             </div>
-            <div>
-                <span class="text-xl">⏰</span>
-                <span>Sunday Services</span><br>
-                <span>9:00 AM &amp; 11:00 AM</span>
+            <div class="flex justify-end mt-2">
+                <form class="relative mr-4">
+                    <input type="text" placeholder="Search" class="pl-8 pr-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-sky-400 text-xs">
+                    <span class="absolute left-2 top-2 text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 16.65z" />
+                        </svg>
+                    </span>
+                </form>
+                <a href="{% url 'give' %}" class="px-8 py-3 bg-sky-700 text-white rounded-lg shadow font-bold tracking-wider rounded border-2 border-sky-700 hover:bg-white hover:text-sky-700 transition text-xs uppercase">Give Online</a>
             </div>
         </div>
+    </nav>
+
+    <main class="flex-1 pt-28 max-w-7xl mx-auto px-4">
+
+        {% block content %}{% endblock %}
+
+    </main>
+    
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-gray-300 py-12 px-4 md:px-8">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Welcome Home -->
+            <div>
+                <h4 class="text-white text-lg font-semibold mb-4">Welcome Home</h4>
+                <p class="text-sm leading-relaxed">
+                    We love visitors and would be glad to have you join us in church this Sunday. We invite you together with your family and friends to come and join us in worshipping God through song, scripture, and prayer.
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-white text-lg font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-red-600"><i class="fas fa-chevron-right text-red-600 mr-2"></i>Privacy</a></li>
+                    <li><a href="{% url 'sermons' %}" class="hover:text-red-600"><i class="fas fa-chevron-right text-red-600 mr-2"></i>Sermons</a></li>
+                    <li><a href="{% url 'contact' %}" class="hover:text-red-600"><i class="fas fa-chevron-right text-red-600 mr-2"></i>Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Latest Blogs -->
+            <div>
+                <h4 class="text-white text-lg font-semibold mb-4">Latest Blogs</h4>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <img src="https://placehold.co/60x60/FF0000/FFFFFF?text=BLOG" alt="Blog Post" class="rounded-lg">
+                        <div>
+                            <p class="text-sm font-medium hover:text-blue-600 cursor-pointer">Fruitfulness Is Not Optional: How To Live A Life That Produces</p>
+                            <p class="text-xs text-gray-500">24 July, 2024</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <img src="https://placehold.co/60x60/0000FF/FFFFFF?text=BLOG" alt="Blog Post" class="rounded-lg">
+                        <div>
+                            <p class="text-sm font-medium hover:text-blue-600 cursor-pointer">You are God's Battle Axe</p>
+                            <p class="text-xs text-gray-500">20 July, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breathe Magazine -->
+            <div>
+                <h4 class="text-white text-lg font-semibold mb-4">Berean Times Magazine</h4>
+                <p class="text-sm mb-4">
+                    Whether you're a long-time member or a newcomer to the BBC family, our magazine offers something for everyone.
+                </p>
+                <form class="flex flex-col space-y-3">
+                    <input type="text" placeholder="First Name" class="p-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-red-600">
+                    <input type="email" placeholder="Email Address" class="p-2 rounded-md bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-red-600">
+                    <button type="submit" class="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">Sign Up</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-12">
+            &copy; 2025 Bereans - Mombasa. All rights reserved.
+        </div>
     </footer>
+    
     <script>
-        // Simple dark/light mode toggle
-        const toggle = document.getElementById('theme-toggle');
-        const knob = document.getElementById('toggle-knob');
-        toggle.addEventListener('click', () => {
-            const html = document.documentElement;
-            if (html.getAttribute('data-theme') === 'dark') {
-                html.setAttribute('data-theme', 'light');
-                knob.style.left = '0.25rem';
+        // Hide nav on top, show on scroll
+        let lastScroll = 0;
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', function() {
+            if(window.scrollY < 50) {
+                nav.classList.add('opacity-0', 'pointer-events-none');
             } else {
-                html.setAttribute('data-theme', 'dark');
-                knob.style.left = '2.25rem';
+                nav.classList.remove('opacity-0', 'pointer-events-none');
             }
         });
+        // On page load, hide if at top
+        if(window.scrollY < 50) {
+            nav.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        // Simple dark/light mode toggle (ensure elements with these IDs exist if you want this to work)
+        const toggle = document.getElementById('theme-toggle');
+        const knob = document.getElementById('toggle-knob');
+        if (toggle && knob) { // Added check to prevent errors if elements don't exist
+            toggle.addEventListener('click', () => {
+                const html = document.documentElement;
+                if (html.getAttribute('data-theme') === 'dark') {
+                    html.setAttribute('data-theme', 'light');
+                    knob.style.left = '0.25rem';
+                } else {
+                    html.setAttribute('data-theme', 'dark');
+                    knob.style.left = '2.25rem';
+                }
+            });
+        }
     </script>
 </body>
 </html>

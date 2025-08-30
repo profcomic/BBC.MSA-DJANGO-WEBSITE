@@ -1,0 +1,338 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministries - God's Church</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/ministries_style.css' %}">
+
+</head>
+
+<body class="bg-gray-100">
+
+    <!-- Top Bar -->
+    <div class="bg-black text-white text-sm py-2 px-4 md:px-8 flex justify-between items-center">
+        <span>PRAYER ▣ WORD ▣ MISSION</span>
+        <div class="flex space-x-4">
+            <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-md py-4 px-4 md:px-8 flex justify-between items-center relative z-10">
+        <div class="flex items-center space-x-8">
+            <a href="#" class="text-lg font-bold text-gray-800">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="h-10">
+            </a>
+             <div class="hidden lg:flex space-x-4 text-xs whitespace-nowrap">
+                <a href="{% url 'home' %}" class="text-gray-700 hover:text-sky-600 font-medium">HOME</a>
+                <a href="{% url 'about' %}" class="text-gray-700 hover:text-sky-600 font-medium">ABOUT US</a>
+                <a href="{% url 'leadership'%}" class="text-gray-700 hover:text-sky-600 font-medium">OUR LEADERSHIP</a>
+                <a href="{% url 'ministries'%}" class="text-sky-600 font-medium border-b-2 border-blue-600 pb-1">MINISTRIES</a>
+                <a href="{% url 'sermons'%}" class="text-gray-700 hover:text-sky-600 font-medium">SERMONS</a>
+                <a href="{% url 'blog'%}" class="text-gray-700 hover:text-sky-600 font-medium">BLOG</a>
+                <a href="{% url 'events'%}" class="text-gray-700 hover:text-sky-600 font-medium">EVENTS</a>
+                <a href="{% url 'contact'%}" class="text-gray-700 hover:text-sky-600 font-medium">CONTACT US</a>
+                <a href="{% url 'berean_times_magazine' %}" class="text-gray-700 hover:text-sky-600 font-medium">BREATHE MAGAZINE</a>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <button class="lg:hidden text-gray-700 focus:outline-none" id="menu-button">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <button class="text-gray-700 focus:outline-none">
+                <i class="fas fa-search text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Sidebar Menu -->
+    <div id="sidebar-menu" class="sidebar">
+        <div class="flex justify-end p-4">
+            <button id="close-sidebar" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <div class="p-6">
+             <!-- Welcome to BBC Section -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-plus text-red-600 mr-2"></i> Welcome to BBC-MSA
+                </h3>
+                <img src="{% static 'images/logo.png' %}" alt="BBC Logo" class="w-24 h-24 mb-4"> 
+                <h4 class="text-xl font-bold text-gray-900 mb-2">BEREAN BIBLE CHURCH</h4>
+                <p class="text-gray-600 text-sm">
+                    Whether it's your first time visiting our site or not, we love that you're taking the time to visit us online.
+                </p>
+            </div>
+
+            <!-- Contact Info Section -->
+            <div class="mb-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-plus text-red-600 mr-2"></i> Contact Info
+                </h3>
+                <p class="text-gray-600 text-sm mb-2">We'd love to hear from you. Reach out via any of the channels below:</p>
+                <ul class="space-y-2 text-gray-700 text-sm">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-red-600 mt-1 mr-3"></i>
+                        <span>Kengeleni Road, Mshomoroni, <br>Mombasa</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone-alt text-red-600 mr-3"></i>
+                        <span>(+254) 0741080904</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope text-red-600 mr-3"></i>
+                        <span>bbcmsaheadquarters@gmail.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Follow Us Section -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-plus text-red-600 mr-2"></i> Follow Us
+                </h3>
+                <div class="flex space-x-3">
+                    <a href="#" class="bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition duration-300">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="bg-blue-400 text-white p-3 rounded-md hover:bg-blue-500 transition duration-300">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="bg-pink-600 text-white p-3 rounded-md hover:bg-pink-700 transition duration-300">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="bg-red-700 text-white p-3 rounded-md hover:bg-red-800 transition duration-300">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for when sidebar is open -->
+    <div id="sidebar-overlay" class="overlay"></div>
+
+    <!-- Ministries Hero Section -->
+    <section class="ministries-hero h-64 md:h-80 flex items-center justify-center text-white relative">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="{% static 'images/backgrounds/ministries.jpg' %}" 
+                alt="Ministries Background"
+                class="object-cover w-full h-full brightness-50"
+                loading="eager"
+            />
+        </div>
+        <div class="relative z-10 container mx-auto px-4 text-white"> 
+            <div class="flex items-center justify-center text-sm"> 
+                <a href="{% url 'home' %}" class="text-sky-500 hover:text-gray-300">Home</a>
+                <span class="mx-2"> ▣ </span>
+                <span class="text-white-400">Ministries</span> 
+            </div>
+            <h1 class="flex justify-center text-4xl font-bold mb-2">Ministries</h1>
+        </div>
+        <div class="absolute bottom-[-20px] left-1/2 transform -translate-x-1/2 z-20">
+            <div class="bg-red-600 rounded-full p-4 shadow-lg">
+                <i class="fas fa-cross text-white text-2xl"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ministries Grid Section -->
+    <section class="container mx-auto px-4 py-16 mt-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Ministry Card 1: BBC Leadership Institute -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="{% static 'images/ministries/leadership-ministry.jpg' %}" alt="BBC Leadership Institute" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-sky-600 to-red-800 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">THE BEREAN LEADERSHIP INSTITUTE</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-hands-helping text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Leadership Ministry</h3>
+                <p class="text-gray-600 mb-4">Wanna Know More About Leadership?? 👇👇</p>
+                <a href="#" class="bg-white text-red-700 border-2 border-red-700 px-6 py-2 rounded hover:bg-red-700 hover:text-white font-bold transitiontext-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 2: BBC-Kids Ministry -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="{% static 'images/ministries/kids-ministry.png' %}" alt="BBC-Kids-Ministry" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-red-700 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">BBC-KIDS</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-book-open text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">BBC-Kids Ministry</h3>
+                <p class="text-gray-600 mb-4">Let Your Child Grow In The Godly//Biblical Foundation..</p>
+                <a href="#" class="bg-white text-red-700 border-2 border-red-700 px-6 py-2 rounded hover:bg-red-700 hover:text-white font-bold transitiontext-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 3: Trendsetters -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="{% static 'images/ministries/trendsetters.png' %}" alt="Trendsetters" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-purple-600 to-pink-600 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">TRENDSETTERS</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-star text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Trendsetters</h3>
+                <p class="text-gray-600 mb-4">These are The Youths Who Have Devoted themselves For the Sake Of The Generation.</p>
+                <a href="#" class="text-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 4: Berean Women -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="https://placehold.co/300x192/D32F2F/FFFFFF?text=BBC+WOMAN" alt="BBC Woman" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-red-700 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">BEREAN WOMAN</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-female text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">BBC Women</h3>
+                <p class="text-gray-600 mb-4">Everything to do with Women Ministry</p>
+                <a href="#" class="text-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 5: Men Fellowship -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="https://placehold.co/300x192/FFD700/8B4513?text=MEN+FELLOWSHIP" alt="Men Fellowship" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-yellow-600 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">MEN FELLOWSHIP</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-ship text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Men Fellowship</h3>
+                <p class="text-gray-600 mb-4">When Men Lift Their Blameless Hands...</p>
+                <a href="#" class="text-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 6: Marriage Connect -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="https://placehold.co/300x192/4CAF50/FFFFFF?text=MARRIAGE+CONNECT" alt="Marriage Connect" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-blue-600 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">MARRIAGE CONNECT</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-heart text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Marriage Connect</h3>
+                <p class="text-gray-600 mb-4">Do You have any Marriage Issue? Do you need Advice on Who To Marry...Visit Our Desk...</p>
+                <a href="#" class="text-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 7: PRAISE & WORSHIP Ministry -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="https://placehold.co/300x192/E91E63/FFFFFF?text=MUSIC+MINISTRY" alt="Music Ministry" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-pink-600 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">MUSIC MINISTRY</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-crosshairs text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Music Ministry</h3>
+                <p class="text-gray-600 mb-4">Praise and worship God in beauty and Splender Using your Gifts...</p>
+                <a href="#" class="text-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 8: Care and Counseling -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="https://placehold.co/300x192/673AB7/FFFFFF?text=CARE+AND+COUNSELING" alt="Care and Counseling" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-purple-600 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">CARE AND COUNSELING</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-hand-holding-heart text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Care and Counseling</h3>
+                <p class="text-gray-600 mb-4">Do fight in silent, Men of God are always there to help you out...</p>
+                <a href="#" class="text-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 9: Young Professionals Training -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="https://placehold.co/300x192/009688/FFFFFF?text=YOUNG+PROFESSIONALS+TRAINING" alt="Young Professional Training" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-teal-600 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">YOUNG PROFESSIONALS TRAINING</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-graduation-cap text-white text-xl"></i> 
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Young Professionals Training</h3>
+                <p class="text-gray-600 mb-4">Lets help you in growing your God Given Ministry.</p>
+                <a href="#" class="text-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+            <!-- Ministry Card 10: Guest Relations Department -->
+            <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
+                <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
+                    <img src="https://placehold.co/300x192/F44336/FFFFFF?text=GUEST+RELATIONS" alt="Guest Relations Department" class="w-full h-full object-cover">
+                    <div class="absolute top-0 left-0 w-full h-full bg-red-500 opacity-70"></div>
+                    <div class="absolute text-white text-2xl font-bold z-10">GUEST RELATIONS DEPARTMENT</div>
+                </div>
+                <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
+                    <i class="fas fa-handshake text-white text-xl"></i> <!-- Icon for Guest Relations Department -->
+                </div>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Guest Relations Department</h3>
+                <p class="text-gray-600 mb-4">We Really Love visitors so if its your first time to show up into this church make sure to pass through this desk.</p>
+                <a href="#" class="text-red-600 hover:underline font-medium">Read More</a>
+            </div>
+
+        </div>
+    </section>
+
+   
+
+    <script>
+        // JavaScript for sidebar menu toggle
+        const menuButton = document.getElementById('menu-button');
+        const closeSidebarButton = document.getElementById('close-sidebar');
+        const sidebarMenu = document.getElementById('sidebar-menu');
+        const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+        function openSidebar() {
+            sidebarMenu.classList.add('open');
+            sidebarOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling on body when sidebar is open
+        }
+
+        function closeSidebar() {
+            sidebarMenu.classList.remove('open');
+            sidebarOverlay.classList.remove('open');
+            document.body.style.overflow = ''; // Restore scrolling on body
+        }
+
+        menuButton.addEventListener('click', openSidebar);
+        closeSidebarButton.addEventListener('click', closeSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar); // Close sidebar when clicking overlay
+    </script>
+
+</body>
+
+
+{% endblock %}

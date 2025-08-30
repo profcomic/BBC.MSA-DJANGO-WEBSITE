@@ -1,0 +1,108 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+{% block content %}
+
+<!--Leadership Team-->
+ <section class="py-16 bg-sky-900 text-black"> 
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-berean-blue">Our Core Leadership</h2> 
+                <p class="text-muted-foreground max-w-2xl mx-auto">
+                    Meet the dedicated individuals who guide our church
+                </p>
+            </div>
+
+            <!--Leader 1-->
+            <div class="grid sm:grid-cols-2 gap-8">
+                <div class="text-center border p-4 rounded-lg shadow-md"> 
+                    <div class="relative w-full h-auto mb-4 overflow-hidden"> 
+                        <img src="{% static 'images/leadership/bishop-ibrahim.jpg' %}" alt="Bshp Ibrahim A.O" class="object-cover w-full h-auto mx-auto" /> 
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">BISHOP IBRAHIM ANG'ANA OYOTI</h3>
+                    <p class="text-berean-red mb-2">PRESIDING BISHOP</p>
+                    <p class="text-muted-foreground text-sm mb-4">Bishop Ibrahim A.O is the founder of <br>
+                        Berean Bible Church ministries having branches <br>
+                        all over East african countries i.e Kenya and Tanzania.</p>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a> 
+                </div>
+                 <!--Leader 2-->
+                <div class="text-center border p-4 rounded-lg shadow-md">
+                    <div class="relative w-full h-auto mb-4 overflow-hidden">
+                        <img src="{% static 'images/leadership/reverend-lorine.jpg' %}" alt="Rev Lorine Pam" class="object-cover w-full h-auto mx-auto" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">REVEREND LORINE PAMELA ANG'ANA</h3>
+                    <p class="text-berean-red mb-2">SENIOR PASTOR//WOMEN LEADER</p>
+                    <p class="text-muted-foreground text-sm mb-4">Reverend Lorine is the wife to Bishop Ibrahim<br>
+                         and is the senior pastor of BBC Mombasa and also ,<br>
+                         a dynamic leader of an interdenominational forum called <br>
+                         Women Of Value.</p>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-red-700 transition duration-300">Learn More</a>
+                </div>
+                 <!--Leader 3-->
+                <div class="text-center border p-4 rounded-lg shadow-md">
+                    <div class="relative w-full h-auto mb-4 overflow-hidden">
+                        <img src="{% static 'images/leadership/reverend-constant.jpg' %}" alt="Rev Conny OJ" class="object-cover w-full h-auto mx-auto" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">REVEREND CONSTANT OJWANG ODANGA</h3>
+                    <p class="text-berean-red mb-2">SENIOR PASTOR//YOUTHS PASTOR</p>
+                    <p class="text-muted-foreground text-sm mb-4">Reverend Odanga is a senior pastor, <br>
+                        passionate about helping young people grow <br>
+                        in their faith journey serving as Teens patron of the <br>
+                        Youth department and also is part of the <br>
+                        senior pastoring team serving as the team lead.</p>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
+                </div>
+                 <!--Leader 4-->
+                <div class="text-center border p-4 rounded-lg shadow-md">
+                    <div class="relative w-full h-auto mb-4 overflow-hidden">
+                        <img src="{% static 'images/leadership/reverend-moses.jpg' %}" alt="Rev Moses O" class="object-cover w-full h-auto mx-auto" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">REVEREND MOSES OYOTI</h3>
+                    <p class="text-berean-red mb-2">DEPARTMENTAL OVERSEER</p>
+                    <p class="text-muted-foreground text-sm mb-4">Reverend Moses oversees all activities <br>
+                        happening in and around the ministries through the church departments.</p>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
+                </div>
+                 <!--Leader 5-->
+                <div class="text-center border p-4 rounded-lg shadow-md">
+                    <div class="relative w-full h-auto mb-4 overflow-hidden">
+                        <img src="{% static 'images/leadership/pastor-salvestin.jpg' %}" alt="Pst S Kinzi" class="object-cover w-full h-auto mx-auto" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">PASTOR SALVESTIN KINZI</h3>
+                    <p class="text-berean-red mb-2">CHURCH COORDINATOR//YOUTH PASTOR//WORSHIP LEADER</p>
+                    <p class="text-muted-foreground text-sm mb-4">Pst Kinzi organizes our community <br>
+                        service initiatives and mission trips and <br>
+                        also oversee the Young adults of the <br>
+                        youth department and also leads the worship team.</p>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
+                </div>
+                 <!--Leader 6-->
+                <div class="text-center border p-4 rounded-lg shadow-md">
+                    <div class="relative w-full h-auto mb-4 overflow-hidden">
+                        <img src="{% static 'images/leadership/pastor-agness.jpg' %}" alt="Pst Kazosi A" class="object-cover w-full h-auto mx-auto" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">PASTOR AGNESS KAZOSI</h3>
+                    <p class="text-berean-red mb-2">DEPARTMENTAL PASTOR//ASSISTANT COORDINATOR</p>
+                    <p class="text-muted-foreground text-sm mb-4">Pst Kazosi helps in planning <br>
+                        church initiatives and programs and <br>
+                        also helps in pastoring one of the home based church.</p>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
+                </div>
+                 <!--Leader 7-->
+                <div class="text-center border p-4 rounded-lg shadow-md">
+                    <div class="relative w-full h-auto mb-4 overflow-hidden">
+                        <img src="{% static 'images/leadership/pastor-alfred.jpg' %}" alt="Pst Alfred M" class="object-cover w-full h-auto mx-auto" />
+                    </div>
+                    <h3 class="text-xl font-bold text-berean-blue">PASTOR ALFRED MATAI</h3>
+                    <p class="text-berean-red mb-2">CHURCH TREASURER//INSTRUMENT TECHNICIAN</p>
+                    <p class="text-muted-foreground text-sm mb-4">Pst Alfred helps in counting <br>
+                        and analysizing the church's offerings <br>
+                        and monetary assets while also plays a huge <br>
+                        part in ensuring wellbeing of church instruments.</p>
+                    <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% endblock %}

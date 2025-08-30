@@ -1,0 +1,185 @@
+ /* style for sermon page */
+        /* Custom styles for the toast notification (if still needed from previous contexts) */
+        .toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .toast {
+            background-color: #333;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Additional styles for custom select/dropdown */
+        .custom-select-wrapper {
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+        .custom-select-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0; /* border-input */
+            border-radius: 0.375rem; /* rounded-md */
+            background-color: #fff; /* bg-background */
+            cursor: pointer;
+            min-height: 2.5rem; /* h-10 */
+        }
+
+        .custom-select-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            display: none; /* Hidden by default */
+        }
+
+        .custom-select-content.open {
+            display: block;
+        }
+
+        .custom-select-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        .custom-select-item:hover {
+            background-color: #f0f4f8; /* hover:bg-accent */
+        }
+
+        /* Custom button variant for 'bereanBlue' (if needed) */
+        .btn-bereanBlue {
+            background-color: var(--tw-colors-berean-blue);
+            color: var(--tw-colors-primary-foreground);
+            --tw-bg-opacity: 1;
+            background-color: rgb(42 111 151 / var(--tw-bg-opacity));
+        }
+        .btn-bereanBlue:hover {
+            --tw-bg-opacity: 0.9;
+            background-color: rgb(42 111 151 / var(--tw-bg-opacity));
+        }
+
+        /* Styles for outline buttons */
+        .btn-outline {
+            border: 1px solid var(--tw-colors-input);
+            background-color: var(--tw-colors-background);
+            color: var(--tw-colors-foreground);
+        }
+        .btn-outline:hover {
+            background-color: var(--tw-colors-accent);
+            color: var(--tw-colors-accent-foreground);
+        }
+    
+          body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll when sidebar is open */
+        }
+/* about page Sidebar specific styles */
+        .sidebar {
+            width: 300px; /* Adjust width as needed */
+            position: fixed;
+            top: 0;
+            right: -300px; /* Hidden by default */
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            transition: right 0.3s ease-in-out;
+            z-index: 50; /* Ensure it's above other content */
+            overflow-y: auto; /* Enable scrolling for long content */
+        }
+        .sidebar.open {
+            right: 0;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 40; /* Below sidebar, above main content */
+            display: none;
+        }
+        .overlay.open {
+            display: block;
+        }
+
+                body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll when sidebar is open */
+        }
+        /* Custom styles for the sermons hero section background image */
+        .sermons-hero {
+            background-image: url('https://placehold.co/1200x400/333333/FFFFFF?text=FAMILY'); /* Placeholder for the background image */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .sermons-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }
+        .sermon-video-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .sermon-video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sidebar specific styles (copied from ministries-html) */
+        .sidebar {
+            width: 300px; /* Adjust width as needed */
+            position: fixed;
+            top: 0;
+            right: -300px; /* Hidden by default */
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+            transition: right 0.3s ease-in-out;
+            z-index: 50; /* Ensure it's above other content */
+            overflow-y: auto; /* Enable scrolling for long content */
+        }
+        .sidebar.open {
+            right: 0;
+        }
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 40; /* Below sidebar, above main content */
+            display: none;
+        }
+        .overlay.open {
+            display: block;
+        }

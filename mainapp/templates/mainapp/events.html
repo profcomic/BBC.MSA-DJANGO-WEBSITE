@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - Berean Bible Church</title>
-    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         // Custom Tailwind configuration for colors and fonts
@@ -35,112 +34,13 @@
             }
         }
     </script>
-    <!-- Link for Inter and Montserrat fonts, if used -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Custom styles for the toast notification (if still needed from previous context) */
-        .toast-container {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        .toast {
-            background-color: #333;
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(-20px);
-            transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-        }
-        .toast.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    <link rel="stylesheet" href="{% static 'css/events_style.css' %}">
 
-        /* Additional styles for select/dropdown if Tailwind's default doesn't cover all visual aspects */
-        .custom-select-wrapper {
-            position: relative;
-            display: inline-block;
-            width: 100%; /* or sm:w-[180px] */
-        }
-
-        .custom-select-trigger {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.5rem 1rem;
-            border: 1px solid #e2e8f0; /* border-input */
-            border-radius: 0.375rem; /* rounded-md */
-            background-color: #fff; /* bg-background */
-            cursor: pointer;
-            min-height: 2.5rem; /* h-10 */
-        }
-
-        .custom-select-content {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.375rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 50;
-            display: none; /* Hidden by default */
-        }
-
-        .custom-select-content.open {
-            display: block;
-        }
-
-        .custom-select-item {
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-        }
-
-        .custom-select-item:hover {
-            background-color: #f0f4f8; /* hover:bg-accent */
-        }
-
-        /* Basic styles for tabs */
-        .tabs-list {
-            display: flex;
-            border-bottom: 1px solid #e2e8f0; /* border-b */
-        }
-        .tabs-trigger {
-            padding: 0.75rem 1rem;
-            cursor: pointer;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            color: #64748B; /* text-muted-foreground */
-            font-weight: 500; /* font-medium */
-            transition: color 0.2s, border-color 0.2s;
-        }
-        .tabs-trigger.active {
-            color: #2A6F97; /* text-foreground or text-primary */
-            border-bottom: 2px solid #2A6F97; /* border-primary */
-        }
-        .tabs-content {
-            display: none; /* Hidden by default */
-        }
-        .tabs-content.active {
-            display: block;
-        }
-    </style>
-
-
-    <!-- Hero Section -->
     <section class="relative w-full h-[300px] flex items-center justify-center text-center">
         <div class="absolute inset-0 z-0">
             <img
-                src="https://cdn.vectorstock.com/i/500p/59/67/colorful-event-spectrum-word-sign-vector-48365967.jpg"
+                src="{% static 'images/backgrounds/events.jpg' %}"
                 alt="Event"
                 class="object-cover w-full h-full brightness-50"
                 loading="eager"
@@ -152,13 +52,11 @@
         </div>
     </section>
 
-    <!-- Search and Filter -->
     <section class="py-8 bg-muted/50">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="relative flex-1">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">🔍</span> <!-- Search icon placeholder -->
-                    <input type="text" placeholder="Search events..." class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground">🔍</span> <input type="text" placeholder="Search events..." class="pl-10 flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
                 </div>
                 <div class="flex flex-col sm:flex-row gap-4">
                     <div class="custom-select-wrapper w-full sm:w-[180px]">
@@ -194,14 +92,122 @@
         </div>
     </section>
 
-    <!-- Featured Event -->
+    <section class="py-12 bg-background">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Upcoming Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-xs font-medium">Event closed</div>
+                    <img src="{% static 'images/event_open_heavens.jpg' %}" alt="Open Heavens 2025 - Sounds of Victory" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">OPEN HEAVENS 2025 – Sounds of Victory</h3>
+                        <div class="flex items-center text-muted-foreground mb-2">
+                            <span class="h-4 w-4 mr-2">🗓️</span>
+                            <span>June 1, 2025</span>
+                        </div>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-4 w-4 mr-2">⏰</span>
+                            <span>5.00 pm</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full text-red-600 border-red-600 hover:bg-red-50">Event Details</a>
+                    </div>
+                </div>
+
+                <div class="relative border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-xs font-medium">Event closed</div>
+                    <img src="{% static 'images/event_shepreneur_conference.jpg' %}" alt="4th She Preneur Conference" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">4th She Preneur Conference</h3>
+                        <div class="flex items-center text-muted-foreground mb-2">
+                            <span class="h-4 w-4 mr-2">🗓️</span>
+                            <span>June 27, 2025</span>
+                        </div>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-4 w-4 mr-2">⏰</span>
+                            <span>10:00</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full text-red-600 border-red-600 hover:bg-red-50">Event Details</a>
+                    </div>
+                </div>
+
+                <div class="relative border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-xs font-medium">Event closed</div>
+                    <img src="{% static 'images/event_trendsetters_camp.jpg' %}" alt="TRENDSETTERS CAMP 2025" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">TRENDSETTERS CAMP 2025</h3>
+                        <div class="flex items-center text-muted-foreground mb-2">
+                            <span class="h-4 w-4 mr-2">🗓️</span>
+                            <span>August 6, 2025</span>
+                        </div>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-4 w-4 mr-2">⏰</span>
+                            <span>10:00</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full text-red-600 border-red-600 hover:bg-red-50">Event Details</a>
+                    </div>
+                </div>
+
+                <div class="relative border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-xs font-medium">Event closed</div>
+                    <img src="{% static 'images/event_baptism.jpg' %}" alt="Baptism" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">Baptism</h3>
+                        <div class="flex items-center text-muted-foreground mb-2">
+                            <span class="h-4 w-4 mr-2">🗓️</span>
+                            <span>April 13, 2025</span>
+                        </div>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-4 w-4 mr-2">⏰</span>
+                            <span>08:00</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">Event Details</a>
+                    </div>
+                </div>
+
+                <div class="relative border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-xs font-medium">Event closed</div>
+                    <img src="{% static 'images/event_host_training.jpg' %}" alt="Host Training" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">Host Training</h3>
+                        <div class="flex items-center text-muted-foreground mb-2">
+                            <span class="h-4 w-4 mr-2">🗓️</span>
+                            <span>April 12, 2025</span>
+                        </div>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-4 w-4 mr-2">⏰</span>
+                            <span>08:00</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">Event Details</a>
+                    </div>
+                </div>
+
+                <div class="relative border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-gray-200 text-gray-800 px-3 py-1 rounded-md text-xs font-medium">Event closed</div>
+                    <img src="{% static 'images/event_kingdom_woman.jpg' %}" alt="Kingdom Woman online prayers" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="text-xl font-semibold mb-2">Kingdom Woman online prayers</h3>
+                        <div class="flex items-center text-muted-foreground mb-2">
+                            <span class="h-4 w-4 mr-2">🗓️</span>
+                            <span>April 11, 2025</span>
+                        </div>
+                        <div class="flex items-center text-muted-foreground mb-4">
+                            <span class="h-4 w-4 mr-2">⏰</span>
+                            <span>20:00</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">Event Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="py-12 bg-background">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-8">Featured Event</h2>
 
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div class="relative aspect-video rounded-lg overflow-hidden">
-                    <img src="static/images/church/fellowship-hall.jpg" alt="Featured event" class="object-cover w-full h-full" />
+                    <img src="{% static 'images/church/fellowship-hall.jpg' %}" alt="Featured event" class="object-cover w-full h-full" />
                     <div class="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-md text-sm font-medium">
                         January 19, 2025
                     </div>
@@ -210,12 +216,10 @@
                 <div>
                     <h3 class="text-2xl font-bold mb-2">Random Worship Experiences</h3>
                     <div class="flex items-center text-muted-foreground mb-2">
-                        <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
-                        <span>Random Sundays as the spirit Leads</span>
+                        <span class="h-4 w-4 mr-2">⏰</span> <span>Random Sundays as the spirit Leads</span>
                     </div>
                     <div class="flex items-center text-muted-foreground mb-4">
-                        <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
-                        <span>BBC Sanctuary</span>
+                        <span class="h-4 w-4 mr-2">📍</span> <span>BBC Sanctuary</span>
                     </div>
                     <p class="text-muted-foreground mb-6">
                         We always have worship encounters throughtout our services but some sundays the spirit always takes us
@@ -223,14 +227,12 @@
                     </p>
                     <a href="/events/summer-festival" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
                         Learn More
-                        <span class="h-4 w-4">➡️</span> <!-- ChevronRight icon placeholder -->
-                    </a>
+                        <span class="h-4 w-4">➡️</span> </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Event Calendar -->
     <section class="py-12 bg-muted/50">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
@@ -247,11 +249,10 @@
 
                 <div id="listView" class="tabs-content active mt-0">
                     <div class="space-y-6">
-                        <!-- Event 1 -->
                         <div class="border rounded-lg shadow-sm bg-card text-card-foreground flex flex-col md:flex-row">
                             <div class="relative w-full md:w-64 h-48 md:h-auto">
                                 <img
-                                    src="static/images/events/open-air-worship.jpg"
+                                    src="{% static 'images/events/open-air-worship.jpg' %}"
                                     alt="Open Airs"
                                     class="object-cover w-full h-full"
                                 />
@@ -262,23 +263,20 @@
                                     <div class="text-primary font-medium mt-2 md:mt-0">Last week of Every Month</div>
                                 </div>
                                 <div class="flex items-center text-muted-foreground mb-2">
-                                    <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
-                                    <span>3:30 PM - 6:30 PM</span>
+                                    <span class="h-4 w-4 mr-2">⏰</span> <span>3:30 PM - 6:30 PM</span>
                                 </div>
                                 <div class="flex items-center text-muted-foreground mb-4">
-                                    <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
-                                    <span>Church Ground</span>
+                                    <span class="h-4 w-4 mr-2">📍</span> <span>Church Ground</span>
                                 </div>
                                 <p class="text-muted-foreground mb-4">A session of worship, Praise and sermon as we spread the gospel to the community</p>
                                 <a href="/events/open-airs" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Event Details</a>
                             </div>
                         </div>
 
-                        <!-- Event 2 -->
                         <div class="border rounded-lg shadow-sm bg-card text-card-foreground flex flex-col md:flex-row">
                             <div class="relative w-full md:w-64 h-48 md:h-auto">
                                 <img
-                                    src="static/images/events/community-outreach.jpg"
+                                    src="{% static 'images/events/community-outreach.jpg' %}"
                                     alt="Community Outreach"
                                     class="object-cover w-full h-full"
                                 />
@@ -289,23 +287,20 @@
                                     <div class="text-primary font-medium mt-2 md:mt-0">Date to be confirmed</div>
                                 </div>
                                 <div class="flex items-center text-muted-foreground mb-2">
-                                    <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
-                                    <span>9:00 AM - 12:00 PM</span>
+                                    <span class="h-4 w-4 mr-2">⏰</span> <span>9:00 AM - 12:00 PM</span>
                                 </div>
                                 <div class="flex items-center text-muted-foreground mb-4">
-                                    <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
-                                    <span>To be Confirmed</span>
+                                    <span class="h-4 w-4 mr-2">📍</span> <span>To be Confirmed</span>
                                 </div>
                                 <p class="text-muted-foreground mb-4">Join us as we visit our community.</p>
                                 <a href="/events/community-outreach" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Event Details</a>
                             </div>
                         </div>
 
-                        <!-- Event 3 -->
                         <div class="border rounded-lg shadow-sm bg-card text-card-foreground flex flex-col md:flex-row">
                             <div class="relative w-full md:w-64 h-48 md:h-auto">
                                 <img
-                                    src="static/images/church/fellowship-hall.jpg"
+                                    src="{% static 'images/church/fellowship-hall.jpg' %}"
                                     alt="Worship Encounters"
                                     class="object-cover w-full h-full"
                                 />
@@ -316,23 +311,20 @@
                                     <div class="text-primary font-medium mt-2 md:mt-0">Random Sundays</div>
                                 </div>
                                 <div class="flex items-center text-muted-foreground mb-2">
-                                    <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
-                                    <span>9:00 AM - 2:00 PM</span>
+                                    <span class="h-4 w-4 mr-2">⏰</span> <span>9:00 AM - 2:00 PM</span>
                                 </div>
                                 <div class="flex items-center text-muted-foreground mb-4">
-                                    <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
-                                    <span>Church Sanctuary</span>
+                                    <span class="h-4 w-4 mr-2">📍</span> <span>Church Sanctuary</span>
                                 </div>
                                 <p class="text-muted-foreground mb-4">Worship encounters...Lets worship in truth and spirit</p>
                                 <a href="/events/worship-encounters" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Event Details</a>
                             </div>
                         </div>
 
-                        <!-- Event 4 -->
                         <div class="border rounded-lg shadow-sm bg-card text-card-foreground flex flex-col md:flex-row">
                             <div class="relative w-full md:w-64 h-48 md:h-auto">
                                 <img
-                                    src="static/images/church/bible-study.jpg"
+                                    src="{% static 'images/church/bible-study.jpg' %}"
                                     alt="Bible Study & Prayers"
                                     class="object-cover w-full h-full"
                                 />
@@ -343,12 +335,10 @@
                                     <div class="text-primary font-medium mt-2 md:mt-0">Daily From Monday to Friday</div>
                                 </div>
                                 <div class="flex items-center text-muted-foreground mb-2">
-                                    <span class="h-4 w-4 mr-2">⏰</span> <!-- Clock icon placeholder -->
-                                    <span>6:00 PM - 7:30 PM</span>
+                                    <span class="h-4 w-4 mr-2">⏰</span> <span>6:00 PM - 7:30 PM</span>
                                 </div>
                                 <div class="flex items-center text-muted-foreground mb-4">
-                                    <span class="h-4 w-4 mr-2">📍</span> <!-- MapPin icon placeholder -->
-                                    <span>Fellowship Hall</span>
+                                    <span class="h-4 w-4 mr-2">📍</span> <span>Fellowship Hall</span>
                                 </div>
                                 <p class="text-muted-foreground mb-4">Dive deeper into God's word with our weekly study. We call this the berean culture and its practical wisdom for everyday life.</p>
                                 <a href="/events/bible-study-&-prayers" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2">Event Details</a>
@@ -363,7 +353,6 @@
                             <h3 class="text-xl font-bold">June 2025</h3>
                         </div>
                         <div class="grid grid-cols-7 gap-1">
-                            <!-- Calendar header -->
                             <div class="p-2 text-center font-medium">Sun</div>
                             <div class="p-2 text-center font-medium">Mon</div>
                             <div class="p-2 text-center font-medium">Tue</div>
@@ -372,13 +361,10 @@
                             <div class="p-2 text-center font-medium">Fri</div>
                             <div class="p-2 text-center font-medium">Sat</div>
 
-                            <!-- Calendar days (hardcoded for June 2025, starting on a Sunday) -->
-                            <!-- May 2025 (prev month) -->
                             <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">29</div>
                             <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">30</div>
                             <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">31</div>
 
-                            <!-- June 2025 -->
                             <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
                                 <div class="font-medium">1</div>
                             </div>
@@ -472,7 +458,6 @@
                             <div class="p-2 min-h-[80px] border bg-white dark:bg-slate-950">
                                 <div class="font-medium">30</div>
                             </div>
-                            <!-- July 2025 (next month) -->
                             <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">1</div>
                             <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">2</div>
                             <div class="p-2 min-h-[80px] border bg-muted/30 text-muted-foreground">3</div>
@@ -481,28 +466,25 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="mt-8 text-center">
-                <a href="/events/calendar" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-2">
-                    <span class="h-4 w-4">🗓️</span> <!-- Calendar icon placeholder -->
-                    View Full Calendar
-                </a>
+                <div class="mt-8 text-center">
+                    <a href="/events/calendar" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 gap-2">
+                        <span class="h-4 w-4">🗓️</span> View Full Calendar
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Event Categories -->
     <section class="py-12 bg-background">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold mb-8">Event Categories</h2>
 
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Category 1 -->
                 <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
                     <div class="relative h-40">
                         <img
-                            src="static/images/church/fellowship-hall.jpg"
+                            src="{% static 'images/church/fellowship-hall.jpg' %}"
                             alt="Worship Services"
                             class="object-cover w-full h-full"
                         />
@@ -516,11 +498,10 @@
                     </div>
                 </div>
 
-                <!-- Category 2 -->
                 <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
                     <div class="relative h-40">
                         <img
-                            src="static/images/church/bible-study.jpg"
+                            src="{% static 'images/church/bible-study.jpg' %}"
                             alt="Community Groups"
                             class="object-cover w-full h-full"
                         />
@@ -534,11 +515,10 @@
                     </div>
                 </div>
 
-                <!-- Category 3 -->
                 <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
                     <div class="relative h-40">
                         <img
-                            src="static/images/church/building-exterior.jpg"
+                            src="{% static 'images/church/building-exterior.jpg' %}"
                             alt="Youth & Children"
                             class="object-cover w-full h-full"
                         />
@@ -552,11 +532,10 @@
                     </div>
                 </div>
 
-                <!-- Category 4 -->
                 <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
                     <div class="relative h-40">
                         <img
-                            src="static/images/events/youth-music-ministry.jpg"
+                            src="{% static 'images/events/youth-music-ministry.jpg' %}"
                             alt="Music Ministry"
                             class="object-cover w-full h-full"
                         />
@@ -565,110 +544,151 @@
                         </div>
                     </div>
                     <div class="p-4">
-                        <p class="text-muted-foreground mb-4">Serving God through musical gifts and talents.</p>
-                        <a href="/events/category/music-ministry" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Events</a>
-                    </div>
-                </div>
-
-                <!-- Category 5 -->
-                <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
-                    <div class="relative h-40">
-                        <img
-                            src="static/images/events/community-outreach.jpg"
-                            alt="Outreach & Missions"
-                            class="object-cover w-full h-full"
-                        />
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-4">
-                            <h3 class="text-xl font-bold text-white">Outreach & Missions</h3>
-                        </div>
-                    </div>
-                    <div class="p-4">
-                        <p class="text-muted-foreground mb-4">Serving our local community and global mission initiatives.</p>
-                        <a href="/events/category/outreach" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Events</a>
+                        <p class="text-muted-foreground mb-4">Serving God through song, instrumental music, and creative arts.</p>
+                        <a href="/events/category/music" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 w-full">View Events</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="py-12 bg-primary text-primary-foreground text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-4">Never Miss an Event!</h2>
+            <p class="text-lg mb-8">Sign up for our newsletter to receive updates on upcoming events and special announcements.</p>
+            <form class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <input type="email" placeholder="Enter your email" class="flex h-10 w-full sm:w-auto rounded-md border border-input bg-background px-3 py-2 text-sm text-gray-900 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
+                <button type="submit" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // --- Tabs functionality ---
-            const tabsList = document.querySelector('.tabs-list');
-            const tabsTriggers = tabsList ? tabsList.querySelectorAll('.tabs-trigger') : [];
-            const tabsContents = document.querySelectorAll('.tabs-content');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabTriggers = document.querySelectorAll('.tabs-trigger');
+            const tabContents = document.querySelectorAll('.tabs-content');
 
-            tabsTriggers.forEach(trigger => {
-                trigger.addEventListener('click', () => {
-                    const targetTab = trigger.dataset.tab;
+            tabTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function() {
+                    tabTriggers.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
 
-                    // Deactivate all triggers and hide all contents
-                    tabsTriggers.forEach(t => t.classList.remove('active'));
-                    tabsContents.forEach(c => c.classList.remove('active'));
-
-                    // Activate the clicked trigger and show its content
-                    trigger.classList.add('active');
-                    document.getElementById(targetTab + 'View').classList.add('active');
+                    const targetTab = this.dataset.tab;
+                    tabContents.forEach(content => {
+                        if (content.id === targetTab) {
+                            content.classList.add('active');
+                        } else {
+                            content.classList.remove('active');
+                        }
+                    });
                 });
             });
 
-            // --- Custom Select/Dropdown functionality ---
+            // Custom Select dropdown functionality
             document.querySelectorAll('.custom-select-wrapper').forEach(wrapper => {
                 const trigger = wrapper.querySelector('.custom-select-trigger');
                 const content = wrapper.querySelector('.custom-select-content');
-                const selectValueSpan = trigger.querySelector('.select-value');
+                const valueSpan = trigger.querySelector('.select-value');
                 const hiddenInput = wrapper.querySelector('input[type="hidden"]');
 
-                trigger.addEventListener('click', (event) => {
-                    event.stopPropagation(); // Prevent document click from closing immediately
+                trigger.addEventListener('click', () => {
                     content.classList.toggle('open');
+                    trigger.classList.toggle('active');
                 });
 
                 content.querySelectorAll('.custom-select-item').forEach(item => {
-                    item.addEventListener('click', (event) => {
-                        event.stopPropagation(); // Prevent bubbling up to trigger
-                        const value = item.dataset.value;
-                        const text = item.textContent;
-
-                        selectValueSpan.textContent = text;
-                        hiddenInput.value = value;
+                    item.addEventListener('click', function() {
+                        valueSpan.textContent = this.textContent;
+                        hiddenInput.value = this.dataset.value;
                         content.classList.remove('open');
+                        trigger.classList.remove('active');
+                        // Optional: Trigger a change event or filter events based on selection
+                        console.log('Selected:', this.dataset.value);
                     });
                 });
 
-                // Close dropdown if clicked outside
-                document.addEventListener('click', (event) => {
-                    if (!wrapper.contains(event.target)) {
+                // Close when clicking outside
+                document.addEventListener('click', (e) => {
+                    if (!wrapper.contains(e.target)) {
                         content.classList.remove('open');
+                        trigger.classList.remove('active');
                     }
                 });
             });
-
-            // --- Simple "toast" notification function (if still needed) ---
-            function showToast(title, description) {
-                const toastContainer = document.getElementById('toast-container');
-                if (!toastContainer) return; // Ensure container exists
-
-                const toastElement = document.createElement('div');
-                toastElement.className = 'toast';
-                toastElement.innerHTML = `<strong>${title}</strong><p>${description}</p>`;
-                toastContainer.appendChild(toastElement);
-
-                setTimeout(() => {
-                    toastElement.classList.add('show');
-                }, 10);
-
-                setTimeout(() => {
-                    toastElement.classList.remove('show');
-                    toastElement.addEventListener('transitionend', () => {
-                        toastElement.remove();
-                    }, { once: true });
-                }, 3000);
-            }
-
-            // Example of how to trigger a toast (not directly used by this page's logic, but available)
-            // showToast("Page Loaded", "Welcome to the Events page!");
         });
     </script>
 
-{% endblock %}
+    <style>
+        /* Basic styling for custom select */
+        .custom-select-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-select-trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0; /* border-input */
+            border-radius: 0.375rem; /* rounded-md */
+            background-color: #ffffff; /* bg-background */
+            cursor: pointer;
+            height: 2.5rem; /* h-10 */
+            font-size: 0.875rem; /* text-sm */
+            color: #1e293b; /* text-foreground, adjust if needed */
+        }
+
+        .custom-select-trigger.active {
+            border-color: #2A6F97; /* primary color */
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(42, 111, 151, 0.2); /* focus-visible:ring-2 focus-visible:ring-ring */
+        }
+
+        .custom-select-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: #ffffff; /* bg-background */
+            border: 1px solid #e2e8f0; /* border-input */
+            border-radius: 0.375rem; /* rounded-md */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+            z-index: 10;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .custom-select-content.open {
+            display: block;
+        }
+
+        .custom-select-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: #1e293b; /* text-foreground, adjust if needed */
+        }
+
+        .custom-select-item:hover {
+            background-color: #f1f5f9; /* hover:bg-muted */
+            color: #0f172a; /* hover:text-muted-foreground, adjust if needed */
+        }
+
+        /* Tabs styling */
+        .tabs-list button {
+            background-color: #ffffff; /* bg-background */
+            color: #64748B; /* text-muted-foreground */
+            transition: all 0.2s ease-in-out;
+        }
+
+        .tabs-list button.active {
+            background-color: #2A6F97; /* bg-primary */
+            color: #ffffff; /* text-primary-foreground */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+{% endblock content %}
