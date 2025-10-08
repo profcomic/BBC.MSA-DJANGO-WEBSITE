@@ -1,131 +1,27 @@
 {% extends "mainapp/base.html" %}
 {% load static %}
+
+{% block title %}About Us - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block extra_head %}
+    <!--link rel="stylesheet" href="{% static 'css/about_style.css' %}"-->
+{% endblock %}
+
 {% block content %}
 
-<head>
-     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Berean Bible Church</title>
-    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-   
-    <!-- Link for Inter and Montserrat fonts, if used -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/about_style.css' %}">
-    <style>
-        /* Any custom styles not directly covered by Tailwind classes can go here if needed */
-    </style>
-</head>
-   
-<body class="bg-gray-100">
-    <!-- Top Bar -->
-    <div class="bg-black text-white text-sm py-2 px-4 md:px-8 flex justify-between items-center">
-        <span>PRAYER ▣ WORD ▣ MISSION</span>
-        <div class="flex space-x-4">
-            <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
-        </div>
-    </div>
+{% block topbar_home %}
+{% endblock %}
 
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md py-4 px-4 md:px-8 flex justify-between items-center relative z-10">
-        <div class="flex items-center space-x-8">
-            <a href="#" class="text-lg font-bold text-gray-800">
-                <img src="{% static 'images/logos/logo.png' %}" alt="BBC Logo" class="h-10"> 
-            </a>
-            <div class="hidden lg:flex space-x-4 text-xs whitespace-nowrap">
-                <a href="{% url 'home' %}" class="text-gray-700 hover:text-sky-600 font-medium">HOME</a>
-                <a href="{% url 'about' %}" class="text-sky-600 font-medium border-b-2 border-blue-600 pb-1">ABOUT US</a>
-                <a href="{% url 'leadership'%}" class="text-gray-700 hover:text-sky-600 font-medium">OUR LEADERSHIP</a>
-                <a href="{% url 'ministries'%}" class="text-gray-700 hover:text-sky-600 font-medium">MINISTRIES</a>
-                <a href="{% url 'sermons'%}" class="text-gray-700 hover:text-sky-600 font-medium">SERMONS</a>
-                <a href="{% url 'blog'%}" class="text-gray-700 hover:text-sky-600 font-medium">BLOG</a>
-                <a href="{% url 'events'%}" class="text-gray-700 hover:text-sky-600 font-medium">EVENTS</a>
-                <a href="{% url 'contact'%}" class="text-gray-700 hover:text-sky-600 font-medium">CONTACT US</a>
-                <a href="{% url 'berean_times_magazine' %}" class="text-gray-700 hover:text-sky-600 font-medium">BREATHE MAGAZINE</a>
-            </div>
-        </div>
-        <div class="flex items-center space-x-4">
-            <button class="lg:hidden text-gray-700 focus:outline-none" id="menu-button">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-            <button class="text-gray-700 focus:outline-none">
-                <i class="fas fa-search text-xl"></i>
-            </button>
-        </div>
-    </nav>
+{% block ministries_hero %}
+{% endblock%}
 
-    <!-- Sidebar Menu -->
-    <div id="sidebar-menu" class="sidebar">
-        <div class="flex justify-end p-4">
-            <button id="close-sidebar" class="text-gray-700 hover:text-gray-900 focus:outline-none">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-        </div>
-        <div class="p-6">
-            <!-- Welcome to BBC Section -->
-            <div class="mb-8">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-plus text-red-600 mr-2"></i> Welcome to BBC-MSA
-                </h3>
-                <img src="{% static 'images/logos/logo.png' %}" alt="BBC Logo" class="w-24 h-24 mb-4"> 
-                <h4 class="text-xl font-bold text-gray-900 mb-2">BEREAN BIBLE CHURCH</h4>
-                <p class="text-gray-600 text-sm">
-                    Whether it's your first time visiting our site or not, we love that you're taking the time to visit us online.
-                </p>
-            </div>
+{% block home_menu %}
+{% endblock %}
 
-            <!-- Contact Info Section -->
-            <div class="mb-8">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-plus text-red-600 mr-2"></i> Contact Info
-                </h3>
-                <p class="text-gray-600 text-sm mb-2">We'd love to hear from you. Reach out via any of the channels below:</p>
-                <ul class="space-y-2 text-gray-700 text-sm">
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marker-alt text-red-600 mt-1 mr-3"></i>
-                        <span>Kengeleni Road, Mshomoroni, <br>Mombasa</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-phone-alt text-red-600 mr-3"></i>
-                        <span>(+254) 0741080904</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-envelope text-red-600 mr-3"></i>
-                        <span>bbcmsaheadquarters@gmail.com</span>
-                    </li>
-                </ul>
-            </div>
+{% block leaders_hero %}
+{% endblock%}
 
-            <!-- Follow Us Section -->
-            <div>
-                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-plus text-red-600 mr-2"></i> Follow Us
-                </h3>
-                <div class="flex space-x-3">
-                    <a href="#" class="bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition duration-300">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="bg-blue-400 text-white p-3 rounded-md hover:bg-blue-500 transition duration-300">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="bg-pink-600 text-white p-3 rounded-md hover:bg-pink-700 transition duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="bg-red-700 text-white p-3 rounded-md hover:bg-red-800 transition duration-300">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div> 
-
-     <!-- Overlay for when sidebar is open -->
-    <div id="sidebar-overlay" class="overlay"></div>
-
-<!--header section-->
+<!--hero  1 section-->
 <section class="relative w-full h-[300px] flex items-center justify-center text-center"> 
         <div class="absolute inset-0 z-0">
             <img
@@ -145,19 +41,11 @@
         </div>
     </section>
 
-    <!-- Hero Section -->
+    <!-- Hero 2 Section -->
     <section class="relative w-full h-[400px] flex items-center justify-center text-center">
-        <div class="absolute inset-0 z-0">
-            <img
-                src="{% static 'images/backgrounds/about-banner.jpg' %}"
-                alt="About banner"
-                class="object-cover w-full h-full brightness-50"
-                loading="eager"
-            />
-        </div>
-        <div class="relative z-10 container mx-auto px-4 text-white">
+        <div class="relative z-10 container mx-auto px-4 text-sky-900">
             <h1 class="text-5xl font-bold mb-6">About Berean Bible Church</h1>
-            <p class="text-xl text-blue max-w-2xl mx-auto">Learn about our HISTORY▶▶▶MISSION▶▶▶ and VISION▶▶▶</p>
+            <p class="text-xl text-blue max-w-2xl mx-auto">Learn about our HISTORY▶▶▶MISSION▶▶▶VISION▶▶▶</p>
         </div>
     </section>
 
@@ -167,7 +55,7 @@
             <div class="max-w-3xl mx-auto">
                 <h2 class="text-3xl font-bold mb-6 text-center text-berean-blue">Our Story</h2>
                 <p class="text-muted-foreground mb-6">
-                    Berean Bible Church was founded with a heart for deep Biblical study and global mission. Like the noble
+                    Berean Bible Church [HALLELUJAH WORSHIP CENTER-MOMBASA] was founded with a heart for deep Biblical study and global mission. Like the noble
                     Bereans mentioned in Acts 17:11, we are committed to examining the Scriptures daily to see if what we hear
                     aligns with God's Word. Our church has grown from a small Bible study group into a thriving community
                     dedicated to Prayer, Word, and Mission.
@@ -246,6 +134,91 @@
                         <h4 class="text-xl font-bold mb-2 text-berean-blue">Generous Giving</h4>
                         <p class="text-muted-foreground">We practice joyful generosity with our time, talents, and resources.</p>
                     </div>
+                    <!-- Core Value 7 -->
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Holiness As a Virtue & Code</h4>
+                        <p class="text-muted-foreground">We are committed to living out holiness as a core virtue and guiding principle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Apostolic Hub-->
+<section class="py-16 bg-berean-skyblue">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4 text-berean-blue">Apostolic Hub</h2>
+            <p class="text-muted-foreground max-w-2xl mx-auto">
+                As an Apostolic Hub, Hallelujah Worship Center extends its ministry through dedicated networks and arms, targeting specific areas for growth and transformation.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="relative w-full h-auto mb-4 overflow-hidden">
+                <img src="{% static 'images/logos/war2.jpg' %}" 
+                    alt="war room" 
+                    class="object-cover w-30 h-auto mx-auto" />
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-berean-blue">THE WAR ROOM</h3>
+                <p class="text-muted-foreground">
+                    A dedicated and focused ministry committed to fervent, strategic prayer and intercession, believing in the power of prayer to advance the Kingdom and break spiritual strongholds.
+                </p>
+                </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <div class="relative w-full h-auto mb-4 overflow-hidden">
+                    <img src="{% static 'images/logos/wov.jpg' %}" 
+                    alt="wov" 
+                    class="object-cover w-30 h-auto mx-auto" />
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-berean-blue">WOMEN OF VALUE (WOV)</h3>
+                <p class="text-muted-foreground">
+                    A network designed to empower, equip, and inspire women to discover their God-given purpose, operate in their spiritual gifts, and lead with godly character.
+                </p>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="relative w-full h-auto mb-4 overflow-hidden">
+                    <img src="{% static 'images/logos/can.jpg' %}" 
+                        alt="can" 
+                        class="object-cover w-30 h-auto mx-auto" />
+                    </div>
+                <h3 class="text-xl font-bold mb-2 text-berean-blue">CHRIST APOSTOLIC YOUTH NETWORK (CAN)</h3>
+                <p class="text-muted-foreground">
+                    Our Youth denominational and relational network connecting us with other youths from different churches and leaders for accountability, shared resources, and collective global mission.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <!-- Our Leadership -->
+    <section class="relative py-16 text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img
+                src="{% static 'images/backgrounds/leadership.jpg' %}" 
+                alt="Leadership Background"
+                class="object-cover w-full h-full brightness-50"
+                loading="lazy" 
+            />
+        </div>
+        <div class="relative z-10 container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-sky-500">Our Leadership</h2>
+                <p class="text-white-400 max-w-2xl mx-auto">
+                    At the heart of our church is a dedicated team of leaders who are passionate about guiding
+                    our community in faith, service, and growth. Committed to living out our values and vision,
+                    they inspire and support us on our spiritual journey, helping to shape a stronger, more
+                    connected church family
+                </p>
+                <div class="mt-6">
+                <a href="{% url 'leadership' %}">
+                    <button class="bg-white text-blue-700 border-2 border-blue-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Meet Our Leaders</button>
+                </a>
                 </div>
             </div>
         </div>
@@ -264,37 +237,57 @@
                 <div class="space-y-6">
                     <!-- Belief 1 -->
                     <div>
-                        <h3 class="text-xl font-bold mb-2 text-berean-blue">The Bible</h3>
-                        <p class="text-muted-foreground">
-                            We believe the Bible is God's Word, fully inspired and without error, written under the inspiration of the Holy Spirit, and has supreme authority in all matters of faith and conduct.
-                        </p>
-                    </div>
-                    <!-- Belief 2 -->
-                    <div>
                         <h3 class="text-xl font-bold mb-2 text-berean-blue">God</h3>
                         <p class="text-muted-foreground">
                             We believe there is one living and true God, eternally existing in three persons—Father, Son, and Holy Spirit—who are equal in every divine perfection and who execute distinct but harmonious offices in the work of creation, providence, and redemption.
                         </p>
                     </div>
-                    <!-- Belief 3 -->
+                    
+                    <!-- Belief 2 -->
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-berean-blue">Jesus Christ</h3>
                         <p class="text-muted-foreground">
                             We believe Jesus Christ is the eternal Son of God who became man without ceasing to be God, was conceived by the Holy Spirit, born of the Virgin Mary, and lived a sinless life. He died on the cross as a sacrifice for our sins, rose bodily from the dead, and ascended to heaven where He is now our High Priest and Advocate.
                         </p>
                     </div>
+                    <!-- Belief 3 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">The Bible</h3>
+                        <p class="text-muted-foreground">
+                            We believe the Bible is God's Word, fully inspired and without error, written under the inspiration of the Holy Spirit, and has supreme authority in all matters of faith and conduct.
+                        </p>
+                    </div>
+                    
                     <!-- Belief 4 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">The Church</h3>
+                        <p class="text-muted-foreground">
+                            We believe the church is the body of Christ, of which Jesus Christ is the head. The members are those who have trusted by faith in the finished work of Christ. The purpose of the church is to glorify God by loving Him and by making Him known to a lost world.
+                        </p>
+                    </div>
+                    
+                    <!-- Belief 5 -->
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-berean-blue">Salvation</h3>
                         <p class="text-muted-foreground">
                             We believe salvation is a gift from God to humanity. People can never make up for their sin by self-improvement or good works. Only by trusting in Jesus Christ as God's offer of forgiveness can anyone be saved from sin's penalty.
                         </p>
                     </div>
-                    <!-- Belief 5 -->
+
+                    <!-- Belief 6 -->
                     <div>
-                        <h3 class="text-xl font-bold mb-2 text-berean-blue">The Church</h3>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">Holiness</h3>
                         <p class="text-muted-foreground">
-                            We believe the church is the body of Christ, of which Jesus Christ is the head. The members are those who have trusted by faith in the finished work of Christ. The purpose of the church is to glorify God by loving Him and by making Him known to a lost world.
+                            1. We believe holiness is the process of becoming more like Christ, characterized by a life of obedience to God's Word, separation from sin, and dedication to God's service.<br>
+                            2. We believe that holiness is God's standard for His people. Through the work of the Holy Spirit, believers are called to a life of **Sanctification**, striving to be separated from sin and devoted to Christ, pursuing spiritual maturity and purity in all aspects of life.
+                        </p>
+                    </div>
+
+                    <!-- Belief 7 -->
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-berean-blue">Service & Ministry</h3>
+                        <p class="text-muted-foreground">
+                           We believe every believer is commanded to live a life of service, utilizing their spiritual gifts to minister to others within the church and the world. Following the example of Christ, we are committed to practical acts of love, justice, and compassion (Missional Living) as a demonstration of the Gospel.
                         </p>
                     </div>
                 </div>
@@ -302,60 +295,5 @@
         </div>
     </section>
 
-<script>
-        // Custom Tailwind configuration for colors and fonts
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // These are example color definitions. Adjust to your actual brand colors.
-                        'berean-blue': '#2A6F97',
-                        'berean-red': '#CC0000',
-                        'berean-lightblue': '#8CD0D2',
-                        'berean-skyblue': '#E0F2F7',
-                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
-                        primary: '#2A6F97', // Example primary color
-                        background: '#FFFFFF', // Example background color
-                        muted: '#F1F5F9', // Example muted background
-                        'muted-foreground': '#64748B', // Example muted text color
-                        'primary-foreground': '#FFFFFF', // Text color on primary background
-                        'card': '#FFFFFF', // Card background
-                        'card-foreground': '#0F172A', // Text color on card background
-                    },
-                    fontFamily: {
-                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
-                        // You'd need to link Montserrat from Google Fonts or self-host it.
-                        inter: ['Inter', 'sans-serif'],
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                }
-            }
-        }
-
-         // JavaScript for sidebar menu toggle
-        const menuButton = document.getElementById('menu-button');
-        const closeSidebarButton = document.getElementById('close-sidebar');
-        const sidebarMenu = document.getElementById('sidebar-menu');
-        const sidebarOverlay = document.getElementById('sidebar-overlay');
-
-        function openSidebar() {
-            sidebarMenu.classList.add('open');
-            sidebarOverlay.classList.add('open');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling on body when sidebar is open
-        }
-
-        function closeSidebar() {
-            sidebarMenu.classList.remove('open');
-            sidebarOverlay.classList.remove('open');
-            document.body.style.overflow = ''; // Restore scrolling on body
-        }
-
-        menuButton.addEventListener('click', openSidebar);
-        closeSidebarButton.addEventListener('click', closeSidebar);
-        sidebarOverlay.addEventListener('click', closeSidebar); // Close sidebar when clicking overlay
-</script>
-
-
-</body>
 
 {% endblock %}

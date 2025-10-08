@@ -1,0 +1,85 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}Inspirations - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block extra_head %}
+   <!--<link rel="stylesheet" href="{% static 'css/contact_style.css' %}">-->
+{% endblock %}
+
+{% block content %}
+
+{% block topbar_home %}
+{% endblock %}
+
+{% block home_menu %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block ministries_hero %}
+{% endblock%}
+
+<!-- Overlay for when sidebar is open -->
+<div id="sidebar-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40 hidden"></div>
+
+<!--hero  section-->
+<section class="relative w-full h-[300px] flex items-center justify-center text-center"> 
+        <div class="absolute inset-0 z-0">
+            <img
+                src="{% static 'images/backgrounds/.jpg' %}" 
+                alt="Inspirations Background"
+                class="object-cover w-full h-full brightness-50"
+                loading="eager"
+            />
+        </div>
+        <div class="relative z-10 container mx-auto px-4 text-white"> 
+            <div class="flex items-center justify-center text-sm"> 
+                <a href="{% url 'home' %}" class="text-sky-500 hover:text-gray-300">Home</a>
+                <span class="mx-2"> ▣ </span>
+                <span class="text-white-400">Inspirations</span> 
+            </div>
+            <h1 class="text-4xl font-bold mb-6">TESTIMONIES & INSPIRATIONS</h1>
+        </div>
+    </section>
+
+<!-- Contents -->
+<p class="text-gray-600 text-sm mb-2">Catch a full glimpse of the most motivating and captivating messages and behold what God is doing.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Loop through blog posts -->
+    <!-- {% for post in blog_posts %} -->
+        <div class="bg-white rounded-lg shadow p-4">
+            <h2 class="text-xl font-semibold mb-2">God Told Me To Trust The Process And See The Results!!!</h2>
+            <p class="text-gray-600 mb-4">{{ post.excerpt }}</p>
+            <a href="{% url 'blog_detail' post.id %}" class="text-sky-700 hover:underline">Read More</a>
+        </div>
+    <!--{% endfor %}-->
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- Scripts -->
+<script>
+    const menuButton = document.getElementById('menu-button');
+    const closeSidebar = document.getElementById('close-sidebar');
+    const sidebarMenu = document.getElementById('sidebar-menu');
+    const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+    menuButton.addEventListener('click', () => {
+        sidebarMenu.classList.remove('hidden');
+        sidebarOverlay.classList.remove('hidden');
+    });
+
+    closeSidebar.addEventListener('click', () => {
+        sidebarMenu.classList.add('hidden');
+        sidebarOverlay.classList.add('hidden');
+    });
+
+    sidebarOverlay.addEventListener('click', () => {
+        sidebarMenu.classList.add('hidden');
+        sidebarOverlay.classList.add('hidden');
+    });
+</script>
+{% endblock %}

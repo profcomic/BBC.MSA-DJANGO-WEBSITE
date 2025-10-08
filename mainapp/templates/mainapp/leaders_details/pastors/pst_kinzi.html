@@ -1,0 +1,95 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}Pastor Salvestin Kinzi - Berean Ministries{% endblock %}
+{% block content %}
+
+{% block topbar_main %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+
+<section class="py-12 md:py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+        <h2 class="text-4xl font-extrabold text-blue-700 mb-2">
+            Pastor Salvestin Kinzi
+        </h2>
+        <p class="text-xl text-gray-700 mb-8">
+            Church Organizing Secretary, Youths Patron
+        </p>
+
+        <div class="relative text-lg text-gray-800">
+            
+            <img 
+                src="{% static 'images/leadership/no-portrait2.jpg' %}" 
+                alt="Pastor Salvestin Kinzi" 
+                class="
+                    float-right 
+                    ml-6 md:ml-10 mb-4 
+                    w-48 sm:w-64 
+                    rounded-lg shadow-xl
+                    "
+            >
+            
+            <div class="prose max-w-none">
+                <p class="mb-4">
+                    Pastor Muhandale Salvestin Kinzi is a highly energetic and dynamic leader whose heart beats for order, 
+                    worship, and the next generation. He serves as the Church Organizing Secretary and chief organizer, 
+                    ensuring that every ministry event, logistics, and administrative function of Berean Ministries operates 
+                    with excellence and precision.
+                </p>
+
+                <p class="mb-4">
+                    His enthusiasm is powerfully channeled through music, as the respected Leader of the Praise and Worship Team. 
+                    Under his guidance, the team facilitates authentic, Spirit-filled worship, setting the spiritual atmosphere 
+                    for the entire church. He is also the active Patron of the Youth Department, mentoring young people and channeling 
+                    their energy toward impactful kingdom work.
+                </p>
+                
+                <p class="mb-4">
+                    Pastor Salvestin’s commitment extends into the broader Apostolic community, where he serves as a key organizer within 
+                    the CAN (Christ Apostolic Network), helping to coordinate relational and logistical support across the wider denomination.
+                </p>
+
+                <p class="mb-4">
+                    Professionally, he is a trained and experienced teacher, a calling he expanded dramatically as the Founder of Kinzi Group 
+                    of Schools and Co. This successful educational venture reflects his passion for holistic development, bridging the gap between 
+                    spiritual formation and academic excellence in the community.
+                </p>
+                
+                <p class="mb-4">
+                    He is a devoted husband to Pastor Grace Kinzi and a proud father of six children. Their large, faith-centered family is a 
+                    living testament to his leadership, dedication, and commitment to raising up future generations in both faith and character.
+                </p>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-gray-200 clear-both">
+                <h3 class="text-xl font-bold mb-3 text-blue-700">Connect with Pastor Salvestin</h3>
+                <div class="flex space-x-6">
+                    
+                    <a href="[Kinzi Group of Schools Website/Social URL]" target="_blank" class="text-yellow-600 hover:text-yellow-800 transition flex items-center space-x-2">
+                        <i class="fas fa-graduation-cap text-3xl"></i><span class="text-lg font-semibold hidden sm:inline">Kinzi Group of Schools</span>
+                    </a>
+                    
+                    <a href="[Pastor Salvestin's Facebook URL]" target="_blank" class="text-blue-600 hover:text-blue-800 transition">
+                        <i class="fab fa-facebook-f text-3xl"></i> 
+                    </a>
+                    
+                    <a href="[Praise & Worship Team YouTube URL]" target="_blank" class="text-red-600 hover:text-red-800 transition">
+                        <i class="fab fa-youtube text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

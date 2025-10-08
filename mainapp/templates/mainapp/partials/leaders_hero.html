@@ -1,0 +1,24 @@
+{% load static %}
+
+<section class="relative w-full h-[300px] flex items-center justify-center text-center"> 
+        <div class="absolute inset-0 z-0">
+            <img
+              src="{% static '/images/backgrounds/pastoral_bg.jpg' %}"
+              alt="Pastoral Team Background"
+              class="object-cover w-full h-full brightness-50"
+              loading="eager"
+             />
+        </div>
+        <div class="relative z-10 container mx-auto px-4 text-white"> 
+             <div class="flex items-center justify-center text-sm"> 
+                <a href="{% url 'home' %}" class="text-sky-500 hover:text-gray-300">Home</a>
+                 <span class="mx-2"> ▣ </span>
+                 <a href="{% url 'leadership' %}" class="text-sky-500 hover:text-gray-300">Team</a>
+                 <span class="mx-2"> ▣ </span>
+                 <span class="text-white-400">
+                   {% if page_title_nav %}{{ page_title_nav }}{% else %}Leadership{% endif %}
+                 </span>
+                </div>
+              <h1 class="text-4xl font-bold mb-6">{% if leader_full_name %}{{ leader_full_name|upper }}{% else %}OUR CORE LEADERSHIP TEAM{% endif %}</h1>
+        </div>
+</section>

@@ -1,0 +1,94 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}Rev. Lorine - Berean Ministries{% endblock %}
+{% block content %}
+
+{% block topbar_main %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+
+<section class="py-12 md:py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+        <h2 class="text-4xl font-extrabold text-blue-700 mb-2">
+            Rev. Lorine P.A. Ang'ana
+        </h2>
+        <p class="text-xl text-gray-700 mb-8">
+            Bishop's Wife, BBC Minister, Founder - Women of Value
+        </p>
+
+        <div class="relative text-lg text-gray-800">
+            
+            <img 
+                src="{% static 'images/leadership/mama_value.jpg' %}" 
+                alt="Rev Lorine P.A." 
+                class="
+                    float-right 
+                    ml-6 md:ml-10 mb-4 
+                    w-60 sm:w-64 
+                    rounded-lg shadow-xl
+                    "
+                loading="lazy">
+            
+            <div class="prose max-w-none">
+                <p class="mb-4">
+                  Rev. Lorine P.A. Ang'ana is a dynamic and highly influential leader, serving alongside her husband, 
+                  Bishop Dr. Ibrahim A.O, as a Co-Founder of Berean Ministries. Her ministry is driven by a profound 
+                  focus on the well-being and empowerment of women and youth.</p>
+
+                <p class="mb-4">
+                    She is the visionary Founder of the Women of Value (WOV) Interdenominational network, an impactful ministry 
+                    dedicated to equipping women to discover their God-given purpose, operate in their gifts, and embrace godly character. 
+                    This interdenominational focus extends her influence far beyond the local church.</p>
+                
+                <p class="mb-4">
+                    Termed as MAMA VALUE, Rev. Lorine also serves in key regional leadership roles, including the Vice Chairlady of the Mombasa North Pastors Wives 
+                    Fellowship. She is a sought-after keynote speaker at numerous women's conferences, recognized for her practical, 
+                    Scripture-based messages that bring both spiritual and practical transformation.</p>
+
+                <p class="mb-4">
+                    Demonstrating her diverse skills, she provides vital leadership in the marketplace as the Managing Director of PalmGold 
+                    Investments, the successful real estate and training corporation co-founded with her husband. 
+                    Rev. Lorine P.A. is committed to developing leaders who impact both the church and the community at large.</p>
+
+                <p class="mb-4">
+                    She is also a family advocate, passionately supporting initiatives that strengthen families and promote healthy relationships.
+                    Her ministry is marked by a heart for service, a commitment to excellence, and a vision to see families thrive.</p>
+                
+                <p>
+                    Rev Lorine & Bishop A.O are blessed with three wonderful children who are a gift to the body of christ.</p>
+
+            </div>
+                
+            
+            <div class="mt-8 pt-4 border-t border-gray-200 clear-both">
+                <h3 class="text-xl font-bold mb-3 text-blue-700">Connect with Rev. Lorine</h3>
+                <div class="flex space-x-6">
+                    
+                    <a href="[Rev. Lorine's Facebook URL]" target="_blank" class="text-blue-600 hover:text-blue-800 transition">
+                        <i class="fab fa-facebook-f text-3xl"></i> 
+                    </a>
+                    
+                    <a href="[Rev. Lorine's Instagram URL]" target="_blank" class="text-pink-600 hover:text-pink-800 transition">
+                        <i class="fab fa-instagram text-3xl"></i>
+                    </a>
+                    
+                    <a href="[Women of Value Website/Social URL]" target="_blank" class="text-purple-600 hover:text-purple-800 transition flex items-center space-x-2">
+                         <i class="fas fa-hand-holding-heart text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

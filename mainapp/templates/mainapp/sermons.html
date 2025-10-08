@@ -1,124 +1,27 @@
 {% extends "mainapp/base.html" %}
 {% load static %}
+
+{% block title %}Sermons - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/sermons_style.css' %}">
+{% endblock %}
+
 {% block content %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sermons - The Family Church with Excellence</title>
-    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/sermons_style.css' %}">
-   
-</head>
+{% block topbar_home %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block home_menu %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
 
 <body class="bg-gray-100">
-
-    <!-- Top Bar -->
-    <div class="bg-black text-white text-sm py-2 px-4 md:px-8 flex justify-between items-center">
-        <span>The Family Church with Excellence</span>
-        <div class="flex space-x-4">
-            <a href="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
-        </div>
-    </div>
-
-       <!-- Navigation Bar -->
-    <nav class="bg-white shadow-md py-4 px-4 md:px-8 flex justify-between items-center relative z-10">
-        <div class="flex items-center space-x-8">
-            <a href="#" class="text-lg font-bold text-gray-800">
-                <img src="{% static 'images/logos/logo.png' %}" alt="Logo" class="h-10">
-            </a>
-             <div class="hidden lg:flex space-x-4 text-xs whitespace-nowrap">
-                <a href="{% url 'home' %}" class="text-gray-700 hover:text-sky-600 font-medium">HOME</a>
-                <a href="{% url 'about' %}" class="text-gray-700 hover:text-sky-600 font-medium">ABOUT US</a>
-                <a href="{% url 'leadership'%}" class="text-gray-700 hover:text-sky-600 font-medium">OUR LEADERSHIP</a>
-                <a href="{% url 'ministries'%}" class="text-gray-700 hover:text-sky-600 font-medium">MINISTRIES</a>
-                <a href="{% url 'sermons'%}" class="text-sky-600 font-medium border-b-2 border-blue-600 pb-1">SERMONS</a>
-                <a href="{% url 'blog'%}" class="text-gray-700 hover:text-sky-600 font-medium">BLOG</a>
-                <a href="{% url 'events'%}" class="text-gray-700 hover:text-sky-600 font-medium">EVENTS</a>
-                <a href="{% url 'contact'%}" class="text-gray-700 hover:text-sky-600 font-medium">CONTACT US</a>
-                <a href="{% url 'berean_times_magazine' %}" class="text-gray-700 hover:text-sky-600 font-medium">BEREAN TIMES MAGAZINE</a>
-            </div>
-        </div>
-        <div class="flex items-center space-x-4">
-            <button class="lg:hidden text-gray-700 focus:outline-none" id="menu-button">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-            <button class="text-gray-700 focus:outline-none">
-                <i class="fas fa-search text-xl"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Sidebar Menu -->
-    <div id="sidebar-menu" class="sidebar">
-        <div class="flex justify-end p-4">
-            <button id="close-sidebar" class="text-gray-700 hover:text-gray-900 focus:outline-none">
-                <i class="fas fa-times text-2xl"></i>
-            </button>
-        </div>
-        <div class="p-6">
-             <!-- Welcome to BBC Section -->
-            <div class="mb-8">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-plus text-red-600 mr-2"></i> Welcome to BBC-MSA
-                </h3>
-                <img src="{% static 'images/logo.png' %}" alt="BBC Logo" class="w-24 h-24 mb-4"> 
-                <h4 class="text-xl font-bold text-gray-900 mb-2">BEREAN BIBLE CHURCH</h4>
-                <p class="text-gray-600 text-sm">
-                    Whether it's your first time visiting our site or not, we love that you're taking the time to visit us online.
-                </p>
-            </div>
-
-            <!-- Contact Info Section -->
-            <div class="mb-8">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-plus text-red-600 mr-2"></i> Contact Info
-                </h3>
-                <p class="text-gray-600 text-sm mb-2">We'd love to hear from you. Reach out via any of the channels below:</p>
-                <ul class="space-y-2 text-gray-700 text-sm">
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marker-alt text-red-600 mt-1 mr-3"></i>
-                        <span>Kengeleni Road, Mshomoroni, <br>Mombasa</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-phone-alt text-red-600 mr-3"></i>
-                        <span>(+254) 0741080904</span>
-                    </li>
-                    <li class="flex items-center">
-                        <i class="fas fa-envelope text-red-600 mr-3"></i>
-                        <span>bbcmsaheadquarters@gmail.com</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Follow Us Section -->
-            <div>
-                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-                    <i class="fas fa-plus text-red-600 mr-2"></i> Follow Us
-                </h3>
-                <div class="flex space-x-3">
-                    <a href="#" class="bg-blue-600 text-white p-3 rounded-md hover:bg-blue-700 transition duration-300">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" class="bg-blue-400 text-white p-3 rounded-md hover:bg-blue-500 transition duration-300">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" class="bg-pink-600 text-white p-3 rounded-md hover:bg-pink-700 transition duration-300">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="bg-red-700 text-white p-3 rounded-md hover:bg-red-800 transition duration-300">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Overlay for when sidebar is open -->
     <div id="sidebar-overlay" class="overlay"></div>
@@ -224,8 +127,8 @@
                 <div class="relative aspect-video rounded-lg overflow-hidden">
                     <iframe
                         class="w-full h-full"
-                        src="https://www.youtube.com/embed/JLqlaUd6Iws"
-                        title="SUNDAY SERVICE || PENTECOSTAL REVIVAL -DAY 4 || PRAISE SESSION || 08.JUNE.2025"
+                        src="https://youtu.be/eHvBBtd50qE"
+                        title="SUNDAY SERVICE || PENTECOSTAL REVIVAL -DAY 4 || MINISTRATION || 08.JUNE.2025"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen
                     ></iframe>
@@ -240,7 +143,7 @@
                         diligently.
                     </p>
                     <div class="flex flex-wrap gap-4">
-                        <a href="https://youtu.be/JLqlaUd6Iws" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
+                        <a href="https://youtu.be/eHvBBtd50qE" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 gap-2">
                             Watch Now
                             <span class="h-4 w-4">➡️</span> <!-- ChevronRight icon placeholder -->
                         </a>
@@ -277,7 +180,7 @@
                 <!-- Series 2 -->
                 <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
                     <div class="relative h-48">
-                        <img src="/images/leadership/bishop-ibrahim.jpg" alt="REPAIRING THE IMAGE AND LIKENESS OF GOD IN MY LIFE THIS LENT" class="object-cover w-full h-full" />
+                        <img src="{% static 'images/leadership/bishop-ibrahim.jpg'%}" alt="REPAIRING THE IMAGE AND LIKENESS OF GOD IN MY LIFE THIS LENT" class="object-cover w-full h-full" />
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">REPAIRING THE IMAGE AND LIKENESS OF GOD IN MY LIFE THIS LENT</h3>
@@ -289,7 +192,7 @@
                 <!-- Series 3 -->
                 <div class="border rounded-lg shadow-sm bg-card text-card-foreground overflow-hidden">
                     <div class="relative h-48">
-                        <img src="/images/leadership/bishop-ibrahim.jpg" alt="DIVINE EXALTATION" class="object-cover w-full h-full" />
+                        <img src="/images/leadership/bishop-ibrahim2.jpg" alt="DIVINE EXALTATION" class="object-cover w-full h-full" />
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">DIVINE EXALTATION</h3>

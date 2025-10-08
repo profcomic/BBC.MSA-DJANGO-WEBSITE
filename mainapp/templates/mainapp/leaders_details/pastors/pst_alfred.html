@@ -1,0 +1,97 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}Pastor Alfred Matai - Berean Ministries{% endblock %}
+{% block content %}
+
+{% block topbar_main %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+<section class="py-12 md:py-20 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+        <h2 class="text-4xl font-extrabold text-blue-700 mb-2">
+            Pastor Alfred Matai
+        </h2>
+        <p class="text-xl text-gray-700 mb-8">
+            Instruments Teem Lead & Church Treasurer
+        </p>
+
+        <div class="relative text-lg text-gray-800">
+            
+            <img 
+                src="{% static 'images/leadership/no-portrait2.jpg' %}" 
+                alt="Pastor Alfred Matai" 
+                class="
+                    float-right 
+                    ml-6 md:ml-10 mb-4 
+                    w-48 sm:w-64 
+                    rounded-lg shadow-xl
+                    "
+            >
+            
+            <div class="prose max-w-none">
+                <p class="mb-4">
+                    Pastor Alfred Matai is a dedicated leader who contributes vital skills in both the instruments ministry 
+                    and financial stewardship of Berean Ministries. His dual responsibilities ensure that the church's 
+                    services are technically excellent and that its resources are managed with integrity.
+                </p>
+
+                <p class="mb-4">
+                    As the Instruments Team Lead, Pst Alfred oversees the entire technical and musical infrastructure 
+                    of the worship department. He is responsible for managing the equipment, mentoring musicians, and 
+                    ensuring the sound and musical arrangements enhance the atmosphere of authentic worship, supporting 
+                    the overall vision of the Praise and Worship Team.
+                </p>
+                
+                <p class="mb-4">
+                    In addition to his creative role, he handles the crucial function of the Church Treasurer. 
+                    This role demands precision, transparency, and high integrity in managing the church's finances, 
+                    offerings, and operational budget, ensuring the ministry remains accountable and financially healthy
+                    which he has so far shown the described levels.
+                </p>
+
+                <p class="mb-4">
+                    In the marketplace, Pastor Alfred showcases the diversity of Christian talent by working in the 
+                    beauty and therapy industry. This unique professional background allows him to connect with 
+                    people on a personal level, reflecting the healing and restorative aspect of God's love outside 
+                    of the traditional ministry setting. His life demonstrates that genuine service, whether spiritual 
+                    or professional, brings beauty and wellness to the community.
+                </p>
+
+                <p class="mb-4">
+                    Pastor Alfred is committed to excellence in all his endeavors, serving as a passionate and disciplined 
+                    leader in every facet of the Berean Ministries family.
+                </p>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-gray-200 clear-both">
+                <h3 class="text-xl font-bold mb-3 text-blue-700">Connect with Pastor Alfred</h3>
+                <div class="flex space-x-6">
+                    
+                    <a href="[Pastor Alfred's Business/Salon URL]" target="_blank" class="text-pink-600 hover:text-pink-800 transition flex items-center space-x-2">
+                        <i class="fas fa-scissors text-3xl"></i><span class="text-lg font-semibold hidden sm:inline">Be Smart With Matai</span>
+                    </a>
+                    
+                    <a href="[Pastor Alfred's Facebook URL]" target="_blank" class="text-blue-600 hover:text-blue-800 transition">
+                        <i class="fab fa-facebook-f text-3xl"></i> 
+                    </a>
+                    
+                    <a href="[Instruments Team Social/Platform URL]" target="_blank" class="text-indigo-600 hover:text-indigo-800 transition">
+                        <i class="fas fa-volume-up text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

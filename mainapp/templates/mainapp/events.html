@@ -1,42 +1,27 @@
 {% extends "mainapp/base.html" %}
 {% load static %}
+
+{% block title %}Events - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/events_style.css' %}">
+{% endblock %}
+
 {% block content %}
 
+{% block topbar_home %}
+{% endblock %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - Berean Bible Church</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Custom Tailwind configuration for colors and fonts
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // These are example color definitions. Adjust to your actual brand colors.
-                        'berean-blue': '#2A6F97',
-                        'berean-red': '#CC0000',
-                        'berean-lightblue': '#8CD0D2',
-                        'berean-skyblue': '#E0F2F7',
-                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
-                        primary: '#2A6F97', // Example primary color
-                        background: '#FFFFFF', // Example background color
-                        muted: '#F1F5F9', // Example muted background
-                        'muted-foreground': '#64748B', // Example muted text color
-                    },
-                    fontFamily: {
-                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
-                        // You'd need to link Montserrat from Google Fonts or self-host it.
-                        inter: ['Inter', 'sans-serif'],
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/events_style.css' %}">
+{% block ministries_hero %}
+{% endblock%}
 
+{% block home_menu %}
+{% endblock %} 
+
+{% block leaders_hero %}
+{% endblock%}
+
+    <!--Header-->
     <section class="relative w-full h-[300px] flex items-center justify-center text-center">
         <div class="absolute inset-0 z-0">
             <img
@@ -52,6 +37,7 @@
         </div>
     </section>
 
+   <!--Sorting & filtering section-->
     <section class="py-8 bg-muted/50">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row gap-4">

@@ -1,0 +1,57 @@
+{% load static %}
+
+    <!-- Header Section -->
+<header class="bg-white py-4 flex justify-center" >
+    <div class="container mx-auto px-8 flex items-center width:140px height:80px">
+        <!-- Logo Section -->
+        <div class="bg-sky-400 flex items-center justify-center" style="width:140px; height:80px;">
+            <img src="{% static 'images/logos/logo.png' %}" alt="Logo" class="w-16 h-16 object-contain">
+        </div>
+        <!-- Info Section -->
+        <div class="flex-1 flex items-center justify-between ml-8">
+            <!--Join us live-->
+            <div class="flex items-center border-r pr-8">
+                <i class="fa-solid text-berean-blue text-xl mr-2"></i>
+                <div>
+                   <a href="https://youtube.com/@bereanbiblechurchmsa?si=rXvdeX3xqQbGbrwC" target="_blank" rel="noopener noreferrer">
+                   <span class="font-bold text-gray-800 block text-sm">Watch Us Live</span>
+                   </a>
+                </div>
+            </div>
+            <!-- Address -->
+            <div class="flex items-center border-r pr-8">
+                <i class="fa-solid fa-map-location-dot text-sky-500 text-2xl mr-2"></i>
+                <div>
+                    <span class="font-bold text-gray-800 block">Address</span>
+                    <span class="text-gray-700 text-sm">1824, Kengeleni Road, Mshomoroni, Mombasa</span>
+                </div>
+            </div>
+            <!-- Phone -->
+            <div class="flex items-center border-r px-8">
+                <i class="fa-solid fa-mobile-screen-button text-sky-500 text-2xl mr-2"></i>
+                <div>
+                    <span class="font-bold text-gray-800 block">Phone</span>
+                    <span class="text-gray-700 text-sm">0741080904</span>
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="flex items-center px-8">
+                <i class="fa-solid fa-envelope text-sky-500 text-2xl mr-2"></i>
+                <div>
+                    <span class="font-bold text-gray-800 block">Email</span>
+                    <span class="text-gray-700 text-sm">bbcmsaheadquarters@gmail.com</span>
+                </div>
+            </div>
+            <!-- Sidebar Menu -->
+            <div>
+               <button class="text-gray-700 focus:outline-none" id="menu-button">
+              <i class="fas fa-bars text-4xl"></i> </button>
+            </div>
+            
+        </div>
+    </div>
+</header>
+
+ <!-- Overlay for when sidebar is open -->
+    <div id="sidebar-overlay" class="overlay"></div>
+    

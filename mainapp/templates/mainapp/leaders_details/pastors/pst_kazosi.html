@@ -1,0 +1,88 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}Pastor Agnes Kazosi - Berean Ministries{% endblock %}
+{% block content %}
+
+{% block topbar_main %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+<section class="py-12 md:py-20 bg-white">
+    <div class="container mx-auto px-4 max-w-6xl">
+
+        <h2 class="text-4xl font-extrabold text-blue-700 mb-2">
+            Pastor Agnes Kazosi
+        </h2>
+        <p class="text-xl text-gray-700 mb-8">
+            HBC Pastor & Ministry Expansion Team Member
+        </p>
+
+        <div class="relative text-lg text-gray-800">
+            
+            <img 
+                src="{% static 'images/leadership/no-portrait.jpg' %}" 
+                alt="Pastor Agnes Kazosi" 
+                class="
+                    float-right 
+                    ml-6 md:ml-10 mb-4 
+                    w-48 sm:w-64 
+                    rounded-lg shadow-xl
+                    "
+            >
+            
+            <div class="prose max-w-none">
+                <p class="mb-4">
+                    Pastor Agnes Kazosi is a highly valued and essential member of the pastoral team, known for her humble spirit, 
+                    unwavering loyalty, and well-composed leadership**. She brings a powerful blend of spiritual maturity and practical 
+                    organizational skills to Berean Ministries.</p>
+
+                <p class="mb-4">
+                    As a key leader in the pastoral team, Pastor Agnes focuses on discipleship and community building. Her strategic 
+                    leadership has been instrumental in the church's expansion efforts, particularly in helping to lead the growing 
+                    Jerusalem Home Bible Church (HBC) satellite ministry. She is passionate about ensuring every member feels connected, 
+                    nurtured, and fully equipped for their personal ministry.
+                </p>
+                
+                <p class="mb-4">
+                    Pastor Agnes is defined by her energetic and industrious nature. Beyond the pulpit, she is a successful business lady, 
+                    showcasing her entrepreneurial drive and proving that a life of deep faith can coexist with excellence in the marketplace. 
+                    Her business acumen provides invaluable insight into stewardship and effective resource management within the ministry.
+                </p>
+
+                <p class="mb-4">
+                    Her dedication is rooted in her family life. She is married to Mr. Nyamai Mutila and together they are raising four children. 
+                    Their family embodies the dedication and stability that serve as a guiding example to the church community. Pastor Agnes is 
+                    committed to serving Christ and His church with excellence in every role she holds.
+                </p>
+            </div>
+            
+            <div class="mt-8 pt-4 border-t border-gray-200 clear-both">
+                <h3 class="text-xl font-bold mb-3 text-blue-700">Connect with Pastor Agnes</h3>
+                <div class="flex space-x-6">
+                    
+                    <a href="[Pastor Agnes' Business Website/LinkedIn URL]" target="_blank" class="text-orange-600 hover:text-orange-800 transition flex items-center space-x-2">
+                        <i class="fas fa-briefcase text-3xl"></i><span class="text-lg font-semibold hidden sm:inline">Business Portfolio</span>
+                    </a>
+                    
+                    <a href="[Pastor Agnes' Facebook URL]" target="_blank" class="text-blue-600 hover:text-blue-800 transition">
+                        <i class="fab fa-facebook-f text-3xl"></i> 
+                    </a>
+                    
+                    <a href="[Jerusalem HBC Page URL]" target="_blank" class="text-green-600 hover:text-green-800 transition flex items-center space-x-2">
+                        <i class="fas fa-home text-3xl"></i><span class="text-lg font-semibold hidden sm:inline">HBC Ministry</span>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

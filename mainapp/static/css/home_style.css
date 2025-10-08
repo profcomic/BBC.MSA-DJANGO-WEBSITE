@@ -1,0 +1,98 @@
+/* Applied to weekly service schedule autoplay */
+/* Custom CSS equivalent to the Tailwind classes for the carousel functionality */
+
+.carousel-container {
+    position: relative;
+    overflow: hidden; /* Hides the cards outside the viewing area */
+}
+
+.service-carousel {
+    display: flex;
+    /* Allows for smooth transition controlled by JavaScript */
+    transition: transform 0.5s ease-in-out; 
+}
+
+.service-card {
+    /* Prevents cards from shrinking */
+    flex-shrink: 0; 
+    /* Ensures 4 cards fit on the screen */
+    width: 25%; 
+    /* Box-sizing adjustment for padding/border */
+    box-sizing: border-box; 
+    /* Add padding here if you remove the p-3 class from the HTML */
+    padding: 12px; 
+}
+
+/* The JavaScript then dynamically controls the following property 
+    to create the sliding effect:
+    .service-carousel {
+        transform: translateX(-25%); 
+    }
+*/
+
+/* Defining the layer that shows the logo */
+.logo-background-layer {
+    width: 100%;
+    height: 100%;
+    position: relative; /* Ensure the wrapper inside is positioned correctly */
+    /* === Logo Styling === */
+    background-image: url("/static/images/logos/logo.png"); 
+    background-size: 50%; /* Adjust size as needed */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: #f0f0f0; /* Optional: A light color behind the logo */
+}
+
+/* 1. Base 3D Setup */
+.perspective-1000 {
+    perspective: 1000px;
+}
+
+/* Applying this to the content inside the flip wrapper */
+.ministry-content {
+    /* Prevents the card's back side from being visible when rotated > 90deg */
+    backface-visibility: hidden;
+    
+    /* Ensure the content is always positioned correctly within the 3D space */
+    position: absolute; /* Often required for backface-visibility to work reliably */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.flip-wrapper {
+    /* No transition here. Defined by the specific flip class. */
+    height: 15rem;
+    transform-style: preserve-3d;
+    position: relative; /* Ensure children are positioned relative to this */
+    background-color: transparent; /* Ensure no background color interferes */
+}
+/* Style for the back face of the card */
+.ministry-content.back {
+    /* Rotate the back face 360 degrees so it's hidden initially */
+    transform: rotateY(360deg);
+}
+
+/* Make sure the content wrapper fills the space */
+.flip-wrapper > div {
+    /* If you didn't have 'ministry-content', you'd target this div */
+    width: 100%;
+    height: 100%;
+}
+
+/* 2. Column 1 Style: Cube Flip (Clockwise) */
+.flipped-cube-clockwise {
+    /* Define the transition time for the full effect (0.5s is good for a full rotation) */
+    transition: transform 0.5s; 
+    /* Rotate 360 degrees clockwise (+) around the Y-axis */
+    transform: rotateY(360deg); 
+}
+
+/* 3. Column 2 Style: Cube Flip (Anti-Clockwise) */
+.flipped-cube-anticlockwise {
+    /* Define the transition time for the full effect */
+    transition: transform 0.5s; 
+    /* Rotate 360 degrees anti-clockwise (-) around the Y-axis */
+    transform: rotateY(-360deg); 
+}

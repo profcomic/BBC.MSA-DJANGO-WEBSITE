@@ -1,0 +1,73 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}Gallery - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'mainapp/css/gallery_styles.css' %}">
+{% endblock %}
+
+{% block navmenu %}{% endblock %}
+
+{% block topbar_home %}{% endblock %}
+
+{% block home_menu %}{% endblock %} 
+
+{% block leaders_hero %}{% endblock%}
+
+{% block content %}
+
+
+    <!-- Hero Section -->
+   <section class="bg-sky-900 pt-32 pb-16 text-white text-center px-4">
+        <!-- Content is now placed directly in the full-width section -->
+        <h1 class="text-5xl font-extrabold mb-2 tracking-tight">Our Church Gallery</h1>
+        <p class="text-xl text-blue-300">A place of beautiful memories, testimonies, and fellowship.</p>
+    </section>
+
+    <!-- Main Gallery Section -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            
+            <!-- Filter/Search Bar (Placeholder for future functionality) -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0">
+                <h2 class="text-2xl font-bold text-sky-900">Recent Photos & Videos</h2>
+                
+                <div class="flex space-x-3">
+                    <button class="filter-btn bg-sky-700 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-sky-800 transition active" data-filter="all">All Media</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-300 transition" data-filter="photo">Photos</button>
+                    <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-300 transition" data-filter="video">Videos</button>
+                </div>
+            </div>
+
+            <!-- Media Grid Container - Content populated by gallery_script.js -->
+            <div id="media-gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Gallery items will be dynamically inserted here by JavaScript -->
+                <div class="col-span-full text-center py-10 text-gray-500" id="loading-indicator">
+                    <i class="fas fa-spinner fa-spin mr-2"></i> Loading media...
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- Full-Screen Modal for Viewing Media -->
+    <div id="media-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 transition-opacity duration-300 opacity-0" onclick="closeModal(event)">
+        
+        <!-- Close Button -->
+        <button id="modal-close-btn" class="absolute top-4 right-4 text-white text-3xl hover:text-red-500 transition z-50" aria-label="Close Media Viewer" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <!-- Media Content Container (Holds image/video) -->
+        <div id="modal-content" class="max-w-4xl max-h-full w-full h-auto flex items-center justify-center relative">
+            <!-- Dynamically populated with <img> or <iframe> -->
+        </div>
+
+        <!-- Media Title/Caption -->
+        <div class="absolute bottom-0 left-0 right-0 p-4 bg-black/50 text-white text-center">
+            <h3 id="modal-title" class="text-lg font-semibold"></h3>
+        </div>
+    </div>
+
+{% endblock %}

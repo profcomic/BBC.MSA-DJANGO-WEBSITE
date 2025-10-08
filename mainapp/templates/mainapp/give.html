@@ -1,49 +1,25 @@
 {% extends "mainapp/base.html" %}
 {% load static %}
+
+{% block title %}Give - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/give_style.css' %}">
+{% endblock %}
+
 {% block content %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Give - Berean Bible Church</title>
-    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Custom Tailwind configuration for colors and fonts
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // These are example color definitions. Adjust to your actual brand colors.
-                        'berean-blue': '#2A6F97',
-                        'berean-red': '#CC0000',
-                        'berean-lightblue': '#8CD0D2',
-                        'berean-skyblue': '#E0F2F7',
-                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
-                        primary: '#2A6F97', // Example primary color
-                        background: '#FFFFFF', // Example background color
-                        muted: '#F1F5F9', // Example muted background
-                        'muted-foreground': '#64748B', // Example muted text color
-                        'primary-foreground': '#FFFFFF', // Text color on primary background
-                        'card': '#FFFFFF', // Card background
-                        'card-foreground': '#0F172A', // Text color on card background
-                        'input': '#E2E8F0', // Input border color
-                        'ring': '#2A6F97', // Focus ring color
-                        'accent': '#F1F5F9', // Accent background for hover states
-                        'accent-foreground': '#0F172A', // Text color on accent background
-                    },
-                    fontFamily: {
-                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
-                        // You'd need to link Montserrat from Google Fonts or self-host it.
-                        inter: ['Inter', 'sans-serif'],
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <!-- Link for Inter and Montserrat fonts, if used -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/give_style.css' %}">
+{% block ministries_hero %}
+{% endblock%}
+
+{% block home_menu %}
+{% endblock %}
+
+{% block topbar_home %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
 
     <!-- Hero Section -->
     <section class="relative w-full h-[400px] flex items-center justify-center text-center">
@@ -74,7 +50,8 @@
                         <p class="text-muted-foreground">Choose your giving amount and method</p>
                     </div>
                     <div class="p-6 pt-0">
-                        <form id="givingForm" class="space-y-6">
+                        <form id="givingForm" class="space-y-6" method="post" action="{% url 'process_donation' %}">
+                            {% csrf_token %}
                             <!-- Giving Type -->
                             <div>
                                 <label class="text-base font-medium mb-3 block">What would you like to support?</label>
@@ -92,8 +69,28 @@
                                         <label for="building" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Building Fund</label>
                                     </div>
                                     <div class="flex items-center space-x-2">
+                                        <input type="radio" id="men" name="givingType" value="men" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="men" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Men Ministry</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="women" name="givingType" value="women" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="women" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Women Ministry</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
                                         <input type="radio" id="youth" name="givingType" value="youth" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
                                         <label for="youth" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Youth Ministry</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="kids" name="givingType" value="kids" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="kids" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Kids Ministry</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="ministries" name="givingType" value="ministries" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="ministries" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Other Ministries</label>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <input type="radio" id="department" name="givingType" value="department" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="department" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Departmental Funds</label>
                                     </div>
                                     <div class="flex items-center space-x-2">
                                         <input type="radio" id="general" name="givingType" value="general" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />

@@ -1,46 +1,26 @@
 {% extends "mainapp/base.html" %}
 {% load static %}
+
+{% block title %}Contact Us - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/contact_style.css' %}">
+{% endblock %}
+
 {% block content %}
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Berean Bible Church</title>
-    <!-- Tailwind CSS CDN - Recommended for development/prototyping. For production, use a build process. -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Custom Tailwind configuration for colors and fonts
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        // These are example color definitions. Adjust to your actual brand colors.
-                        'berean-blue': '#2A6F97',
-                        'berean-red': '#CC0000',
-                        'berean-lightblue': '#8CD0D2',
-                        'berean-skyblue': '#E0F2F7',
-                        // Default Tailwind colors for 'primary', 'background', 'muted', 'muted-foreground'
-                        // You might need to define these if your original project had them customized
-                        // For simplicity, using common shades for demonstration.
-                        primary: '#2A6F97', // Example primary color
-                        background: '#FFFFFF', // Example background color
-                        muted: '#F1F5F9', // Example muted background
-                        'muted-foreground': '#64748B', // Example muted text color
-                    },
-                    fontFamily: {
-                        // Assuming 'Inter' is the default font, and 'Montserrat' is a custom one.
-                        // You'd need to link Montserrat from Google Fonts or self-host it.
-                        inter: ['Inter', 'sans-serif'],
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <!-- Link for Inter and Montserrat fonts, if used -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/contact_style.css' %}">
- 
-  
+{% block topbar_home %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block home_menu %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+   
  <!-- Contact Info Section -->
     <section class="py-16 bg-background">
         <div class="container mx-auto px-4">
@@ -137,20 +117,28 @@
                                 <label class="block text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Subject *</label>
                                 <div class="flex flex-col space-y-2">
                                     <div class="flex items-center space-x-2">
-                                        <input type="radio" id="general" name="subject" value="general" checked class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
-                                        <label for="general" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">General Inquiry</label>
+                                        <input type="radio" id="general inquiry" name="subject" value="general inquiry" checked class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="general inquiry" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">General Inquiry</label>
                                     </div>
                                     <div class="flex items-center space-x-2">
-                                        <input type="radio" id="prayer" name="subject" value="prayer" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
-                                        <label for="prayer" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Prayer Request</label>
+                                        <input type="radio" id="prayer request" name="subject" value="prayer request" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="prayer request" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Prayer Request</label>
                                     </div>
                                     <div class="flex items-center space-x-2">
-                                        <input type="radio" id="pastoral" name="subject" value="pastoral" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
-                                        <label for="pastoral" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Pastoral Care</label>
+                                        <input type="radio" id="pastoral care" name="subject" value="pastoral care" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="pastoral care" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Pastoral Care</label>
                                     </div>
                                     <div class="flex items-center space-x-2">
-                                        <input type="radio" id="ministry" name="subject" value="ministry" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
-                                        <label for="ministry" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Ministry Information</label>
+                                        <input type="radio" id="ministry report" name="subject" value="ministry report" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="ministry report" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Ministry Report</label>
+                                    </div>
+                                     <div class="flex items-center space-x-2">
+                                        <input type="radio" id="testimony & Inspo" name="subject" value="testimony & Inspo" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="testimony & Inspo" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Testimonies & Inspirations</label>
+                                    </div>
+                                     <div class="flex items-center space-x-2">
+                                        <input type="radio" id="general comments" name="subject" value="general comments" class="h-4 w-4 text-primary focus:ring-primary border-gray-300" />
+                                        <label for="general comments" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">General Comments</label>
                                     </div>
                                 </div>
                             </div>
@@ -203,60 +191,51 @@
     <!-- Toast Container -->
     <div id="toast-container" class="toast-container"></div>
 
+    <div id="toast-container" class="toast-container"></div>
+
     <script>
-        // Simple "toast" notification function
-        function showToast(title, description) {
+        // Simple "toast" notification function (Keep this part)
+        function showToast(title, description, isError = false) {
             const toastContainer = document.getElementById('toast-container');
             const toastElement = document.createElement('div');
-            toastElement.className = 'toast';
+            // Change class based on status for visual feedback
+            toastElement.className = isError ? 'toast toast-error' : 'toast toast-success';
             toastElement.innerHTML = `<strong>${title}</strong><p>${description}</p>`;
             toastContainer.appendChild(toastElement);
 
-            // Show the toast
             setTimeout(() => {
                 toastElement.classList.add('show');
-            }, 10); // Small delay to ensure reflow for transition
+            }, 10);
 
-            // Hide and remove after 3 seconds
             setTimeout(() => {
                 toastElement.classList.remove('show');
                 toastElement.addEventListener('transitionend', () => {
                     toastElement.remove();
                 }, { once: true });
-            }, 3000);
+            }, 5000); // Increased visibility time for feedback
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const contactForm = document.getElementById('contactForm');
             const submitButton = document.getElementById('submitButton');
-
-            // Initialize form data
-            let formData = {
-                name: "",
-                email: "",
-                phone: "",
-                subject: "general", // Default subject
-                message: "",
-            };
-
-            // Function to update form data on input change
-            function handleChange(event) {
-                const { name, value, type, checked } = event.target;
-                if (type === 'radio') {
-                    formData[name] = value;
-                } else {
-                    formData[name] = value;
+            
+            // Function to get CSRF token from the cookie (Standard Django practice)
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        if (cookie.startsWith(name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
                 }
-                // console.log('Form Data:', formData); // For debugging
+                return cookieValue;
             }
+            const csrftoken = getCookie('csrftoken');
 
-            // Attach change listeners to all form elements
-            contactForm.querySelectorAll('input, textarea').forEach(element => {
-                element.addEventListener('input', handleChange);
-            });
-            contactForm.querySelectorAll('input[type="radio"]').forEach(radio => {
-                radio.addEventListener('change', handleChange);
-            });
 
             // Handle form submission
             contactForm.addEventListener('submit', async (event) => {
@@ -265,30 +244,45 @@
                 submitButton.disabled = true;
                 submitButton.textContent = "Sending...";
 
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1500));
-
-                // Display toast notification
-                showToast("Message Sent", "Thank you for contacting us. We'll get back to you soon!");
-
-                // Reset form fields
-                formData = {
-                    name: "",
-                    email: "",
-                    phone: "",
-                    subject: "general",
-                    message: "",
+                // Collect all form data
+                const formData = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    subject: contactForm.querySelector('input[name="subject"]:checked').value,
+                    message: document.getElementById('message').value,
                 };
-                contactForm.reset(); // Resets all form fields to their initial state
-                // Manually set the default radio button back to 'general'
-                document.getElementById('general').checked = true;
+                
+                try {
+                    const response = await fetch('{% url "submit_contact" %}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrftoken // CRUCIAL for Django security
+                        },
+                        body: JSON.stringify(formData)
+                    });
 
+                    const result = await response.json();
 
-                submitButton.disabled = false;
-                submitButton.textContent = "Send Message";
+                    if (response.ok && result.success) {
+                        showToast("Message Sent", "Thank you for contacting us. We'll get back to you soon!");
+                        contactForm.reset(); // Reset form fields on success
+                        document.getElementById('general').checked = true; // Reset radio default
+                    } else {
+                        // Handle server-side validation or error messages
+                        showToast("Error Sending", result.message || "Something went wrong on the server.", true);
+                    }
+
+                } catch (error) {
+                    console.error('Submission Error:', error);
+                    showToast("Network Error", "Could not connect to the server. Please check your connection.", true);
+                } finally {
+                    submitButton.disabled = false;
+                    submitButton.textContent = "Send Message";
+                }
             });
         });
     </script>
-
 
 {% endblock %}

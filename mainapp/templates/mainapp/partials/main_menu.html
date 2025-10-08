@@ -1,0 +1,75 @@
+{% load static %}
+
+<!--navigating menu-->
+   <nav id="mainNavSticky" class="bg-gray-100 shadow-sm py-4 flex justify-center sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col w-full">
+           <div class="max-w-6xl mx-auto flex flex-col mb-4">
+                <div class="flex items-center justify-center text-sm whitespace-nowrap">
+                    <ul class="main-menu-links flex flex-wrap justify-center gap-x-4 font-semibold tracking-wide uppercase">
+                        <li>
+                          <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold">HOME</a>
+                        </li>
+                        <li class="relative group">
+                             <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold flex items-center">
+                              ABOUT US <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                             </a>
+                            <div class="absolute hidden group-hover:block bg-black text-gray-800 p-2 rounded-md shadow-lg">
+                              <a href="{% url 'about' %}" class="block px-4 py-2 hover:bg-gray-700">Our Story</a>
+                              <a href="{% url 'about' %}" class="block px-4 py-2 hover:bg-gray-700">Our Beliefs</a>
+                              <a href="{% url 'leadership' %}" class="block px-4 py-2 hover:bg-gray-700">Our Leadership</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="{% url 'sermons' %}" class="{% if request.resolver_match.url_name == 'sermons' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold">SERMONS</a>
+                        </li>
+                        <li class="relative group">
+                           <a href="{% url 'ministries' %}" class="{% if request.resolver_match.url_name == 'ministries' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold flex items-center">
+                            MINISTRIES <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                           </a>
+                            <div class="absolute hidden group-hover:block bg-black text-gray-800 p-2 rounded-md shadow-lg">
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Leadership Institute</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Trendsetters</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Marriage Connect</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Men Fellowship</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Women's Ministry</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Youth Ministry</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Kid's Ministry</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Music Ministry</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Media Ministry</a> 
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Hospitality Ministry</a>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-700">Outreach Ministry</a>   
+                           </div>
+                        </li>
+                        <li>
+                            <a href="{% url 'inspirations' %}" class="{% if request.resolver_match.url_name == 'inspirations' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold">INSPIRATIONS</a>
+                        </li>
+                        <li>
+                          <a href="{% url 'events' %}" class="{% if request.resolver_match.url_name == 'events' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold">EVENTS</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contact' %}" class="{% if request.resolver_match.url_name == 'contact' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold">CONTACT US</a>
+                        </li>
+                        <li>
+                          <a href="{% url 'berean_store' %}" class="{% if request.resolver_match.url_name == 'berean_store' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold">BEREAN STORE</a>
+                        </li>
+                        <!-- Sidebar Menu -->
+                        <li>    
+                          <button class="focus:outline-none p-2" id="menu-button"> <i class="fas fa-bars text-4xl"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex justify-end items-center mt-4 m2-2">
+                    <form class="relative mr-4">
+                       <input type="text" placeholder="Search" class="pl-8 pr-2 py-1 border rounded focus:outline-none focus:ring-2 focus:ring-sky-400 text-xs">
+                        <span class="absolute left-2 top-2 text-gray-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 16.65z" />
+                        </svg>
+                        </span>
+                    </form>
+                      <a href="{% url 'give' %}" class="px-8 py-3 bg-sky-700 text-white rounded-lg shadow font-bold tracking-wider rounded border-2 border-sky-700 hover:bg-white hover:text-sky-700 transition text-xs uppercase">Give Online</a>
+                </div>
+            </div>
+        </div>
+    </nav>

@@ -1,0 +1,37 @@
+/* --- Global Styles --- */
+body {
+    background-color: #111827; /* Tailwind gray-900 */
+    min-height: 100vh;
+    padding: 1rem; /* Equivalent to p-4 */
+}
+
+/* --- Grid Item Aspect Ratio & Positioning --- */
+.grid-item-container {
+    position: relative;
+    padding-top: 133%; /* 4 / 3 aspect ratio for vertical items */
+    height: 0;
+    overflow: hidden;
+    border-radius: 0.75rem; /* rounded-xl */
+    cursor: pointer; /* Indicate interaction */
+}
+
+.grid-item-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Custom Scrollbar Styling --- */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: #4B5563; /* Gray-600 */
+    border-radius: 4px;
+}
+body::-webkit-scrollbar-track {
+    background-color: #1F2937; /* Gray-800 */
+}

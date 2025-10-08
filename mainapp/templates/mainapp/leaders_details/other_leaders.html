@@ -1,0 +1,148 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}Other Leaders - Berean Ministries{% endblock %}
+{% block content %}
+
+{% block topbar_main %}
+{% endblock %}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock %}
+
+<section class="relative w-full h-[300px] flex items-center justify-center text-center"> 
+    <div class="absolute inset-0 z-0">
+        <img
+            src="{% static 'images/backgrounds/dep_leaders.jpg' %}" 
+            alt="Departmental Leaders Background"
+            class="object-cover w-full h-full brightness-50"
+            loading="eager"
+        />
+    </div>
+    <div class="relative z-10 container mx-auto px-4 text-white"> 
+        <div class="flex items-center justify-center text-sm"> 
+            <a href="{% url 'home' %}" class="text-sky-500 hover:text-gray-300">Home</a>
+            <span class="mx-2"> ▣ </span>
+            <a href="{% url 'leadership' %}" class="text-sky-500 hover:text-gray-300">Team</a>
+            <span class="mx-2"> ▣ </span>
+            <span class="text-white-400">Departmental Leaders</span> 
+        </div>
+           <h1 class="text-4xl font-bold mb-6">DEPARTMENTAL LEADERS</h1>
+        </div>
+</section>
+
+  <!--Departmental leaders-->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-berean-blue">Our Departmental Leaders</h2>
+                <p class="text-muted-foreground max-w-2xl mx-auto">
+                    These are the individuals who have committed themselves, by answering the call to service
+                    spearheading the different ministries or departments in Hallelujah worship sanctuary.
+                </p>
+            </div>
+
+            <div class="mt-12 max-w-4xl mx-auto">
+
+                <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6">  
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                       <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait2.jpg' %}" 
+                            alt="professor" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Elder Joseph Mwalenga</h4>
+                        <p class="text-muted-foreground">Mens' Chairman, Development Chairperson</p>
+                    </div>
+
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">       
+                       <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait2.jpg' %}" 
+                            alt="professor" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Elder Justine Mbaji</h4>
+                        <p class="text-muted-foreground">Mens' Leader</p>
+                    </div>
+
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm"> 
+                       <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait.jpg' %}" 
+                            alt="professor" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Mrs. Victoria Mbaji</h4>
+                        <p class="text-muted-foreground">Women Chairlady, </p>
+                    </div>
+
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">           
+                       <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait.jpg' %}" 
+                            alt="professor" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Mrs. Lilian Joshua</h4>
+                        <p class="text-muted-foreground">Womens' Leader</p>
+                    </div>
+
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait2.jpg' %}" 
+                            alt="professor" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Bro. Anthonney Mwanzah</h4>
+                        <p class="text-muted-foreground">Youths' Chairperson, IT, Media Team Lead</p>
+                    </div>
+                   
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                        <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait.jpg' %}" 
+                            alt="esimi" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Sis. Victoria Esimi</h4>
+                        <p class="text-muted-foreground">Youths' Secretary, Hospitality Team Lead</p>
+                    </div>
+                    
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                         <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait2.jpg' %}" 
+                            alt="ibra" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                    </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Bro. Ibrahim Origha</h4>
+                        <p class="text-muted-foreground">Youths' Treasurer, Ushering Dep Lead</p>
+                    </div>
+                   
+                    <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                         <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait.jpg' %}" 
+                            alt="ann" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                        </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Sis. Ann Staicey</h4>
+                        <p class="text-muted-foreground">CAN Chairlady, Youths' Exec Member</p>
+                    </div>
+                   <div class="bg-berean-skyblue p-6 rounded-lg shadow-sm">
+                         <div class="relative w-full h-auto mb-4 overflow-hidden">
+                            <img src="{% static 'images/leadership/no-portrait2.jpg' %}" 
+                            alt="ibra" 
+                            class="object-cover w-30 h-auto mx-auto" />
+                    </div>
+                        <h4 class="text-xl font-bold mb-2 text-berean-blue">Bro. Emmanuel Ngalla</h4>
+                        <p class="text-muted-foreground">Teens' chairperson</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{%endblock%}

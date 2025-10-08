@@ -2,65 +2,43 @@
 {% load static %}
 {% block content %}
 
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BEREAN BIBLE CHURCH - HOME</title>
+    <title>HOME - HALLELUJAH WORSHIP SANCTUARY-MOMBASA</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'js/tailwind_config.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar_style.css' %}">
+    <script src="{% static 'js/sidebar_script.js' %}"></script>
+    <script src="{% static 'js/home_script.js' %}"></script>
+   
+
+</head>
+
+{% block topbar_main %}
+{% endblock %}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block leaders_hero %}
+{% endblock%}
 
 <b class="font-sans">
-    <!-- Header Section -->
-   <header class="bg-gray-100 py-4 flex justify-center" >
-      <div class="container mx-auto px-4 flex items-center width:140px height:80px">
-        <!-- Logo Section -->
-        <div class="bg-sky-400 flex items-center justify-center" style="width:140px; height:80px;">
-            <img src="{% static 'images/logo.png' %}" alt="Logo" class="w-16 h-16 object-contain">
-        </div>
-        <!-- Info Section -->
-        <div class="flex-1 flex items-center justify-between ml-8">
-            <!--Join us live-->
-            <div class="flex items-center border-r pr-8">
-                <i class="fa-solid text-berean-blue text-xl mr-2"></i>
-                <div>
-                   <a href="https://youtube.com/@bereanbiblechurchmsa?si=rXvdeX3xqQbGbrwC" target="_blank" rel="noopener noreferrer">
-                   <span class="font-bold text-gray-800 block text-sm">Watch Us Live</span>
-                   </a>
-                </div>
-            </div>
-            <!-- Address -->
-            <div class="flex items-center border-r pr-8">
-                <i class="fa-solid fa-map-location-dot text-sky-500 text-2xl mr-2"></i>
-                <div>
-                    <span class="font-bold text-gray-800 block">Address</span>
-                    <span class="text-gray-700 text-sm">1824, Kengeleni Road, Mshomoroni, Mombasa</span>
-                </div>
-            </div>
-            <!-- Phone -->
-            <div class="flex items-center border-r px-8">
-                <i class="fa-solid fa-mobile-screen-button text-sky-500 text-2xl mr-2"></i>
-                <div>
-                    <span class="font-bold text-gray-800 block">Phone</span>
-                    <span class="text-gray-700 text-sm">0741080904</span>
-                </div>
-            </div>
-            <!-- Email -->
-            <div class="flex items-center px-8">
-                <i class="fa-solid fa-envelope text-sky-500 text-2xl mr-2"></i>
-                <div>
-                    <span class="font-bold text-gray-800 block">Email</span>
-                    <span class="text-gray-700 text-sm">bbcmsaheadquarters@gmail.com</span>
-                </div>
-            </div>
-        </div>
-     </div>
-   </header>
 
     <!-- Hero Section -->
 <section id="home" class="relative h-[700px] flex items-center justify-center text-white overflow-hidden">
     <!-- Video Background -->
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
-        <source src="{% static 'videos/hero-bg.mp4' %}" type="video/mp4">
+        <source src="{% static 'videos/Home-hero-bg.mp4' %}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
     <!-- Overlay for darkening the video -->
@@ -87,190 +65,505 @@
           <a href="#continue">Empowerment and Spiritual Growth.</a>
         </div>
         <div class="flex justify-start space-x-8 ml-24 text-xl mb-4">   
-          <button class="mt-4 bg-sky-700 text-white px-6 py-2 rounded border-2 border-sky-700 hover:bg-white hover:text-sky-700 font-bold transition">Learn More</button>
+          <a href="{% url 'about' %}" class="mt-4 bg-sky-700 text-white px-6 py-2 rounded border-2 border-sky-700 hover:bg-white hover:text-sky-700 font-bold transition">Learn More</a>
         </div>
     </div>
 </section>
-<!-- Salutation Section -->
-<section class="py-12 flex items-center bg-black">
-   <div class="relative z-20 text-center w-full md:w-2/3 md:pl-8 mx-auto">
-       <h2 class="text-sm mb-2 text-blue-600 font-bold">SHALOM BRETHREN!</h2>
-       <h3 class="text-2xl text-white font-bold mb-4">We’d love to fellowship with you this Sunday.<br>
-        so gather your loved ones and join us for awesome time in God's presence.</h3>
-        <div class="flex justify-center">
-            <a href="{% url 'contact' %}" class="bg-gradient-to-r from-sky-600 to-blue-700 hover:from-white-600/90 hover:to-red-700/90 text-white px-10 py-5 text-lg font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center rounded-md">
-              <span>Join Us This Sunday</span>
-            </a>
+
+<!-- Welcome Section -->
+<section class="bg-sky-900 py-12 flex items-center justify-center">
+     <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center">
+        <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center items-center">
+            <img src="{% static 'images/leadership/bishop-ibrahim.jpg' %}" alt="Bishop Ibrahim A.O" class="mx-auto h-auto object-cover rounded-md" style="max-height: 400px; width: auto;">
         </div>
-   </div>
-    
+        <div class="md:w-2/3 md:pl-8">
+            <div class="bg-white text-gray-800 p-8 rounded-lg shadow-lg text-left max-w-lg mx-auto md:mx-0">
+                <p class="text-sm font-semibold text-gray-600 mb-1">Bishop Ibrahim A.O - Presiding Bishop</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Welcome to BBC Mombasa!</h2>
+                <hr class="border-t-2 border-blue-500 w-16 mb-4">
+                <p class="mt-2 text-gray-700 mb-4">Our hope is that you will experience the love and warmth that is in BBC Mombasa.<br>
+                    My prayer is that you will encounter God amidst the family, and strengthen your walk with Him. <br>
+                     Check us out, but more importantly, seek the truth of God that can only be known in Christ Jesus.</p>
+                <a href="{% url 'about' %}" class="bg-white text-blue-700 border-2 border-blue-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Learn More</a>
+            </div>
+        </div>
+    </div>
 </section>
+
 <!-- About Section -->
  <section class="bg-white py-12 text-center">
     <div class="container mx-auto px-4">
         <div class="flex flex-col md:flex-row items-center md:items-start justify-center">
             <div class="md:w-1/2 lg:w-1/3 mb-8 md:mb-0 md:pr-8 flex justify-center">
-                <img src="{% static 'images/banners/divine-exaltation-banner.jpg' %}" alt="2025 Theme Banner" class="mx-auto w-full max-w-sm object-contain">
+                <img src="{% static 'images/banners/2025.jpg' %}" alt="2025 Theme Banner" class="mx-auto w-full max-w-sm object-contain">
             </div>
             <div class="md:w-1/2 lg:w-2/3 text-left pl-6">
-                <h2 class="text-lg font-semibold text-gray-700 mb-2">BEREAN BIBLE CHURCH</h2>
-                <h3 class="text-3xl font-bold text-red-600 mb-4">God's church with excellence.</h3>
+                <h2 class="text-lg font-semibold text-gray-700 mb-2">BEREAN BIBLE CHURCH-HALLELUJAH WORSHIP SANCTUARY</h2>
+                <h3 class="text-3xl font-bold text-blue-600 mb-4">God's Empowerment Centre</h3>
 
                 <p class="text-gray-700 mb-4">BBC Mombasa is a community of believers committed <br>
                     to living out the teachings of Christ. We believe that church is a Family <br>
                     and Not a congregation. Ours is a family church that is concerned with <br>
-                    your well-being through prayer and mutual support of pastoral care <br>
+                    your well-being through prayer,word and mutual support of pastoral care <br>
                     for all members.</p>
                 <p class="text-gray-700 mb-4">The BBC Ministries have a God given mandate of Raising <br>
                     Kingdom Citizens.These are the people who are deliberate on pursuing their <br>
                     God-given purposes in their different areas of calling-whether in ministry or <br>
                     in their personal lives.</p>
+                <p class="text-gray-700 mb-4">We are not just a church; we are a hub for Apostolic action.<br>
+                    Founded on a deep commitment to the Word (like the Bereans), we operate as a spiritual <br>
+                    center where fervent Prayer meets passionate Mission. We believe in equipping every believer <br>
+                    to carry the full power of the Holy Spirit and transform their community for Christ.</p>
                 <p class="text-gray-700 mb-4">Thanks for stopping by our website. Whether it's your <br>
                     first visit or you're visiting our site again, we love that you're taking time <br>
                     to visit online. We hope you find a great place to connect with our family.</p>
 
-                <div class="flex flex-col sm:flex-row justify-start mt-6">
-                    <div class="flex flex-col items-start w-full sm:w-1/2 pr-4 sm:pr-2">
-                        <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center mb-2">
-                            <i class="fas fa-eye text-white text-xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-800 mb-1">Our Vision</h4>
-                        <p class="text-gray-700 text-sm">To be a church that reflects <br>
-                         the love of Christ, reaches the lost, <br>
-                         and raises up leaders who impact the world.</p>
-                    </div>
-                    <div class="flex flex-col items-start w-full sm:w-1/2 pl-4 sm:pl-2 mt-4 sm:mt-0">
-                        <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center mb-2">
-                            <i class="fas fa-flag text-white text-xl"></i>
-                        </div>
-                        <h4 class="text-xl font-bold text-gray-800 mb-1">Our Mission</h4>
-                        <p class="text-gray-700 text-sm"> To love God, love people, <br>
-                            and make disciples who transform communities<br>
-                            through the power of the Gospel..</p>
-                    </div>
-                </div>
             </div>
         </div>
-
-        <div class="mt-12">
+        <div class="py-20 bg-berean-skyblue mt-12 border-t-8 border-b-8 border-yellow-500 relative overflow-hidden">
             <h3 class="text-2xl font-bold text-gray-800 mb-6">WHAT'S GOOD BRETHREN</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="p-6 bg-gray-100 rounded-lg shadow-md text-center">
-                    <div class="text-2xl mb-4 text-red-600">📣</div>
-                    <h4 class="text-lg font-bold text-gray-800 mb-2">Good News</h4>
-                    <p class="text-gray-700 mb-4">Join us every Sunday at 8 AM or 10 AM to hear a good word from the Lord.</p>
-                    <a href="#" class="text-red-600 hover:underline font-semibold">Read More</a>
+                    <div class="text-2xl mb-4 text-sky-500">📣</div>
+                    <h4 class="text-lg font-bold text-gray-800 mb-2">Berean Culture</h4>
+                    <p class="text-gray-700 mb-4">Join us every Sunday at 8 AM or 10 AM to have a great time in worship and fellowship.</p>
+                    <a href="#" class="text-sky-500 hover:underline font-semibold">Read More</a>
                 </div>
                 <div class="p-6 bg-gray-100 rounded-lg shadow-md text-center">
-                    <div class="text-2xl mb-4 text-red-600">🔔</div>
+                    <div class="text-2xl mb-4 text-sky-500">🔔</div>
                     <h4 class="text-lg font-bold text-gray-800 mb-2">Join Us</h4>
                     <p class="text-gray-700 mb-4">Spiritual growth begins by feeding your spirit with the word of God regularly.</p>
-                    <a href="#" class="text-red-600 hover:underline font-semibold">Read More</a>
+                    <a href="{% url 'contact' %}" class="text-sky-500 hover:underline font-semibold">Read More</a>
                 </div>
                 <div class="p-6 bg-gray-100 rounded-lg shadow-md text-center">
-                    <div class="text-2xl mb-4 text-red-600">🎁</div>
+                    <div class="text-2xl mb-4 text-sky-500">🎁</div>
                     <h4 class="text-lg font-bold text-gray-800 mb-2">Serve God</h4>
-                    <p class="text-gray-700 mb-4">God has given us all a talent and BBC MOMBASA can serve using the talent He has given.</p>
-                    <a href="#" class="text-red-600 hover:underline font-semibold">Read More</a>
+                    <p class="text-gray-700 mb-4">God has given us all a gifts and BBC MOMBASA can serve using the talent He has given.</p>
+                    <a href="#" class="text-sky-500 hover:underline font-semibold">Read More</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-    <!-- Welcome Section -->
-    <section class="bg-sky-900 py-12 flex items-center justify-center">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center">
-            <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center items-center">
-                <img src="{% static 'images/leadership/bishop-ibrahim.jpg' %}" alt="Bishop Ibrahim A.O" class="mx-auto h-auto object-cover rounded-md" style="max-height: 400px; width: auto;">
+<!-- Salutation Section -->
+<section class="py-20 lg:py-24 flex items-center bg-gray-900 overflow-hidden relative">
+    <div class="absolute inset-0 bg-cover bg-center opacity-10" 
+         style="background-image: url('your-background-texture-image.jpg');">
+    </div>
+    <div class="relative z-20 text-center w-full max-w-5xl mx-auto px-4">
+        <p class="text-sm tracking-widest uppercase mb-4 font-extrabold text-blue-400">
+            A SPIRITUAL TRUTH
+        </p>
+        <h2 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-8">
+            <span class="block text-white">The Most Accurate Measure</span>
+            <span class="block bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-sky-400">
+                Of Your Spiritual Life
+            </span>
+            <span class="block text-white/90 mt-2 italic">Is Your Prayer Life.</span>
+        </h2>
+        <p class="text-lg sm:text-xl text-gray-300 mb-10 max-w-3xl mx-auto">
+            Deepen your walk with God. Join us for a powerful time of corporate prayer and growth.
+        </p>
+        <div class="flex justify-center">
+            <a href="{% url 'contact' %}" 
+               class="
+                   bg-gradient-to-r from-sky-500 to-indigo-600 
+                   hover:from-indigo-600 hover:to-sky-500 
+                   text-white px-12 py-4 text-xl font-bold 
+                   rounded-full shadow-2xl transition-all duration-300 
+                   transform hover:scale-105 hover:shadow-sky-500/50 
+                   tracking-wider border-2 border-sky-400
+               "
+               >
+               <span>Commit to Prayer Today</span>
+            </a>
+        </div>
+    </div> 
+</section>
+
+<!--Order of service-->
+<section class="relative py-12 overflow-hidden">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-extrabold text-sky-900 mb-2">Our Sunday Worship Times</h2>
+        <p class="text-lg text-gray-600 mb-8">Choose the service that fits your schedule!</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 text-left">
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-sky-500">
+                <h3 class="text-2xl font-bold text-sky-700 mb-4">Morning Youth Service</h3>
+                <p class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i class="fa-regular fa-clock text-sky-500 mr-3"></i> 6:00 AM – 8:00 AM</p>
+                <ul class="space-y-3 text-gray-700 list-none pl-0">
+                    <li class="flex items-start"><i class="fa-solid fa-cross text-sky-500 mr-3 mt-1"></i> First Intercessions & Worship</li>
+                    <li class="flex items-start"><i class="fa-solid fa-bible text-sky-500 mr-3 mt-1"></i> Teaching of the Word (Sermon)</li>
+                    <li class="flex items-start"><i class="fa-solid fa-hands-praying text-sky-500 mr-3 mt-1"></i> Second Intercessions</li>
+                    <li class="flex items-start"><i class="fa-solid fa-handshake-simple text-sky-500 mr-3 mt-1"></i> Announcements & Offerings</li>
+                </ul>
             </div>
-            <div class="md:w-2/3 md:pl-8">
-                <div class="bg-white text-gray-800 p-8 rounded-lg shadow-lg text-left max-w-lg mx-auto md:mx-0">
-                    <p class="text-sm font-semibold text-gray-600 mb-1">Bishop Ibrahim A.O - Presiding Bishop</p>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Welcome to BBC Mombasa!</h2>
-                    <hr class="border-t-2 border-red-500 w-16 mb-4">
-                    <p class="mt-2 text-gray-700 mb-4">My hope is that you will experience the love and warmth that is BBC Mombasa.<br>
-                         My prayer is that you will encounter God amidst the family, and strengthen your walk with Him. <br>
-                         Check us out, but more importantly, seek the truth of God that can only be known in Christ Jesus.</p>
-                    <button class="bg-white text-red-700 border-2 border-red-700 px-6 py-2 rounded hover:bg-red-700 hover:text-white font-bold transition">Learn More</button>
-                </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-yellow-500">
+                <h3 class="text-2xl font-bold text-yellow-500 mb-4">First Service</h3>
+                <p class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i class="fa-regular fa-clock text-yellow-500 mr-3"></i> 9:00 AM – 11:00 AM</p>
+                <ul class="space-y-3 text-gray-700 list-none pl-0">
+                    <li class="flex items-start"><i class="fa-solid fa-cross text-yellow-500 mr-3 mt-1"></i> Intercessions & Worship</li>
+                    <li class="flex items-start"><i class="fa-solid fa-school text-yellow-500 mr-3 mt-1"></i> Sunday School Session Kickoff</li>
+                    <li class="flex items-start"><i class="fa-solid fa-bible text-yellow-500 mr-3 mt-1"></i> Teaching of the Word</li>
+                    <li class="flex items-start"><i class="fa-solid fa-hands-praying text-yellow-500 mr-3 mt-1"></i> Intercession & Altercall</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-blue-600">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">Second or Main Fellowship Service</h3>
+                <p class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i class="fa-regular fa-clock text-blue-600 mr-3"></i> 11:00 AM – 1:30 PM</p>
+                 <ul class="space-y-3 text-gray-700 list-none pl-0">
+                    <li class="flex items-start"><i class="fa-solid fa-cross text-blue-600 mr-3 mt-1"></i> Opening Prayer & High Praise</li>
+                    <li class="flex items-start"><i class="fa-solid fa-church text-blue-600 mr-3 mt-1"></i> Sunday School Rejoining</li>
+                    <li class="flex items-start"><i class="fa-solid fa-hands-praying text-blue-600 mr-3 mt-1"></i> Testimony, Offering, & Ministry Time [Presentations]</li>
+                    <li class="flex items-start"><i class="fa-solid fa-bible text-blue-600 mr-3 mt-1"></i> Main Sermon</li>
+                    <li class="flex items-start"><i class="fa-solid fa-handshake-simple text-blue-600 mr-3 mt-1"></i> Fellowship Announcements & Blessing</li>
+                    <li class="flex items-start"><i class="fa-solid fa-handshake-simple text-blue-600 mr-3 mt-1"></i> Departmental Breakout Meetings</li>
+                </ul>
             </div>
         </div>
-    </section>
+        <p class="mt-8 text-md text-gray-500">All services are held at BBC - Halelujah Worship Sanctuary,  1824, Kengeleni Road, Mshomoroni, Mombasa.</p>
+    </div>
+</section>
 
-    <!-- Ministries Section -->
-    <section class="py-12 text-center">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-6">Our Ministries</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-4 bg-white shadow-md rounded">
-                    <img src="{% static 'images/ministries/leadership-ministry.jpg' %}" alt="BBC Leadership Institute" class="mx-auto mb-2" style="width: 100px; height: 100px;">
-                    <h3 class="text-lg font-semibold">The Berean Leadership Institute</h3>
-                    <p class="text-gray-700 mt-2">Raises leaders who influence <br>
-                        the world and the church of <br>
-                        God for His glory. <br>
-                        BBC-LI educates...</p>
-                    <a href="#" class="text-red-600 hover:underline">Read More</a>
-                </div>
-                <div class="p-4 bg-white shadow-md rounded">
-                    <img src="{% static 'images/ministries/kids-ministry.png' %}" alt="BBC-Kids" class="mx-auto mb-2" style="width: 100px; height: 100px;">
-                    <h3 class="text-lg font-semibold">BBC -Kids</h3>
-                    <p class="text-gray-700 mt-2">BBC-Kids is the <br>
-                        children’s ministry of BBC MOMBASA. <br>
-                        The BBC-Kids ministry...</p>
-                    <a href="#" class="text-red-600 hover:underline">Read More</a>
-                </div>
-                <div class="p-4 bg-white shadow-md rounded">
-                    <img src="{% static 'images/ministries/trendsetters.png' %}" alt="Trendsetters" class="mx-auto mb-2" style="width: 100px; height: 100px;">
-                    <h3 class="text-lg font-semibold">Trendsetters</h3>
-                    <p class="text-gray-700 mt-2">A ministry of youth where all <br>
-                        influence of youth light can<br>
-                         influence the world of BBC MSA...</p>
-                    <a href="#" class="text-red-600 hover:underline">Read More</a>
-                </div>
-            </div>
+<!--call to action (CTA)-->
+<section class="py-16 bg-blue-50 border-y-4 border-gradient-to-r from-yellow-400 via-sky-400 to-indigo-600 relative overflow-hidden">
+    <div class="relative z-20 text-center w-full max-w-4xl mx-auto px-4">
+        <h2 class="text-xl sm:text-2xl mb-3 text-sky-700 font-extrabold uppercase tracking-wider">
+            SHALOM BRETHREN!
+        </h2>
+        <h3 class="text-3xl sm:text-4xl text-gray-900 font-bold mb-6 leading-snug">
+            We’d love to <b>Fellowship with you this Sunday.</b><br>
+            So gather your loved ones and <b>join us for awesome time in God's presence.</b>
+        </h3>
+        <div class="flex justify-center mt-8">
+            <a href="{% url 'contact' %}" 
+               class="
+                   bg-sky-600 hover:bg-sky-700 
+                   text-white px-10 py-5 text-lg font-semibold 
+                   shadow-xl rounded-lg 
+                   transform hover:scale-105 transition-all duration-300 
+                   flex items-center justify-center 
+                   border-b-4 border-sky-800
+               ">
+               <i class="fa-solid fa-cross text-xl mr-3"></i>
+               <span>Join Us This Sunday</span>
+            </a>
         </div>
-    </section>
+    </div> 
+</section>
 
-    <!-- Events Section -->
-    <section id="events" class="bg-sky-900 text-white py-8">
-        <div class="container mx-auto px-4 flex justify-between items-center flex-col md:flex-row">
-            <div class="flex items-center mb-4 md:mb-0">
-                <img src="{% static 'images/logos/logo.png' %} alt="Logo" class="w-16 h-16 object-contain">
-                <span class="text-2xl font-bold text-red-600">BBC MSA</span>
-                <button class="ml-4 bg-sky-600 text-white px-4 py-2 rounded hover:bg-blue-700">View All Upcoming Events</button>
+<!-- Weekly Services-->
+<section class="py-12 bg-sky-50">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-extrabold text-sky-900 mb-2">Weekly Services & Activities</h2>
+        <p class="text-lg text-gray-600 mb-8">Join us throughout the week for fellowship and spiritual growth.</p>
+
+        <div class="relative overflow-hidden">
+            <div id="service-carousel" class="flex transition-transform duration-500 ease-in-out">
+            
+                <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-sky-500 h-full">
+                        <h4 class="text-xl font-bold text-sky-700 mb-2 flex items-center"><i class="fa-solid fa-users text-sky-700 mr-3"></i> Trendsetters Youth Bible Study</h4>
+                        <p class="text-gray-800"><b>MONDAY</b></p>
+                        <p class="text-gray-600 text-sm mt-1"><b>6:00 PM - 8:00 PM</b></p>
+                        <p class="text-gray-500 text-sm mt-2">Engaging session for young adults and youth, aiming at researching the word, Compiling Revelations, Q & A session fostering biblical knowledge and mentorship.</p>
+                    </div>
+                </div>
+
+                <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-blue-500 h-full">
+                        <h4 class="text-xl font-bold text-blue-700 mb-2 flex items-center"><i class="fa-solid fa-cloud-moon text-blue-500 mr-3"></i> Intercessory Night</h4>
+                        <p class="text-gray-800"><b>TUESDAY</b></p>
+                        <p class="text-gray-600 text-sm mt-1"><b>10:00 PM - 3:00 AM</b></p>
+                        <p class="text-sm text-gray-500 mt-2">A powerful session where the intercessory department converge overnight, focused on prayer, prophetic declarations, and fellowship.</p>
+                    </div>
+                </div>
+
+                <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-yellow-500 h-full">
+                        <h4 class="text-xl font-bold text-yellow-500 mb-2 flex items-center"><i class="fa-solid fa-house text-yellow-500 mr-3"></i> HBCs Fellowship</h4>
+                        <p class="text-gray-800"><b>WEDNESDAY</b></p>
+                        <p class="text-gray-600 text-sm mt-1"><b>5:00 PM - 7:00 PM</b></p>
+                        <p class="text-sm text-gray-500 mt-2">A Home based Service at the comfort of your hood, focused on spreading the gospel and bonding at your hood level.</p>
+                    </div>
+                </div>
+
+                <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-sky-500 h-full">
+                        <h4 class="text-xl font-bold text-sky-500 mb-2 flex items-center"><i class="fa-solid fa-church text-sky-500 mr-3"></i> MidWeek Main Service</h4>
+                        <p class="text-gray-800"><b>THURSDAY</b></p>
+                        <p class="text-gray-600 text-sm mt-1"><b>4:30 PM - 7:00 PM</b></p>
+                        <p class="text-sm text-gray-500 mt-2">A powerful service focused on prayer, Praising & Worshiping, sharing the word, prophetic declarations, and fellowship.</p>
+                    </div>
+                </div>
+            
+                <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-blue-700 h-full">
+                        <h4 class="text-xl font-bold text-blue-800 mb-2 flex items-center"><i class="fa-solid fa-handshake-simple text-blue-800 mr-3"></i> Youths Fellowship</h4>
+                        <p class="text-gray-800"><b>FRIDAY</b></p>
+                        <p class="text-gray-600 text-sm mt-1">6:00 PM - 8:00 PM</p>
+                        <p class="text-sm text-gray-500 mt-2">Engaging session for youth, mainly for prayers, Fellowship.</p>
+                    </div>
+                </div>
+
+                <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-sky-900 h-full">
+                        <h4 class="text-xl font-bold text-sky-900 mb-2 flex items-center"><i class="fa-solid fa-hands-clapping text-sky-900 mr-3"></i> Corporate Intercessory Session</h4>
+                        <p class="text-gray-800"><b>FRIDAY NIGHT</b></p>
+                        <p class="text-gray-600 text-sm mt-1">10:00 PM - 3:00 AM</p>
+                        <p class="text-sm text-gray-500 mt-2">Lets gathering and fulfill "Ought to pray always" through intense intercession and corporate prayer.</p>
+                    </div>
+                </div>
+            
+                <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-gray-700 h-full">
+                        <h4 class="text-xl font-bold text-gray-700 mb-2 flex items-center"><i class="fa-solid fa-hands-praying text-gray-700 mr-3"></i> Preparation Day</h4>
+                        <p class="text-gray-800"><b>SATURDAY</b></p>
+                        <p class="text-gray-600 text-sm mt-1"><b>10:00 AM - 9:00 PM</b></p>
+                        <p class="text-sm text-gray-500 mt-2">A Day dedicated to get ready for sunday service; Media, Youths, Praise & Worship and Any other Ministries meet to plan for the D-day.</p>
+                    </div>
+                </div>
+
+                <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-yellow-500 h-full">
+                        <h4 class="text-xl font-bold text-yellow-500 mb-2 flex items-center"><i class="fa-solid fa-bible text-yellow-500 mr-3"></i> BBC-Kids Fellowship</h4>
+                        <p class="text-gray-800"><b>SATURDAY</b></p>
+                        <p class="text-gray-600 text-sm mt-1"><b>2:00 PM - 4:00 PM</b></p>
+                        <p class="text-sm text-gray-500 mt-2">A fun and engaging session for children, focused on learning the word of God through stories, songs, and interactive activities as they prepare for Sunday Sessions.</p>
+                    </div>
+                </div>
+
             </div>
-            <div class="text-center md:text-right">
-                <h2 class="text-xl font-semibold text-red-600">BBC MSA EVENTS</h2>
-                <div class="mt-2">
-                    <span class="text-lg">3RD Women Of Value Conference</span>
-                    <div class="flex space-x-2 justify-center md:justify-end">
-                        <span class="px-2 bg-red-700 rounded">7D</span>
-                        <span class="px-2 bg-red-700 rounded">24H</span>
-                        <span class="px-2 bg-red-700 rounded">60M</span>
-                        <span class="px-2 bg-red-700 rounded">60S</span>
+            </div>
+
+        <p class="mt-8 text-md text-gray-500"><b>NOTE:</b> All meetings take place at the main church sanctuary unless otherwise announced.</p>
+    </div>
+</section>
+<!--Ministries Section-->
+{% load static %}
+<section class="py-12 text-center bg-gray-50">
+    <!-- This hidden JSON block feeds all ministry data to the JavaScript for the flipping mechanism. -->
+<script id="ministry-data" type="application/json">
+    {
+        "col1": [
+            {% for m in col1_ministries %}
+                {
+                    "title": "{{ m.title|escapejs }}", 
+                    "image": "{% static 'images/ministries/' %}{{ m.image|escapejs }}", 
+                    "description": "{{ m.description|escapejs }}"
+                }
+                {% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ],
+        "col2": [
+            {% for m in col2_ministries %}
+                {
+                    "title": "{{ m.title|escapejs }}", 
+                    "image": "{% static 'images/ministries/' %}{{ m.image|escapejs }}", 
+                    "description": "{{ m.description|escapejs }}"
+                }
+                {% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ]
+    }
+</script>
+
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-sky-900 mb-8">Explore Our Ministries</h2>
+        <div id="flipping-ministries" class="flex justify-center space-x-8"> 
+            <!--COLUMN 1: Clockwise Cube Flip -->
+            <div id="col-1" class="column-group min-w-[300px] max-w-[350px] perspective-1000">
+                <div class="logo-background-layer">
+                 <!--CRITICAL: Remove Tailwind transition class to let CSS file control timing (1.0s) -->
+                    <div id="wrapper-1" class="flip-wrapper relative w-full h-full"> 
+                        {% with ministry=col1_ministries.0 %}
+                        {% include "mainapp/partials/ministry_card.html" with title=ministry.title image=ministry.image description=ministry.description %}
+                        {% endwith %}
+                    </div>
+                </div>
+            </div>
+            <!-- COLUMN 2: Anti-Clockwise Cube Flip -->
+            <div id="col-2" class="column-group min-w-[300px] max-w-[350px] perspective-1000">
+                <div class="logo-background-layer">
+                  <!-- CRITICAL: Remove Tailwind transition class to let CSS file control timing (1.0s) -->
+                    <div id="wrapper-2" class="flip-wrapper relative w-full h-full">
+                        {% with ministry=col2_ministries.0 %}
+                           {% include "mainapp/partials/ministry_card.html" with title=ministry.title image=ministry.image description=ministry.description %}
+                        {% endwith %}
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+        <a href="{% url 'ministries' %}" class="inline-block mt-12 bg-sky-700 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow-lg hover:bg-sky-800 transition duration-300">
+            View All Ministries & Departments
+        </a>
+    </div>
+</section>
 
-    <!-- Prayer Request Section -->
-    <section class="bg-white py-8 text-center">
-            <div class="container mx-auto px-4">
-                <div class="inline-block bg-gray-100 p-4 rounded shadow-md">
-                    <p class="text-gray-800 flex items-center justify-center">
-                        <img src="{% static 'images/ministries/prayer.jpg' %}" alt="Prayer" class="mr-2 h-25 w-20 object-contain">
-                        Send us a prayer request <span class="text-red-600 ml-1">+254 (0) 741080904</span><br>
-                        <p class="text-gray-600">Call or send a message via SMS or WhatsApp.</p>
-                    </p>
-                    
+<!--Testimonials,,success story slider-->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-extrabold text-sky-900 mb-4">Lives Transformed</h2>
+        <p class="text-lg text-gray-600 mb-10">Hear how God is moving in our family.</p>
+        
+        <div class="max-w-xl mx-auto p-8 bg-gray-100 rounded-2xl shadow-xl border-t-4 border-yellow-500">
+            <i class="fa-solid fa-quote-left text-4xl text-yellow-500 mb-4"></i>
+            <p class="text-xl italic text-gray-700 mb-6">
+                "Since joining BBC Mombasa, my prayer life has become consistent and powerful. I finally feel rooted in the Word and equipped for my calling."
+            </p>
+            <div class="flex items-center justify-center">
+                <img src="{% static 'images/testimonials/member_1.jpg' %}" alt="Testimonial Photo" class="w-16 h-16 rounded-full object-cover border-2 border-yellow-500 mr-4">
+                <div>
+                    <p class="font-bold text-lg text-sky-900">Mrs. Redempta Katana</p>
+                    <p class="text-sm text-gray-500">Joined 2024 | Intercessory Ministry</p>
                 </div>
             </div>
-        </section>
+            <a href="{% url 'inspirations' %}" class="inline-block mt-10 text-sky-600 hover:text-sky-800 font-semibold transition duration-300">
+            See More <i class="fa-solid fa-arrow-right ml-2"></i>
+        </a>
+        </div>
+
+        <a href="{% url 'contact' %}" class="inline-block mt-10 text-sky-600 hover:text-sky-800 font-semibold transition duration-300">
+            Share Your Story <i class="fa-solid fa-arrow-left ml-2"></i>
+        </a>
+    </div>
+</section>
+
+<!-- Events Section -->
+<section id="events" class="bg-sky-900 text-white py-12">
+    <h2 class="text-4xl font-extrabold text-white mb-2 ml-4 uppercase tracking-widest">Upcoming Ministry Event</h2>
+     <p class="text-xl text-blue-300 ml-16"><i>Don't miss the next move of God!</i></p>
+    <div class="container mx-auto px-4 flex justify-between items-center flex-col lg:flex-row">
+        
+        <div class="flex items-center mb-6 lg:mb-0 space-x-4">
+            <img src="{% static 'images/logos/logo.png' %}" alt="Logo" class="w-16 h-16 object-contain">
+            <span class="text-3xl font-bold text-blue-600 hidden sm:inline">BBC MSA</span>
+            <a href="{% url 'events' %}">
+                <button class="bg-sky-600 text-white px-4 py-3 text-lg rounded-full font-bold shadow-xl hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                    <i class="fa-solid fa-calendar-check mr-2"></i>All Upcoming Events
+                </button>
+            </a>
+        </div>
+        <div class="shadow-3xl rounded-xl overflow-hidden transform hover:scale-[1.01] transition duration-500 border-4 border-orange-900/80">
+                <a href="{% url 'events' %}" aria-label="View details for Youths' Overnight Service">
+                    <img src="{% static 'images/events/next_event_flyer.jpg' %}" 
+                         alt="Youths' Overnight Service Event Flyer" 
+                         class="w-full h-auto object-cover rounded-lg"
+                         loading="lazy">
+                </a>
+        </div>
+
+        <div class="text-center lg:text-right mt-4 md:mt-0 w-full lg:w-auto">
+            <h3 class="text-2xl font-extrabold text-orange-600 mb-2 uppercase tracking-widest">Featured Event</h3>
+            <p class="text-2xl font-bold mb-4">Youths' Overnight Service</p>
+            
+            <div id="youth-countdown-timer" class="flex justify-center lg:justify-end space-x-4">
+                
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex flex-col justify-center items-center shadow-lg">
+                        <span id="youth-countdown-days" class="text-3xl md:text-4xl font-bold text-blue-600"></span>
+                        <span class="text-xs text-gray-700 font-medium mt-[-2px]">Days</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex flex-col justify-center items-center shadow-lg">
+                        <span id="youth-countdown-hours" class="text-3xl md:text-4xl font-bold text-blue-600"></span>
+                        <span class="text-xs text-gray-700 font-medium mt-[-2px]">Hours</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex flex-col justify-center items-center shadow-lg">
+                        <span id="youth-countdown-minutes" class="text-3xl md:text-4xl font-bold text-blue-600"></span>
+                        <span class="text-xs text-gray-700 font-medium mt-[-2px]">Mins</span>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-24 md:h-24 bg-white rounded-full flex flex-col justify-center items-center shadow-lg">
+                        <span id="youth-countdown-seconds" class="text-3xl md:text-4xl font-bold text-blue-600"></span>
+                        <span class="text-xs text-gray-700 font-medium mt-[-2px]">Secs</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="text-sm text-white/80 mt-2 mb-6">Scheduled for November 15, 2025 at 10:00 PM</p>
+            <button class="bg-sky-600 text-white px-4 py-3 text-lg rounded-full font-bold shadow-xl hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+                <i class="fa-solid fa-calendar-check mr-2"></i> View Event Details
+            </button>
+        </div>
+    </div>
+</section>
 
 
-    <!-- Additional Content Section -->
-   
+<!-- Prayer Request Section -->
+<section class="py-20 bg-sky-100 border-t-8 border-b-8 border-yellow-500 relative overflow-hidden"> 
+    <section class="py-20 bg-sky-100 border-t-8 border-b-8 border-yellow-500 relative overflow-hidden">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-xl font-extrabold text-sky-700 uppercase tracking-widest mb-3">
+             Your Spiritual Life is Our Priority
+            </h2>
+            <p class="text-4xl sm:text-5xl font-black text-gray-900 mb-10">
+             Need Prayer? We're Here For You.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
+                <div class="w-full md:w-1/3 p-6 bg-white rounded-xl shadow-2xl transition duration-300 hover:shadow-sky-400/50">
+                    <i class="fa-brands fa-whatsapp text-6xl text-green-500 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Connect Instantly</h3>
+                    <p class="text-gray-600 mb-4">Call or send a message via SMS or WhatsApp for urgent prayer.</p>
+                    <a href="https://wa.me/254741080904" 
+                        class="inline-block bg-sky-500 text-white font-bold py-3 px-6 rounded-full hover:bg-green-600 transition duration-300">
+                        <i class="fa-solid fa-phone-volume mr-2"></i> +254 (0) 741080904
+                    </a>
+                </div>
+                <div class="w-full md:w-1/3 p-6 bg-white rounded-xl shadow-2xl transition duration-300 hover:shadow-sky-400/50">
+                    <i class="fa-solid fa-envelope-open-text text-6xl text-blue-800 mb-4"></i>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Submit a Request</h3>
+                    <p class="text-gray-600 mb-4">Send a private, confidential prayer request to our Intercessory Team.</p>
+                    <a href="{% url 'contact' %}" 
+                       class="inline-block bg-blue-800 text-white font-bold py-3 px-6 rounded-full hover:bg-sky-600 transition duration-300">
+                       <i class="fa-solid fa-paper-plane mr-2"></i> Send Prayer Request
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+<!-- Photo Gallery Section -->
+<section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-extrabold text-sky-900 text-center mb-10">Recent Church Highlights</h2>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300">
+                <img src="{% static 'images/gallery/worship_1.jpg' %}" alt="Worship Team" class="w-full h-48 object-cover">
+            </div>
+            <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300">
+                <img src="{% static 'images/gallery/youth_event.jpg' %}" alt="Youth Event" class="w-full h-48 object-cover">
+            </div>
+            <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300">
+                <img src="{% static 'images/gallery/baptism.jpg' %}" alt="Baptism" class="w-full h-48 object-cover">
+            </div>
+            <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300 hidden lg:block">
+                <img src="{% static 'images/gallery/mission_trip.jpg' %}" alt="Mission Outreach" class="w-full h-48 object-cover">
+            </div>
+        </div>
+
+        <div class="text-center mt-10">
+            <a href="{% url 'gallery' %}" class="inline-block bg-sky-700 text-white px-8 py-3 rounded-lg text-lg font-semibold shadow-lg hover:bg-sky-800 transition duration-300">
+                View Full Photo Gallery
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Additional Content Section -->
+  
 
 {% endblock %}

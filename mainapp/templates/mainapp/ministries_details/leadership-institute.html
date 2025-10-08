@@ -1,0 +1,218 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}BBC Leadership Institute - Training Leaders for Ministry{% endblock %}
+{% block topbar_main %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<head>  
+    <style>
+        .section-bg {
+            /* Using a dark color with a subtle pattern for a professional feel */
+            background-color: #0c4a6e; /* Dark Teal/Blue */
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+            background-size: 8px 8px;
+        }
+    </style>
+</head>
+
+<b class="font-sans">
+    <!-- Hero Section (Full Width) -->
+    <section class="section-bg pt-32 pb-16 text-white text-center px-4">
+        <div class="max-w-4xl mx-auto">
+            <!-- Logo/Icon Placeholder -->
+            <div class="logo-placeholder inline-block mb-6 p-4 bg-white rounded-full shadow-lg">
+               <img src="{% static 'images/ministries/leadership-ministry.png' %}" alt="Bishop Ibrahim A.O" class="mx-auto h-auto object-cover rounded-md" style="max-height: 400px; width: auto;">
+            </div>
+
+            <h1 class="text-6xl font-extrabold mb-4 tracking-tight">BBC Leadership Institute</h1>
+            <p class="text-2xl font-light text-blue-200">Equipping all believers for effective ministry and transformative leadership.</p>
+        </div>
+    </section>
+
+    <!-- Main Content and Sidebar Container (3/4 and 1/4 Split) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            
+            <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+            <main class="lg:col-span-3 space-y-12">
+
+                <!-- Introduction -->
+                <section class="bg-white p-8 rounded-xl ministry-card border-t-4 border-sky-500">
+                    <h2 class="text-3xl font-bold text-blue-600 mb-4 border-b pb-2">Welcome & Vision </h2>
+                    
+                    <p class="mb-4 leading-relaxed">Welcome to the vibrant and dynamic leadership Ministry of BBC CHURCHES, where our vision is to shape BELIEVERS into influencers who illuminate the world with the light of Christ through their God-given purpose.</p>
+                    
+                    <p class="mb-6 leading-relaxed">......</p>
+
+                    <p class="leading-relaxed font-medium text-blue-700">.....</p>
+                </section>
+
+                <!--Vision, Mission,  Slogan block -->
+                <div class="grid md:grid-cols-3 gap-8">
+                     <!-- Vision Card -->
+                    <div class="p-6 border border-blue-100 rounded-xl shadow-lg bg-white transition hover:shadow-2xl">
+                        <i class="fas fa-eye text-5xl text-blue-700 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Our Vision</h3>
+                        <p class="text-gray-600">To cultivate a generation of **spiritually mature, highly competent leaders** capable of expanding God's kingdom and impacting every sphere of influence.</p>
+                    </div>
+
+                    <!-- Mission Card -->
+                    <div class="p-6 border border-blue-100 rounded-xl shadow-lg bg-white transition hover:shadow-2xl">
+                         <i class="fas fa-bullseye text-5xl text-blue-700 mb-4"></i>
+                         <h3 class="text-xl font-bold text-gray-800 mb-2">Our Mission</h3>
+                         <p class="text-gray-600">To **facilitate transformative training** through biblical doctrine, practical ministry skills, and mentorship in a disciplined and empowering environment.</p>
+                    </div>
+
+                    <!-- Slogan Card -->
+                    <div class="p-6 border border-blue-100 rounded-xl shadow-lg bg-white transition hover:shadow-2xl">
+                         <i class="fas fa-star-of-life text-5xl text-blue-700 mb-4"></i>
+                         <h3 class="text-xl font-bold text-gray-800 mb-2">Our Slogan</h3>
+                         <p class="text-gray-600 font-extrabold text-lg">"Trained to Serve, Empowered to Lead."</p>
+                    </div>
+                </div>
+
+                <!-- Governing pillars-->
+                <section>
+                    <h2 class="text-4xl font-extrabold text-blue-900 mb-6 text-center">Our Governing Pillars</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        
+                        <!-- pillar Card 1 -->
+                        <div class="bg-white p-6 rounded-xl ministry-card border-l-4 border-sky-500">
+                            <h3 class="text-2xl font-bold text-blue-900 mb-2 flex items-center"><i class="fas fa-pencil-ruler mr-3"></i>Sound Doctrine</h3>
+                            <p class="text-gray-700">True doctrine is essential to the faith, and it is the glue that binds a church together. Not only that, but teaching and preaching it is one of my primary responsibilities as a pastor. Titus 2:1 instructs, “Speak thou the things which become sound doctrine.” And 2 Timothy 4:2 charges, “Preach the word; be instant in season, out of season; reprove, rebuke, exhort with all long suffering and doctrine.”</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl ministry-card border-l-4 border-indigo-800">
+                            <h3 class="text-2xl font-bold text-indigo-800 mb-2 flex items-center"><i class="fas fa-child mr-3"></i>Servant Leadership</h3>
+                            <p class="text-gray-700">Like Jesus’ disciples, we are quick to slip into worldly philosophies of leadership. We want to be recognized, respected, honored, and allowed exceptions.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl ministry-card border-l-4 border-lime-500">
+                            <h3 class="text-2xl font-bold text-lime-500 mb-2 flex items-center"><i class="fas fa-hands-helping mr-3"></i>Model Christian Teamwork<span class="text-lg font-normal text-gray-500 ml-2">(8-10 years)</span></h3>
+                            <p class="text-gray-700">The church is a team, and Christians are the players. In God’s design, we will commit to a common focus and coordinated efforts—“striving together for the faith of the gospel” (Philippians 1:27).</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl ministry-card border-l-4 border-purple-700">
+                            <h3 class="text-2xl font-bold text-purple-700 mb-2 flex items-center"><i class="fas fa-graduation-cap mr-3"></i>Strive for Biblical Balance</h3>
+                            <p class="text-gray-700">If we are to avoid the tragedies of imbalanced lives or ministry, it will only be by God’s grace and with commitment to centering our focus on Christ.</p>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl ministry-card border-l-4 border-purple-700">
+                            <h3 class="text-2xl font-bold text-purple-700 mb-2 flex items-center"><i class="fas fa-graduation-cap mr-3"></i>Walking In Spirit</h3>
+                            <p class="text-gray-700">This pillar of spiritual leadership is truly foundational. No lasting work for God will take place without the work of the Spirit of God.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!--content-->
+                <section class="py-16 bg-gray-50">
+                    <h2 class="text-4xl font-extrabold text-center text-blue-800 mb-6">Why Enroll in the Leadership Institute?</h2>
+                    <div class="container mx-auto px-6 space-y-6">
+                        
+                        <!-- Section 1: Inclusivity & Purpose -->
+                        <div class="md:flex items-start bg-white p-6 rounded-xl shadow-lg">
+                            <div class="md:w-1/3 flex justify-center mb-4 md:mb-0">
+                               <i class="fas fa-users-crown text-6xl text-blue-600"></i>
+                            </div>
+                            <div class="md:w-2/3 md:pl-8">
+                                <h3 class="text-2xl font-semibold text-gray-800 mb-3">For Every Ministry Worker</h3>
+                                <p class="text-gray-600">This institute is not limited by age or current position. Whether you lead a large department, mentor a small group, or serve in an administrative role, we provide the **theological foundation and practical strategies** required for maturity and excellence in your area of service.</p>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Core Values & Environment -->
+                        <div class="md:flex items-start bg-white p-6 rounded-xl shadow-lg flex-row-reverse">
+                            <div class="md:w-1/3 flex justify-center mb-4 md:mb-0">
+                              <i class="fas fa-book-open-reader text-6xl text-blue-600"></i>
+                            </div>
+                            <div class="md:w-2/3 md:pr-8 text-right">
+                               <h3 class="text-2xl font-semibold text-gray-800 mb-3">A Nurturing & Innovative Setting</h3>
+                               <p class="text-gray-600">Our mission is to facilitate transformative training through biblical doctrine, practical ministry skills, and mentorship. We foster a disciplined yet **empowering environment** where seasoned and emerging leaders can explore, sharpen, and apply their God-given gifts for maximum impact.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Call to Action -->
+                    <div class="text-center pt-8">
+                        <p class="text-xl text-gray-700 mb-6 font-medium">Ready to take the next step in your calling?</p>
+                        <a href="#" class="inline-block px-10 py-4 bg-red-600 text-white text-lg font-bold rounded-full shadow-xl hover:bg-red-700 transition transform hover:scale-105">
+                            Enroll Today <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </section>
+                
+                <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
+                    <a href="#" class="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i> Prev</a>
+                    <a href="{% url 'kids_ministry' %}" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition flex items-center">Next <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+            </main>
+
+            <aside class="lg:col-span-1 space-y-8">
+                
+                <!-- Search Space -->
+                <div class="bg-white p-6 rounded-xl ministry-card shadow-lg border-t-4 border-orange-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-search mr-2 text-orange-600"></i> Search Articles</h3>
+                    <form action="#" method="get" class="flex">
+                        <input 
+                            type="search" 
+                            name="q" 
+                            placeholder="e.g. prayer tips" 
+                            class="w-full p-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        >
+                        <button type="submit" class="p-3 bg-sky-500 text-white rounded-r-lg hover:bg-sky-600 transition">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Articles (Vertically Arranged) -->
+                <div class="bg-white p-6 rounded-xl ministry-card shadow-lg border-t-4 border-blue-500">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-feather-alt mr-2 text-blue-500"></i> Latest Leadership Articles</h3>
+                    <ul class="space-y-4">
+                       
+                        <li class="border-b pb-4 last:border-b-0 last:pb-0">
+                            <a href="#" class="block text-blue-700 font-semibold hover:text-blue-900 transition">5 Ways of leading through influence</a>
+                            <p class="text-xs text-gray-500 mt-1">By Bishop Ibrahim • Jan 2, 2023</p>
+                        </li>
+                      
+                        <li class="border-b pb-4 last:border-b-0 last:pb-0">
+                            <a href="#" class="block text-blue-700 font-semibold hover:text-blue-900 transition">The Dos and Don't of leadership</a>
+                            <p class="text-xs text-gray-500 mt-1">By Bishop Ibrahim• Sep 28, 2024</p>
+                        </li>
+                       
+                        <li class="border-b pb-4 last:border-b-0 last:pb-0">
+                            <a href="#" class="block text-blue-700 font-semibold hover:text-blue-900 transition">Practical Leadership</a>
+                            <p class="text-xs text-gray-500 mt-1">By Prophettes Alison • Apr 15, 2023</p>
+                        </li>
+                        
+                        <li>
+                            <a href="#" class="block text-blue-700 font-semibold hover:text-blue-900 transition">You can do it</a>
+                            <p class="text-xs text-gray-500 mt-1">By Professor • Aug 1, 2025</p>
+                        </li>
+                        
+                        <li>
+                            <a href="#" class="block text-blue-700 font-semibold hover:text-blue-900 transition">Your Impact matters</a>
+                            <p class="text-xs text-gray-500 mt-1">Rev Odanga • Aug 10, 2022</p>
+                        </li>
+                    </ul>
+                    <a href="#" class="mt-4 inline-block text-sm font-semibold text-sky-500 hover:text-sky-700 transition">View All Articles <i class="fas fa-chevron-right ml-1 text-xs"></i></a>
+                </div>
+               
+                <div class="bg-white p-6 rounded-xl ministry-card shadow-lg border-t-4 border-green-700">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-phone-alt mr-2 text-green-700"></i> Get in Touch</h3>
+                    <p class="text-sm text-gray-700">Have questions about the curriculum or events?</p>
+                    <a href="mailto:kids@bbc.org" class="mt-3 block text-center py-2 bg-green-700 text-white font-semibold rounded-lg hover:bg-lime-500 transition">Email the Team</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+{%endblock%}
