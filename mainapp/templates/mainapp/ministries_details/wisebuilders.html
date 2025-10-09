@@ -1,0 +1,265 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}BBC Women's Fellowship - Wisdom, Strength, Influence{% endblock %}
+{% block topbar_main %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<head> 
+    <style>
+        /* Unique color scheme for Women's Fellowship: Deep Berry/Maroon with Rose Gold/Pink accents */
+        .womens-hero-bg {
+            background-color: #831843; /* Deep Berry/Maroon */
+            background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, transparent 60%), 
+                              linear-gradient(45deg, rgba(251, 203, 5, 0.2) 0%, transparent 100%); /* Subtle gold/cream shimmer */
+            background-size: cover;
+        }
+        .text-accent-pink {
+            color: #fda4af; /* Rose Gold/Pink Accent */
+        }
+        .text-berry {
+            color: #831843; /* Deep Berry */
+        }
+        /* Custom scrollbar for the testimonial box */
+        .testimonial-scroll {
+            max-height: 500px;
+            overflow-y: auto;
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: #fda4af #ffffff; /* Firefox */
+        }
+        .testimonial-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .testimonial-scroll::-webkit-scrollbar-thumb {
+            background-color: #fda4af; /* Rose Gold thumb */
+            border-radius: 10px;
+        }
+        .testimonial-scroll::-webkit-scrollbar-track {
+            background: #f3f4f6; /* Light gray track */
+        }
+    </style>
+    <!-- Font Awesome is assumed to be loaded for icons -->
+</head>
+
+<b class="font-sans">
+    <!-- Hero Section -->
+    <section class="womens-hero-bg pt-32 pb-16 text-white text-center px-4 shadow-2xl">
+        <div class="max-w-4xl mx-auto">
+            <div class="logo-placeholder inline-block mb-6 p-6 bg-white bg-opacity-10 rounded-full shadow-xl border-4 border-accent-pink">
+               <i class="fas fa-hand-holding-heart text-6xl text-accent-pink"></i> <!-- Icon for nurturing and grace -->
+            </div>
+
+            <h1 class="text-7xl font-extrabold mb-4 tracking-tighter text-white">Women's Fellowship</h1>
+            <p class="text-3xl font-light text-accent-pink leading-snug italic">"A foolish Woman is a crisis to her home"</p>
+        </div>
+    </section>
+
+    <!-- Main Content and Sidebar Container (3/4 and 1/4 Split) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            
+            <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+            <main class="lg:col-span-3 space-y-12">
+
+                <!-- Welcome & Vision Section -->
+                <section class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-berry">
+                    <h2 class="text-3xl font-bold text-berry mb-4 border-b pb-2">The Call to Wisdom: Becoming a Builder</h2>
+                    
+                    <p class="mb-4 leading-relaxed text-gray-700">Welcome to the **BBC Women's Fellowship**. Our ministry is founded on the timeless wisdom of Proverbs, recognizing the immense power and influence a woman holds within her home, church, and community. The woman of God is not just a participant; she is a **spiritual architect**—her wisdom builds, and her hands nurture life.</p>
+                    
+                    <p class="mb-4 leading-relaxed text-gray-700">Our mandate challenges us to rise above passivity and embrace **Godly wisdom**, ensuring that our presence is a blessing, not a burden, to our families. We are dedicated to providing the spiritual tools and sisterhood necessary for every woman to lead with grace, build with strength, and intercede with power.</p>
+                    
+                    <p class="leading-relaxed font-medium text-berry">Join us as we equip ourselves to be women whose foundation is the Word, whose strength is in prayer, and whose influence transforms generations.</p>
+                </section>
+
+                <!-- NEW SECTION: Spotlight on Spiritual Architecture (The Crisis vs. The Builder) -->
+                <section class="p-8 rounded-xl bg-pink-50 shadow-inner border-l-8 border-accent-pink">
+                    <h2 class="text-3xl font-bold text-berry mb-4">Preventing Crisis, Cultivating Builders</h2>
+                    <p class="mb-6 text-gray-700">The mandate **"A foolish Woman is a crisis to her home"** drives our purpose. We focus on transforming vulnerability into vital strength:</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-xl font-semibold text-red-600 mb-2 flex items-center"><i class="fas fa-triangle-exclamation mr-2"></i> The Crisis (What We Prevent)</h4>
+                            <ul class="space-y-2 text-gray-600 list-disc pl-5">
+                                <li>Emotional exhaustion and burnout.</li>
+                                <li>Lack of spiritual clarity and direction.</li>
+                                <li>Division and strife in the family unit.</li>
+                                <li>Isolation and feeling unsupported.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-green-700 mb-2 flex items-center"><i class="fas fa-trowel-bricks mr-2"></i> The Builder (What We Cultivate)</h4>
+                            <ul class="space-y-2 text-gray-600 list-disc pl-5">
+                                <li>Proactive intercession and spiritual authority.</li>
+                                <li>Financial stewardship and prudence.</li>
+                                <li>Resilience in adversity and unwavering faith.</li>
+                                <li>Harmonious and joyful family environments.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Core Focus Areas -->
+                <section class="py-12 bg-gray-50 rounded-xl shadow-inner border-t-4 border-accent-pink">
+                    <h2 class="text-4xl font-extrabold text-center text-berry mb-8">Four Pillars of the Wise Woman</h2>
+                    <p class="text-center max-w-3xl mx-auto text-gray-600 mb-10">Our programs focus on four key areas to ensure holistic growth and powerful impact in every sphere of life.</p>
+                    
+                    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        
+                        <!-- Pillar Cards (4 items) -->
+                        <div class="p-4 rounded-lg bg-white shadow-xl text-center border-b-4 border-accent-pink hover:shadow-2xl transition transform hover:scale-105">
+                            <i class="fas fa-lightbulb text-5xl text-berry mb-3"></i>
+                            <h3 class="text-lg font-bold text-gray-800 uppercase tracking-wider mt-2">Spiritual Wisdom</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-xl text-center border-b-4 border-accent-pink hover:shadow-2xl transition transform hover:scale-105">
+                            <i class="fas fa-house-person-leave text-5xl text-berry mb-3"></i>
+                            <h3 class="text-lg font-bold text-gray-800 uppercase tracking-wider mt-2">Nurture & Home</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-xl text-center border-b-4 border-accent-pink hover:shadow-2xl transition transform hover:scale-105">
+                            <i class="fas fa-hands-holding-child text-5xl text-berry mb-3"></i>
+                            <h3 class="text-lg font-bold text-gray-800 uppercase tracking-wider mt-2">Intercessory Prayer</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-xl text-center border-b-4 border-accent-pink hover:shadow-2xl transition transform hover:scale-105">
+                            <i class="fas fa-users-line text-5xl text-berry mb-3"></i>
+                            <h3 class="text-lg font-bold text-gray-800 uppercase tracking-wider mt-2">Community Influence</h3>
+                        </div>
+                    <div>
+                </section>
+
+                <!-- Programs & Activities -->
+                <section class="py-12 space-y-8">
+                    <h2 class="text-4xl font-extrabold text-center text-berry mb-8">Building Programs & Sisterhood</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        
+                        <!-- Program 1: Mentorship -->
+                        <div class="p-6 rounded-xl shadow-2xl bg-white border-t-4 border-pink-500">
+                            <i class="fas fa-handshake-angle text-5xl text-pink-600 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">The Titus 2 Mentorship Circle</h3>
+                            <p class="text-gray-600">Connecting seasoned women of faith with younger sisters to pass down practical wisdom on marriage, parenting, ministry, and spiritual discipline.</p>
+                        </div>
+                        
+                        <!-- Program 2: Retreats -->
+                        <div class="p-6 rounded-xl shadow-2xl bg-white border-t-4 border-accent-pink">
+                            <i class="fas fa-spa text-5xl text-accent-pink mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Annual Retreat: The Oasis of Grace</h3>
+                            <p class="text-gray-600">A dedicated weekend of rest, worship, deep teaching, and fellowship designed to refresh the spirit and strengthen the inner woman for the journey ahead.</p>
+                        </div>
+
+                        <!-- Program 3: Bible Study -->
+                        <div class="p-6 rounded-xl shadow-2xl bg-white border-t-4 border-purple-500">
+                            <i class="fas fa-bible text-5xl text-purple-600 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Weekly Builders' Bible Study</h3>
+                            <p class="text-gray-600">Focused small group studies that delve into scripture to extract practical, actionable wisdom for navigating complex family, career, and ministry situations.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NEW SECTION: Recommended Resources for Wisdom -->
+                <section class="py-12 bg-white rounded-xl shadow-2xl border-t-4 border-berry">
+                    <h2 class="text-4xl font-extrabold text-center text-berry mb-8">Resources for Continuous Growth</h2>
+                    <p class="text-center max-w-3xl mx-auto text-gray-600 mb-10">We encourage personal study to cement the wisdom shared in our fellowship. Dive into these foundational resources:</p>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 px-6">
+                        
+                        <!-- Resource 1 -->
+                        <div class="p-4 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition">
+                            <h3 class="text-lg font-bold text-berry">Book: The Power of a Praying Woman</h3>
+                            <p class="text-sm text-gray-600 mt-1">A guide to developing a powerful, strategic prayer life that impacts every sphere of your home and ministry.</p>
+                            <a href="#" class="text-xs font-medium text-accent-pink hover:text-pink-600 mt-2 block">Read More <i class="fas fa-chevron-right ml-1"></i></a>
+                        </div>
+                        
+                        <!-- Resource 2 -->
+                        <div class="p-4 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition">
+                            <h3 class="text-lg font-bold text-berry">Podcast: Wise Woman Wednesday</h3>
+                            <p class="text-sm text-gray-600 mt-1">Weekly episodes covering emotional intelligence, financial planning, and balancing professional ambition with Godly principles.</p>
+                            <a href="#" class="text-xs font-medium text-accent-pink hover:text-pink-600 mt-2 block">Listen Now <i class="fas fa-chevron-right ml-1"></i></a>
+                        </div>
+                        
+                        <!-- Resource 3 -->
+                        <div class="p-4 border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition">
+                            <h3 class="text-lg font-bold text-berry">Bible Study: Proverbs 31 Deep Dive</h3>
+                            <p class="text-sm text-gray-600 mt-1">A 6-week study kit focusing on the modern application of the virtuous woman's character and business acumen.</p>
+                            <a href="#" class="text-xs font-medium text-accent-pink hover:text-pink-600 mt-2 block">Download Study Guide <i class="fas fa-chevron-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Call to Action -->
+                <section class="bg-pink-700 p-8 rounded-xl text-center shadow-2xl">
+                    <p class="text-2xl font-extrabold text-white mb-4">Embrace Your Influence. Become a Builder.</p>
+                    <p class="text-xl text-pink-100 mb-6 font-medium">Your wisdom is the foundation. Are you ready to strengthen your home?</p>
+                    <a href="#" class="inline-block px-10 py-4 bg-accent-pink text-berry text-lg font-bold rounded-full shadow-xl hover:bg-pink-300 transition transform hover:scale-105">
+                        Join the Sisterhood <i class="fas fa-ring ml-2"></i>
+                    </a>
+                </section>
+
+
+                <!-- Navigation Links -->
+                <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
+                    <a href="{% url 'thepriests' %}" class="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i>Prev</a>
+                    <a href="{% url 'firecarriers' %}" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-pink-800 transition flex items-center">Next<i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+            </main>
+
+            <!-- RIGHT SIDE: Sidebar Area (1/4 Width) -->
+            <aside class="lg:col-span-1 space-y-8">
+                
+                <!-- Women's Testimonials & Highlights Section -->
+                <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-accent-pink">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-star-of-life mr-2 text-accent-pink"></i> Stories of Transformed Homes</h3>
+                    <p class="text-sm text-gray-600 mb-4">Inspirational testimonies from women who found strength and guidance through the fellowship.</p>
+                    
+                    <div class="testimonial-scroll space-y-6 pr-2">
+                        
+                        <!-- Testimonial 1 -->
+                        <div class="p-4 bg-pink-50 border-l-4 border-pink-400 rounded-lg shadow-md">
+                            <p class="text-sm italic text-gray-700 mb-2">"The study on **Intercessory Prayer** changed my home. I stopped fighting my battles in my own strength and saw God move in my husband's heart and my children's lives."</p>
+                            <p class="text-xs font-semibold text-berry">— Jane K., Intercessor</p>
+                        </div>
+
+                        <!-- Testimonial 2 (Highlight Story) -->
+                        <div class="p-4 bg-gray-100 border-l-4 border-berry rounded-lg shadow-md">
+                            <h4 class="text-sm font-bold text-berry mb-1">Highlight: The Nurturing Workshop</h4>
+                            <p class="text-xs text-gray-700">Our recent "Building Healthy Homes" workshop saw over 80 women learn practical, Christ-centered skills for managing household finances and conflict resolution with **Wisdom**.</p>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="p-4 bg-pink-50 border-l-4 border-pink-400 rounded-lg shadow-md">
+                            <p class="text-sm italic text-gray-700 mb-2">"Before, I felt overwhelmed as a single mother. The **Mentorship Circle** gave me the practical and spiritual roadmap I needed to raise my children in the fear of the Lord. I am now a builder."</p>
+                            <p class="text-xs font-semibold text-berry">— Mary N., Mother</p>
+                        </div>
+
+                        <!-- Testimonial 4 (Highlight Story) -->
+                        <div class="p-4 bg-gray-100 border-l-4 border-berry rounded-lg shadow-md">
+                            <h4 class="text-sm font-bold text-berry mb-1">Project Impact: Dignity Drive</h4>
+                            <p class="text-xs text-gray-700">The Fellowship successfully executed a "Dignity Drive," providing essential supplies and discipleship to women in local shelters, demonstrating Christ-like **Compassion** in the community.</p>
+                        </div>
+                        
+                         <!-- Testimonial 5 -->
+                        <div class="p-4 bg-pink-50 border-l-4 border-pink-400 rounded-lg shadow-md">
+                            <p class="text-sm italic text-gray-700 mb-2">"The **Spiritual Wisdom** sessions challenged me to handle my career success and home life with humility and balance. It's truly a place where women iron sharpens iron."</p>
+                            <p class="text-xs font-semibold text-berry">— Aisha M., Executive</p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Contact Card (Quick Link) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-berry">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-envelope-open-text mr-2 text-berry"></i> Connect with Us</h3>
+                    <p class="text-sm text-gray-700">Ready to join a sisterhood committed to building strong, Godly lives? Find out more.</p>
+                    <a href="mailto:women@bbc.org" class="mt-3 block text-center py-2 bg-berry text-white font-semibold rounded-lg hover:bg-pink-800 transition">Email the Women's Ministry Head</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+{%endblock%}

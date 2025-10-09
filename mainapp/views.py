@@ -2,8 +2,14 @@
 
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
-import json
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+import json
+import requests
+import hmac
+import hashlib
+from decimal import Decimal
 from .models import Offering 
 from .models import ContactMessage
 
@@ -101,7 +107,7 @@ def bshp_A_O(request):
         'leader_full_name': "BISHOP DR. IBRAHIM ANG'ANA OYOTI", 
         'page_title_nav': "Bishop Ibrahim",   # Short name for the breadcrumb navigation
     }
-    return render(request, 'mainapp/leaders_details/first_family/pst_alfred.html', context)
+    return render(request, 'mainapp/leaders_details/first_family/bshp_A.O.html', context)
 
 def rev_lorine(request):
     context = {
@@ -152,12 +158,6 @@ def other_leaders(request):
     }
     return render(request, 'mainapp/leaders_details/other_leaders.html', context)
 
-def kids_ministry(request):
-    context = {
-        'ministry_full_name': "BBC KIDS MINISTRY", 
-        'page_title_nav': "Kids Ministry",   
-    }
-    return render(request, 'mainapp/ministries_details/kids-ministry.html', context)
 
 def leadership_institute(request):
     context = {
@@ -165,6 +165,49 @@ def leadership_institute(request):
         'page_title_nav': "Leadership Institute",   
     }
     return render(request, 'mainapp/ministries_details/leadership-institute.html', context)
+
+def trendsetters(request):
+    context = {
+        'ministry_full_name': "BBC TRENDSETTERS", 
+        'page_title_nav': "Trendsetters",   
+    }
+    return render(request, 'mainapp/ministries_details/trendsetters.html', context)
+
+def marriage_konekt(request):
+    context = {
+        'ministry_full_name': "BBC MARRIAGE CONNECT", 
+        'page_title_nav': "Marej Konekt",   
+    }
+    return render(request, 'mainapp/ministries_details/marriage_konekt.html', context)
+
+def thepriests(request):
+    context = {
+        'ministry_full_name': "BBC MEN FELLOWSHIP", 
+        'page_title_nav': "The Priestly Men",   
+    }
+    return render(request, 'mainapp/ministries_details/thepriests.html', context)
+
+def wisebuilders(request):
+    context = {
+        'ministry_full_name': "BBC WOMEN FELLOWSHIP", 
+        'page_title_nav': "The Wise Women",   
+    }
+    return render(request, 'mainapp/ministries_details/wisebuilders.html', context)
+
+def firecarriers(request):
+    context = {
+        'ministry_full_name': "BBC YOUTHS MINISTRY", 
+        'page_title_nav': "The Fire Blaizers",   
+    }
+    return render(request, 'mainapp/ministries_details/firecarriers.html', context)
+
+def kids_ministry(request):
+    context = {
+        'ministry_full_name': "BBC KIDS MINISTRY", 
+        'page_title_nav': "Kids Ministry",   
+    }
+    return render(request, 'mainapp/ministries_details/kids-ministry.html', context)
+
 
 
 
@@ -197,38 +240,185 @@ def submit_contact(request):
             
     return JsonResponse({'success': False, 'message': 'Invalid request method.'}, status=400)
 # ==========================================================
-# 3. TRANSACTION VIEWS
+# 3. PAYSTACK PAYMENT VIEWS
 # ==========================================================
 
 @require_POST
-def process_donation(request):
+def initialize_payment(request):
     """
-    Handles form submission for donations and saves the record to the database.
-    NOTE: Integration with a real payment gateway (like M-Pesa or PayPal) 
-    is required here before redirection.
+    Initialize Paystack payment and return payment URL
     """
     try:
-        # Get data from the POST request, handling potential empty/missing fields
-        amount_value = request.POST.get('customAmountInput') or request.POST.get('selectedAmount')
+        data = json.loads(request.body)
         
-        # Save the offering record
-        new_offering = Offering.objects.create(
-            first_name=request.POST.get('firstName', ''),
-            last_name=request.POST.get('lastName', ''),
-            email=request.POST.get('email', ''),
-            phone=request.POST.get('phone', ''),
-            giving_type=request.POST.get('givingType', 'Tithes'), # Default to Tithes if missing
-            amount=amount_value, 
-            frequency=request.POST.get('frequency', 'One-Time'),
-            notes=request.POST.get('notes', ''),
-            # transaction_id='PLACE_PAYMENT_GATEWAY_ID_HERE' 
+        # Extract donation details
+        amount = float(data.get('amount', 0))
+        email = data.get('email')
+        first_name = data.get('firstName')
+        last_name = data.get('lastName')
+        phone = data.get('phone', '')
+        giving_type = data.get('givingType', 'tithe')
+        frequency = data.get('frequency', 'one-time')
+        notes = data.get('notes', '')
+        
+        # Convert amount to kobo (Paystack uses smallest currency unit)
+        amount_in_kobo = int(amount * 100)
+        
+        # Create offering record with pending status
+        offering = Offering.objects.create(
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            phone=phone,
+            giving_type=giving_type,
+            amount=Decimal(str(amount)),
+            frequency=frequency,
+            notes=notes,
+            payment_status='pending'
         )
         
-        # Redirect to the thank you page after successful creation (and payment processing)
-        return redirect('thank_you_view') 
-    
+        # Initialize Paystack transaction
+        url = "https://api.paystack.co/transaction/initialize"
+        headers = {
+            "Authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}",
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "email": email,
+            "amount": amount_in_kobo,
+            "reference": f"BBC-{offering.id}-{offering.date_given.strftime('%Y%m%d%H%M%S')}",
+            "callback_url": request.build_absolute_uri('/payment/callback/'),
+            "metadata": {
+                "offering_id": offering.id,
+                "donor_name": f"{first_name} {last_name}",
+                "giving_type": giving_type,
+                "frequency": frequency
+            }
+        }
+        
+        response = requests.post(url, json=payload, headers=headers)
+        response_data = response.json()
+        
+        if response_data.get('status'):
+            # Update offering with Paystack reference
+            offering.paystack_reference = response_data['data']['reference']
+            offering.save()
+            
+            return JsonResponse({
+                'success': True,
+                'authorization_url': response_data['data']['authorization_url'],
+                'reference': response_data['data']['reference']
+            })
+        else:
+            offering.payment_status = 'failed'
+            offering.save()
+            return JsonResponse({
+                'success': False,
+                'message': response_data.get('message', 'Payment initialization failed')
+            }, status=400)
+            
     except Exception as e:
-        # Handle errors (e.g., failed validation, database error)
-        print(f"Error saving donation: {e}")
-        # Re-render the give page with an error message
-        return render(request, 'mainapp/give.html', {'error': 'There was an error processing your donation. Please check your details.'})
+        print(f"Error initializing payment: {e}")
+        return JsonResponse({
+            'success': False,
+            'message': 'An error occurred while processing your request'
+        }, status=500)
+
+
+def payment_callback(request):
+    """
+    Handle Paystack payment callback
+    """
+    reference = request.GET.get('reference')
+    
+    if not reference:
+        return redirect('give')
+    
+    # Verify transaction
+    url = f"https://api.paystack.co/transaction/verify/{reference}"
+    headers = {
+        "Authorization": f"Bearer {settings.PAYSTACK_SECRET_KEY}"
+    }
+    
+    try:
+        response = requests.get(url, headers=headers)
+        response_data = response.json()
+        
+        if response_data.get('status') and response_data['data']['status'] == 'success':
+            # Update offering record
+            offering = Offering.objects.get(paystack_reference=reference)
+            offering.payment_status = 'success'
+            offering.transaction_id = response_data['data']['id']
+            offering.payment_channel = response_data['data']['channel']
+            offering.paid_at = response_data['data']['paid_at']
+            offering.save()
+            
+            return redirect('thank_you_page')
+        else:
+            return redirect('give')
+            
+    except Offering.DoesNotExist:
+        return redirect('give')
+    except Exception as e:
+        print(f"Error verifying payment: {e}")
+        return redirect('give')
+
+
+@csrf_exempt
+@require_POST
+def paystack_webhook(request):
+    """
+    Handle Paystack webhook notifications
+    """
+    # Verify webhook signature
+    paystack_signature = request.headers.get('X-Paystack-Signature')
+    
+    if not paystack_signature:
+        return JsonResponse({'status': 'error', 'message': 'No signature'}, status=400)
+    
+    # Compute signature
+    hash_object = hmac.new(
+        settings.PAYSTACK_SECRET_KEY.encode('utf-8'),
+        request.body,
+        hashlib.sha512
+    )
+    expected_signature = hash_object.hexdigest()
+    
+    if paystack_signature != expected_signature:
+        return JsonResponse({'status': 'error', 'message': 'Invalid signature'}, status=400)
+    
+    try:
+        payload = json.loads(request.body)
+        event = payload.get('event')
+        data = payload.get('data')
+        
+        if event == 'charge.success':
+            reference = data.get('reference')
+            offering = Offering.objects.get(paystack_reference=reference)
+            offering.payment_status = 'success'
+            offering.transaction_id = data.get('id')
+            offering.payment_channel = data.get('channel')
+            offering.paid_at = data.get('paid_at')
+            offering.save()
+            
+        elif event == 'charge.failed':
+            reference = data.get('reference')
+            offering = Offering.objects.get(paystack_reference=reference)
+            offering.payment_status = 'failed'
+            offering.save()
+            
+        return JsonResponse({'status': 'success'})
+        
+    except Exception as e:
+        print(f"Webhook error: {e}")
+        return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+
+
+# Legacy donation processing (kept for backward compatibility)
+@require_POST
+def process_donation(request):
+    """
+    Legacy donation processing - redirects to Paystack flow
+    """
+    return redirect('give')

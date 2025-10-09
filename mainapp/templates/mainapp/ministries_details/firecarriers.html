@@ -1,0 +1,371 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}BBC Youth Fellowship - Youthful Stage in His Presence{% endblock %}
+{% block topbar_main %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<head> 
+    <style>
+        /* Unique color scheme for Youth Fellowship: Electric Blue and Cyan/Aqua accents */
+        .youth-hero-bg {
+            background-color: #007FFF; /* Electric Blue */
+            background-image: linear-gradient(135deg, #00FFFF 0%, #007FFF 50%, #1A1A1A 100%); /* Dynamic gradient */
+            background-size: cover;
+        }
+        .text-electric-blue {
+            color: #007FFF; /* Electric Blue */
+        }
+        .text-cyan {
+            color: #00FFFF; /* Cyan Accent */
+        }
+        .bg-electric-blue {
+            background-color: #007FFF;
+        }
+        /* Custom scrollbar for the events list */
+        .events-scroll {
+            max-height: 500px;
+            overflow-y: auto;
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: #00FFFF #1A1A1A; /* Firefox */
+        }
+        .events-scroll::-webkit-scrollbar {
+            width: 8px;
+            background: #1A1A1A;
+        }
+        .events-scroll::-webkit-scrollbar-thumb {
+            background-color: #00FFFF; /* Cyan thumb */
+            border-radius: 10px;
+        }
+        .events-scroll::-webkit-scrollbar-track {
+            background: #333333; /* Dark gray track */
+        }
+    </style>
+    <!-- Font Awesome is assumed to be loaded for icons -->
+</head>
+
+<b class="font-sans">
+    <!-- Hero Section -->
+    <section class="youth-hero-bg pt-32 pb-20 text-white text-center px-4 shadow-2xl">
+        <div class="max-w-4xl mx-auto">
+            <div class="logo-placeholder inline-block mb-6 p-6 bg-white bg-opacity-10 rounded-full shadow-2xl border-4 border-cyan">
+               <i class="fas fa-bolt text-7xl text-cyan animate-pulse"></i> <!-- Icon for energy and power -->
+            </div>
+
+            <h1 class="text-7xl font-black mb-4 tracking-tighter text-white uppercase drop-shadow-lg">BBC Youth Force</h1>
+            <p class="text-3xl font-light text-cyan leading-snug italic font-mono">"Youthful Stage in His Presence"</p>
+        </div>
+    </section>
+
+    <!-- Main Content and Sidebar Container (3/4 and 1/4 Split) -->
+    <div class="bg-gray-900 text-white min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                
+                <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+                <main class="lg:col-span-3 space-y-16">
+
+                    <!-- Vision & Mandate Section -->
+                    <section class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-electric-blue">
+                        <h2 class="text-3xl font-bold text-electric-blue mb-4 border-b border-gray-700 pb-2">The Mandate: Present, Purposeful, Powerful</h2>
+                        
+                        <p class="mb-4 leading-relaxed text-gray-300">The Youth Fellowship is designed for young adults and teenagers navigating the critical stages of life—from academic pressures and career decisions to identity, relationships, and mental wellness. We believe this "Youthful Stage" is not a waiting room but a powerful platform for spiritual influence.</p>
+                        
+                        <p class="mb-4 leading-relaxed text-gray-300">Our mission is to equip a generation that is unapologetically **present** in their spiritual life, clear on their **purpose** in the world, and **powerful** in their faith, leveraging digital and social spaces for Kingdom impact. This is where faith meets culture, technology, and real life.</p>
+                        
+                        <p class="leading-relaxed font-semibold text-cyan">We don't just consume culture; we shape it, all while firmly rooted in His presence.</p>
+                    </section>
+
+                    <!-- Core Pillars Section (Digital Discipleship) -->
+                    <section class="py-12 bg-gray-900 rounded-xl">
+                        <h2 class="text-4xl font-extrabold text-center text-cyan mb-10 border-b border-gray-700 pb-4">Our Digital Discipleship Strategy</h2>
+                        
+                        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                            
+                            <!-- Pillar Cards (4 items) -->
+                            <div class="p-5 rounded-lg bg-gray-800 shadow-xl text-center border-b-4 border-electric-blue hover:shadow-cyan transition duration-300 ease-in-out transform hover:scale-105">
+                                <i class="fas fa-shielf-halved text-5xl text-cyan mb-3"></i>
+                                <h3 class="text-xl font-bold text-white uppercase tracking-wider mt-2">Digital Detox</h3>
+                                <p class="text-sm text-gray-400 mt-1">Finding true stillness away from the screen.</p>
+                            </div>
+                             <div class="p-5 rounded-lg bg-gray-800 shadow-xl text-center border-b-4 border-electric-blue hover:shadow-cyan transition duration-300 ease-in-out transform hover:scale-105">
+                                <i class="fas fa-brain text-5xl text-cyan mb-3"></i>
+                                <h3 class="text-xl font-bold text-white uppercase tracking-wider mt-2">Mental Wellness</h3>
+                                <p class="text-sm text-gray-400 mt-1">Addressing anxiety, stress, and identity in Christ.</p>
+                            </div>
+                             <div class="p-5 rounded-lg bg-gray-800 shadow-xl text-center border-b-4 border-electric-blue hover:shadow-cyan transition duration-300 ease-in-out transform hover:scale-105">
+                                <i class="fas fa-fist-raised text-5xl text-cyan mb-3"></i>
+                                <h3 class="text-xl font-bold text-white uppercase tracking-wider mt-2">Social Justice</h3>
+                                <p class="text-sm text-gray-400 mt-1">Applying Biblical ethics to real-world inequalities.</p>
+                            </div>
+                             <div class="p-5 rounded-lg bg-gray-800 shadow-xl text-center border-b-4 border-electric-blue hover:shadow-cyan transition duration-300 ease-in-out transform hover:scale-105">
+                                <i class="fas fa-money-bill-transfer text-5xl text-cyan mb-3"></i>
+                                <h3 class="text-xl font-bold text-white uppercase tracking-wider mt-2">Financial Freedom</h3>
+                                <p class="text-sm text-gray-400 mt-1">Stewardship, budgeting, and future planning.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Program Activities (Academic/Skill Focus + Online Service) -->
+                    <section class="py-12 space-y-8 bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-cyan">
+                        <h2 class="text-4xl font-extrabold text-center text-electric-blue mb-8">Fire Carriers Programs & Meetups</h2>
+                        
+                        <div class="grid md:grid-cols-3 gap-8">
+                            
+                            <!-- Program 1: The Code-Faith Hackathon -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-700 border-l-4 border-cyan">
+                                <i class="fas fa-code text-4xl text-cyan mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">Code & Faith Hackathon</h3>
+                                <p class="text-gray-300">A space for young tech enthusiasts to collaborate on projects that solve real-world community problems using technology and Christian values.</p>
+                            </div>
+                            
+                            <!-- Program 2: Real Talk: Mental Wellness -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-700 border-l-4 border-electric-blue">
+                                <i class="fas fa-comments text-4xl text-electric-blue mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">Real Talk: Mental Wellness Sessions</h3>
+                                <p class="text-gray-300">Open, honest small-group discussions facilitated by Christian counselors on anxiety, self-worth, and establishing boundaries in a digital world.</p>
+                            </div>
+
+                            <!-- NEW PROGRAM 3: FRIDAY LIVE STREAM -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-700 border-l-4 border-cyan">
+                                <i class="fas fa-satellite-dish text-4xl text-cyan mb-3 animate-pulse"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">Friday Live Stream: Deep Dive</h3>
+                                <p class="text-gray-300">**Every Friday Night.** A focused online service dedicated to in-depth Bible study, prophetic messages, and interactive Q&A. Tune in from anywhere!</p>
+                            </div>
+
+                             <!-- Program 4: College & Career Catalyst -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-700 border-l-4 border-electric-blue">
+                                <i class="fas fa-graduation-cap text-4xl text-electric-blue mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">College & Career Catalyst</h3>
+                                <p class="text-gray-300">Workshops focused on choosing majors, managing student debt, and integrating faith and ethics into professional life.</p>
+                            </div>
+                            
+                            <!-- Program 5: Impact Media Lab -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-700 border-l-4 border-electric-blue">
+                                <i class="fas fa-video text-4xl text-electric-blue mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">Impact Media Lab</h3>
+                                <p class="text-gray-300">Teaching the youth to create powerful, Christ-centered content (video, podcasts, memes) for social platforms to be salt and light online.</p>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- NEW SECTION: The Creative Corner (Puzzles & Brain Games) -->
+                    <section class="py-12 space-y-8 bg-gray-900 rounded-xl">
+                        <h2 class="text-4xl font-extrabold text-center text-cyan mb-8 border-b border-gray-700 pb-4">The Creative Corner: Puzzles & Brain Games</h2>
+                        <p class="text-center max-w-3xl mx-auto text-gray-400 mb-10">Sharpen your mind and stimulate spiritual acuity! We believe wisdom requires a sharp intellect. Check out our weekly challenge!</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 px-6">
+                            
+                            <!-- Puzzle Challenge Card -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-800 border-t-4 border-electric-blue">
+                                <i class="fas fa-puzzle-piece text-4xl text-electric-blue mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">This Week's Challenge: The Parable Code</h3>
+                                <p class="text-gray-400 mb-4">Decode the scrambled letters to reveal the key message from Sunday's sermon. Submit your answer on the app!</p>
+                                <div class="bg-gray-900 p-4 rounded-lg border border-gray-700">
+                                    <p class="font-mono text-cyan text-xl tracking-widest text-center">T S T G N L E H I I N T D A</p>
+                                </div>
+                                <a href="#" class="mt-4 block text-center py-2 bg-cyan text-gray-900 font-semibold rounded-lg hover:bg-white transition">Solve Now!</a>
+                            </div>
+                            
+                            <!-- Creative Resources Card -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-800 border-t-4 border-cyan">
+                                <i class="fas fa-palette text-4xl text-cyan mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">Creative Challenges & Resources</h3>
+                                <p class="text-gray-400 mb-4">Explore Christian fiction, enter our quarterly poetry slam, or join a digital art contest based on a Bible theme.</p>
+                                <ul class="space-y-2 text-gray-400 list-disc pl-5">
+                                    <li>Monthly Bible Trivia Night (Prizes included!)</li>
+                                    <li>Design a devotional cover challenge.</li>
+                                    <li>Logic puzzles tied to theological concepts.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!-- Community & Connection Hub (Includes Fun Activities) -->
+                    <section class="py-12 space-y-8 bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-electric-blue">
+                        <h2 class="text-4xl font-extrabold text-center text-electric-blue mb-8 border-b border-gray-700 pb-4">Community & Connection Hub (Fun Activities)</h2>
+                        <p class="text-center max-w-3xl mx-auto text-gray-300 mb-10">We believe in balanced living! Our fun activities ensure deep fellowship, laughter, and lifelong memories.</p>
+                        
+                        <div class="grid md:grid-cols-3 gap-8">
+                            
+                            <!-- Activity 1: The Connect Spot (Game/Movie Night) -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-700 border-t-4 border-cyan hover:shadow-cyan-md transition">
+                                <i class="fas fa-gamepad text-4xl text-cyan mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">Game & Movie Nights</h3>
+                                <p class="text-gray-400">Monthly relaxed meetups for everything from console gaming tournaments and board games to deep-dive film analysis and worship movie screenings. **Pure fun and fellowship!**</p>
+                            </div>
+                            
+                            <!-- Activity 2: Prayer Warriors (Partners) -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-700 border-t-4 border-electric-blue hover:shadow-electric-blue-md transition">
+                                <i class="fas fa-users-line text-4xl text-electric-blue mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">Prayer Partners & Accountability</h3>
+                                <p class="text-gray-400">Join a confidential, assigned prayer partner to share burdens, celebrate wins, and hold each other accountable in your spiritual walks. Iron sharpens iron, privately and powerfully.</p>
+                            </div>
+
+                            <!-- Activity 3: Worship Unplugged (Worship Focus) -->
+                            <div class="p-6 rounded-xl shadow-2xl bg-gray-700 border-t-4 border-cyan hover:shadow-cyan-md transition">
+                                <i class="fas fa-guitar text-4xl text-cyan mb-3"></i>
+                                <h3 class="text-2xl font-bold text-white mb-2">Worship Unplugged Sessions</h3>
+                                <p class="text-gray-400">An intimate space for young musicians and worship leaders to hone their gifts and lead spontaneous, acoustic worship, ensuring our "Youthful Stage is in His Presence."</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- NEW SECTION: Visual Archive: Gallery -->
+                    <section class="py-12 space-y-8 bg-gray-900 rounded-xl">
+                        <h2 class="text-4xl font-extrabold text-center text-cyan mb-8 border-b border-gray-700 pb-4">Visual Archive: The BBC Youth Gallery</h2>
+                        <p class="text-center max-w-3xl mx-auto text-gray-400 mb-10">A look back at the energy, fellowship, and impact of our ministry. See what it's like to be part of the Youth Force!</p>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-6">
+                            
+                            <!-- Gallery Placeholders -->
+                            <div class="aspect-video bg-gray-700 rounded-lg shadow-lg overflow-hidden border-2 border-electric-blue hover:opacity-75 transition">
+                                <img src="https://placehold.co/400x225/007FFF/ffffff?text=Outreach+Day" alt="Youth Outreach Activity" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-700 rounded-lg shadow-lg overflow-hidden border-2 border-cyan hover:opacity-75 transition">
+                                <img src="https://placehold.co/400x225/00FFFF/1A1A1A?text=Game+Night+Fun" alt="Youth Game Night" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-700 rounded-lg shadow-lg overflow-hidden border-2 border-electric-blue hover:opacity-75 transition">
+                                <img src="https://placehold.co/400x225/007FFF/ffffff?text=Worship+Session" alt="Youth Worship" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-700 rounded-lg shadow-lg overflow-hidden border-2 border-cyan hover:opacity-75 transition">
+                                <img src="https://placehold.co/400x225/00FFFF/1A1A1A?text=Bible+Study+Group" alt="Youth Bible Study" class="w-full h-full object-cover">
+                            </div>
+                            <!-- More Placeholders for a full grid -->
+                            <div class="aspect-video bg-gray-700 rounded-lg shadow-lg overflow-hidden border-2 border-cyan hover:opacity-75 transition">
+                                <img src="https://placehold.co/400x225/00FFFF/1A1A1A?text=Hackathon+Project" alt="Youth Hackathon" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-700 rounded-lg shadow-lg overflow-hidden border-2 border-electric-blue hover:opacity-75 transition">
+                                <img src="https://placehold.co/400x225/007FFF/ffffff?text=Retreat+Bonfire" alt="Youth Retreat" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-700 rounded-lg shadow-lg overflow-hidden border-2 border-cyan hover:opacity-75 transition">
+                                <img src="https://placehold.co/400x225/00FFFF/1A1A1A?text=Team+Building" alt="Youth Team Building" class="w-full h-full object-cover">
+                            </div>
+                            <div class="aspect-video bg-gray-700 rounded-lg shadow-lg overflow-hidden border-2 border-electric-blue hover:opacity-75 transition">
+                                <img src="https://placehold.co/400x225/007FFF/ffffff?text=Live+Stream+Crew" alt="Youth Streaming Crew" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <a href="#" class="mt-8 block text-center py-3 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition max-w-xs mx-auto">View Full Album <i class="fas fa-camera ml-2"></i></a>
+                    </section>
+
+
+                    <!-- Kingdom Impact: Outreach & Online -->
+                    <section class="py-12 space-y-8 bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-electric-blue">
+                        <h2 class="text-4xl font-extrabold text-center text-electric-blue mb-8">Kingdom Impact: Outreach & Online</h2>
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            
+                            <!-- Sub-Section 1: Bold Outreach -->
+                            <div class="p-6 rounded-xl shadow-inner bg-gray-900 border-l-4 border-cyan">
+                                <h3 class="text-2xl font-bold text-cyan mb-3 flex items-center"><i class="fas fa-hand-holding-box mr-2"></i> Bold Outreach Initiatives</h3>
+                                <p class="text-gray-400 mb-4">We are the hands and feet of Christ, dedicated to practical action that demonstrates God's love to the marginalized and underserved in our city.</p>
+                                <ul class="space-y-2 text-gray-400 list-disc pl-5">
+                                    <li>**Street Ministry:** Food and blanket distribution to the homeless.</li>
+                                    <li>**Mentoring Youth:** Tutoring and mentorship programs for younger students.</li>
+                                    <li>**Crisis Relief:** Mobilizing quickly to assist with local disaster relief efforts.</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Sub-Section 2: Active Online Presence -->
+                            <div class="p-6 rounded-xl shadow-inner bg-gray-900 border-l-4 border-electric-blue">
+                                <h3 class="text-2xl font-bold text-electric-blue mb-3 flex items-center"><i class="fas fa-globe-americas mr-2"></i> Active Online Presence</h3>
+                                <p class="text-gray-400 mb-4">Our presence online is strategic and intentional. We create a digital community that is positive, challenging, and spiritually feeding.</p>
+                                <ul class="space-y-2 text-gray-400 list-disc pl-5">
+                                    <li>**Weekly Live Q&A:** Addressing challenging faith questions on Instagram/TikTok.</li>
+                                    <li>**Curated Content:** Sharing daily devotionals and theological deep-dives.</li>
+                                    <li>**Global Prayer Chain:** Using secure messaging apps for instant prayer requests.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <!-- Call to Action & Digital Connection -->
+                    <section class="bg-electric-blue p-8 rounded-xl text-center shadow-2xl border-b-8 border-cyan">
+                        <p class="text-3xl font-extrabold text-white mb-4">It's Your Time. It's Your Stage.</p>
+                        <p class="text-xl text-blue-200 mb-6 font-medium">Ready to live a life of influence, digitally and physically?</p>
+                        <div class="flex justify-center space-x-4">
+                            <a href="#" class="inline-block px-8 py-4 bg-cyan text-gray-900 text-lg font-black rounded-full shadow-xl hover:bg-white transition transform hover:scale-110">
+                                Join the Movement <i class="fas fa-angle-right ml-2"></i>
+                            </a>
+                            <a href="#" class="inline-block px-8 py-4 bg-gray-700 text-white text-lg font-black rounded-full shadow-xl hover:bg-gray-600 transition transform hover:scale-105">
+                                Follow Us Online <i class="fab fa-instagram ml-2"></i>
+                            </a>
+                        </div>
+                    </section>
+
+
+                    <!-- Navigation Links -->
+                    <div class="flex justify-between mt-12 pt-8 border-t border-gray-700">
+                        <a href="{% url 'wisebuilders' %}" class="px-6 py-3 bg-gray-700 text-gray-300 font-semibold rounded-lg hover:bg-gray-600 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i>Prev</a>
+                        <a href="{% url 'kids_ministry' %}" class="px-6 py-3 bg-electric-blue text-white font-semibold rounded-lg hover:bg-cyan hover:text-gray-900 transition flex items-center">Next <i class="fas fa-arrow-right ml-2"></i></a>
+                    </div>
+
+                </main>
+
+                <!-- RIGHT SIDE: Sidebar Area (1/4 Width) -->
+                <aside class="lg:col-span-1 space-y-8">
+                    
+                    <!-- Upcoming Events -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-cyan">
+                        <h3 class="text-xl font-bold text-cyan mb-4 flex items-center"><i class="fas fa-calendar-check mr-2"></i> Next 3 Events</h3>
+                        
+                        <div class="events-scroll space-y-4">
+                            
+                            <!-- Event 1 -->
+                            <div class="p-3 bg-gray-700 border-l-4 border-cyan rounded-lg shadow-md">
+                                <p class="text-sm font-bold text-white">10/25: Gaming & Gospel Night</p>
+                                <p class="text-xs text-gray-400">Casual gaming tournament and discussion on the ethics of digital entertainment. 7 PM @ Youth Hall.</p>
+                            </div>
+
+                            <!-- Event 2 -->
+                            <div class="p-3 bg-gray-700 border-l-4 border-electric-blue rounded-lg shadow-md">
+                                <p class="text-sm font-bold text-white">11/03: Anxiety & Faith Seminar</p>
+                                <p class="text-xs text-gray-400">Guest speaker on Christian approaches to mental health challenges in school/university. 6 PM Zoom Link.</p>
+                            </div>
+
+                            <!-- Event 3 -->
+                            <div class="p-3 bg-gray-700 border-l-4 border-cyan rounded-lg shadow-md">
+                                <p class="text-sm font-bold text-white">11/18: Community Impact Day</p>
+                                <p class="text-xs text-gray-400">Partnering with local food bank for a large-scale volunteer effort. Sign up required by 11/10.</p>
+                            </div>
+                             <!-- Event 4 -->
+                            <div class="p-3 bg-gray-700 border-l-4 border-electric-blue rounded-lg shadow-md">
+                                <p class="text-sm font-bold text-white">12/01: Financial Fitness Workshop</p>
+                                <p class="text-xs text-gray-400">Learn about investment, tithing, and avoiding common youth debt traps. 7:30 PM @ Annex B.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial / Quote -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-2xl border-t-4 border-electric-blue">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i class="fas fa-quote-left mr-2 text-electric-blue"></i> Real Talk</h3>
+                        <p class="text-sm italic text-gray-300 mb-2">"The Youth Fellowship taught me that my faith isn't just for Sundays—it's for my Insta story, my exam hall, and my career path. Being in His presence means being authentic everywhere."</p>
+                        <p class="text-xs font-semibold text-cyan">— Alex C., University Student</p>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="bg-gray-800 p-6 rounded-xl shadow-lg border-t-4 border-cyan">
+                        <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i class="fas fa-share-nodes mr-2 text-cyan"></i> #BBCYouthPresence</h3>
+                        <div class="flex justify-around">
+                            <i class="fab fa-instagram text-4xl text-gray-400 hover:text-cyan transition"></i>
+                            <i class="fab fa-tiktok text-4xl text-gray-400 hover:text-cyan transition"></i>
+                            <i class="fab fa-youtube text-4xl text-gray-400 hover:text-cyan transition"></i>
+                            <i class="fab fa-spotify text-4xl text-gray-400 hover:text-cyan transition"></i>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3 text-center">Tap the links to connect with us digitally!</p>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    
+{%endblock%}

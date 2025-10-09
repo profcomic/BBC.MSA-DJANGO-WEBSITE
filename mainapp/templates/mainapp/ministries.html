@@ -53,6 +53,7 @@
 
     <!-- Ministries Grid Section -->
     <section class="container mx-auto px-4 py-16 mt-8">
+        <h2 class="text-xl justify-center mt-4 text-gray-800">PRIMARY MINISTRIES</h2>
         <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- Ministry Card 1: BBC Leadership Institute -->
@@ -81,7 +82,7 @@
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Trendsetters</h3>
                 <p class="text-gray-600 mb-4">These are The Believers Who Have Devoted themselves For the Sake Of The Generation.</p>
-                <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <a href="{% url 'trendsetters' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
 
             <!-- Ministry Card 3: Marriage Connect -->
@@ -96,7 +97,7 @@
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Marriage Connect</h3>
                 <p class="text-gray-600 mb-4">Do You have any Marriage Issue? Do you need Advice on Who To Marry...Visit Our Desk...</p>
-                <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <a href="{% url 'marriage_konekt' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
             
              <!-- Ministry Card 4: Men Fellowship -->
@@ -111,7 +112,7 @@
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Men Fellowship</h3>
                 <p class="text-gray-600 mb-4">When Men Lift Their Blameless Hands...</p>
-             <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+             <a href="{% url 'thepriests' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
 
                <!-- Ministry Card 5: Berean Women -->
@@ -126,7 +127,7 @@
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">BBC Women</h3>
                 <p class="text-gray-600 mb-4">Everything to do with Women Ministry</p>
-                <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <a href="{% url 'wisebuilders' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
 
             <!--Ministry Card 6: BBC-Youths-->
@@ -141,7 +142,7 @@
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">BBC-Youths Ministry</h3>
                 <p class="text-gray-600 mb-4">Youthful stage in His Presence</p>
-                <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <a href="{% url 'firecarriers' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
 
             <!-- Ministry Card 7: BBC-Kids Ministry -->
@@ -158,6 +159,11 @@
                 <p class="text-gray-600 mb-4">Let Your Child Grow In The Godly//Biblical Foundation..</p>
              <a href="{% url 'kids_ministry' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
+        </div>
+    </section>
+    <section class="container mx-auto px-4 py-16 mt-8"></section>
+        <h2 class="text-xl justify-center mt-4 text-gray-800">SECONDARY MINISTRIES</h2>
+        <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
             <!-- Ministry Card 8: PRAISE & WORSHIP Ministry -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">

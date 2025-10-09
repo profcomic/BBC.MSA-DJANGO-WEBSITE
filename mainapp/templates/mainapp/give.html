@@ -495,42 +495,70 @@
                 });
             }
 
-
-            // Form submission handler
+            // Form submission handler with Paystack integration
             givingForm.addEventListener('submit', async (e) => {
                 e.preventDefault();
+                
+                const currentAmount = customAmount || selectedAmount;
+                
+                if (!currentAmount || parseFloat(currentAmount) <= 0) {
+                    showToast("Error", "Please enter a valid donation amount.");
+                    return;
+                }
+                
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                const notes = document.getElementById('notes').value;
+                
+                if (!firstName || !lastName || !email) {
+                    showToast("Error", "Please fill in all required fields.");
+                    return;
+                }
+                
                 isSubmitting = true;
                 updateSubmitButton();
 
-                // Simulate payment processing
-                await new Promise((resolve) => setTimeout(resolve, 2000));
-
-                showToast("Thank You for Your Generosity!", "Your donation has been processed successfully. God bless you!");
-
-                // Reset form state
-                selectedAmount = "";
-                customAmount = "";
-                givingType = "tithe";
-                frequency = "one-time";
-                isSubmitting = false;
-
-                // Reset form fields and UI
-                givingForm.reset();
-                document.getElementById('tithe').checked = true; // Reset default radio
-                customAmountInput.value = "";
-                amountButtons.forEach(btn => { // Reset button styles
-                    btn.classList.remove('btn-bereanBlue');
-                    btn.classList.add('border-berean-blue', 'text-berean-blue', 'hover:bg-berean-blue/10');
-                });
-                if (frequencySelectValueSpan) {
-                    frequencySelectValueSpan.textContent = "One-time Gift";
+                try {
+                    // Get CSRF token
+                    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+                    
+                    // Initialize payment with backend
+                    const response = await fetch('/payment/initialize/', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRFToken': csrfToken
+                        },
+                        body: JSON.stringify({
+                            amount: parseFloat(currentAmount),
+                            firstName: firstName,
+                            lastName: lastName,
+                            email: email,
+                            phone: phone,
+                            givingType: givingType,
+                            frequency: frequency,
+                            notes: notes
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        // Redirect to Paystack payment page
+                        window.location.href = data.authorization_url;
+                    } else {
+                        showToast("Payment Error", data.message || "Failed to initialize payment. Please try again.");
+                        isSubmitting = false;
+                        updateSubmitButton();
+                    }
+                } catch (error) {
+                    console.error('Payment initialization error:', error);
+                    showToast("Error", "An error occurred. Please try again.");
+                    isSubmitting = false;
+                    updateSubmitButton();
                 }
-                if (frequencyHiddenInput) {
-                    frequencyHiddenInput.value = "one-time";
-                }
-
-
-                updateSubmitButton();
             });
 
             // Initial update of the submit button text

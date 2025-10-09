@@ -1,0 +1,218 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}BBC Men's Fellowship - Strength, Purpose, Integrity{% endblock %}
+{% block topbar_main %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<head> 
+    <style>
+        /* Unique color scheme for Men's Fellowship: Deep Navy Blue with Amber/Gold accents */
+        .mens-hero-bg {
+            background-color: #1e3a8a; /* Deep Indigo/Navy Blue */
+            background-image: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, transparent 70%), 
+                              linear-gradient(45deg, rgba(217, 119, 6, 0.3) 0%, transparent 100%); /* Subtle gold accent gradient */
+            background-size: cover;
+        }
+        .text-amber-accent {
+            color: #d97706; /* Dark Amber/Burnt Orange */
+        }
+        /* Custom scrollbar for the testimonial box */
+        .testimonial-scroll {
+            max-height: 500px;
+            overflow-y: auto;
+            scrollbar-width: thin; /* Firefox */
+            scrollbar-color: #d97706 #ffffff; /* Firefox */
+        }
+        .testimonial-scroll::-webkit-scrollbar {
+            width: 8px;
+        }
+        .testimonial-scroll::-webkit-scrollbar-thumb {
+            background-color: #d97706; /* Amber thumb */
+            border-radius: 10px;
+        }
+        .testimonial-scroll::-webkit-scrollbar-track {
+            background: #f3f4f6; /* Light gray track */
+        }
+    </style>
+    <!-- Font Awesome is assumed to be loaded for icons -->
+</head>
+
+<b class="font-sans">
+    <!-- Hero Section -->
+    <section class="mens-hero-bg pt-32 pb-16 text-white text-center px-4 shadow-2xl">
+        <div class="max-w-4xl mx-auto">
+            <div class="logo-placeholder inline-block mb-6 p-6 bg-white bg-opacity-10 rounded-full shadow-xl border-4 border-amber-accent">
+               <i class="fas fa-hand-fist text-6xl text-amber-accent"></i> <!-- Fist icon for strength -->
+            </div>
+
+            <h1 class="text-7xl font-extrabold mb-4 tracking-tighter text-white">Men's Fellowship</h1>
+            <p class="text-3xl font-light text-amber-accent leading-snug italic">"When Men Lift Their Holy Hands"</p>
+        </div>
+    </section>
+
+    <!-- Main Content and Sidebar Container (3/4 and 1/4 Split) -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+            
+            <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+            <main class="lg:col-span-3 space-y-12">
+
+                <!-- Welcome & Vision Section (Rewritten) -->
+                <section class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-indigo-700">
+                    <h2 class="text-3xl font-bold text-indigo-800 mb-4 border-b pb-2">Anchoring Strength in God's Purpose</h2>
+                    
+                    <p class="mb-4 leading-relaxed text-gray-700">Welcome to the BBC Men's Fellowship, where we anchor our strength not just in the world's pursuits, but in God's purpose. 
+                        Our mantra, <b>"When Men Lift Their Holy Hands,"</b> is our calling: a commitment to spiritual leadership, integrity in the home, and profound impact in the community. 
+                        We believe true manhood is defined by a Christ-centered character—a challenging, continuous journey that requires authenticity, accountability, and empowerment.</p>
+                    
+                    <p class="leading-relaxed font-medium text-amber-accent">We are committed to guiding men through focused, interactive experiences designed to equip, refine, and activate the Godly potential within, moving every man from passive presence to decisive, spiritual leadership.</p>
+                </section>
+
+                <!-- Core Values Section (Retained) -->
+                <section class="py-12 bg-gray-50 rounded-xl shadow-inner border-t-4 border-amber-600">
+                    <h2 class="text-4xl font-extrabold text-center text-indigo-800 mb-8">Our Core Values: The Pillars of Manhood</h2>
+                    <p class="text-center max-w-3xl mx-auto text-gray-600 mb-10">We delve deep into these foundational values in our monthly meetups, empowering ourselves to lead fulfilling lives that honor God and serve our communities.</p>
+                    
+                    <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
+                        
+                        <!-- Value Cards (7 items) -->
+                        <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-shield-halved text-4xl text-amber-accent mb-3"></i>
+                            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Intergrity</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-person-circle-check text-4xl text-amber-accent mb-3"></i>
+                            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Responsibility</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-hand-holding-heart text-4xl text-amber-accent mb-3"></i>
+                            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Compassion</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-fire text-4xl text-amber-accent mb-3"></i>
+                            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Courage</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-bullseye text-4xl text-amber-accent mb-3"></i>
+                            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Leadership</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-stopwatch text-4xl text-amber-accent mb-3"></i>
+                            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Self-Discipline</h3>
+                        </div>
+                        <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-brain text-4xl text-amber-accent mb-3"></i>
+                            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Emotional Intelligence</h3>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Activities & Focus Section (Slightly reworded for unique voice) -->
+                <section class="py-12 space-y-8">
+                    <h2 class="text-4xl font-extrabold text-center text-indigo-800 mb-8">Activating The Man of God</h2>
+                    
+                    <div class="grid md:grid-cols-3 gap-8">
+                        
+                        <!-- Activity 1: Monthly Meetups -->
+                        <div class="p-6 rounded-xl shadow-2xl bg-white border-t-4 border-indigo-500">
+                            <i class="fas fa-book-open-reader text-5xl text-indigo-600 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">The Covenant & Character Sessions</h3>
+                            <p class="text-gray-600">Monthly sessions focused on in-depth biblical teaching and challenging dialogue on faith, family, and finance. These are not lectures—they are interactive platforms for **iron sharpening iron.**</p>
+                        </div>
+                        
+                        <!-- Activity 2: Outdoor Adventures -->
+                        <div class="p-6 rounded-xl shadow-2xl bg-white border-t-4 border-amber-600">
+                            <i class="fas fa-car-side text-5xl text-amber-accent mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Brotherhood Expeditions & Retreats</h3>
+                            <p class="text-gray-600">Annual retreats and invigorating outdoor trips designed to pull us away from distraction, forge unbreakable bonds of **loyalty**, and deepen spiritual resolve through shared experiences.</p>
+                        </div>
+
+                        <!-- Activity 3: Outreach Initiatives -->
+                        <div class="p-6 rounded-xl shadow-2xl bg-white border-t-4 border-green-600">
+                            <i class="fas fa-handshake-angle text-5xl text-green-600 mb-4"></i>
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Impact and Mentorship Program</h3>
+                            <p class="text-gray-600">Moving from discussion to demonstration. We engage in intentional community service and mentorship initiatives, guiding the next generation and modeling compassion and responsibility.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Call to Action -->
+                <section class="bg-indigo-700 p-8 rounded-xl text-center shadow-2xl">
+                    <p class="text-2xl font-extrabold text-amber-accent mb-4">Step Into Your Purpose. Answer the Call to Leadership.</p>
+                    <p class="text-xl text-indigo-100 mb-6 font-medium">Ready to take your place as the spiritual leader God designed you to be?</p>
+                    <a href="#" class="inline-block px-10 py-4 bg-amber-accent text-white text-lg font-bold rounded-full shadow-xl hover:bg-amber-700 transition transform hover:scale-105">
+                        Inquire About Membership <i class="fas fa-users-line ml-2"></i>
+                    </a>
+                </section>
+
+
+                <!-- Navigation Links (Guessing neighboring ministries) -->
+                <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
+                    <a href="{% url 'marriage_konekt' %}" class="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i>Prev</a>
+                    <a href="{% url 'wisebuilders' %}" class="px-6 py-3 bg-indigo-700 text-white font-semibold rounded-lg hover:bg-indigo-800 transition flex items-center">Next<i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+
+            </main>
+
+            <!-- RIGHT SIDE: Sidebar Area (1/4 Width) -->
+            <aside class="lg:col-span-1 space-y-8">
+                
+                <!-- Men's Highlights & Testimonials Section -->
+                <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-amber-accent">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-comments-question-check mr-2 text-amber-accent"></i> Transformed Lives & Highlights</h3>
+                    <p class="text-sm text-gray-600 mb-4">Real stories of men who found purpose, accountability, and spiritual growth through the Fellowship.</p>
+                    
+                    <div class="testimonial-scroll space-y-6 pr-2">
+                        
+                        <!-- Testimonial 1 -->
+                        <div class="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-lg shadow-md">
+                            <p class="text-sm italic text-gray-700 mb-2">"I was coasting through life, struggling with discipline. The Self-Discipline focus session fundamentally changed how I approach my work and my family time. I found my edge again."</p>
+                            <p class="text-xs font-semibold text-indigo-800">— Mr Joseph, Entrepreneur</p>
+                        </div>
+
+                        <!-- Testimonial 2 (Highlight Story) -->
+                        <div class="p-4 bg-amber-50 border-l-4 border-amber-600 rounded-lg shadow-md">
+                            <h4 class="text-sm font-bold text-amber-700 mb-1">Highlight: The Mt. Zion Climb</h4>
+                            <p class="text-xs text-gray-700">During our last expedition, 15 men completed a challenging ascent. This adventure forged a bond of Courage and mutual respect that continues to define our small group.</p>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-lg shadow-md">
+                            <p class="text-sm italic text-gray-700 mb-2">"The Emotional Intelligence seminar gave me the tools to truly listen to my wife and kids. I am a much better husband and father today because of the accountability here."</p>
+                            <p class="text-xs font-semibold text-indigo-800">— Mr Mbaji, Family Man</p>
+                        </div>
+
+                        <!-- Testimonial 4 (Highlight Story) -->
+                        <div class="p-4 bg-amber-50 border-l-4 border-amber-600 rounded-lg shadow-md">
+                            <h4 class="text-sm font-bold text-amber-700 mb-1">Project Impact: Water Well</h4>
+                            <p class="text-xs text-gray-700">The Men's Fellowship funded and installed a clean water well in the local community last month, fulfilling our commitment to **Responsibility** beyond the church walls.</p>
+                        </div>
+                        
+                         <!-- Testimonial 5 -->
+                        <div class="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-lg shadow-md">
+                            <p class="text-sm italic text-gray-700 mb-2">"What I appreciate most is the real talk about Integrity—in business and at home. This fellowship keeps me honest and focused on my spiritual legacy."</p>
+                            <p class="text-xs font-semibold text-indigo-800">— Dr Ibrahim, Manager</p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Contact Card (Quick Link) -->
+                <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-indigo-400">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-envelope-open-text mr-2 text-indigo-400"></i> Get Started Today</h3>
+                    <p class="text-sm text-gray-700">Ready to join a brotherhood of purpose? Contact us for the next meeting schedule.</p>
+                    <a href="mailto:men@bbc.org" class="mt-3 block text-center py-2 bg-indigo-700 text-white font-semibold rounded-lg hover:bg-indigo-800 transition">Email the Men's Ministry Head</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+    
+{%endblock%}

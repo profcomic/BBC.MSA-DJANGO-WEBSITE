@@ -123,3 +123,8 @@ DEBUG = True
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Paystack Configuration
+# Get your keys from https://dashboard.paystack.com/#/settings/developer
+PAYSTACK_SECRET_KEY = 'your_paystack_secret_key_here'
+PAYSTACK_PUBLIC_KEY = 'your_paystack_public_key_here'

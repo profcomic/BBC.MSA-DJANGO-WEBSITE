@@ -82,6 +82,19 @@ class Offering(models.Model):
     # The actual transaction would be handled by a third-party payment processor (Stripe, PayPal, M-Pesa API, etc.)
     # You only save a transaction ID.
     transaction_id = models.CharField(max_length=255, unique=True, blank=True, null=True)
+    
+    # Paystack Integration Fields
+    payment_status = models.CharField(max_length=20, 
+                                     choices=[
+                                         ('pending', 'Pending'),
+                                         ('success', 'Success'),
+                                         ('failed', 'Failed'),
+                                         ('abandoned', 'Abandoned'),
+                                     ],
+                                     default='pending')
+    paystack_reference = models.CharField(max_length=255, unique=True, blank=True, null=True)
+    payment_channel = models.CharField(max_length=50, blank=True, null=True)  # card, bank, ussd, etc.
+    paid_at = models.DateTimeField(blank=True, null=True)
 
 
     def __str__(self):

@@ -53,7 +53,7 @@
             <a href="#mission">MISSION</a>
         </div>
         <div class="flex justify-start space-x-8 text-white-700 ml-24 mb-6 font-bold">
-             <a href="#acts" class="hover:underline">ACTS 17:11-</a>
+             <a href="#acts17:11" class="hover:underline">ACTS 17:11-</a>
         </div>
         <div class="flex justify-start space-x-8 ml-24 text-4xl mb-2 text-white/90 text-shadow-modern font-bold">   
           <a href="#salutation">Welcome to Berean Bible Church.</a>
@@ -120,14 +120,14 @@
 
             </div>
         </div>
-        <div class="py-20 bg-berean-skyblue mt-12 border-t-8 border-b-8 border-yellow-500 relative overflow-hidden">
+        <div class="py-20 bg-berean-skyblue mt-12 border-t-8 border-b-8 border-orange-600 relative overflow-hidden">
             <h3 class="text-2xl font-bold text-gray-800 mb-6">WHAT'S GOOD BRETHREN</h3>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div class="p-6 bg-gray-100 rounded-lg shadow-md text-center">
                     <div class="text-2xl mb-4 text-sky-500">📣</div>
                     <h4 class="text-lg font-bold text-gray-800 mb-2">Berean Culture</h4>
-                    <p class="text-gray-700 mb-4">Join us every Sunday at 8 AM or 10 AM to have a great time in worship and fellowship.</p>
-                    <a href="#" class="text-sky-500 hover:underline font-semibold">Read More</a>
+                    <p class="text-gray-700 mb-4">Join us every Sunday at 6 AM or 2 PM to have a great time in worship and fellowship.</p>
+                    <a href="{% url 'home' %}" class="text-sky-500 hover:underline font-semibold">Read More</a>
                 </div>
                 <div class="p-6 bg-gray-100 rounded-lg shadow-md text-center">
                     <div class="text-2xl mb-4 text-sky-500">🔔</div>
@@ -139,7 +139,7 @@
                     <div class="text-2xl mb-4 text-sky-500">🎁</div>
                     <h4 class="text-lg font-bold text-gray-800 mb-2">Serve God</h4>
                     <p class="text-gray-700 mb-4">God has given us all a gifts and BBC MOMBASA can serve using the talent He has given.</p>
-                    <a href="#" class="text-sky-500 hover:underline font-semibold">Read More</a>
+                    <a href="{% url 'ministries' %}" class="text-sky-500 hover:underline font-semibold">Read More</a>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
 <!-- Salutation Section -->
 <section class="py-20 lg:py-24 flex items-center bg-gray-900 overflow-hidden relative">
     <div class="absolute inset-0 bg-cover bg-center opacity-10" 
-         style="background-image: url('your-background-texture-image.jpg');">
+         style="background-image: url(' static/images/ministries/prayer-request.jpg');">
     </div>
     <div class="relative z-20 text-center w-full max-w-5xl mx-auto px-4">
         <p class="text-sm tracking-widest uppercase mb-4 font-extrabold text-blue-400">
@@ -157,7 +157,7 @@
         </p>
         <h2 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-8">
             <span class="block text-white">The Most Accurate Measure</span>
-            <span class="block bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-sky-400">
+            <span class="block bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-sky-400">
                 Of Your Spiritual Life
             </span>
             <span class="block text-white/90 mt-2 italic">Is Your Prayer Life.</span>
@@ -201,14 +201,14 @@
                 </ul>
             </div>
 
-            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-yellow-500">
-                <h3 class="text-2xl font-bold text-yellow-500 mb-4">First Service</h3>
-                <p class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i class="fa-regular fa-clock text-yellow-500 mr-3"></i> 9:00 AM – 11:00 AM</p>
+            <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-orange-600">
+                <h3 class="text-2xl font-bold text-orange-600 mb-4">First Service</h3>
+                <p class="text-xl font-semibold text-gray-800 mb-4 flex items-center"><i class="fa-regular fa-clock text-orange-600 mr-3"></i> 9:00 AM – 11:00 AM</p>
                 <ul class="space-y-3 text-gray-700 list-none pl-0">
-                    <li class="flex items-start"><i class="fa-solid fa-cross text-yellow-500 mr-3 mt-1"></i> Intercessions & Worship</li>
-                    <li class="flex items-start"><i class="fa-solid fa-school text-yellow-500 mr-3 mt-1"></i> Sunday School Session Kickoff</li>
-                    <li class="flex items-start"><i class="fa-solid fa-bible text-yellow-500 mr-3 mt-1"></i> Teaching of the Word</li>
-                    <li class="flex items-start"><i class="fa-solid fa-hands-praying text-yellow-500 mr-3 mt-1"></i> Intercession & Altercall</li>
+                    <li class="flex items-start"><i class="fa-solid fa-cross text-orange-600 mr-3 mt-1"></i> Intercessions & Worship</li>
+                    <li class="flex items-start"><i class="fa-solid fa-school text-orange-600 mr-3 mt-1"></i> Sunday School Session Kickoff</li>
+                    <li class="flex items-start"><i class="fa-solid fa-bible text-orange-600 mr-3 mt-1"></i> Teaching of the Word</li>
+                    <li class="flex items-start"><i class="fa-solid fa-hands-praying text-orange-600 mr-3 mt-1"></i> Intercession & Altercall</li>
                 </ul>
             </div>
 
@@ -230,7 +230,7 @@
 </section>
 
 <!--call to action (CTA)-->
-<section class="py-16 bg-blue-50 border-y-4 border-gradient-to-r from-yellow-400 via-sky-400 to-indigo-600 relative overflow-hidden">
+<section class="py-16 bg-blue-50 border-y-4 border-gradient-to-r from-orange-400 via-sky-400 to-indigo-600 relative overflow-hidden">
     <div class="relative z-20 text-center w-full max-w-4xl mx-auto px-4">
         <h2 class="text-xl sm:text-2xl mb-3 text-sky-700 font-extrabold uppercase tracking-wider">
             SHALOM BRETHREN!
@@ -284,8 +284,8 @@
                 </div>
 
                 <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
-                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-yellow-500 h-full">
-                        <h4 class="text-xl font-bold text-yellow-500 mb-2 flex items-center"><i class="fa-solid fa-house text-yellow-500 mr-3"></i> HBCs Fellowship</h4>
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-orange-600 h-full">
+                        <h4 class="text-xl font-bold text-orange-600 mb-2 flex items-center"><i class="fa-solid fa-house text-orange-600 mr-3"></i> HBCs Fellowship</h4>
                         <p class="text-gray-800"><b>WEDNESDAY</b></p>
                         <p class="text-gray-600 text-sm mt-1"><b>5:00 PM - 7:00 PM</b></p>
                         <p class="text-sm text-gray-500 mt-2">A Home based Service at the comfort of your hood, focused on spreading the gospel and bonding at your hood level.</p>
@@ -329,8 +329,8 @@
                 </div>
 
                 <div class="service-card w-full sm:w-1/2 lg:w-1/4 flex-shrink-0 p-3">
-                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-yellow-500 h-full">
-                        <h4 class="text-xl font-bold text-yellow-500 mb-2 flex items-center"><i class="fa-solid fa-bible text-yellow-500 mr-3"></i> BBC-Kids Fellowship</h4>
+                    <div class="p-5 bg-gray-100 rounded-lg shadow-lg border-l-4 border-orange-600 h-full">
+                        <h4 class="text-xl font-bold text-orange-600 mb-2 flex items-center"><i class="fa-solid fa-bible text-orange-600 mr-3"></i> BBC-Kids Fellowship</h4>
                         <p class="text-gray-800"><b>SATURDAY</b></p>
                         <p class="text-gray-600 text-sm mt-1"><b>2:00 PM - 4:00 PM</b></p>
                         <p class="text-sm text-gray-500 mt-2">A fun and engaging session for children, focused on learning the word of God through stories, songs, and interactive activities as they prepare for Sunday Sessions.</p>
@@ -409,14 +409,14 @@
     <div class="container mx-auto px-4 text-center">
         <h2 class="text-3xl font-extrabold text-sky-900 mb-4">Lives Transformed</h2>
         <p class="text-lg text-gray-600 mb-10">Hear how God is moving in our family.</p>
-        
-        <div class="max-w-xl mx-auto p-8 bg-gray-100 rounded-2xl shadow-xl border-t-4 border-yellow-500">
-            <i class="fa-solid fa-quote-left text-4xl text-yellow-500 mb-4"></i>
+
+        <div class="max-w-xl mx-auto p-8 bg-gray-100 rounded-2xl shadow-xl border-t-4 border-orange-600">
+            <i class="fa-solid fa-quote-left text-4xl text-orange-600 mb-4"></i>
             <p class="text-xl italic text-gray-700 mb-6">
                 "Since joining BBC Mombasa, my prayer life has become consistent and powerful. I finally feel rooted in the Word and equipped for my calling."
             </p>
             <div class="flex items-center justify-center">
-                <img src="{% static 'images/testimonials/member_1.jpg' %}" alt="Testimonial Photo" class="w-16 h-16 rounded-full object-cover border-2 border-yellow-500 mr-4">
+                <img src="{% static 'images/testimonials/member_1.jpg' %}" alt="Testimonial Photo" class="w-16 h-16 rounded-full object-cover border-2 border-orange-600 mr-4">
                 <div>
                     <p class="font-bold text-lg text-sky-900">Mrs. Redempta Katana</p>
                     <p class="text-sm text-gray-500">Joined 2024 | Intercessory Ministry</p>
@@ -502,8 +502,8 @@
 
 
 <!-- Prayer Request Section -->
-<section class="py-20 bg-sky-100 border-t-8 border-b-8 border-yellow-500 relative overflow-hidden"> 
-    <section class="py-20 bg-sky-100 border-t-8 border-b-8 border-yellow-500 relative overflow-hidden">
+<section class="py-20 bg-sky-100 border-t-8 border-b-8 border-orange-600 relative overflow-hidden"> 
+    <section class="py-20 bg-sky-100 border-t-8 border-b-8 border-orange-600 relative overflow-hidden">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-xl font-extrabold text-sky-700 uppercase tracking-widest mb-3">
              Your Spiritual Life is Our Priority

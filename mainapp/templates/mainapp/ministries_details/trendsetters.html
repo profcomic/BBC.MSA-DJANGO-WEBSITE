@@ -1,0 +1,307 @@
+{% extends "mainapp/base.html" %}
+{% load static %}
+
+{% block title %}Trendsetters - Hallelujah Worship Sanctuary {% endblock %}
+{% block topbar_main %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<head>  
+    <style>
+        .section-bg {
+            background-color: #8535ed; 
+            background-image: linear-gradient(135deg, rgba(68, 113, 12, 0.193) 25%, transparent 25%, transparent 50%, rgba(237, 149, 33, 0.834) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+            background-size: 8px 8px;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+
+        <!--Headear-->
+
+<section class="section-bg pt-32 pb-16 text-white text-center px-4">
+    <div class="max-w-2xl mx-auto">
+        <div class="logo-placeholder inline-block mb-6 p-4  rounded-full shadow-lg">
+            <img src="{% static 'images/ministries/trendsetters.png' %}" alt="Leadership Ministry" class="mx-auto h-auto object-cover rounded-md" style="max-height: 200px; width: auto;">
+        </div>
+           <h1 class="text-6xl font-extrabold mb-4 tracking-tight">BBC Trendsetters</h1>
+           <p class="text-xl text-gray-600 font-semibold italic">Established in 2024: Devoted to the Generation</p>
+        </div>
+</section>
+
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-10">
+
+        <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+        <main class="lg:col-span-3 space-y-10">
+
+            <!-- SECTION 1: Who We Are -->
+            <section class="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-sky-700">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-hand-fist text-sky-700 mr-3"></i> Who We Are: Devoted to Impact
+                </h2>
+                <p class="mt-4 text-lg text-gray-700 leading-relaxed">
+                    The <b>TRENDSETTERS Ministry</b>, founded in <b>2024</b>, is a dynamic collective of believers committed to devoted service for the sake of the generation. We are not content to merely observe culture; we are the trailblazers and influencers who intentionally model Christ-like excellence in every sphere of life—from the marketplace and educational institutions to the arts and digital space. We believe that true faith doesn't follow trends—it sets them. Our commitment is to reflect God's light so brightly that it defines the spiritual and ethical direction of the world around us.
+                </p>
+            </section>
+            <!-- SECTION 2: Core Statements (Vision & Mission) -->
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-yellow-50 p-6 rounded-xl shadow-lg border-t-4 border-teal-500">
+                    <h3 class="text-2xl font-bold text-teal-700 mb-3 flex items-center">
+                        <i class="fas fa-eye text-teal-500 mr-2"></i> Our Vision
+                    </h3>
+                    <p class="text-gray-700">
+                        To be the leading influence that intentionally defines the spiritual and ethical landscape of the current generation, transforming societal norms through unwavering faith and devoted, excellent service.
+                    </p>
+                </div>
+                <div class="bg-blue-50 p-6 rounded-xl shadow-lg border-t-4 border-blue-500">
+                    <h3 class="text-2xl font-bold text-blue-700 mb-3 flex items-center">
+                        <i class="fas fa-bullseye text-blue-500 mr-2"></i> Our Mission
+                    </h3>
+                    <p class="text-gray-700">
+                        To equip, mobilize, and empower devoted believers to model Christ-like excellence, set high standards of faith-based influence, and champion spiritual and moral revival in their individual spheres of impact.
+                    </p>
+                </div>
+            </section>
+            <!-- SECTION 3: Activity Scope (NOW 10 POINTS) -->
+            <section class="bg-white p-8 rounded-xl shadow-2xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-rocket text-sky-700 mr-3"></i> Activity Scope: Our 10 Areas of Influence
+                </h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    The TRENDSETTERS Ministry focuses on practical, intentional, and high-impact areas of engagement to ensure our devotion translates into visible change:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-orange-400">
+                        <i class="fas fa-crown text-yellow-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">1. Intentional Leadership Development</h4>
+                            <p class="text-gray-600 text-sm">Running focused training sessions and workshops designed to sharpen leadership skills, doctrinal understanding, and spiritual maturity for effective ministry and life application.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-blue-400">
+                        <i class="fas fa-briefcase text-blue-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">2. Professional & Vocational Excellence</h4>
+                            <p class="text-gray-600 text-sm">Creating mentorship opportunities and forums that teach believers how to integrate their faith and character into their careers and studies, becoming models of integrity and competence in the marketplace.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-green-400">
+                        <i class="fas fa-hands-helping text-green-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">3. Community Outreach & Social Impact</h4>
+                            <p class="text-gray-600 text-sm">Mobilizing resources and people for targeted projects that address critical community needs, demonstrating the love of Christ through practical, tangible service.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-indigo-400">
+                        <i class="fas fa-share-alt text-indigo-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">4. Digital Evangelism & Media Creation</h4>
+                            <p class="text-gray-600 text-sm">Producing high-quality, relevant content (video, social media, podcasts) that engages current cultural conversations and sets a positive spiritual trend in the online sphere.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-red-400">
+                        <i class="fas fa-praying-hands text-red-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">5. Intercessory Movement</h4>
+                            <p class="text-gray-600 text-sm">Establishing devoted prayer teams focused on petitioning God for the current generation, local communities, and national transformation, recognizing that prayer undergirds all impact.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-pink-400">
+                        <i class="fas fa-heart text-pink-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">6. Family and Relational Integrity</h4>
+                            <p class="text-gray-600 text-sm">Hosting specialized seminars focused on fostering biblical family structures, marital health, and strong, godly friendships to model relational excellence.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-orange-600">
+                        <i class="fas fa-money-bill-wave text-yellow-600 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">7. Financial Stewardship & Wealth Creation</h4>
+                            <p class="text-gray-600 text-sm">Teaching foundational biblical principles of financial management, debt freedom, and responsible wealth creation to build generational stability.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-purple-400">
+                        <i class="fas fa-brain text-purple-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">8. Mental and Emotional Wellness</h4>
+                            <p class="text-gray-600 text-sm">Developing safe forums and resources that integrate faith with discussions on mental health, addressing anxiety, depression, and spiritual resilience.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-teal-400">
+                        <i class="fas fa-earth-americas text-teal-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">9. Cross-Cultural Engagement</h4>
+                            <p class="text-gray-600 text-sm">Raising awareness and facilitating short-term mission trips and cultural exchange programs to broaden global perspective and impact.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start p-4 bg-gray-50 rounded-lg border-l-4 border-orange-400">
+                        <i class="fas fa-palette text-orange-500 text-2xl mt-1 mr-4"></i>
+                        <div>
+                            <h4 class="font-bold text-xl text-gray-900">10. Artistic and Creative Expression</h4>
+                            <p class="text-gray-600 text-sm">Cultivating and mobilizing artistic talents (music, drama, visual arts) to communicate the Gospel creatively and enhance worship experiences.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- SECTION 4: Key Metrics Since Launch (New Section) -->
+            <section class="bg-sky-50 p-8 rounded-xl shadow-2xl border-t-8 border-sky-600">
+                <h2 class="text-3xl font-bold text-sky-800 mb-6 flex items-center">
+                    <i class="fas fa-chart-line text-sky-600 mr-3"></i> Key Metrics Since Launch (2024 YTD)
+                </h2>
+                <p class="text-lg text-gray-700 mb-6">
+                    Measuring our commitment: These metrics reflect the intentionality and devoted effort of the Trendsetters Movement to date.
+                </p>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                    <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-teal-500">
+                        <i class="fas fa-users-gear text-3xl text-teal-600 mb-2"></i>
+                        <div class="text-3xl font-bold text-gray-900">120</div>
+                        <p class="text-sm text-gray-600 font-medium">Trained Leaders</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-blue-500">
+                        <i class="fas fa-handshake text-3xl text-blue-600 mb-2"></i>
+                        <div class="text-3xl font-bold text-gray-900">55</div>
+                        <p class="text-sm text-gray-600 font-medium">Mentorship Matches</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-green-500">
+                        <i class="fas fa-clock text-3xl text-green-600 mb-2"></i>
+                        <div class="text-3xl font-bold text-gray-900">450+</div>
+                        <p class="text-sm text-gray-600 font-medium">Service Hours Given</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-indigo-500">
+                        <i class="fas fa-bullhorn text-3xl text-indigo-600 mb-2"></i>
+                        <div class="text-3xl font-bold text-gray-900">8.5K</div>
+                        <p class="text-sm text-gray-600 font-medium">New Digital Subscribers</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-red-500">
+                        <i class="fas fa-cross text-3xl text-red-600 mb-2"></i>
+                        <div class="text-3xl font-bold text-gray-900">1,500</div>
+                        <p class="text-sm text-gray-600 font-medium">Prayer Watch Hours</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-blue-900">
+                        <i class="fas fa-wrench text-3xl text-blue-900 mb-2"></i>
+                        <div class="text-3xl font-bold text-gray-900">4</div>
+                        <p class="text-sm text-gray-600 font-medium">Major Impact Projects</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-purple-500">
+                        <i class="fas fa-calendar-check text-3xl text-purple-600 mb-2"></i>
+                        <div class="text-3xl font-bold text-gray-900">750</div>
+                        <p class="text-sm text-gray-600 font-medium">Youth Engaged (Events)</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border-b-4 border-orange-500">
+                        <i class="fas fa-percent text-3xl text-orange-600 mb-2"></i>
+                        <div class="text-3xl font-bold text-gray-900">85%</div>
+                        <p class="text-sm text-gray-600 font-medium">Member Retention Rate</p>
+                    </div>
+                </div>
+            </section>
+            <!-- SECTION 5: Trendsetter Code of Conduct -->
+            <section class="bg-white p-8 rounded-xl shadow-2xl border-l-8 border-orange-800">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                    <i class="fas fa-scroll text-orange-600 mr-3"></i> Trendsetter Code of Conduct
+                </h2>
+                <p class="mt-4 text-lg text-gray-700 leading-relaxed mb-6">
+                    As devoted believers and influencers, we hold ourselves to a high standard, governed by these four core principles of conduct:
+                </p>
+                
+                <div class="space-y-4">
+                    <div class="p-4 bg-yellow-50 rounded-lg border-l-4 border-orange-600 shadow-sm">
+                        <h4 class="font-bold text-xl text-gray-900 flex items-center mb-1">
+                            <i class="fas fa-shield-alt text-orange-600 mr-3"></i> 1. Integrity and Transparency
+                        </h4>
+                        <p class="text-gray-700 text-base">We commit to honesty and open communication in all our dealings, ensuring our public and private lives reflect biblical standards of truth and trustworthiness.</p>
+                    </div>
+                    <div class="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                        <h4 class="font-bold text-xl text-gray-900 flex items-center mb-1">
+                            <i class="fas fa-star text-blue-600 mr-3"></i> 2. Devoted Excellence
+                        </h4>
+                        <p class="text-gray-700 text-base">We commit to serving and working with the highest level of devotion and quality, recognizing that anything less than our best diminishes our witness for Christ.</p>
+                    </div>
+                    <div class="p-4 bg-green-50 rounded-lg border-l-4 border-green-500 shadow-sm">
+                        <h4 class="font-bold text-xl text-gray-900 flex items-center mb-1">
+                            <i class="fas fa-users text-green-600 mr-3"></i> 3. Respectful Influence
+                        </h4>
+                        <p class="text-gray-700 text-base">We commit to honoring every individual, regardless of background, in our speech, actions, and online presence, leading by example with humility and grace.</p>
+                    </div>
+                    <div class="p-4 bg-red-50 rounded-lg border-l-4 border-red-500 shadow-sm">
+                        <h4 class="font-bold text-xl text-gray-900 flex items-center mb-1">
+                            <i class="fas fa-puzzle-piece text-red-600 mr-3"></i> 4. Unity in Diversity
+                        </h4>
+                        <p class="text-gray-700 text-base">We commit to promoting harmony and teamwork, valuing the unique gifts and perspectives of all members, and safeguarding the unity of the Spirit.</p>
+                    </div>
+                </div>
+            </section>
+           
+            <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
+                <a href="{% url 'leadership_institute' %}" class="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i> Prev</a>
+                <a href="{% url 'marriage_konekt' %}" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition flex items-center">Next <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>
+
+        </main>
+
+       <!-- Right Content (1/4 Width) -->
+        <aside class="lg:col-span-1 space-y-8">
+            <div class="bg-white p-6 rounded-xl ministry-card shadow-lg border-t-4 border-teal-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-search mr-2 text-orange-600"></i> Search Articles</h3>
+                    <form action="#" method="get" class="flex">
+                        <input 
+                            type="search" 
+                            name="q" 
+                            placeholder="e.g. whats new" 
+                            class="w-full p-3 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-sky-500"
+                        >
+                        <button type="submit" class="p-3 bg-sky-500 text-white rounded-r-lg hover:bg-sky-600 transition">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+            </div>
+            <div class="bg-sky-700 p-6 rounded-xl shadow-xl text-white">
+                <h3 class="text-2xl font-bold mb-4 border-b border-white/50 pb-2">Quick Facts</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <i class="fas fa-calendar-alt mr-3 text-orange-400"></i>
+                        <span class="font-semibold">Founded:</span> <span class="ml-auto">2024</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-users mr-3 text-orange-400"></i>
+                        <span class="font-semibold">Focus:</span> <span class="ml-auto">The Current Generation</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-lightbulb mr-3 text-orange-400"></i>
+                        <span class="font-semibold">Primary Goal:</span> <span class="ml-auto">Set Spiritual Trends</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-xl border-t-8 border-orange-500 text-center">
+                <p class="text-sm font-semibold text-gray-600 mb-2">Our Defining Slogan</p>
+                <h3 class="text-2xl font-extrabold text-sky-800 mb-4">
+                    "Devoted to Impact. <br>Defining the Generation."
+                </h3>
+                <a href="#" class="inline-block bg-orange-500 text-sky-900 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-yellow-400 transition transform hover:scale-105 mt-4">
+                    <i class="fas fa-angle-double-right mr-2"></i> Join the Movement
+                </a>
+            </div>
+            <div class="bg-gray-100 p-6 rounded-xl shadow-lg">
+                <h3 class="text-xl font-bold text-gray-800 mb-3 flex items-center">
+                    <i class="fas fa-link mr-2 text-sky-500"></i> Get Connected
+                </h3>
+                <p class="text-sm text-gray-600 mb-4">Interested in becoming a Trendsetter? Reach out to the Youth Leadership for upcoming meetings and initiatives.</p>
+                <a href="#" class="text-sky-600 hover:underline font-semibold flex items-center">
+                    <i class="fas fa-envelope mr-2"></i> Contact Youth Ministry Head
+                </a>
+            </div>
+        </aside>
+    </div>
+</div>
+
+
+{%endblock%}
