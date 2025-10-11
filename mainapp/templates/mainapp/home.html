@@ -416,7 +416,7 @@
                 "Since joining BBC Mombasa, my prayer life has become consistent and powerful. I finally feel rooted in the Word and equipped for my calling."
             </p>
             <div class="flex items-center justify-center">
-                <img src="{% static 'images/testimonials/member_1.jpg' %}" alt="Testimonial Photo" class="w-16 h-16 rounded-full object-cover border-2 border-orange-600 mr-4">
+                <img src="{% static 'images/other-media/redempta3.jpg' %}" alt="Testimonial Photo" class="w-auto h-20 rounded-full object-cover border-2 border-orange-600 mr-4">
                 <div>
                     <p class="font-bold text-lg text-sky-900">Mrs. Redempta Katana</p>
                     <p class="text-sm text-gray-500">Joined 2024 | Intercessory Ministry</p>
@@ -450,8 +450,8 @@
         </div>
         <div class="shadow-3xl rounded-xl overflow-hidden transform hover:scale-[1.01] transition duration-500 border-4 border-orange-900/80">
                 <a href="{% url 'events' %}" aria-label="View details for Youths' Overnight Service">
-                    <img src="{% static 'images/events/next_event_flyer.jpg' %}" 
-                         alt="Youths' Overnight Service Event Flyer" 
+                    <img src="{% static 'images/events/next_event_flier.jpg' %}" 
+                         alt="Youths' Overnight Service Event Flier" 
                          class="w-full h-auto object-cover rounded-lg"
                          loading="lazy">
                 </a>
@@ -534,24 +534,63 @@
         </div>
     </section>
 </section>
-
 <!-- Photo Gallery Section -->
 <section class="py-16 bg-gray-100">
     <div class="container mx-auto px-4">
         <h2 class="text-3xl font-extrabold text-sky-900 text-center mb-10">Recent Church Highlights</h2>
         
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300">
-                <img src="{% static 'images/gallery/worship_1.jpg' %}" alt="Worship Team" class="w-full h-48 object-cover">
+            <div class="relative overflow-hidden rounded-xl shadow-2xl group hover:shadow-3xl transform hover:scale-[1.02] transition duration-500">
+                <img 
+                    src="{% static 'images/church/fellowship-hall.jpg' %}" 
+                    alt="Worship Team" 
+                    class="w-full h-48 object-cover transition duration-500 group-hover:opacity-70"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Image+Not+Found';"
+                >
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-xl">
+                    <p class="text-white text-2xl font-extrabold text-center tracking-wide">
+                        Worship Team
+                    </p>
+                </div>
             </div>
-            <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300">
-                <img src="{% static 'images/gallery/youth_event.jpg' %}" alt="Youth Event" class="w-full h-48 object-cover">
+            <div class="relative overflow-hidden rounded-xl shadow-2xl group hover:shadow-3xl transform hover:scale-[1.02] transition duration-500">
+                <img 
+                    src="{% static 'images/events/community-outreach.jpg' %}" 
+                    alt="Youth Event" 
+                    class="w-full h-48 object-cover transition duration-500 group-hover:opacity-70"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Image+Not+Found';"
+                >
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-xl">
+                    <p class="text-white text-2xl font-extrabold text-center tracking-wide">
+                        Youth Event
+                    </p>
+                </div>
             </div>
-            <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300">
-                <img src="{% static 'images/gallery/baptism.jpg' %}" alt="Baptism" class="w-full h-48 object-cover">
+            <div class="relative overflow-hidden rounded-xl shadow-2xl group hover:shadow-3xl transform hover:scale-[1.02] transition duration-500">
+                <img 
+                    src="{% static 'images/events/open-air-worship.jpg' %}"
+                    alt="Open Air Worship" 
+                    class="w-full h-48 object-cover transition duration-500 group-hover:opacity-70"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Image+Not+Found';"
+                >
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-xl">
+                    <p class="text-white text-2xl font-extrabold text-center tracking-wide">
+                        Open Air Worship
+                    </p>
+                </div>
             </div>
-            <div class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300 hidden lg:block">
-                <img src="{% static 'images/gallery/mission_trip.jpg' %}" alt="Mission Outreach" class="w-full h-48 object-cover">
+             <div class="relative overflow-hidden rounded-xl shadow-2xl group hover:shadow-3xl transform hover:scale-[1.02] transition duration-500">
+                <img 
+                    src="{% static 'images/events/youth-music-ministry.jpg' %}"
+                    alt="Mission Outreach" 
+                    class="w-full h-48 object-cover transition duration-500 group-hover:opacity-70"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/3b82f6/ffffff?text=Image+Not+Found';"
+                >
+                <div class="absolute inset-0 bg-gray-900 bg-opacity-70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500 p-4 rounded-xl">
+                    <p class="text-white text-2xl font-extrabold text-center tracking-wide">
+                        Mission Outreach
+                    </p>
+                </div>
             </div>
         </div>
 
@@ -562,6 +601,8 @@
         </div>
     </div>
 </section>
+
+   
 
 <!-- Additional Content Section -->
   

@@ -2,8 +2,9 @@
 {% load static %}
 
 {% block title %}BBC Men's Fellowship - Strength, Purpose, Integrity{% endblock %}
-{% block topbar_main %}
-{% endblock %}
+
+{%block home_menu%}
+{%endblock%}
 
 {% block leaders_hero %}
 {% endblock%}
@@ -81,9 +82,12 @@
                     <h2 class="text-4xl font-extrabold text-center text-indigo-800 mb-8">Our Core Values: The Pillars of Manhood</h2>
                     <p class="text-center max-w-3xl mx-auto text-gray-600 mb-10">We delve deep into these foundational values in our monthly meetups, empowering ourselves to lead fulfilling lives that honor God and serve our communities.</p>
                     
-                    <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-6">
-                        
+                    <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
                         <!-- Value Cards (7 items) -->
+                        <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
+                            <i class="fas fa-fire text-4xl text-amber-accent mb-3"></i>
+                            <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Prayer</h3>
+                        </div>
                         <div class="p-4 rounded-lg bg-white shadow-lg text-center border-b-4 border-indigo-400 hover:shadow-xl transition transform hover:-translate-y-1">
                             <i class="fas fa-shield-halved text-4xl text-amber-accent mb-3"></i>
                             <h3 class="text-sm font-bold text-gray-800 uppercase tracking-wider">Intergrity</h3>
@@ -125,14 +129,16 @@
                         <div class="p-6 rounded-xl shadow-2xl bg-white border-t-4 border-indigo-500">
                             <i class="fas fa-book-open-reader text-5xl text-indigo-600 mb-4"></i>
                             <h3 class="text-2xl font-bold text-gray-800 mb-2">The Covenant & Character Sessions</h3>
-                            <p class="text-gray-600">Monthly sessions focused on in-depth biblical teaching and challenging dialogue on faith, family, and finance. These are not lectures—they are interactive platforms for **iron sharpening iron.**</p>
+                            <p class="text-gray-600">Monthly sessions focused on in-depth biblical teaching and challenging dialogue on faith, family, and finance. 
+                                These are not lectures—they are interactive platforms for <b>Iron sharpening iron.</b></p>
                         </div>
                         
                         <!-- Activity 2: Outdoor Adventures -->
                         <div class="p-6 rounded-xl shadow-2xl bg-white border-t-4 border-amber-600">
                             <i class="fas fa-car-side text-5xl text-amber-accent mb-4"></i>
                             <h3 class="text-2xl font-bold text-gray-800 mb-2">Brotherhood Expeditions & Retreats</h3>
-                            <p class="text-gray-600">Annual retreats and invigorating outdoor trips designed to pull us away from distraction, forge unbreakable bonds of **loyalty**, and deepen spiritual resolve through shared experiences.</p>
+                            <p class="text-gray-600">Annual retreats and invigorating outdoor trips designed to pull us away from distraction, forge unbreakable 
+                                bonds of <b>loyalty,</b> and deepen spiritual resolve through shared experiences.</p>
                         </div>
 
                         <!-- Activity 3: Outreach Initiatives -->
@@ -164,44 +170,32 @@
 
             <!-- RIGHT SIDE: Sidebar Area (1/4 Width) -->
             <aside class="lg:col-span-1 space-y-8">
-                
                 <!-- Men's Highlights & Testimonials Section -->
                 <div class="bg-white p-6 rounded-xl shadow-2xl border-t-4 border-amber-accent">
                     <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center"><i class="fas fa-comments-question-check mr-2 text-amber-accent"></i> Transformed Lives & Highlights</h3>
                     <p class="text-sm text-gray-600 mb-4">Real stories of men who found purpose, accountability, and spiritual growth through the Fellowship.</p>
-                    
+            
                     <div class="testimonial-scroll space-y-6 pr-2">
-                        
-                        <!-- Testimonial 1 -->
-                        <div class="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-lg shadow-md">
-                            <p class="text-sm italic text-gray-700 mb-2">"I was coasting through life, struggling with discipline. The Self-Discipline focus session fundamentally changed how I approach my work and my family time. I found my edge again."</p>
-                            <p class="text-xs font-semibold text-indigo-800">— Mr Joseph, Entrepreneur</p>
-                        </div>
-
-                        <!-- Testimonial 2 (Highlight Story) -->
-                        <div class="p-4 bg-amber-50 border-l-4 border-amber-600 rounded-lg shadow-md">
-                            <h4 class="text-sm font-bold text-amber-700 mb-1">Highlight: The Mt. Zion Climb</h4>
-                            <p class="text-xs text-gray-700">During our last expedition, 15 men completed a challenging ascent. This adventure forged a bond of Courage and mutual respect that continues to define our small group.</p>
-                        </div>
-
-                        <!-- Testimonial 3 -->
-                        <div class="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-lg shadow-md">
-                            <p class="text-sm italic text-gray-700 mb-2">"The Emotional Intelligence seminar gave me the tools to truly listen to my wife and kids. I am a much better husband and father today because of the accountability here."</p>
-                            <p class="text-xs font-semibold text-indigo-800">— Mr Mbaji, Family Man</p>
-                        </div>
-
-                        <!-- Testimonial 4 (Highlight Story) -->
-                        <div class="p-4 bg-amber-50 border-l-4 border-amber-600 rounded-lg shadow-md">
-                            <h4 class="text-sm font-bold text-amber-700 mb-1">Project Impact: Water Well</h4>
-                            <p class="text-xs text-gray-700">The Men's Fellowship funded and installed a clean water well in the local community last month, fulfilling our commitment to **Responsibility** beyond the church walls.</p>
-                        </div>
-                        
-                         <!-- Testimonial 5 -->
                         <div class="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-lg shadow-md">
                             <p class="text-sm italic text-gray-700 mb-2">"What I appreciate most is the real talk about Integrity—in business and at home. This fellowship keeps me honest and focused on my spiritual legacy."</p>
                             <p class="text-xs font-semibold text-indigo-800">— Dr Ibrahim, Manager</p>
                         </div>
-                        
+                        <div class="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-lg shadow-md">
+                            <p class="text-sm italic text-gray-700 mb-2">"I was coasting through life, struggling with discipline. The Self-Discipline focus session fundamentally changed how I approach my work and my family time. I found my edge again."</p>
+                            <p class="text-xs font-semibold text-indigo-800">— Mr Joseph, Entrepreneur</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-l-4 border-amber-600 rounded-lg shadow-md">
+                            <h4 class="text-sm font-bold text-amber-700 mb-1">Highlight: The Mt. Rehoboth Climb</h4>
+                            <p class="text-xs text-gray-700">During our last prayer expedition, 15 men completed a challenging ascent. This adventure forged a bond of Courage and mutual respect that continues to define our small group.</p>
+                        </div>
+                        <div class="p-4 bg-indigo-50 border-l-4 border-indigo-400 rounded-lg shadow-md">
+                            <p class="text-sm italic text-gray-700 mb-2">"The Emotional Intelligence seminar gave me the tools to truly listen to my wife and kids. I am a much better husband and father today because of the accountability here."</p>
+                            <p class="text-xs font-semibold text-indigo-800">— Mr Mbaji, Family Man</p>
+                        </div>
+                        <div class="p-4 bg-amber-50 border-l-4 border-amber-600 rounded-lg shadow-md">
+                            <h4 class="text-sm font-bold text-amber-700 mb-1">Project Impact: Water Well</h4>
+                            <p class="text-xs text-gray-700">The Men's Fellowship funded and installed a clean water well in the local community last month, fulfilling our commitment to Responsibility beyond the church walls.</p>
+                        </div>
                     </div>
                 </div>
 

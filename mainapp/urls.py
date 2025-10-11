@@ -21,20 +21,20 @@ urlpatterns = [
     path('contact/submit/', views.submit_contact, name='submit_contact'), 
     path('gallery/', views.gallery, name='gallery'),
     path('leaders_details/first_family/bshp_A.O/', views.bshp_A_O, name='bshp_A.O'),
-     path('leaders_details/reverends/rev_lorine/', views.rev_lorine, name='rev_lorine'),
+    path('leaders_details/reverends/rev_lorine/', views.rev_lorine, name='rev_lorine'),
     path('leaders_details/reverends/rev_odanga/', views.rev_odanga, name='rev_odanga'),
     path('leaders_details/reverends/rev_moses/', views.rev_moses, name='rev_moses'),
     path('leaders_details/pastors/pst_kinzi/', views.pst_kinzi, name='pst_kinzi'),
     path('leaders_details/pastors/pst_kazosi/', views.pst_kazosi, name='pst_kazosi'),
     path('leaders_details/pastors/pst_alfred/', views.pst_alfred, name='pst_alfred'), 
     path('leaders_details/other_leaders/', views.other_leaders, name='other_leaders'), 
-    path('ministries_details/kids-ministry/', views.kids_ministry, name='kids_ministry'),
     path('ministries_details/leadership-institute/', views.leadership_institute, name='leadership_institute'),
     path('ministries_details/trendsetters/', views.trendsetters, name='trendsetters'),
     path('ministries_details/marriage_konekt/', views.marriage_konekt, name='marriage_konekt'),
     path('ministries_details/thepriests/', views.thepriests, name='thepriests'),
     path('ministries_details/wisebuilders/', views.wisebuilders, name='wisebuilders'),
     path('ministries_details/firecarriers/', views.firecarriers, name='firecarriers'),
+    path('ministries_details/kids-ministry/', views.kids_ministry, name='kids_ministry'),
 
 
 
