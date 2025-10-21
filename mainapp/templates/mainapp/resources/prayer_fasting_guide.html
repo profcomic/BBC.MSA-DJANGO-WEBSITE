@@ -1,0 +1,238 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Prayer & Fasting Guide - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block topbar_home %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block home_menu %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block content %}
+
+<!--Hero Section-->
+<section class="relative w-full h-[300px] flex items-center justify-center text-center overflow-hidden"> 
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-br from-sky-600 via-gray-600 to-blue-700"></div>
+    
+    <!-- Fainted "Pray Always" Text -->
+    <div class="absolute inset-0 z-0 flex items-center justify-center">
+        <h2 class="text-[180px] font-black text-white opacity-10 select-none pointer-events-none uppercase tracking-wider">
+            Pray Always
+        </h2>
+    </div>
+    
+    <div class="relative z-10 container mx-auto px-4 text-white"> 
+        <div class="flex items-center justify-center text-sm"> 
+            <a href="{% url 'home' %}" class="text-sky-400 hover:text-white">Home</a>
+            <span class="mx-2"> ▣ </span>
+            <span class="text-white">Prayer & Fasting Guide</span> 
+        </div>
+        <h1 class="text-4xl font-bold mb-2 drop-shadow-lg">Prayer & Fasting Guide</h1>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        
+        <!-- Introduction -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Why Prayer & Fasting?</h2>
+            <p class="text-muted-foreground mb-4">
+                Prayer and fasting are powerful spiritual disciplines that draw us closer to God, sharpen our spiritual sensitivity, 
+                and position us to receive breakthrough in our lives. As believers, we are called to seek God's face with our whole heart.
+            </p>
+            <blockquote class="border-l-4 border-sky-700 pl-4 italic text-gray-700 my-6">
+                "But when you fast, put oil on your head and wash your face, so that it will not be obvious to others that you are fasting, 
+                but only to your Father, who is unseen; and your Father, who sees what is done in secret, will reward you." 
+                <span class="block mt-2 font-semibold">- Matthew 6:17-18</span>
+            </blockquote>
+        </div>
+
+        <!-- Types of Fasting -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Types of Fasting</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">
+                        <i class="fas fa-clock mr-2"></i>Partial Fast
+                    </h3>
+                    <p class="text-gray-700">
+                        Abstaining from certain foods or meals (e.g., Daniel Fast - vegetables and water only). 
+                        Suitable for beginners or those with health considerations.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">
+                        <i class="fas fa-sun mr-2"></i>Sunrise to Sunset
+                    </h3>
+                    <p class="text-gray-700">
+                        No food or drink from sunrise to sunset. Break your fast with a light meal in the evening.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">
+                        <i class="fas fa-tint mr-2"></i>Water Only Fast
+                    </h3>
+                    <p class="text-gray-700">
+                        Abstaining from all food but drinking water. Recommended for experienced fasters with medical clearance.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">
+                        <i class="fas fa-ban mr-2"></i>Absolute Fast (24 Hours)
+                    </h3>
+                    <p class="text-gray-700">
+                        No food or water for a short period (usually 24 hours or less). Only for special spiritual battles and urgent prayer needs.
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-lg shadow border-2 border-orange-200">
+                    <h3 class="text-xl font-bold mb-3 text-orange-700">
+                        <i class="fas fa-fire mr-2"></i>Dry Fast (3 Days)
+                    </h3>
+                    <p class="text-gray-700">
+                        No food or water for 3 consecutive days. This is an intense spiritual discipline requiring strong faith and physical preparation. 
+                        <span class="font-semibold text-orange-700">Consult your doctor and spiritual leader before attempting.</span>
+                    </p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg shadow border-2 border-purple-200">
+                    <h3 class="text-xl font-bold mb-3 text-purple-700">
+                        <i class="fas fa-mountain mr-2"></i>Dry Fast (7 Days)
+                    </h3>
+                    <p class="text-gray-700">
+                        No food or water for 7 consecutive days. This is the most extreme form of fasting, reserved for critical spiritual warfare and breakthrough. 
+                        <span class="font-semibold text-purple-700">Only for spiritually mature believers with medical supervision and pastoral guidance.</span>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Warning Notice -->
+            <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
+                <div class="flex items-start">
+                    <i class="fas fa-exclamation-triangle text-yellow-600 text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold text-yellow-800 mb-2">Important Health & Safety Notice</h4>
+                        <p class="text-yellow-700 text-sm">
+                            Dry fasting (3 or 7 days) is physically demanding and potentially dangerous without proper preparation. 
+                            Always consult with your doctor before attempting extended dry fasts, especially if you have any health conditions. 
+                            Ensure you have pastoral oversight and accountability during these intense fasting periods.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prayer Focus Areas -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Prayer Focus Areas</h2>
+            <div class="space-y-4">
+                <div class="flex items-start">
+                    <div class="bg-sky-700 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                        <span class="font-bold">1</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Personal Consecration & Holiness</h3>
+                        <p class="text-gray-700">Pray for a deeper relationship with God, purity of heart, and spiritual growth.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="bg-sky-700 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                        <span class="font-bold">2</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Family & Relationships</h3>
+                        <p class="text-gray-700">Intercede for your family members, marriages, children, and relationships.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="bg-sky-700 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                        <span class="font-bold">3</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Church & Leadership</h3>
+                        <p class="text-gray-700">Pray for church growth, unity, and wisdom for our leaders.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="bg-sky-700 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                        <span class="font-bold">4</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Nation & World Evangelism</h3>
+                        <p class="text-gray-700">Intercede for Kenya, global missions, and the salvation of souls.</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start">
+                    <div class="bg-sky-700 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 flex-shrink-0 mt-1">
+                        <span class="font-bold">5</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg mb-2">Breakthrough & Deliverance</h3>
+                        <p class="text-gray-700">Pray for specific needs, healing, financial breakthrough, and deliverance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Practical Tips -->
+        <div class="mb-12 bg-berean-skyblue p-8 rounded-lg">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Practical Tips for Effective Fasting</h2>
+            <ul class="space-y-3 text-gray-800">
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                    <span><strong>Start with prayer:</strong> Begin your fast with a clear purpose and prayer commitment.</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                    <span><strong>Stay hydrated:</strong> Drink plenty of water during your fast (unless doing an absolute fast).</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                    <span><strong>Read Scripture:</strong> Meditate on God's Word throughout your fasting period.</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                    <span><strong>Avoid distractions:</strong> Limit social media, TV, and other distractions to focus on God.</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                    <span><strong>Break your fast wisely:</strong> Start with light foods and gradually return to normal eating.</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                    <span><strong>Journal your experience:</strong> Write down prayers, revelations, and testimonies.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Call to Action -->
+        <div class="text-center bg-sky-700 text-white p-8 rounded-lg">
+            <h2 class="text-2xl font-bold mb-4">Join Our Corporate Fasting</h2>
+            <p class="mb-6">
+                We have regular corporate fasting and prayer sessions. Join us as we seek God's face together!
+            </p>
+            <a href="{% url 'contact' %}" class="inline-block bg-white text-sky-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                Contact Us for More Info
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

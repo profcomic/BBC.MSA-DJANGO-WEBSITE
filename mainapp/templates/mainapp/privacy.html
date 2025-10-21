@@ -1,0 +1,315 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Privacy Policy - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block topbar_home %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block home_menu %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block content %}
+
+<!--Hero Section-->
+<section class="relative w-full h-[300px] flex items-center justify-center text-center overflow-hidden"> 
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-700 via-gray-700 to-zinc-800"></div>
+    
+    <!-- Fainted "Your Privacy Matters" Text -->
+    <div class="absolute inset-0 z-0 flex items-center justify-center">
+        <h2 class="text-[120px] font-black text-white opacity-10 select-none pointer-events-none uppercase tracking-wider">
+            Privacy Matters
+        </h2>
+    </div>
+    
+    <div class="relative z-10 container mx-auto px-4 text-white"> 
+        <div class="flex items-center justify-center text-sm"> 
+            <a href="{% url 'home' %}" class="text-sky-600 hover:text-white">Home</a>
+            <span class="mx-2"> ▣ </span>
+            <span class="text-white">Privacy Policy</span> 
+        </div>
+        <h1 class="text-4xl font-bold mb-2 drop-shadow-lg">Privacy Policy</h1>
+        <p class="text-lg drop-shadow">Your Privacy and Data Protection</p>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        
+        <!-- Last Updated -->
+        <div class="mb-8 text-center">
+            <p class="text-gray-600 text-sm">
+                <i class="fas fa-calendar-alt mr-2"></i>Last Updated: October 13, 2025
+            </p>
+        </div>
+
+        <!-- Introduction -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Introduction</h2>
+            <p class="text-gray-700 mb-4">
+                Welcome to Hallelujah Worship Center - Mombasa (Berean Bible Church). We are committed to protecting your privacy 
+                and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, 
+                and safeguard your information when you visit our website or engage with our church services.
+            </p>
+            <p class="text-gray-700">
+                By using our website and services, you agree to the collection and use of information in accordance with this policy. 
+                If you do not agree with our policies and practices, please do not use our services.
+            </p>
+        </div>
+
+        <!-- Information We Collect -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Information We Collect</h2>
+            
+            <div class="space-y-6">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">
+                        <i class="fas fa-user-circle mr-2"></i>Personal Information
+                    </h3>
+                    <p class="text-gray-700 mb-3">
+                        We may collect personal information that you voluntarily provide to us, including:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                        <li>Name and contact information (email address, phone number, physical address)</li>
+                        <li>Demographic information (age, gender, marital status)</li>
+                        <li>Payment information for donations and purchases</li>
+                        <li>Photos and Video portraits /footage taken during our services</li>
+                        <li>Prayer requests and testimonies you submit</li>
+                        <li>Event registration information</li>
+                        <li>Ministry involvement and volunteer preferences</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3 text-sky-700">
+                        <i class="fas fa-chart-line mr-2"></i>Usage Information
+                    </h3>
+                    <p class="text-gray-700 mb-3">
+                        We automatically collect certain information when you visit our website:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                        <li>Browser type and version</li>
+                        <li>Device information and operating system</li>
+                        <li>IP address and location data</li>
+                        <li>Pages visited and time spent on our website</li>
+                        <li>Referring website addresses</li>
+                        <li>Cookies and similar tracking technologies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- How We Use Your Information -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">How We Use Your Information</h2>
+            <p class="text-gray-700 mb-4">
+                We use the information we collect for various purposes, including:
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="flex items-start p-4 bg-berean-skyblue rounded-lg">
+                    <i class="fas fa-church text-berean-blue text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold mb-2">Church Services</h4>
+                        <p class="text-sm text-gray-700">To provide and maintain our church services, events, and programs</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start p-4 bg-berean-skyblue rounded-lg">
+                    <i class="fas fa-envelope text-berean-blue text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold mb-2">Communication</h4>
+                        <p class="text-sm text-gray-700">To send newsletters, bulletins, event updates, and prayer requests</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start p-4 bg-berean-skyblue rounded-lg">
+                    <i class="fas fa-hand-holding-heart text-berean-blue text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold mb-2">Donations</h4>
+                        <p class="text-sm text-gray-700">To process your donations and provide tax receipts</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start p-4 bg-berean-skyblue rounded-lg">
+                    <i class="fas fa-chart-bar text-berean-blue text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold mb-2">Improvement</h4>
+                        <p class="text-sm text-gray-700">To improve our website, services, and user experience</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start p-4 bg-berean-skyblue rounded-lg">
+                    <i class="fas fa-shield-alt text-berean-blue text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold mb-2">Security</h4>
+                        <p class="text-sm text-gray-700">To protect against fraud, unauthorized access, and security threats</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-start p-4 bg-berean-skyblue rounded-lg">
+                    <i class="fas fa-balance-scale text-berean-blue text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h4 class="font-bold mb-2">Legal Compliance</h4>
+                        <p class="text-sm text-gray-700">To comply with legal obligations and enforce our policies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Information Sharing -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Information Sharing and Disclosure</h2>
+            <p class="text-gray-700 mb-4">
+                We do not sell, trade, or rent your personal information to third parties. We may share your information only in the following circumstances:
+            </p>
+            
+            <div class="space-y-3">
+                <div class="border-l-4 border-sky-700 pl-4 py-2">
+                    <h4 class="font-bold text-lg">With Your Consent</h4>
+                    <p class="text-gray-700">When you explicitly authorize us to share your information</p>
+                </div>
+                <div class="border-l-4 border-sky-700 pl-4 py-2">
+                    <h4 class="font-bold text-lg">Service Providers</h4>
+                    <p class="text-gray-700">With trusted third-party service providers who assist us in operating our website and services (e.g., payment processors, email services)</p>
+                </div>
+                <div class="border-l-4 border-sky-700 pl-4 py-2">
+                    <h4 class="font-bold text-lg">Legal Requirements</h4>
+                    <p class="text-gray-700">When required by law or to protect our rights, property, or safety</p>
+                </div>
+                <div class="border-l-4 border-sky-700 pl-4 py-2">
+                    <h4 class="font-bold text-lg">Church Network</h4>
+                    <p class="text-gray-700">With our denominational network (Christ Apostolic Network) for ministry purposes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Security -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Data Security</h2>
+            <p class="text-gray-700 mb-4">
+                We implement appropriate technical and organizational security measures to protect your personal information against 
+                unauthorized access, alteration, disclosure, or destruction. These measures include:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                <li>Secure Socket Layer (SSL) encryption for data transmission</li>
+                <li>Secure payment processing through trusted providers (Paystack)</li>
+                <li>Regular security assessments and updates</li>
+                <li>Limited access to personal information by authorized personnel only</li>
+                <li>Regular data backups and disaster recovery procedures</li>
+            </ul>
+            <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
+                <p class="text-yellow-800 text-sm">
+                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <strong>Important:</strong> While we strive to protect your information, no method of transmission over the internet 
+                    or electronic storage is 100% secure. We cannot guarantee absolute security.
+                </p>
+            </div>
+        </div>
+
+        <!-- Your Rights -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Your Privacy Rights</h2>
+            <p class="text-gray-700 mb-4">
+                You have the following rights regarding your personal information:
+            </p>
+            
+            <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-6 rounded-lg">
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                        <span><strong>Access:</strong> Request access to the personal information we hold about you</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                        <span><strong>Correction:</strong> Request correction of inaccurate or incomplete information</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                        <span><strong>Deletion:</strong> Request deletion of your personal information (subject to legal requirements)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                        <span><strong>Opt-Out:</strong> Unsubscribe from marketing communications at any time</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-sky-700 mr-3 mt-1"></i>
+                        <span><strong>Data Portability:</strong> Request a copy of your data in a portable format</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <p class="text-gray-700 mt-4">
+                To exercise these rights, please contact us at <a href="mailto:bbcmsaheadquarters@gmail.com" class="text-sky-700 hover:underline">bbcmsaheadquarters@gmail.com</a>
+            </p>
+        </div>
+
+        <!-- Cookies -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Cookies and Tracking Technologies</h2>
+            <p class="text-gray-700 mb-4">
+                We use cookies and similar tracking technologies to enhance your browsing experience. Cookies are small data files 
+                stored on your device that help us remember your preferences and understand how you use our website.
+            </p>
+            <p class="text-gray-700 mb-4">
+                You can control cookies through your browser settings. However, disabling cookies may limit your ability to use 
+                certain features of our website.
+            </p>
+        </div>
+
+        <!-- Children's Privacy -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Children's Privacy</h2>
+            <p class="text-gray-700 mb-4">
+                Our website is not directed to children under the age of 11. We do not knowingly collect personal information from 
+                children under 13. If you are a parent or guardian and believe your child has provided us with personal information, 
+                please contact us immediately.
+            </p>
+        </div>
+
+        <!-- Changes to Policy -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue">Changes to This Privacy Policy</h2>
+            <p class="text-gray-700 mb-4">
+                We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. 
+                We will notify you of any significant changes by posting the new Privacy Policy on this page and updating the 
+                "Last Updated" date.
+            </p>
+            <p class="text-gray-700">
+                We encourage you to review this Privacy Policy periodically to stay informed about how we protect your information.
+            </p>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="bg-gradient-to-r from-sky-700 to-blue-600 text-white p-8 rounded-lg text-center">
+            <h2 class="text-2xl font-bold mb-4">Questions About Our Privacy Policy?</h2>
+            <p class="mb-6">
+                If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, 
+                please don't hesitate to contact us.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="{% url 'contact' %}" class="inline-block bg-white text-sky-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                    <i class="fas fa-envelope mr-2"></i>Contact Us
+                </a>
+                <a href="tel:+25474108094" class="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-sky-700 transition">
+                    <i class="fas fa-phone mr-2"></i>Call Us
+                </a>
+            </div>
+            <div class="mt-6 text-sm">
+                <p>Hallelujah Worship Center - Mombasa</p>
+                <p>Email: bbcmsaheadquarters@gmail.com</p>
+                <p>Phone: +254 741 080 904</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

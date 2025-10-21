@@ -20,6 +20,11 @@ urlpatterns = [
     path('contact/', views.contact_page, name='contact'),
     path('contact/submit/', views.submit_contact, name='submit_contact'), 
     path('gallery/', views.gallery, name='gallery'),
+    path('resources/prayer-fasting-guide/', views.prayer_fasting_guide, name='prayer_fasting_guide'),
+    path('resources/weekly-bulletin/', views.weekly_bulletin, name='weekly_bulletin'),
+    path('resources/testimonies/', views.testimonies, name='testimonies'),
+    path('privacy/', views.privacy, name='privacy'),
+    path('terms_of_use/', views.terms_of_use, name='terms_of_use'),
     path('leaders_details/first_family/bshp_A.O/', views.bshp_A_O, name='bshp_A.O'),
     path('leaders_details/reverends/rev_lorine/', views.rev_lorine, name='rev_lorine'),
     path('leaders_details/reverends/rev_odanga/', views.rev_odanga, name='rev_odanga'),
@@ -35,7 +40,17 @@ urlpatterns = [
     path('ministries_details/wisebuilders/', views.wisebuilders, name='wisebuilders'),
     path('ministries_details/firecarriers/', views.firecarriers, name='firecarriers'),
     path('ministries_details/kids-ministry/', views.kids_ministry, name='kids_ministry'),
-
-
+    path('ministries_details/music-ministry/', views.music_ministry, name='music_ministry'),
+    path('ministries_details/media-ministry/', views.media_ministry, name='media_ministry'),
+    path('ministries_details/hospitality-ministry/', views.hospitality_ministry, name='hospitality_ministry'),
+    path('ministries_details/outreach-ministry/', views.outreach_ministry, name='outreach_ministry'),
+    path('ministries_details/care-counseling/', views.care_counseling, name='care_counseling'),
+    path('ministries_details/young-professionals/', views.young_professionals, name='young_professionals'),
+    path('ministries_details/guest-relations/', views.guest_relations, name='guest_relations'),
+    path('ministries_details/hbc-department/', views.hbc_department, name='hbc_department'),
+    path('ministries_details/creative-arts/', views.creative_arts, name='creative_arts'),
+    path('ministries_details/intercessory-prayer/', views.intercessory_prayer, name='intercessory_prayer'),
+    path('newsletter/subscribe/', views.newsletter_subscribe, name='newsletter_subscribe'),
+    path('newsletter/unsubscribe/<str:token>/', views.newsletter_unsubscribe, name='newsletter_unsubscribe'),
 
 ]

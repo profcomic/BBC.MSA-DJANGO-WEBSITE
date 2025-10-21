@@ -1,4 +1,4 @@
-{% extends "mainapp/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Rev. Odanga - Berean Ministries{% endblock %}
@@ -14,14 +14,18 @@
 {% endblock %}
 
 
-<section class="py-12 md:py-20 bg-gray-50">
-    <div class="container mx-auto px-4 max-w-6xl">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        
+        <main class="lg:col-span-3 space-y-12">
+            <section class="bg-sky-300 p-8 rounded-xl">
+               <div class="container mx-auto px-4 max-w-6xl">
 
         <h2 class="text-4xl font-extrabold text-blue-700 mb-2">
             Reverend Constance Odanga
         </h2>
         <p class="text-xl text-gray-700 mb-8">
-            Senior Pastor, Hallelujah worship  Sanctuary
+            <i>Senior Pastor, Hallelujah worship  Sanctuary</i>
         </p>
 
         <div class="relative text-lg text-gray-800">
@@ -61,8 +65,12 @@
                     Their family's commitment provides a foundation of faithful service to the Berean Ministries community.
                 </p>
             </div>
-            
-            <div class="mt-8 pt-4 border-t border-gray-200 clear-both">
+            </section>
+        </main>
+
+        <aside class="lg:col-span-1 space-y-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-blue-500">
+              <div class="mt-8 pt-4 border-t border-gray-200 clear-both">
                 <h3 class="text-xl font-bold mb-3 text-blue-700">Connect with Rev. Odanga</h3>
                 <div class="flex space-x-6">
                     
@@ -78,11 +86,10 @@
                         <i class="fab fa-instagram text-3xl"></i>
                     </a>
                 </div>
+            </div>       
             </div>
-            
-        </div>
+        </aside>
     </div>
-</section>
-
+</div>
 
 {% endblock %}

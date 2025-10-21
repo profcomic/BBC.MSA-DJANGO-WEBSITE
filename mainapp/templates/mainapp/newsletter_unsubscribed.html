@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Newsletter Unsubscribed - BBC Mombasa{% endblock %}
+
+{%block home_menu%}
+{%endblock%}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex items-center justify-center px-4 py-16">
+    <div class="max-w-2xl w-full">
+        {% if error %}
+        <!-- Error State -->
+        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
+            <div class="mb-6">
+                <div class="mx-auto w-20 h-20 bg-red-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-exclamation-triangle text-4xl text-red-600"></i>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Invalid Link</h1>
+            <p class="text-gray-600 mb-8">{{ error }}</p>
+            <a href="{% url 'home' %}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                <i class="fas fa-home mr-2"></i>Return to Home
+            </a>
+        </div>
+        {% else %}
+        <!-- Success State -->
+        <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 text-center">
+            <div class="mb-6">
+                <div class="mx-auto w-20 h-20 bg-green-100 rounded-full flex items-center justify-center animate-bounce">
+                    <i class="fas fa-check-circle text-4xl text-green-600"></i>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Successfully Unsubscribed</h1>
+            <p class="text-gray-600 mb-2">{{ subscriber.first_name }}, you have been unsubscribed from our newsletter.</p>
+            <p class="text-gray-500 text-sm mb-8">Email: {{ subscriber.email }}</p>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-6 mb-8 text-left">
+                <h3 class="font-semibold text-gray-900 mb-2">We're sorry to see you go!</h3>
+                <p class="text-gray-700 text-sm">
+                    You will no longer receive newsletters from Berean Baptist Church Mombasa. 
+                    If you change your mind, you can always resubscribe through our website.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <p class="text-gray-600 font-semibold">Stay connected with us:</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-gray-200">
+                <a href="{% url 'home' %}" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition mr-4">
+                    <i class="fas fa-home mr-2"></i>Return to Home
+                </a>
+                <a href="{% url 'contact' %}" class="inline-block bg-gray-200 text-gray-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-300 transition">
+                    <i class="fas fa-envelope mr-2"></i>Contact Us
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

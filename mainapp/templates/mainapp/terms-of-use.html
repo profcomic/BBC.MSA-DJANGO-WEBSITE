@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Terms of Use - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block topbar_home %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block home_menu %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block content %}
+
+<section class="relative w-full h-[300px] flex items-center justify-center text-center overflow-hidden">
+    <div class="absolute inset-0 z-0 bg-gradient-to-br from-slate-700 via-gray-700 to-zinc-800"></div>
+        <div class="absolute inset-0 z-0 flex items-center justify-center">
+           <h2
+            class="text-[120px] font-black text-white opacity-10 select-none pointer-events-none uppercase tracking-wider">
+              Terms of Use 
+        </h2>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 text-white">
+        <div class="flex items-center justify-center text-sm">
+          <a href="{% url 'home' %}" class="text-sky-600 hover:text-white">Home</a>
+          <span class="mx-2">▣</span>
+          <span class="text-white">Terms of Use</span>
+        </div>
+           <h1 class="text-4xl font-bold mb-2 drop-shadow-lg">Terms of Use</h1>
+           <p class="text-lg drop-shadow">Agreement for Using Our Website and Services</p>
+    </div>
+</section>
+
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-4xl">
+        <div class="mb-8 text-center">
+            <p class="text-gray-600 text-sm">
+            <i class="fas fa-calendar-alt mr-2"></i>Last Updated: October 21, 2025
+            </p>
+        </div>
+        <div class="mb-12">
+           <h2 class="text-3xl font-bold mb-6 text-berean-blue">1. Introduction and Acceptance of Terms</h2>
+            <p class="text-gray-700 mb-4">
+                Welcome to the Hallelujah Worship Center - Mombasa website. These <b>Terms of
+                Use</b> (the "Terms") govern your access to and use of our website, services, content, and materials 
+                (collectively, the "Services").
+            </p>
+            <p class="text-gray-700">
+                By accessing or using the Services, you acknowledge that you have read, understood, and agree to be 
+                bound by these Terms and our <a href="{% url 'privacy' %}"><b>Privacy Policy</b></a>. If you do not
+                agree with all of these Terms, you are expressly prohibited from using the Services and must discontinue 
+                use immediately.
+            </p>
+        </div>
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-4 text-berean-blue">2. User Obligations and Prohibited Conduct</h2>
+            <div class="space-y-6">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 text-sky-700">
+                   <i class="fas fa-check-circle mr-2"></i>General Use
+                </h3>  
+                <p class="text-gray-700">
+                    You agree to use the Services only for lawful purposes consistent with
+                    the mission of our church.
+                </p>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-3 text-sky-700">
+                  <i class="fas fa-ban mr-2"></i>Prohibited Activities
+                </h3>
+                <p class="text-gray-700 mb-3"> 
+                    The following activities are strictly prohibited:
+                </p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                    <li>Distributing harmful, obscene, defamatory, or otherwise
+                        objectionable content.</li>
+                    <li>Attempting to gain unauthorized access to any portion of the
+                        Services or related systems.</li> 
+                    <li>Using the Services for any commercial solicitation, advertising, or
+                        spamming without explicit permission.</li>
+                    <li>Collecting or harvesting personal data of other users.</li>
+                    <li>Engaging in any conduct that restricts or inhibits anyone's use org enjoyment of the Services.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-berean-blue">3. Intellectual Property Rights</h2>
+        <p class="text-gray-700 mb-4">
+            Unless otherwise indicated, the Services and all source code, databases, functionality,
+            software, website designs,
+            audio, video, text, photographs, and graphics on the Services (collectively, the
+            "Content") are owned or
+            controlled by us and are protected by copyright and trademark laws.
+        </p>
+        <div class="grid md:grid-cols-2 gap-4">
+            <div class="flex items-start p-4 bg-berean-skyblue rounded-lg">
+                <i class="fas fa-copyright text-berean-blue text-2xl mr-3 mt-1"></i>
+                <div>
+                 <h4 class="font-bold mb-2">Our Content</h4>
+                  <p class="text-sm text-gray-700">All Content is provided "AS IS" for
+                   your information and personal use only.
+                  </p>
+                </div>
+            </div>
+            <div class="flex items-start p-4 bg-berean-skyblue rounded-lg">
+               <i class="fas fa-user-lock text-berean-blue text-2xl mr-3 mt-1"></i>
+                <div> 
+                 <h4 class="font-bold mb-2">Limited License</h4>
+                 <p class="text-sm text-gray-700">You are granted a limited,
+                 non-exclusive, non-transferable license to access and use the Content for non-commercial
+                 purposes only.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-12"> 
+        <h2 class="text-3xl font-bold mb-6 text-berean-blue">4. Donations and Financial Transactions</h2>
+        <p class="text-gray-700 mb-4">
+            The Services may allow you to make donations or purchase materials. All financial
+            transactions are subject to
+            the following terms:
+        </p>
+        <div class="space-y-3"> 
+            <div class="border-l-4 border-sky-700 pl-4 py-2">
+                <h4 class="font-bold text-lg">Accuracy of Information</h4>
+                 <p class="text-gray-700">You warrant that all payment information you provide is
+                    accurate and complete.</p>
+            </div>
+            <div class="border-l-4 border-sky-700 pl-4 py-2"> 
+                <h4 class="font-bold text-lg">Transaction Processing</h4>
+                <p class="text-gray-700">All transactions are processed via third-party payment
+                    processors (e.g., Paystack). We are not responsible for their security or practices.</p>
+            </div>
+            <div class="border-l-4 border-sky-700 pl-4 py-2">
+                 <h4 class="font-bold text-lg">Donations are Non-Refundable</h4>
+                 <p class="text-gray-700">All donations made to the church are considered
+                    non-refundable charitable contributions.</p>
+            </div>
+        </div>
+    </div>
+    <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-berean-blue">5. Disclaimers and Limitation of Liability</h2>
+        <p class="text-gray-700 mb-4">
+            The Services are provided on an "as-is" and "as-available" basis. You agree that Your 
+            use of the Services
+            is at your sole risk.
+        </p>
+        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+            <li><b>Disclaimer:</b> We disclaim all warranties, express or implied, in connection
+                with the Services and your use thereof,
+                including, without limitation, the implied warranties of merchantability, fitness for a particular
+                purpose, and non-infringement.</li>
+            <li><b>Limitation of Liability:</b> In no event will we or our directors, employees, or
+                agents be liable to you or any third party
+                for any direct, indirect, consequential, exemplary, incidental, special, or punitive damages,
+                including lost profit, lost revenue,
+                loss of data, or other damages arising from your use of the Services.</li>
+        </ul>
+        <div class="mt-4 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
+            <p class="text-yellow-800 text-sm">
+                <i class="fas fa-exclamation-triangle mr-2"></i>
+                <b>Important:</b>We do not warrant that the Services will be uninterrupted,
+                error-free, secure, or free of viruses or other harmful components.
+            </p>
+        </div>
+    </div>
+    <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-berean-blue">6. Governing Law and Dispute Resolution
+        </h2>
+        <p class="text-gray-700 mb-4">
+            These Terms of Use and your use of the Services are governed by and construed in
+            accordance with the laws overflow-hidden <b>The Republic of Kenya</b>, without regard to its 
+            conflict of law principles.
+        </p>
+        <div class="bg-gradient-to-r from-sky-50 to-blue-50 p-6 rounded-lg"> 
+            <ul class="space-y-3">
+                <li class="flex items-start">
+                    <i class="fas fa-gavel text-sky-700 mr-3 mt-1"></i>
+                    <span>Jurisdiction: Any legal action of whatever nature brought by
+                        either you or Us (collectively, the "Parties" and individually, a "Party") shall be commenced or prosecuted 
+                        in the courts located in Mombasa, Kenya.</span>
+                </li>
+                <li class="flex items-start">
+                        <i class="fas fa-handshake text-sky-700 mr-3 mt-1"></i>
+                        <span><b>Informal Negotiations:</b> To expedite resolution and control
+                            the cost of any dispute, the Parties agree to first attempt to
+                            negotiate any dispute informally for at least thirty (30) days before initiating arbitration
+                            or court proceedings.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="mb-12">
+        <h2 class="text-3xl font-bold mb-6 text-berean-blue">7. Modifications and Interruptions</h2>
+        <p class="text-gray-700 mb-4">
+             We reserve the right to change, modify, or remove the contents of the Services at any time or for any reason 
+             at our sole discretion without notice. We also reserve the right to modify these Terms
+             of Use at any time.
+             You waive any right to receive specific notice of each such change.
+        </p>
+        <p class="text-gray-700">
+            We will not be liable to you or any third party for any modification, price change,
+            suspension, or
+            discontinuance of the Services.
+        </p>
+    </div>
+    <div class="bg-gradient-to-r from-sky-700 to-blue-600 text-white p-8 rounded-lg text-center">
+        <h2 class="text-2xl font-bold mb-4">Questions About Our Terms of Use?</h2>
+        <p class="mb-6">
+            If you have any questions or concerns regarding these Terms, please contact us at:
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="{% url 'contact' %}"class="inline-block bg-white text-sky-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                <i class="fas fa-envelope mr-2"></i>Contact Us
+            </a>
+            <a href="tel:+25474108094"
+            class="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-sky-700 transition">
+            <i class="fas fa-phone mr-2"></i>Call Us
+            </a>
+        </div>
+        <div class="mt-6 text-sm">
+             <p>Hallelujah Worship Center - Mombasa</p>
+             <p>Email: bbcmsaheadquarters@gmail.com</p>
+             <p>Phone: +254 741 080 904</p>
+        </div>
+    </div>
+</div>
+</section>
+
+{% endblock %}

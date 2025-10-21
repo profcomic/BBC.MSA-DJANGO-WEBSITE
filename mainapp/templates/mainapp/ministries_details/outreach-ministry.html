@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}BBC Outreach Ministry - Reaching the Lost{% endblock %}
+
+{%block home_menu%}
+{%endblock%}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<head> 
+    <style>
+        .outreach-hero-bg {
+            background-color: #0891B2; /* Cyan */
+            background-image: linear-gradient(135deg, #06B6D4 0%, #0891B2 50%, #0E7490 100%);
+            background-size: cover;
+        }
+        .text-outreach-cyan {
+            color: #0891B2;
+        }
+        .text-outreach-light {
+            color: #06B6D4;
+        }
+        .bg-outreach-cyan {
+            background-color: #0891B2;
+        }
+    </style>
+</head>
+
+<b class="font-sans">
+    <!-- Hero Section -->
+    <section class="outreach-hero-bg pt-32 pb-20 text-white text-center px-4 shadow-2xl">
+        <div class="max-w-4xl mx-auto">
+            <div class="logo-placeholder inline-block mb-6 p-6 bg-white bg-opacity-10 rounded-full shadow-2xl border-4 border-cyan-400">
+               <i class="fas fa-globe-africa text-7xl text-cyan-400 animate-pulse"></i>
+            </div>
+            <h1 class="text-7xl font-black mb-4 tracking-tighter text-white uppercase drop-shadow-lg">EVANGELISM & OUTREACH MINISTRY</h1>
+            <p class="text-3xl font-light text-cyan-300 leading-snug italic font-mono">"Reaching the Lost"</p>
+        </div>
+    </section>
+
+    <!-- Main Content and Sidebar Container (3/4 and 1/4 Split) -->
+<div class="bg-gray-800 text-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                
+                <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+            <main class="lg:col-span-3 space-y-16">
+            <!-- Overview Section -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-outreach-cyan mb-12">
+                <h2 class="text-3xl font-bold text-outreach-cyan mb-6 border-b border-gray-700 pb-2">
+                    <i class="fas fa-hands-praying mr-3"></i>Ministry Overview
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    The BBC Outreach Ministry is passionate about fulfilling the Great Commission by taking the Gospel beyond the church walls 
+                    to reach the lost, serve the needy, and transform communities with the love of Christ.
+                </p>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    Through evangelism, community service, missions, and compassionate outreach programs, we demonstrate God's love in practical 
+                    ways while sharing the message of salvation. We believe every believer is called to be a witness for Christ.
+                </p>
+            </section>
+
+            <!-- Our Mission -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-12">
+                <h2 class="text-3xl font-bold text-outreach-cyan mb-6">
+                    <i class="fas fa-bullseye mr-3"></i>Our Mission
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-cyan-500">
+                        <h3 class="text-xl font-bold text-cyan-400 mb-3">Evangelize</h3>
+                        <p class="text-gray-300">To share the Gospel with the lost and lead them to salvation in Jesus Christ</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-teal-500">
+                        <h3 class="text-xl font-bold text-teal-400 mb-3">Serve Communities</h3>
+                        <p class="text-gray-300">To meet practical needs and demonstrate God's love through compassionate service</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-cyan-500">
+                        <h3 class="text-xl font-bold text-cyan-400 mb-3">Support Missions</h3>
+                        <p class="text-gray-300">To partner with missionaries and support global mission efforts</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-teal-500">
+                        <h3 class="text-xl font-bold text-teal-400 mb-3">Transform Lives</h3>
+                        <p class="text-gray-300">To bring holistic transformation—spiritual, physical, and social</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ministry Areas -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-12">
+                <h2 class="text-3xl font-bold text-outreach-cyan mb-6">
+                    <i class="fas fa-tasks mr-3"></i>What We Do
+                </h2>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-cyan-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-teal-400 mb-2">
+                            <i class="fas fa-bullhorn mr-2"></i>Street Evangelism
+                        </h3>
+                        <p class="text-gray-300">Taking the Gospel to the streets, markets, and public places to reach the unreached</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-teal-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-2">
+                            <i class="fas fa-utensils mr-2"></i>Community Feeding Programs
+                        </h3>
+                        <p class="text-gray-300">Providing meals and food assistance to the homeless, orphans, and vulnerable families</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-cyan-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-teal-400 mb-2">
+                            <i class="fas fa-hospital mr-2"></i>Medical Outreach
+                        </h3>
+                        <p class="text-gray-300">Organizing free medical camps and health screenings in underserved communities</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-teal-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-2">
+                            <i class="fas fa-home mr-2"></i>Prison & Hospital Visits
+                        </h3>
+                        <p class="text-gray-300">Ministering to inmates, patients, and those in institutions with the message of hope</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-cyan-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-teal-400 mb-2">
+                            <i class="fas fa-school mr-2"></i>School & Campus Outreach
+                        </h3>
+                        <p class="text-gray-300">Reaching students with the Gospel through campus fellowships and school programs</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-teal-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-2">
+                            <i class="fas fa-map-marked-alt mr-2"></i>Mission Trips
+                        </h3>
+                        <p class="text-gray-300">Organizing local and international mission trips to spread the Gospel</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-cyan-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-teal-400 mb-2">
+                            <i class="fas fa-gift mr-2"></i>Benevolence Ministry
+                        </h3>
+                        <p class="text-gray-300">Providing assistance to widows, orphans, and those facing financial hardship</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Get Involved -->
+            <section class="bg-gradient-to-r from-outreach-cyan to-teal-600 p-8 rounded-xl shadow-2xl text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Join the Outreach Ministry</h2>
+                <p class="text-white text-lg mb-6">
+                    Be part of reaching the lost and transforming communities! Whether through evangelism, service, or support, there's a place for you.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'contact' %}" class="inline-block bg-white text-cyan-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                        <i class="fas fa-hand-point-right mr-2"></i>Join Us
+                    </a>
+                    <a href="{% url 'contact' %}" class="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-cyan-700 transition">
+                        <i class="fas fa-info-circle mr-2"></i>Learn More
+                    </a>
+                </div>
+            </section>
+                <!-- Navigation Buttons (Inside Main Content) -->
+                <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
+                    <a href="{% url 'intercessory_prayer' %}" class="px-6 py-3 bg-lime-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i> Prev</a>
+                    <a href="{% url 'hospitality_ministry' %}" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition flex items-center">Next <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </main>
+
+                <!-- RIGHT SIDE: Sidebar Area (1/4 Width) -->
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="scroll top-24 space-y-6">
+                        <!-- Quick Links -->
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-xl border-t-4 border-lime-500">
+                            <h3 class="text-xl font-bold text-lime-400 mb-4 flex items-center">
+                                <i class="fas fa-link mr-2"></i>Quick Links
+                            </h3>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="{% url 'ministries' %}" class="text-gray-300 hover:text-lime-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>All Ministries
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'events' %}" class="text-gray-300 hover:text-lime-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>Upcoming Events
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}" class="text-gray-300 hover:text-lime-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Mission Fields -->
+                        <div class="bg-gradient-to-br from-lime-900 to-green-900 p-6 rounded-xl shadow-xl">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-globe-africa mr-2"></i>Mission Fields
+                            </h3>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-lime-200 flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2 text-lime-400"></i>Local Communities
+                                </p>
+                                <p class="text-lime-200 flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2 text-lime-400"></i>Schools & Colleges
+                                </p>
+                                <p class="text-lime-200 flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2 text-lime-400"></i>Hospitals
+                                </p>
+                                <p class="text-lime-200 flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2 text-lime-400"></i>Prisons
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Related Ministries -->
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-xl border-t-4 border-green-500">
+                            <h3 class="text-xl font-bold text-green-400 mb-4 flex items-center">
+                                <i class="fas fa-church mr-2"></i>Related Ministries
+                            </h3>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="{% url 'hbc_department' %}" class="text-gray-300 hover:text-green-400 transition flex items-center">
+                                        <i class="fas fa-home mr-2 text-xs"></i>HBC Department
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'intercessory_prayer' %}" class="text-gray-300 hover:text-green-400 transition flex items-center">
+                                        <i class="fas fa-praying-hands mr-2 text-xs"></i>Prayer Ministry
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Call to Action -->
+                        <div class="bg-gradient-to-br from-lime-600 to-green-600 p-6 rounded-xl shadow-xl text-center">
+                            <i class="fas fa-hands-helping text-4xl text-white mb-3"></i>
+                            <h3 class="text-lg font-bold text-white mb-2">Join the Mission</h3>
+                            <p class="text-lime-100 text-sm mb-4">Reach the lost with us!</p>
+                            <a href="{% url 'contact' %}" class="block bg-white text-lime-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                                Get Involved
+                            </a>
+                        </div>
+                  </div>
+            </aside>
+        </div>
+    </div>
+</div>
+    
+{%endblock%}

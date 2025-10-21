@@ -1,11 +1,11 @@
 {% load static %}
 
 <!--navigating menu-->
-   <nav id="mainNavSticky" class="bg-gray-100 shadow-sm py-4 flex justify-center sticky top-0 z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col w-full">
-           <div class="max-w-6xl mx-auto flex flex-col mb-4">
+   <nav id="mainNavSticky" class="bg-gray-100 shadow-sm py-4 sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 w-full">
+           <div class="flex flex-col mb-4">
                 <div class="flex items-center justify-center text-sm whitespace-nowrap">
-                    <ul class="main-menu-links flex flex-wrap justify-center gap-x-4 font-semibold tracking-wide uppercase">
+                    <ul class="main-menu-links flex flex-wrap justify-center gap-x-4 font-semibold tracking-wide uppercase max-w-6xl">
                         <li>
                           <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold">HOME</a>
                         </li>
@@ -13,9 +13,9 @@
                              <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold flex items-center">
                               ABOUT US <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                              </a>
-                            <div class="absolute hidden group-hover:block bg-black text-gray-800 p-2 rounded-md shadow-lg">
-                              <a href="{% url 'about' %}" class="block px-4 py-2 hover:bg-gray-700">Our Story</a>
-                              <a href="{% url 'about' %}" class="block px-4 py-2 hover:bg-gray-700">Our Beliefs</a>
+                            <div class="absolute hidden group-hover:block bg-black text-white p-2 rounded-md shadow-lg normal-case">
+                              <a href="{% url 'about' %}#our-story" class="block px-4 py-2 hover:bg-gray-700">Our Story</a>
+                              <a href="{% url 'about' %}#our-beliefs" class="block px-4 py-2 hover:bg-gray-700">Our Beliefs</a>
                               <a href="{% url 'leadership' %}" class="block px-4 py-2 hover:bg-gray-700">Our Leadership</a>
                             </div>
                         </li>
@@ -26,18 +26,18 @@
                            <a href="{% url 'ministries' %}" class="{% if request.resolver_match.url_name == 'ministries' %}text-sky-700{% else %}text-gray-800 hover:text-sky-700{% endif %} font-bold flex items-center">
                             MINISTRIES <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                            </a>
-                            <div class="absolute hidden group-hover:block bg-black text-gray-800 p-2 rounded-md shadow-lg">
-                              <a href="{% url 'leadership_institute' %}" class="block px-4 py-2 hover:bg-gray-700">Leadership Institute</a>
-                              <a href="{% url 'trendsetters' %}" class="block px-4 py-2 hover:bg-gray-700">Trendsetters</a>
-                              <a href="{% url 'marriage_konekt' %}" class="block px-4 py-2 hover:bg-gray-700">Marriage Connect</a>
-                              <a href="{% url 'thepriests' %}" class="block px-4 py-2 hover:bg-gray-700">Men Fellowship</a>
-                              <a href="{% url 'wisebuilders' %}" class="block px-4 py-2 hover:bg-gray-700">Women's Ministry</a>
-                              <a href="{% url 'firecarriers' %}" class="block px-4 py-2 hover:bg-gray-700">Youth Ministry</a>
-                              <a href="{% url 'kids_ministry' %}" class="block px-4 py-2 hover:bg-gray-700">Kid's Ministry</a>
-                              <a href="#" class="block px-4 py-2 hover:bg-gray-700">Music Ministry</a>
-                              <a href="#" class="block px-4 py-2 hover:bg-gray-700">Media Ministry</a> 
-                              <a href="#" class="block px-4 py-2 hover:bg-gray-700">Hospitality Ministry</a>
-                              <a href="#" class="block px-4 py-2 hover:bg-gray-700">Outreach Ministry</a>   
+                            <div class="absolute hidden group-hover:block bg-black text-white p-2 rounded-md shadow-lg mt-2 normal-case">
+                              <a href="{% url 'leadership_institute' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Leadership Institute</a>
+                              <a href="{% url 'trendsetters' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Trendsetters</a>
+                              <a href="{% url 'marriage_konekt' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Marriage Connect</a>
+                              <a href="{% url 'thepriests' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Men Fellowship</a>
+                              <a href="{% url 'wisebuilders' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Women's Ministry</a>
+                              <a href="{% url 'firecarriers' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Youth Ministry</a>
+                              <a href="{% url 'kids_ministry' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Kid's Ministry</a>
+                              <a href="{% url 'music_ministry' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Music Ministry</a>
+                              <a href="{% url 'media_ministry' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Media Ministry</a> 
+                              <a href="{% url 'hospitality_ministry' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Hospitality Ministry</a>
+                              <a href="{% url 'outreach_ministry' %}" class="block px-4 py-2 hover:bg-sky-700 hover:text-white rounded">Outreach Ministry</a>   
                           </div>
                         </li>
                         <li>

@@ -1,7 +1,7 @@
-{% extends "mainapp/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
-{% block title %}Bishop - Berean Ministries{% endblock %}
+{% block title %}Bishop Ibrahim - Berean Ministries{% endblock %}
 {% block content %}
 
 {% block topbar_main %}
@@ -13,19 +13,21 @@
 {% block navmenu %}
 {% endblock %}
 
-<!-- Contents -->
-<section class="container mx-auto px-4 py-8">
-<div class="container mx-auto px-4 max-w-6xl">
 
-    <h2 class="text-4xl font-extrabold text-blue-700 mb-2">
-        Bishop Ibrahim A.O
-    </h2>
-    <p class="text-xl text-gray-700 mb-8">
-        Founder & Overseer Berean Ministries
-    </p>
-
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        
+        <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+        <main class="lg:col-span-3 space-y-12">
+    <section class="bg-gray-300 p-8 rounded-xl">
+             <h2 class="text-4xl font-extrabold text-blue-700 mb-2">
+               Bishop Ibrahim A.O
+             </h2>
+        <p class="text-xl text-gray-700 mb-8">
+          <i> Founder & Overseer Berean Ministries</i>
+        </p>
     <div class="prose max-w-none text-lg text-gray-800">
-        <img src="{% static 'images/leadership/mzee.jpg' %}" 
+        <img src="{% static 'images/leadership/bishop-ibrahim.jpg' %}" 
         alt="Bshp Ibrahim A.O" 
         class="float-right ml-8 mb-4 w-64 rounded-lg shadow-xl">
         
@@ -60,8 +62,14 @@
 
         </p>
         </div>
+    </section>
+            <!--Will add his ministration photos soon-->
+        </main>
 
-          <div class="mt-8 pt-4 border-t border-gray-200 clear-both">
+        <!-- RIGHT SIDE: Sidebar Area (1/4 Width) -->
+        <aside class="lg:col-span-1 space-y-8">
+           
+              <div class="mt-8 pt-4 border-t border-gray-200 clear-both">
                 <h3 class="text-xl font-bold mb-3 text-blue-700">Connect with Bishop Ibrahim</h3>
                 <div class="flex space-x-6">
                     
@@ -81,10 +89,9 @@
                     </a>
                 </div>
             </div>
-
+        </aside>
+    </div>
 </div>
-</section>
-
 
 
 {% endblock %}

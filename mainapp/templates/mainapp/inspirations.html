@@ -1,4 +1,4 @@
-{% extends "mainapp/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Inspirations - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
@@ -25,37 +25,446 @@
 <div id="sidebar-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-40 hidden"></div>
 
 <!--hero  section-->
-<section class="relative w-full h-[300px] flex items-center justify-center text-center"> 
-        <div class="absolute inset-0 z-0">
-            <img
-                src="{% static 'images/backgrounds/.jpg' %}" 
-                alt="Inspirations Background"
-                class="object-cover w-full h-full brightness-50"
-                loading="eager"
-            />
+<section class="relative w-full h-[300px] flex items-center justify-center text-center overflow-hidden"> 
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-br from-violet-900 via-blue-600 to-fuchsia-700"></div>
+    
+    <!-- Fainted "Be Inspired" Text -->
+    <div class="absolute inset-0 z-0 flex items-center justify-center">
+        <h2 class="text-[180px] font-black text-white opacity-10 select-none pointer-events-none uppercase tracking-wider">
+            Be Inspired
+        </h2>
+    </div>
+    
+    <div class="relative z-10 container mx-auto px-4 text-white"> 
+        <div class="flex items-center justify-center text-sm"> 
+            <a href="{% url 'home' %}" class="text-violet-300 hover:text-purple-600">Home</a>
+            <span class="mx-2"> ▣ </span>
+            <span class="text-white">Inspirations</span> 
         </div>
-        <div class="relative z-10 container mx-auto px-4 text-white"> 
-            <div class="flex items-center justify-center text-sm"> 
-                <a href="{% url 'home' %}" class="text-sky-500 hover:text-gray-300">Home</a>
-                <span class="mx-2"> ▣ </span>
-                <span class="text-white-400">Inspirations</span> 
-            </div>
-            <h1 class="text-4xl font-bold mb-6">TESTIMONIES & INSPIRATIONS</h1>
-        </div>
-    </section>
+        <h1 class="text-4xl font-bold mb-2 drop-shadow-lg">INSPIRATIONS</h1>
+    </div>
+</section>
 
-<!-- Contents -->
-<p class="text-gray-600 text-sm mb-2">Catch a full glimpse of the most motivating and captivating messages and behold what God is doing.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    <!-- Loop through blog posts -->
-    <!-- {% for post in blog_posts %} -->
-        <div class="bg-white rounded-lg shadow p-4">
-            <h2 class="text-xl font-semibold mb-2">God Told Me To Trust The Process And See The Results!!!</h2>
-            <p class="text-gray-600 mb-4">{{ post.excerpt }}</p>
-            <a href="{% url 'blog_detail' post.id %}" class="text-sky-700 hover:underline">Read More</a>
+<!-- Introduction Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6 text-blue-700">Words That Inspire Generations</h2>
+            <p class="text-gray-600 text-lg mb-8">
+                Catch a full glimpse of the most motivating and captivating messages from our pastors and believers. 
+                These words of wisdom and encouragement will inspire you to live boldly for Christ and impact your generation.
+            </p>
         </div>
-    <!--{% endfor %}-->
-</div>
+    </div>
+</section>
+
+<!-- Featured Message -->
+<section class="py-16 bg-gradient-to-br from-purple-50 to-violet-50">
+    <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 bg-gradient-to-br from-blue-600 to-violet-900 p-12 text-white flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fas fa-fire text-6xl mb-6 opacity-50"></i>
+                            <h3 class="text-3xl font-bold mb-4">Featured Message</h3>
+                            <p class="text-xl italic">"Living With Purpose in a Purposeless Generation"</p>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <div class="mb-6">
+                            <span class="inline-block bg-purple-100 text-purple-700 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+                                <i class="fas fa-star mr-2"></i>Pastor's Corner
+                            </span>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-4 text-gray-800">Be the Light in Your Generation</h4>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            "You are not here by accident. God has strategically positioned you in this generation for a divine purpose. 
+                            While the world searches for meaning in temporary things, you carry the eternal light of Christ within you."
+                        </p>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            "Don't conform to the patterns of this world. Instead, be transformed by the renewing of your mind. 
+                            Your generation needs authentic believers who will stand firm in truth and love unconditionally."
+                        </p>
+                        <p class="text-purple-700 font-semibold italic">- Pastor, Berean Bible Church</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pastoral Messages Grid -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4 text-blue-700">Messages from Our Pastors</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Powerful words of wisdom and encouragement from our spiritual leaders
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Message 1 -->
+            <div class="bg-gradient-to-br from-purple-50 to-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-purple-100">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        <i class="fas fa-bible"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg text-gray-800">The Power of Prayer</h3>
+                        <p class="text-sm text-gray-500">Pastor's Message</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed italic">
+                    "Prayer is not our last resort; it's our first line of defense. When you pray, you're not just talking to God—
+                    you're activating heaven's resources on earth. Never underestimate the power of a praying believer."
+                </p>
+                <div class="flex items-center text-purple-600 text-sm font-semibold">
+                    <i class="fas fa-praying-hands mr-2"></i>
+                    <span>Prayer & Intercession</span>
+                </div>
+            </div>
+
+            <!-- Message 2 -->
+            <div class="bg-gradient-to-br from-violet-50 to-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-violet-100">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg text-gray-800">Love Without Limits</h3>
+                        <p class="text-sm text-gray-500">Pastor's Message</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed italic">
+                    "The world will know you are my disciples by your love for one another. Love is not just a feeling—
+                    it's a decision, an action, a lifestyle. Choose to love even when it's difficult."
+                </p>
+                <div class="flex items-center text-violet-600 text-sm font-semibold">
+                    <i class="fas fa-hands-helping mr-2"></i>
+                    <span>Love & Unity</span>
+                </div>
+            </div>
+
+            <!-- Message 3 -->
+            <div class="bg-gradient-to-br from-fuchsia-50 to-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-fuchsia-100">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-fuchsia-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg text-gray-800">Your Identity in Christ</h3>
+                        <p class="text-sm text-gray-500">Pastor's Message</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed italic">
+                    "You are not defined by your past mistakes or present struggles. You are a child of the Most High God, 
+                    chosen, loved, and destined for greatness. Walk in that identity daily."
+                </p>
+                <div class="flex items-center text-fuchsia-600 text-sm font-semibold">
+                    <i class="fas fa-user-check mr-2"></i>
+                    <span>Identity & Purpose</span>
+                </div>
+            </div>
+
+            <!-- Message 4 -->
+            <div class="bg-gradient-to-br from-purple-50 to-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-purple-100">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg text-gray-800">Faith Over Fear</h3>
+                        <p class="text-sm text-gray-500">Pastor's Message</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed italic">
+                    "Fear looks at the size of the mountain. Faith looks at the size of God. When you face giants, 
+                    remember that the God who is in you is greater than any challenge before you."
+                </p>
+                <div class="flex items-center text-purple-600 text-sm font-semibold">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    <span>Faith & Courage</span>
+                </div>
+            </div>
+
+            <!-- Message 5 -->
+            <div class="bg-gradient-to-br from-violet-50 to-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-violet-100">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-violet-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg text-gray-800">The Living Word</h3>
+                        <p class="text-sm text-gray-500">Pastor's Message</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed italic">
+                    "The Bible is not just a book—it's God's living Word to you today. Every time you open it, 
+                    expect God to speak. His Word has power to transform, heal, and guide your every step."
+                </p>
+                <div class="flex items-center text-violet-600 text-sm font-semibold">
+                    <i class="fas fa-scroll mr-2"></i>
+                    <span>Word & Truth</span>
+                </div>
+            </div>
+
+            <!-- Message 6 -->
+            <div class="bg-gradient-to-br from-fuchsia-50 to-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-fuchsia-100">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 bg-fuchsia-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-lg text-gray-800">Mission Mindset</h3>
+                        <p class="text-sm text-gray-500">Pastor's Message</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 mb-4 leading-relaxed italic">
+                    "You are called to be a missionary wherever you are—in your workplace, school, neighborhood. 
+                    The Great Commission is not just for pastors; it's for every believer. Go and make disciples."
+                </p>
+                <div class="flex items-center text-fuchsia-600 text-sm font-semibold">
+                    <i class="fas fa-paper-plane mr-2"></i>
+                    <span>Mission & Evangelism</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<!-- Believer's Voices Section -->
+<section class="py-16 bg-gradient-to-br from-purple-50 to-violet-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4 text-blue-700">Voices from the Congregation</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Inspirational messages and insights from fellow believers walking the journey of faith
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <!-- Believer Message 1 -->
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+                <div class="flex items-start mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-violet-600 rounded-full flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-xl text-gray-800 mb-1">Never Give Up on God's Promises</h3>
+                        <p class="text-sm text-gray-500">Ibrahim O, Youth Leader</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic mb-4">
+                    "I've learned that God's timing is perfect, even when it doesn't make sense to us. I waited 5 years for a breakthrough, 
+                    and when it came, I understood why the wait was necessary. God was preparing me, not punishing me. 
+                    To anyone waiting: hold on, your season is coming!"
+                </p>
+                <div class="flex items-center text-purple-600 text-sm font-semibold">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span>Patience & Perseverance</span>
+                </div>
+            </div>
+
+            <!-- Believer Message 2 -->
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+                <div class="flex items-start mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-violet-500 to-fuchsia-600 rounded-full flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-xl text-gray-800 mb-1">Community Changes Everything</h3>
+                        <p class="text-sm text-gray-500">Benson O., Small Group Leader</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic mb-4">
+                    "I used to think I could do Christianity alone, but joining a small group changed my life. 
+                    We're not meant to walk this journey in isolation. Find your tribe, be vulnerable, and watch how God uses 
+                    community to strengthen and refine you. Iron sharpens iron!"
+                </p>
+                <div class="flex items-center text-violet-600 text-sm font-semibold">
+                    <i class="fas fa-users mr-2"></i>
+                    <span>Community & Fellowship</span>
+                </div>
+            </div>
+
+            <!-- Believer Message 3 -->
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+                <div class="flex items-start mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-xl text-gray-800 mb-1">Worship Changes Atmosphere</h3>
+                        <p class="text-sm text-gray-500">Pst Kazosi, Worship Team</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic mb-4">
+                    "Worship is not just singing songs—it's a lifestyle of honoring God in everything. When you worship in the midst of trials, 
+                    you shift the atmosphere. I've seen chains break, burdens lift, and joy return through worship. 
+                    Make worship your weapon!"
+                </p>
+                <div class="flex items-center text-fuchsia-600 text-sm font-semibold">
+                    <i class="fas fa-music mr-2"></i>
+                    <span>Worship & Praise</span>
+                </div>
+            </div>
+
+            <!-- Believer Message 4 -->
+            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300">
+                <div class="flex items-start mb-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full flex items-center justify-center text-white font-bold text-2xl flex-shrink-0">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="ml-4">
+                        <h3 class="font-bold text-xl text-gray-800 mb-1">Serving is the Secret</h3>
+                        <p class="text-sm text-gray-500">Anthonney M, Ministry Volunteer</p>
+                    </div>
+                </div>
+                <p class="text-gray-600 leading-relaxed italic mb-4">
+                    "I came to church looking for what I could get, but I found true fulfillment when I started giving. 
+                    Serving others has taught me more about Jesus than any sermon ever could. When you serve, you become more like Christ. 
+                    Don't wait to be perfect—just start serving!"
+                </p>
+                <div class="flex items-center text-purple-600 text-sm font-semibold">
+                    <i class="fas fa-hand-holding-heart mr-2"></i>
+                    <span>Service & Ministry</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonies Call-Out Section -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-5xl mx-auto">
+            <div class="bg-gradient-to-br from-blue-600 to-violet-700 rounded-2xl shadow-2xl overflow-hidden">
+                <div class="md:flex items-center">
+                    <div class="md:w-1/2 p-12 text-white">
+                        <div class="mb-6">
+                            <i class="fas fa-star text-5xl mb-4 opacity-75"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4">Want to Hear Real Testimonies?</h2>
+                        <p class="text-purple-100 text-lg mb-6 leading-relaxed">
+                            Discover powerful stories of transformation, healing, breakthrough, and God's faithfulness 
+                            from members of our community. These testimonies will strengthen your faith and remind you 
+                            that God is still performing miracles today!
+                        </p>
+                        <a href="{% url 'testimonies' %}" class="inline-block bg-white text-purple-700 px-8 py-4 rounded-lg font-bold hover:bg-purple-50 transition shadow-lg">
+                            <i class="fas fa-book-open mr-2"></i>Read Testimonies
+                        </a>
+                    </div>
+                    <div class="md:w-1/2 p-12 flex items-center justify-center">
+                        <div class="text-center text-white">
+                            <i class="fas fa-users text-8xl mb-6 opacity-50"></i>
+                            <p class="text-2xl font-bold">Real Stories</p>
+                            <p class="text-xl text-purple-200">Real Faith</p>
+                            <p class="text-xl text-purple-200">Real God</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Inspirational Quotes Section -->
+<section class="py-16 bg-gradient-to-br from-blue-600 via-violet-600 to-fuchsia-700 text-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">Words of Inspiration</h2>
+            <p class="text-purple-100 max-w-2xl mx-auto">
+                Uplifting messages to encourage your faith journey
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <!-- Quote 1 -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-8 border border-white border-opacity-20">
+                <i class="fas fa-quote-left text-4xl mb-4 opacity-50"></i>
+                <p class="text-xl italic mb-4 leading-relaxed">
+                    "Faith is not about everything turning out okay. Faith is about being okay no matter how things turn out."
+                </p>
+                <p class="text-purple-200 font-semibold">- Pastor's Message</p>
+            </div>
+
+            <!-- Quote 2 -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-8 border border-white border-opacity-20">
+                <i class="fas fa-quote-left text-4xl mb-4 opacity-50"></i>
+                <p class="text-xl italic mb-4 leading-relaxed">
+                    "God's delays are not God's denials. Trust His timing, for He makes all things beautiful in His time."
+                </p>
+                <p class="text-purple-200 font-semibold">- Ecclesiastes 3:11</p>
+            </div>
+
+            <!-- Quote 3 -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-8 border border-white border-opacity-20">
+                <i class="fas fa-quote-left text-4xl mb-4 opacity-50"></i>
+                <p class="text-xl italic mb-4 leading-relaxed">
+                    "When you can't see God's hand, trust His heart. He is working behind the scenes for your good."
+                </p>
+                <p class="text-purple-200 font-semibold">- Romans 8:28</p>
+            </div>
+
+            <!-- Quote 4 -->
+            <div class="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-8 border border-white border-opacity-20">
+                <i class="fas fa-quote-left text-4xl mb-4 opacity-50"></i>
+                <p class="text-xl italic mb-4 leading-relaxed">
+                    "Your current situation is not your final destination. Keep believing, keep praying, keep moving forward."
+                </p>
+                <p class="text-purple-200 font-semibold">- Word of Encouragement</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6 text-blue-700">Get Inspired Daily</h2>
+            <p class="text-gray-600 text-lg mb-8">
+                Don't miss out on powerful messages that will transform your life. 
+                Join us for worship services, watch our sermons, and connect with our community.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="{% url 'sermons' %}" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-purple-700 transition shadow-lg">
+                    <i class="fas fa-play-circle mr-2"></i>Watch Sermons
+                </a>
+                <a href="{% url 'events' %}" class="inline-block bg-transparent border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-bold hover:bg-purple-600 hover:text-white transition">
+                    <i class="fas fa-calendar-alt mr-2"></i>View Events
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Prayer Request Section -->
+<section class="py-16 bg-gradient-to-br from-purple-50 to-violet-50">
+    <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">
+                    <i class="fas fa-praying-hands"></i>
+                </div>
+                <h2 class="text-3xl font-bold mb-4 text-blue-700">Need Prayer?</h2>
+                <p class="text-gray-600">
+                    Our prayer team is ready to stand with you in faith. Submit your prayer request, 
+                    and we will lift you up before the throne of grace.
+                </p>
+            </div>
+            <div class="text-center">
+                <a href="{% url 'contact' %}" class="inline-block bg-blue-600 text-white px-10 py-4 rounded-lg font-bold hover:bg-purple-700 transition shadow-lg text-lg">
+                    <i class="fas fa-hands mr-2"></i>Request Prayer
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
 

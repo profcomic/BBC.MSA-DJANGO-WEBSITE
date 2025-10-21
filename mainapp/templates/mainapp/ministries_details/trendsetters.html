@@ -1,4 +1,4 @@
-{% extends "mainapp/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Trendsetters - Hallelujah Worship Sanctuary {% endblock %}
@@ -16,7 +16,7 @@
 <head>  
     <style>
         .section-bg {
-            background-color: #8535ed; 
+            background-color: #7011ec; 
             background-image: linear-gradient(135deg, rgba(68, 113, 12, 0.193) 25%, transparent 25%, transparent 50%, rgba(237, 149, 33, 0.834) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
             background-size: 8px 8px;
             -webkit-background-clip: text;
@@ -33,6 +33,7 @@
         <div class="logo-placeholder inline-block mb-6 p-4  rounded-full shadow-lg">
             <img src="{% static 'images/ministries/trendsetters.png' %}" alt="Leadership Ministry" class="mx-auto h-auto object-cover rounded-md" style="max-height: 200px; width: auto;">
         </div>
+        
            <h1 class="text-6xl font-extrabold mb-4 tracking-tight">BBC Trendsetters</h1>
            <p class="text-xl text-gray-600 font-semibold italic">Established in 2024: Devoted to the Generation</p>
         </div>
@@ -243,8 +244,8 @@
             </section>
            
             <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
-                <a href="{% url 'leadership_institute' %}" class="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i> Prev</a>
-                <a href="{% url 'marriage_konekt' %}" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition flex items-center">Next <i class="fas fa-arrow-right ml-2"></i></a>
+                <a href="{% url 'leadership_institute' %}" class="px-6 py-3 bg-sky-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i> Prev</a>
+                <a href="{% url 'marriage_konekt' %}" class="px-6 py-3 bg-sky-700 text-white font-semibold rounded-lg hover:bg-blue-600 transition flex items-center">Next <i class="fas fa-arrow-right ml-2"></i></a>
             </div>
 
         </main>

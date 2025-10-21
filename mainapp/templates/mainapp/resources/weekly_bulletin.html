@@ -1,0 +1,261 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Weekly Bulletin - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
+
+{% block topbar_home %}
+{% endblock %}
+
+{% block ministries_hero %}
+{% endblock%}
+
+{% block home_menu %}
+{% endblock %}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block content %}
+
+<!--Hero Section-->
+<section class="relative w-full h-[300px] flex items-center justify-center text-center overflow-hidden"> 
+    <!-- Gradient Background -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-br from-emerald-200 via-teal-600 to-cyan-700"></div>
+    
+    <!-- Fainted "Stay Connected" Text -->
+    <div class="absolute inset-0 z-0 flex items-center justify-center">
+        <h2 class="text-[100px] font-black text-white opacity-10 select-none pointer-events-none uppercase tracking-wider">
+            Stay Connected
+        </h2>
+    </div>
+    
+    <div class="relative z-10 container mx-auto px-4 text-white"> 
+        <div class="flex items-center justify-center text-sm"> 
+            <a href="{% url 'home' %}" class="text-red-500 hover:text-white">Home</a>
+            <span class="mx-2"> ▣ </span>
+            <span class="text-white">Weekly Bulletin</span> 
+        </div>
+        <h1 class="text-4xl font-bold mb-2 drop-shadow-lg">Weekly Bulletin</h1>
+        <p class="text-lg drop-shadow">Stay Updated with Church Activities & Announcements</p>
+    </div>
+</section>
+
+<!-- Main Content Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-6xl">
+        
+        <!-- Current Week Bulletin -->
+        <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+            <div class="flex items-center justify-between mb-6 border-b pb-4">
+                <div>
+                    <h2 class="text-3xl font-bold text-berean-blue">This Week's Bulletin</h2>
+                    <p class="text-gray-600 mt-1">Week of October 10-18, 2025</p>
+                </div>
+                <button class="bg-sky-700 text-white px-6 py-3 rounded-lg hover:bg-sky-800 transition flex items-center">
+                    <i class="fas fa-download mr-2"></i>
+                    Download PDF
+                </button>
+            </div>
+
+            <!-- Service Times -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-sky-700 flex items-center">
+                    <i class="fas fa-clock mr-3"></i>Service Times
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="bg-berean-skyblue p-4 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">Sunday Service</h4>
+                        <p class="text-gray-700">9:00 AM - 1:00 PM</p>
+                        <p class="text-sm text-gray-600 mt-1">Main Worship Service</p>
+                    </div>
+                    <div class="bg-berean-skyblue p-4 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">Thursday Service</h4>
+                        <p class="text-gray-700">4:00 PM - 6:00 PM</p>
+                        <p class="text-sm text-gray-600 mt-1">Mid-Week Service</p>
+                    </div>
+                    <div class="bg-berean-skyblue p-4 rounded-lg">
+                        <h4 class="font-bold text-lg mb-2">Friday Overnight Service</h4>
+                        <p class="text-gray-700">9:00 PM - 3:00 AM</p>
+                        <p class="text-sm text-gray-600 mt-1">Prayer & Intercession</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- This Week's Theme -->
+            <div class="mb-8 bg-gradient-to-r from-sky-700 to-blue-600 text-white p-6 rounded-lg">
+                <h3 class="text-2xl font-bold mb-3 flex items-center">
+                    <i class="fas fa-bible mr-3"></i>This Week's Theme
+                </h3>
+                <p class="text-2xl font-bold mb-2">"Breaking The Yoke"</p>
+                <p class="text-lg italic">Scripture: Genesis 27:40 - "By your sword you shall live...
+                    that you shall break his yoke from you neck."</p>
+            </div>
+
+            <!-- Announcements -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-sky-700 flex items-center">
+                    <i class="fas fa-bullhorn mr-3"></i>Announcements
+                </h3>
+                <div class="space-y-4">
+                    <div class="border-l-4 border-sky-700 pl-4 py-2">
+                        <h4 class="font-bold text-lg">CAN Youth Rally</h4>
+                        <p class="text-gray-700">Join us this Sunday at 2:00 PM for a powerful youth rally at JIAMI church. Register at the information desk.</p>
+                    </div>
+                    <div class="border-l-4 border-sky-700 pl-4 py-2">
+                        <h4 class="font-bold text-lg">Youth Conference 2026</h4>
+                        <p class="text-gray-700">Save the date! February 14-16. Theme: "Ignite the Fire." Early bird registration now open.</p>
+                    </div>
+                    <div class="border-l-4 border-sky-700 pl-4 py-2">
+                        <h4 class="font-bold text-lg">Community Evangelism</h4>
+                        <p class="text-gray-700">Join us for evangelism every wednesday. Contact the outreach team.</p>
+                    </div>
+                    <div class="border-l-4 border-sky-700 pl-4 py-2">
+                        <h4 class="font-bold text-lg">Prayer Chain</h4>
+                        <p class="text-gray-700">Submit your prayer requests via WhatsApp to our prayer team. We're praying for you!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold mb-4 text-sky-700 flex items-center">
+                    <i class="fas fa-calendar-alt mr-3"></i>Upcoming Events
+                </h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-berean-blue">
+                        <div class="flex items-start">
+                            <div class="bg-berean-blue text-white rounded-lg p-3 mr-4 text-center">
+                                <div class="text-2xl font-bold">9</div>
+                                <div class="text-xs">NOV</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Leadership Summit</h4>
+                                <p class="text-gray-600">All ministry leaders meeting</p>
+                                <p class="text-sm text-gray-500 mt-1">9:00 AM - 12:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-berean-blue">
+                        <div class="flex items-start">
+                            <div class="bg-berean-blue text-white rounded-lg p-3 mr-4 text-center">
+                                <div class="text-2xl font-bold">16</div>
+                                <div class="text-xs">NOV</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Women's Fellowship</h4>
+                                <p class="text-gray-600">Monthly gathering & teaching</p>
+                                <p class="text-sm text-gray-500 mt-1">2:00 PM - 5:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-berean-blue">
+                        <div class="flex items-start">
+                            <div class="bg-berean-blue text-white rounded-lg p-3 mr-4 text-center">
+                                <div class="text-2xl font-bold">13</div>
+                                <div class="text-xs">DEC</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Kids Fun Day</h4>
+                                <p class="text-gray-600">Children's ministry special event</p>
+                                <p class="text-sm text-gray-500 mt-1">10:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-berean-blue">
+                        <div class="flex items-start">
+                            <div class="bg-berean-blue text-white rounded-lg p-3 mr-4 text-center">
+                                <div class="text-2xl font-bold">21</div>
+                                <div class="text-xs">DEC</div>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-lg">Marriage Enrichment</h4>
+                                <p class="text-gray-600">Couples dinner & seminar</p>
+                                <p class="text-sm text-gray-500 mt-1">6:00 PM - 9:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ministry Highlights -->
+            <div>
+                <h3 class="text-2xl font-bold mb-4 text-sky-700 flex items-center">
+                    <i class="fas fa-star mr-3"></i>Ministry Highlights
+                </h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="text-center p-4 bg-berean-skyblue rounded-lg">
+                        <i class="fas fa-users text-4xl text-berean-blue mb-3"></i>
+                        <h4 class="font-bold text-lg mb-2">New Members</h4>
+                        <p class="text-3xl font-bold text-berean-blue">12</p>
+                        <p class="text-sm text-gray-600">This Month</p>
+                    </div>
+                    <div class="text-center p-4 bg-berean-skyblue rounded-lg">
+                        <i class="fas fa-praying-hands text-4xl text-berean-blue mb-3"></i>
+                        <h4 class="font-bold text-lg mb-2">Prayer Requests</h4>
+                        <p class="text-3xl font-bold text-berean-blue">45</p>
+                        <p class="text-sm text-gray-600">Answered</p>
+                    </div>
+                    <div class="text-center p-4 bg-berean-skyblue rounded-lg">
+                        <i class="fas fa-hands-helping text-4xl text-berean-blue mb-3"></i>
+                        <h4 class="font-bold text-lg mb-2">Volunteers</h4>
+                        <p class="text-3xl font-bold text-berean-blue">78</p>
+                        <p class="text-sm text-gray-600">Active Servers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Previous Bulletins Archive -->
+        <div class="bg-white rounded-lg shadow-lg p-8">
+            <h2 class="text-3xl font-bold mb-6 text-berean-blue flex items-center">
+                <i class="fas fa-archive mr-3"></i>Previous Bulletins
+            </h2>
+            <div class="grid md:grid-cols-3 gap-4">
+                <a href="#" class="block p-4 border rounded-lg hover:shadow-lg transition hover:border-sky-700">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-file-pdf text-red-600 text-2xl mr-3"></i>
+                        <div>
+                            <h4 class="font-bold">Week of Oct 6-12</h4>
+                            <p class="text-sm text-gray-600">Download PDF</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="block p-4 border rounded-lg hover:shadow-lg transition hover:border-sky-700">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-file-pdf text-red-600 text-2xl mr-3"></i>
+                        <div>
+                            <h4 class="font-bold">Week of Sept 29-Oct 5</h4>
+                            <p class="text-sm text-gray-600">Download PDF</p>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="block p-4 border rounded-lg hover:shadow-lg transition hover:border-sky-700">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-file-pdf text-red-600 text-2xl mr-3"></i>
+                        <div>
+                            <h4 class="font-bold">Week of Sept 22-28</h4>
+                            <p class="text-sm text-gray-600">Download PDF</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Subscribe Section -->
+        <div class="mt-12 bg-gradient-to-r from-sky-700 to-blue-600 text-white p-8 rounded-lg text-center">
+            <h2 class="text-2xl font-bold mb-4">Get Bulletin via Email</h2>
+            <p class="mb-6">Subscribe to receive our weekly bulletin directly in your inbox every Sunday morning!</p>
+            <form class="max-w-md mx-auto flex gap-2">
+                <input type="email" placeholder="Your email address" class="flex-1 px-4 py-3 rounded-lg text-gray-900" required>
+                <button type="submit" class="bg-white text-sky-700 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                    Subscribe
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -5,13 +5,18 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.core.mail import send_mail, EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 import json
 import requests
 import hmac
 import hashlib
+import secrets
 from decimal import Decimal
 from .models import Offering 
 from .models import ContactMessage
+from .models import NewsletterSubscriber
 
 # ==========================================================
 # 1. MINISTRY DATA DEFINITION
@@ -101,6 +106,20 @@ def thank_you_view(request):
 def gallery(request):
     return render(request, 'mainapp/gallery.html')
 
+def prayer_fasting_guide(request):
+    return render(request, 'mainapp/resources/prayer_fasting_guide.html')
+
+def weekly_bulletin(request):
+    return render(request, 'mainapp/resources/weekly_bulletin.html')
+
+def testimonies(request):
+    return render(request, 'mainapp/resources/testimonies.html')
+
+def privacy(request):
+    return render(request, 'mainapp/privacy.html')
+
+def terms_of_use(request):
+    return render(request, 'mainapp/terms-of-use.html')
 
 def bshp_A_O(request):
     context = {
@@ -208,10 +227,78 @@ def kids_ministry(request):
     }
     return render(request, 'mainapp/ministries_details/kids-ministry.html', context)
 
+def music_ministry(request):
+    context = {
+        'ministry_full_name': "BBC MUSIC MINISTRY", 
+        'page_title_nav': "Music Ministry",   
+    }
+    return render(request, 'mainapp/ministries_details/music-ministry.html', context)
+
+def media_ministry(request):
+    context = {
+        'ministry_full_name': "BBC MEDIA MINISTRY", 
+        'page_title_nav': "Media Ministry",   
+    }
+    return render(request, 'mainapp/ministries_details/media-ministry.html', context)
+
+def hospitality_ministry(request):
+    context = {
+        'ministry_full_name': "BBC HOSPITALITY MINISTRY", 
+        'page_title_nav': "Hospitality Ministry",   
+    }
+    return render(request, 'mainapp/ministries_details/hospitality-ministry.html', context)
+
+def outreach_ministry(request):
+    context = {
+        'ministry_full_name': "BBC OUTREACH MINISTRY", 
+        'page_title_nav': "Outreach Ministry",   
+    }
+    return render(request, 'mainapp/ministries_details/outreach-ministry.html', context)
+
+def care_counseling(request):
+    context = {
+        'ministry_full_name': "BBC CARE AND COUNSELING MINISTRY", 
+        'page_title_nav': "Care & Counseling",   
+    }
+    return render(request, 'mainapp/ministries_details/care-counseling.html', context)
+
+def young_professionals(request):
+    context = {
+        'ministry_full_name': "BBC YOUNG PROFESSIONALS TRAINING", 
+        'page_title_nav': "Young Professionals",   
+    }
+    return render(request, 'mainapp/ministries_details/young-professionals.html', context)
+
+def guest_relations(request):
+    context = {
+        'ministry_full_name': "BBC GUEST RELATIONS DEPARTMENT", 
+        'page_title_nav': "Guest Relations",   
+    }
+    return render(request, 'mainapp/ministries_details/guest-relations.html', context)
+
+def hbc_department(request):
+    context = {
+        'ministry_full_name': "BBC HBC DEPARTMENT", 
+        'page_title_nav': "HBC Department",   
+    }
+    return render(request, 'mainapp/ministries_details/hbc-department.html', context)
+
+def creative_arts(request):
+    context = {
+        'ministry_full_name': "BBC MUSIC & CREATIVE ARTS MINISTRY", 
+        'page_title_nav': "Creative Arts",   
+    }
+    return render(request, 'mainapp/ministries_details/creative-arts.html', context)
+
+def intercessory_prayer(request):
+    context = {
+        'ministry_full_name': "BBC INTERCESSORY & PRAYER MINISTRY", 
+        'page_title_nav': "Intercessory & Prayer",   
+    }
+    return render(request, 'mainapp/ministries_details/intercessory-prayer.html', context)
 
 
-
-# NEW VIEW TO HANDLE FORM SUBMISSION (AJAX)
+# VIEW TO HANDLE FORM SUBMISSION (AJAX)
 @require_POST
 def submit_contact(request):
     if request.content_type == 'application/json':
@@ -422,3 +509,241 @@ def process_donation(request):
     Legacy donation processing - redirects to Paystack flow
     """
     return redirect('give')
+
+
+# ==========================================================
+# 4. NEWSLETTER SUBSCRIPTION VIEWS
+# ==========================================================
+
+def get_client_ip(request):
+    """Get client IP address from request"""
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
+
+@require_POST
+def newsletter_subscribe(request):
+    """
+    Handle newsletter subscription with email confirmation
+    """
+    try:
+        data = json.loads(request.body)
+        
+        # Extract data
+        first_name = data.get('first_name', '').strip()
+        last_name = data.get('last_name', '').strip()
+        email = data.get('email', '').strip().lower()
+        phone = data.get('phone', '').strip() if data.get('phone') else None
+        
+        # Validate required fields
+        if not first_name or not email:
+            return JsonResponse({
+                'success': False,
+                'message': 'First name and email are required.'
+            }, status=400)
+        
+        # Check if email already exists
+        existing_subscriber = NewsletterSubscriber.objects.filter(email=email).first()
+        
+        if existing_subscriber:
+            if existing_subscriber.status == 'active':
+                return JsonResponse({
+                    'success': False,
+                    'message': 'This email is already subscribed to our newsletter.'
+                }, status=400)
+            else:
+                # Reactivate subscription
+                existing_subscriber.status = 'active'
+                existing_subscriber.first_name = first_name
+                existing_subscriber.last_name = last_name
+                existing_subscriber.phone = phone
+                existing_subscriber.interested_in_events = data.get('interested_in_events', True)
+                existing_subscriber.interested_in_sermons = data.get('interested_in_sermons', True)
+                existing_subscriber.interested_in_ministries = data.get('interested_in_ministries', True)
+                existing_subscriber.interested_in_news = data.get('interested_in_news', True)
+                existing_subscriber.save()
+                
+                subscriber = existing_subscriber
+                is_new = False
+        else:
+            # Create new subscriber
+            subscriber = NewsletterSubscriber.objects.create(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                phone=phone,
+                interested_in_events=data.get('interested_in_events', True),
+                interested_in_sermons=data.get('interested_in_sermons', True),
+                interested_in_ministries=data.get('interested_in_ministries', True),
+                interested_in_news=data.get('interested_in_news', True),
+                ip_address=get_client_ip(request),
+                confirmation_token=secrets.token_urlsafe(32)
+            )
+            is_new = True
+        
+        # Send welcome email
+        try:
+            send_welcome_email(subscriber, request)
+            subscriber.confirmation_sent = True
+            subscriber.save()
+        except Exception as e:
+            print(f"Error sending welcome email: {e}")
+            # Don't fail the subscription if email fails
+        
+        return JsonResponse({
+            'success': True,
+            'message': f'Thank you for subscribing! A welcome email has been sent to {email}.'
+        })
+        
+    except json.JSONDecodeError:
+        return JsonResponse({
+            'success': False,
+            'message': 'Invalid data format.'
+        }, status=400)
+    except Exception as e:
+        print(f"Newsletter subscription error: {e}")
+        return JsonResponse({
+            'success': False,
+            'message': 'An error occurred. Please try again later.'
+        }, status=500)
+
+
+def send_welcome_email(subscriber, request):
+    """
+    Send welcome email to new newsletter subscriber
+    """
+    subject = 'Welcome to BBC Newsletter - Berean Baptist Church Mombasa'
+    
+    # Create unsubscribe link
+    unsubscribe_url = request.build_absolute_uri(
+        f'/newsletter/unsubscribe/{subscriber.confirmation_token}/'
+    )
+    
+    # Prepare context for email template
+    context = {
+        'subscriber': subscriber,
+        'unsubscribe_url': unsubscribe_url,
+        'current_year': 2025,
+    }
+    
+    # Render HTML email
+    html_message = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+            .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+            .header {{ background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%); color: white; padding: 40px 20px; text-align: center; border-radius: 10px 10px 0 0; }}
+            .content {{ background: #f9fafb; padding: 30px; border-radius: 0 0 10px 10px; }}
+            .button {{ display: inline-block; padding: 12px 30px; background: #3B82F6; color: white; text-decoration: none; border-radius: 5px; margin: 20px 0; }}
+            .footer {{ text-align: center; padding: 20px; color: #6b7280; font-size: 12px; }}
+            .interests {{ background: white; padding: 15px; border-radius: 5px; margin: 20px 0; }}
+            .interest-item {{ display: inline-block; background: #DBEAFE; color: #1E40AF; padding: 5px 10px; border-radius: 3px; margin: 5px; font-size: 12px; }}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🎉 Welcome to BBC Newsletter!</h1>
+                <p>Berean Baptist Church - Mombasa</p>
+            </div>
+            <div class="content">
+                <h2>Hello {subscriber.first_name}!</h2>
+                <p>Thank you for subscribing to our newsletter. We're thrilled to have you as part of our community!</p>
+                
+                <p>You'll now receive:</p>
+                <div class="interests">
+                    {"<span class='interest-item'>📅 Event Updates</span>" if subscriber.interested_in_events else ""}
+                    {"<span class='interest-item'>🎤 Sermon Highlights</span>" if subscriber.interested_in_sermons else ""}
+                    {"<span class='interest-item'>⛪ Ministry News</span>" if subscriber.interested_in_ministries else ""}
+                    {"<span class='interest-item'>📰 Church News</span>" if subscriber.interested_in_news else ""}
+                </div>
+                
+                <p><strong>What to expect:</strong></p>
+                <ul>
+                    <li>Weekly inspirational messages</li>
+                    <li>Upcoming events and programs</li>
+                    <li>Sermon highlights and resources</li>
+                    <li>Ministry updates and opportunities</li>
+                    <li>Exclusive content for our community</li>
+                </ul>
+                
+                <p>Stay connected with us:</p>
+                <p>
+                    📧 Email: info@bereanbaptistmombasa.org<br>
+                    📱 Phone: +254 XXX XXX XXX<br>
+                    📍 Location: Mombasa, Kenya
+                </p>
+                
+                <p style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; font-size: 14px; color: #6b7280;">
+                    If you didn't subscribe to this newsletter, you can safely ignore this email or 
+                    <a href="{unsubscribe_url}" style="color: #3B82F6;">unsubscribe here</a>.
+                </p>
+            </div>
+            <div class="footer">
+                <p>&copy; {context['current_year']} Berean Baptist Church - Mombasa. All rights reserved.</p>
+                <p>
+                    <a href="{unsubscribe_url}" style="color: #6b7280;">Unsubscribe</a> | 
+                    <a href="{request.build_absolute_uri('/privacy/')}" style="color: #6b7280;">Privacy Policy</a>
+                </p>
+            </div>
+        </div>
+    </body>
+    </html>
+    """
+    
+    # Plain text version
+    text_message = f"""
+    Welcome to BBC Newsletter!
+    
+    Hello {subscriber.first_name}!
+    
+    Thank you for subscribing to our newsletter. We're thrilled to have you as part of our community!
+    
+    You'll receive weekly updates about events, sermons, ministries, and church news.
+    
+    Stay connected with us:
+    Email: info@bereanbaptistmombasa.org
+    Phone: +254 XXX XXX XXX
+    Location: Mombasa, Kenya
+    
+    If you didn't subscribe, you can unsubscribe here: {unsubscribe_url}
+    
+    © {context['current_year']} Berean Baptist Church - Mombasa
+    """
+    
+    # Send email
+    email = EmailMultiAlternatives(
+        subject=subject,
+        body=text_message,
+        from_email=settings.DEFAULT_FROM_EMAIL if hasattr(settings, 'DEFAULT_FROM_EMAIL') else 'noreply@bereanbaptistmombasa.org',
+        to=[subscriber.email]
+    )
+    email.attach_alternative(html_message, "text/html")
+    email.send()
+
+
+def newsletter_unsubscribe(request, token):
+    """
+    Handle newsletter unsubscription
+    """
+    try:
+        subscriber = NewsletterSubscriber.objects.get(confirmation_token=token)
+        subscriber.status = 'unsubscribed'
+        subscriber.unsubscribed_at = timezone.now()
+        subscriber.save()
+        
+        return render(request, 'mainapp/newsletter_unsubscribed.html', {
+            'subscriber': subscriber
+        })
+    except NewsletterSubscriber.DoesNotExist:
+        return render(request, 'mainapp/newsletter_unsubscribed.html', {
+            'error': 'Invalid unsubscribe link.'
+        })

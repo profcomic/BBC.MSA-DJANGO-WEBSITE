@@ -1,4 +1,4 @@
-{% extends "mainapp/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Leadership - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
@@ -20,22 +20,21 @@
 
 
 <!--Leadership Team-->
- <section class="py-16 bg-sky-900 text-black"> 
+ <section class="py-16 mt-16 bg-sky-900 text-black"> 
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
-               <h2 class="text-3xl font-bold mb-4 text-berean-blue">Our Core Leadership</h2> 
+               <h2 class="text-4xl font-bold mb-4 text-white">Our Core Leadership</h2> 
                 <p class="text-muted-foreground max-w-2xl mx-auto">
                      Meet the dedicated individuals who guide our church
                 </p>
             </div>
-            
              <!--Cluster 1-->
             <section>
             <div class="text-left mb-6">
-                   <h2 class="text-3xl font-bold mb-4 text-berean-blue">First Family</h2> 
+                   <h2 class="text-3xl font-bold mb-4 text-gray-300">FIRST FAMILY</h2> 
             </div>
             <div class="grid sm:grid-cols-3 gap-8">
-                <div class="text-center bg-gray-100 p-4 rounded-lg shadow-md">
+                <div class="text-center bg-gray-300 p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden"> 
                         <img src="{% static 'images/leadership/bishop-ibrahim2.jpg' %}" alt="Bshp Ibrahim A.O" class="object-cover w-30 h-auto mx-auto" /> 
                     </div>
@@ -44,25 +43,24 @@
                     <p class="text-muted-foreground text-sm mb-4">Founder of Berean Bible Church ministries.</p>
                     <a href="{% url 'bshp_A.O' %}" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
                 </div>
-                <div class="text-center bg-gray-100 border p-4 rounded-lg shadow-md">
+                <div class="text-center bg-gray-300 border p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/reverend-lorine.jpg' %}" alt="Rev Lorine Pam" class="object-cover w-30 h-auto mx-auto" />
                     </div>
                     <h3 class="text-xl font-bold text-berean-blue">REVEREND LORINE PAMELA ANG'ANA</h3>
-                    <p class="text-gray-900 mb-2">SENIOR PASTOR//WOMEN LEADER</p>
+                    <p class="text-gray-900 mb-2">BISHOP'S WIFE//WOMEN LEADER</p>
                     <p class="text-muted-foreground text-sm mb-4">Wife to Bishop, dynamic leader of Women Of Value.</p>
                     <a href="{% url 'rev_lorine' %}" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
                 </div>
             </div>
             </section>
-            
             <!--Cluster 2-->
             <section>
             <div class="text-left mb-6">
-                <h2 class="text-2xl font-bold mb-8 text-berean-blue">Office Of The Reverend</h2> 
+                <h2 class="text-3xl font-bold mb-8 mt-8 text-sky-300">OFFICE OF THE REVEREND</h2> 
             </div>
             <div class="grid sm:grid-cols-3 gap-8 mt-8">
-                <div class="text-center border p-4 rounded-lg shadow-md">
+                <div class="text-center bg-sky-300  p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/reverend-constant.jpg' %}" alt="Rev Conny OJ" class="object-cover w-30 h-auto mx-auto" />
                     </div>
@@ -71,7 +69,7 @@
                     <p class="text-muted-foreground text-sm mb-4">HQ Senior pastor, Teens Pastor, Departmental Leader</p>
                     <a href="{% url 'rev_odanga' %}"  class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
                 </div>
-                <div class="text-center border p-4 rounded-lg shadow-md">
+                <div class="text-center border bg-sky-300 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/reverend-moses.jpg' %}" alt="Rev Moses O" class="object-cover w-30 h-auto mx-auto" />
                     </div>
@@ -82,14 +80,13 @@
                 </div>
             </div>
             </section>
-
             <!--Cluster 3-->
             <section>
             <div class="text-left mb-6">
-                <h2 class="text-2xl font-bold mb-8 text-berean-blue">Office Of The Pastor</h2> 
+                <h2 class="text-3xl font-bold mb-8 mt-8 text-berean-blue"><u>OFFICE OF THE PASTOR</u></h2> 
             </div>
             <div class="grid sm:grid-cols-3 gap-8 mt-8">
-               <div class="text-center border p-4 rounded-lg shadow-md">
+               <div class="text-center bg-berean-skyblue p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/pastor-salvestin.jpg' %}" alt="Pst S Kinzi" class="object-cover w-30 h-auto mx-auto" />
                     </div>
@@ -101,7 +98,7 @@
                         youth department and also leads the worship team.</p>
                     <a href="{% url 'pst_kinzi' %}" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
                 </div>
-                <div class="text-center border p-4 rounded-lg shadow-md">
+                <div class="text-center bg-berean-skyblue border p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/pastor-agness.jpg' %}" alt="Pst Kazosi A" class="object-cover w-30 h-auto mx-auto" />
                     </div>
@@ -112,7 +109,7 @@
                         also helps in pastoring one of the home based church.</p>
                     <a href="{% url 'pst_kazosi' %}" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
                 </div>
-                <div class="text-center border p-4 rounded-lg shadow-md">
+                <div class="text-center bg-berean-skyblue border p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/pastor-alfred.jpg' %}" alt="Pst Alfred M" class="object-cover w-30 h-auto mx-auto" />
                     </div>
@@ -126,14 +123,13 @@
                 </div>
             </div>
             </section>
-
             <!--Cluster 4-->
             <section>
             <div class="text-left mb-6">
-                <h2 class="text-2xl font-bold mb-8 text-berean-blue">Office Of The Deacon</h2> 
+                <h2 class="text-3xl font-bold mb-8 mt-8 text-blue-300">OFFICE OF THE DEACON</h2> 
             </div>
             <div class="grid sm:grid-cols-3 gap-8 mt-8">
-               <div class="text-center border p-4 rounded-lg shadow-md">
+               <div class="text-center bg-blue-300 border p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/no-portrait.jpg' %}" alt="Deacon Hellen" class="object-cover w-30 h-auto mx-auto" />
                     </div>
@@ -145,7 +141,7 @@
                         Church's Financial projections.</p>
                     <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
                 </div>
-                <div class="text-center border p-4 rounded-lg shadow-md">
+                <div class="text-center bg-blue-300 p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/no-portrait.jpg' %}" alt="Pst Kazosi A" class="object-cover w-30 h-auto mx-auto" />
                     </div>
@@ -156,7 +152,7 @@
                         in the church.</p>
                     <a href="#" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Learn More</a>
                 </div>
-                <div class="text-center border p-4 rounded-lg shadow-md">
+                <div class="text-center bg-blue-300 border p-4 rounded-lg shadow-md">
                     <div class="relative w-full h-auto mb-4 overflow-hidden">
                         <img src="{% static 'images/leadership/no-portrait2.jpg' %}" alt="Deacon" class="object-cover w-30 h-auto mx-auto" />
                     </div>
@@ -170,9 +166,8 @@
             </section>
         </div>
     </section>
-
     <!--Other Leaders-->
-<section class="py-16 bg-berean-skyblue">
+<section class="py-16 gap-8 boarder bg-gray-300 rounded-lg shadow-md mt-16 mb-16">
     <div class="container mx-auto px-4">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold mb-4 text-berean-blue">Ministry / Departmental Leaders</h2>
@@ -180,9 +175,10 @@
                The individuals dedicated to lead different ministries or departments in the church.
             </p>
         </div>
-        <div class="grid md:grid-cols-1 gap-8 max-w-5xl mx-auto">
-            <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                <a href="{% url 'other_leaders' %}" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">Know Them</a>
+            <div class="p-6 rounded-lg shadow-md text-center">
+                <a href="{% url 'other_leaders' %}" class="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-sky-700 transition duration-300">
+                   Explore Them
+                </a>
             </div>
         </div>
     </div>

@@ -3,16 +3,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Hide nav on top, show on scroll
         let lastScroll = 0;
         const nav = document.getElementById('mainNav');
-        window.addEventListener('scroll', function() {
+        if (nav) {
+            window.addEventListener('scroll', function() {
+                if(window.scrollY < 50) {
+                    nav.classList.add('opacity-0', 'pointer-events-none');
+                } else {
+                    nav.classList.remove('opacity-0', 'pointer-events-none');
+                }
+            });
+            // On page load, hide if at top
             if(window.scrollY < 50) {
                 nav.classList.add('opacity-0', 'pointer-events-none');
-            } else {
-                nav.classList.remove('opacity-0', 'pointer-events-none');
             }
-        });
-        // On page load, hide if at top
-        if(window.scrollY < 50) {
-            nav.classList.add('opacity-0', 'pointer-events-none');
         }
 
         // Simple dark/light mode toggle (ensure elements with these IDs exist if you want this to work)
@@ -31,9 +33,12 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+    // Scroll to bottom button functionality
     const scrollButton = document.getElementById('scroll-to-bottom-btn');
     
     if (scrollButton) {
+        console.log("Scroll-to-bottom button found!");
+        
         // Defining function to get the maximum height of the entire document
         function getDocumentScrollHeight() {
             // Checks documentElement (html tag) and document.body for the largest height
@@ -48,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         scrollButton.addEventListener('click', function() {
+            console.log("Scroll button clicked!");
             // Scroll to the absolute maximum height of the document
             window.scrollTo({
                 top: getDocumentScrollHeight(), 
@@ -55,20 +61,29 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                scrollButton.style.display = 'block';  // Ensuring the button is visible when scrolled down
+        // Show/hide button based on scroll position
+        function toggleButtonVisibility() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const docHeight = getDocumentScrollHeight();
+            const windowHeight = window.innerHeight;
+            
+            // Show button if page is scrollable and user has scrolled down 300px
+            if (docHeight > windowHeight && scrollY > 300) {
+                scrollButton.classList.remove('hidden');
+                scrollButton.classList.add('flex');
+                console.log("Button shown at scroll position:", scrollY);
             } else {
-                scrollButton.style.display = 'none';       // hidden at the very top
+                scrollButton.classList.add('hidden');
+                scrollButton.classList.remove('flex');
             }
-        }); 
-        // visibility if page reloads mid-scroll
-        if (window.scrollY > 300) {
-             scrollButton.style.display = 'block';
         }
-        console.log("Scroll-to-bottom button successfully initialized.");
-        } else {
-        // This will appear in your browser's console if the button ID is wrong or missing.
+        
+        window.addEventListener('scroll', toggleButtonVisibility);
+        
+        // Check visibility on page load
+        toggleButtonVisibility();
+        console.log("Scroll-to-bottom button successfully initialized. Page height:", getDocumentScrollHeight());
+    } else {
         console.error("ERROR: Scroll-to-bottom button element with ID 'scroll-to-bottom-btn' not found in the DOM.");
     }
     

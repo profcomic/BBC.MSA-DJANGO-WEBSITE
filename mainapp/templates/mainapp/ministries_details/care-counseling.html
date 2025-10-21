@@ -1,0 +1,239 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}BBC Care and Counseling Ministry - Healing Hearts{% endblock %}
+
+{%block home_menu%}
+{%endblock%}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<head> 
+    <style>
+        .care-hero-bg {
+            background-color: #14B8A6; /* Teal */
+            background-image: linear-gradient(135deg, #5EEAD4 0%, #14B8A6 50%, #0F766E 100%);
+            background-size: cover;
+        }
+        .text-care-teal {
+            color: #14B8A6;
+        }
+        .text-care-light {
+            color: #5EEAD4;
+        }
+        .bg-care-teal {
+            background-color: #14B8A6;
+        }
+    </style>
+</head>
+
+<b class="font-sans">
+    <!-- Hero Section -->
+    <section class="care-hero-bg pt-32 pb-20 text-white text-center px-4 shadow-2xl">
+        <div class="max-w-4xl mx-auto">
+            <div class="logo-placeholder inline-block mb-6 p-6 bg-white bg-opacity-10 rounded-full shadow-2xl border-4 border-teal-300">
+               <i class="fas fa-heart text-7xl text-teal-300 animate-pulse"></i>
+            </div>
+            <h1 class="text-7xl font-black mb-4 tracking-tighter text-white uppercase drop-shadow-lg">CARE AND COUNSELING MINISTRY</h1>
+            <p class="text-3xl font-light text-teal-200 leading-snug italic font-mono">"Healing Hearts, Restoring Hope"</p>
+            <p class="text-xl font-semibold text-white mt-4">Led by the <span class="text-teal-300">Pastoral Team</span></p>
+        </div>
+    </section>
+
+    <!-- Main Content and Sidebar Container (3/4 and 1/4 Split) -->
+<div class="bg-sky-200 text-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                
+                <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+            <main class="lg:col-span-3 space-y-16">
+                <!-- Overview Section -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-care-teal mb-12">
+                <h2 class="text-3xl font-bold text-care-teal mb-6 border-b border-gray-700 pb-2">
+                    <i class="fas fa-hands-helping mr-3"></i>Ministry Overview
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    The BBC Care and Counseling Ministry is dedicated to providing spiritual, emotional, and practical support to individuals 
+                    and families facing life's challenges. We believe that God's love brings healing and restoration to broken hearts.
+                </p>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    Under the leadership of our pastoral team, we offer biblical counseling, crisis intervention, pastoral care, and support 
+                    groups to help people navigate difficult seasons and experience God's transforming power in their lives.
+                </p>
+            </section>
+
+            <!-- Our Mission -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-12">
+                <h2 class="text-3xl font-bold text-care-teal mb-6">
+                    <i class="fas fa-bullseye mr-3"></i>Our Mission
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-teal-500">
+                        <h3 class="text-xl font-bold text-teal-400 mb-3">Provide Biblical Counseling</h3>
+                        <p class="text-gray-300">To offer Christ-centered counseling grounded in Scripture for life's challenges</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-cyan-500">
+                        <h3 class="text-xl font-bold text-cyan-400 mb-3">Bring Emotional Healing</h3>
+                        <p class="text-gray-300">To minister healing to those dealing with trauma, grief, and emotional pain</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-teal-500">
+                        <h3 class="text-xl font-bold text-teal-400 mb-3">Support Families</h3>
+                        <p class="text-gray-300">To strengthen marriages and families through godly counsel and support</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-cyan-500">
+                        <h3 class="text-xl font-bold text-cyan-400 mb-3">Walk Alongside</h3>
+                        <p class="text-gray-300">To provide compassionate pastoral care during times of crisis and transition</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ministry Services -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-12">
+                <h2 class="text-3xl font-bold text-care-teal mb-6">
+                    <i class="fas fa-tasks mr-3"></i>Our Services
+                </h2>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-teal-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-2">
+                            <i class="fas fa-user-friends mr-2"></i>One-on-One Counseling
+                        </h3>
+                        <p class="text-gray-300">Confidential biblical counseling sessions with trained pastoral counselors</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-cyan-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-teal-400 mb-2">
+                            <i class="fas fa-ring mr-2"></i>Marriage & Family Counseling
+                        </h3>
+                        <p class="text-gray-300">Specialized support for couples and families facing relational challenges</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-teal-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-2">
+                            <i class="fas fa-users mr-2"></i>Support Groups
+                        </h3>
+                        <p class="text-gray-300">Facilitated groups for grief recovery, addiction, divorce care, and more</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-cyan-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-teal-400 mb-2">
+                            <i class="fas fa-phone-alt mr-2"></i>Crisis Intervention
+                        </h3>
+                        <p class="text-gray-300">Immediate pastoral support during emergencies and life crises</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-teal-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-cyan-400 mb-2">
+                            <i class="fas fa-hospital mr-2"></i>Hospital & Home Visits
+                        </h3>
+                        <p class="text-gray-300">Pastoral care visits to the sick, elderly, and homebound members</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-cyan-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-teal-400 mb-2">
+                            <i class="fas fa-book-open mr-2"></i>Resource Library
+                        </h3>
+                        <p class="text-gray-300">Access to books, materials, and resources for personal growth and healing</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Get Help -->
+            <section class="bg-gradient-to-r from-care-teal to-cyan-600 p-8 rounded-xl shadow-2xl text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Need Care or Counseling?</h2>
+                <p class="text-white text-lg mb-6">
+                    You don't have to face life's challenges alone. Our pastoral team is here to walk with you through prayer, counsel, and support.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'contact' %}" class="inline-block bg-white text-teal-700 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                        <i class="fas fa-hand-point-right mr-2"></i>Request Counseling
+                    </a>
+                    <a href="{% url 'contact' %}" class="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-teal-700 transition">
+                        <i class="fas fa-info-circle mr-2"></i>Learn More
+                    </a>
+                </div>
+            </section>
+            <!-- Navigation Buttons (Inside Main Content) -->
+            <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
+                <a href="{% url 'music_ministry' %}" class="px-6 py-3 bg-sky-900 text-gray-100 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i> Prev</a>
+                <a href="{% url 'young_professionals' %}" class="px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition flex items-center">Next <i class="fas fa-arrow-right ml-2"></i></a>
+            </div>   
+            </main>
+
+                <!-- RIGHT SIDE: Sidebar Area (1/4 Width) -->
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="scroll top-24 space-y-6">
+                    <!-- Quick Links -->
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-xl border-t-4 border-purple-500">
+                            <h3 class="text-xl font-bold text-purple-400 mb-4 flex items-center">
+                                <i class="fas fa-link mr-2"></i>Quick Links
+                            </h3>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="{% url 'ministries' %}" class="text-gray-300 hover:text-purple-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>All Ministries
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'events' %}" class="text-gray-300 hover:text-purple-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>Upcoming Events
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}" class="text-gray-300 hover:text-purple-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Confidential Support -->
+                        <div class="bg-gradient-to-br from-purple-900 to-pink-900 p-6 rounded-xl shadow-xl">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-shield-alt mr-2"></i>Confidential Support
+                            </h3>
+                            <p class="text-purple-200 text-sm mb-3">
+                                All counseling sessions are strictly confidential and conducted in a safe, judgment-free environment.
+                            </p>
+                            <div class="bg-purple-800 p-3 rounded-lg">
+                                <p class="text-white text-xs font-semibold">Available 24/7</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Services Offered -->
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-xl border-t-4 border-pink-500">
+                            <h3 class="text-xl font-bold text-pink-400 mb-4 flex items-center">
+                                <i class="fas fa-hands-helping mr-2"></i>We Help With
+                            </h3>
+                            <ul class="space-y-2 text-sm">
+                                <li class="text-gray-300 flex items-center">
+                                    <i class="fas fa-check mr-2 text-purple-400 text-xs"></i>Marriage Issues
+                                </li>
+                                <li class="text-gray-300 flex items-center">
+                                    <i class="fas fa-check mr-2 text-purple-400 text-xs"></i>Family Conflicts
+                                </li>
+                                <li class="text-gray-300 flex items-center">
+                                    <i class="fas fa-check mr-2 text-purple-400 text-xs"></i>Grief & Loss
+                                </li>
+                                <li class="text-gray-300 flex items-center">
+                                    <i class="fas fa-check mr-2 text-purple-400 text-xs"></i>Spiritual Guidance
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Call to Action -->
+                        <div class="bg-gradient-to-br from-purple-600 to-pink-600 p-6 rounded-xl shadow-xl text-center">
+                            <i class="fas fa-heart text-4xl text-white mb-3"></i>
+                            <h3 class="text-lg font-bold text-white mb-2">Need Help?</h3>
+                            <p class="text-purple-100 text-sm mb-4">Reach out for support today</p>
+                            <a href="{% url 'contact' %}" class="block bg-white text-purple-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                                Request Counseling
+                            </a>
+                        </div>    
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+</b>
+
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends "mainapp/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Ministries - HALLELUJAH WORSHIP CENTER-MOMBASA{% endblock %}
@@ -52,11 +52,10 @@
     </section>
 
     <!-- Ministries Grid Section -->
-    <section class="container mx-auto px-4 py-16 mt-8">
-        <h2 class="text-xl justify-center mt-4 text-gray-800">PRIMARY MINISTRIES</h2>
+    <section class="container bg-sky-100 rounded text-black mx-auto px-4 py-16">  
+        <h2 class="text-3xl font-bold text-center mb-8 justify-center mt-2 text-gray-800">PRIMARY MINISTRIES</h2>
         <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Ministry Card 1: BBC Leadership Institute -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/leadership-ministry.jpg' %}" alt="BBC Leadership Institute" class="w-full h-full object-cover">
@@ -70,7 +69,7 @@
                  <p class="text-gray-600 mb-4">Wanna Know More About Leadership??</p>
                  <a href="{% url 'leadership_institute' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
-            <!-- Ministry Card 2: Trendsetters -->
+           
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/trendsetters.png' %}" alt="Trendsetters" class="w-full h-full object-cover">
@@ -85,7 +84,6 @@
                 <a href="{% url 'trendsetters' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
 
-            <!-- Ministry Card 3: Marriage Connect -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/marriage-connect.jpg' %}" alt="Marriage Connect" class="w-full h-full object-cover">
@@ -100,7 +98,6 @@
                 <a href="{% url 'marriage_konekt' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
             
-             <!-- Ministry Card 4: Men Fellowship -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/men-ministry.jpg' %}" alt="Men Fellowship" class="w-full h-full object-cover">
@@ -115,7 +112,6 @@
              <a href="{% url 'thepriests' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
 
-               <!-- Ministry Card 5: Berean Women -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/women-fellowship.jpg' %}" alt="BBC Women Fellowship" class="w-full h-full object-cover">
@@ -130,7 +126,6 @@
                 <a href="{% url 'wisebuilders' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
 
-            <!--Ministry Card 6: BBC-Youths-->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/youths-ministry.jpg' %}" alt="BBC-Youths-Ministry" class="w-full h-full object-cover">
@@ -145,7 +140,6 @@
                 <a href="{% url 'firecarriers' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
             </div>
 
-            <!-- Ministry Card 7: BBC-Kids Ministry -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/kids-ministry.png' %}" alt="BBC-Kids-Ministry" class="w-full h-full object-cover">
@@ -161,11 +155,11 @@
             </div>
         </div>
     </section>
-    <section class="container mx-auto px-4 py-16 mt-8"></section>
-        <h2 class="text-xl justify-center mt-4 text-gray-800">SECONDARY MINISTRIES</h2>
+
+    <section class="container bg-gray-200 mx-auto px-4 py-16 mt-8">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">SECONDARY MINISTRIES</h2>
         <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <!-- Ministry Card 8: PRAISE & WORSHIP Ministry -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/p&w-ministry.jpg' %}" alt="Praise & Worship Ministry" class="w-full h-full object-cover">
@@ -176,11 +170,11 @@
                     <i class="fas fa-crosshairs text-white text-xl"></i> 
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Praise & Worship Ministry</h3>
-                <p class="text-gray-600 mb-4">Praise and worship God in beauty and Splender Using your Gifts...</p>
-                <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <p class="text-gray-600 mb-2">Led by <strong>Pst Kinzi</strong></p>
+                <p class="text-gray-600 mb-4">Praise and worship God in beauty and splendor using your gifts.</p>
+                <a href="{% url 'music_ministry' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
 
-            <!-- Ministry Card 9: Care and Counseling -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/fellowship.jpg' %}" alt="Care and Counseling" class="w-full h-full object-cover">
@@ -191,11 +185,10 @@
                     <i class="fas fa-hand-holding-heart text-white text-xl"></i> 
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Care and Counseling</h3>
-                <p class="text-gray-600 mb-4">Do fight in silent, Men of God are always there to help you out...</p>
-              <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <p class="text-gray-600 mb-4">Don't fight in silence. Men of God are always there to help you out.</p>
+              <a href="{% url 'care_counseling' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
 
-            <!-- Ministry Card 10: Young Professionals Training -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/speech.jpg' %}" alt="Young Professional Training" class="w-full h-full object-cover">
@@ -206,11 +199,10 @@
                     <i class="fas fa-graduation-cap text-white text-xl"></i> 
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Young Professionals Training</h3>
-                <p class="text-gray-600 mb-4">Lets help you in growing your God Given Ministry.</p>
-               <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <p class="text-gray-600 mb-4">Let us help you in growing your God-given ministry and talents.</p>
+               <a href="{% url 'young_professionals' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
 
-            <!-- Ministry Card 11: Guest Relations Department -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/belonging.jpg' %}" alt="Guest Relations Department" class="w-full h-full object-cover">
@@ -221,11 +213,10 @@
                     <i class="fas fa-hand-holding-heart text-white text-xl"></i> 
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Guest Relations Department</h3>
-                <p class="text-gray-600 mb-4">We Really Love visitors so if its your first time to show up into this church make sure to pass through this desk.</p>
-               <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <p class="text-gray-600 mb-4">We really love visitors! If it's your first time at our church, make sure to pass through this desk.</p>
+               <a href="{% url 'guest_relations' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
 
-            <!-- Ministry Card 12: HBC Department -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/home.jpg' %}" alt="Home Based Churches Department" class="w-full h-full object-cover">
@@ -235,12 +226,12 @@
                 <div class="bg-red-600 rounded-full p-3 shadow-lg -mt-10 relative z-10">
                     <i class="fas fa-house text-white text-xl"></i> 
                 </div>
-                <h3 class="text-xl font-semibold mt-4 text-gray-800">Home Based Churches Departments</h3>
-                <p class="text-gray-600 mb-4">We also have churches at the comfort of your hood...The Home Based Churches or whats so called Home Fellowships.</p>
-               <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <h3 class="text-xl font-semibold mt-4 text-gray-800">Home Based Churches (HBCs)</h3>
+                <p class="text-gray-600 mb-2">Overseer: <strong>Rev Moses</strong></p>
+                <p class="text-gray-600 mb-4">We have churches in your neighborhood: Jesuraselem HBC, Emmaus HBC, and Judea HBC.</p>
+               <a href="{% url 'hbc_department' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Learn More</a>
             </div>
 
-            <!-- Ministry Card 13: Music & Creative arts -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/music-ministry.jpg' %}" alt="Music & Creative Arts" class="w-full h-full object-cover">
@@ -251,10 +242,11 @@
                     <i class="fas fa-hands-clapping text-white text-xl"></i>
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Music & Creative Arts</h3>
-                <p class="text-gray-600 mb-4">Nurturing talents as way of serving God through music, drama, and visual arts.</p>
-               <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <p class="text-gray-600 mb-2">Led by <strong>Pst Kinzi</strong></p>
+                <p class="text-gray-600 mb-4">Nurturing talents as a way of serving God through music, drama, and visual arts.</p>
+               <a href="{% url 'creative_arts' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
-            <!-- Ministry Card 14: Technical & Media Ministry -->
+           
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/media-ministry.jpg' %}" alt="Technical & Media Department" class="w-full h-full object-cover">
@@ -265,11 +257,11 @@
                     <i class="fas fa-users text-white text-xl"></i> 
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Technical & Media Ministry</h3>
+                <p class="text-gray-600 mb-2">Led by <strong>Bro Professor</strong></p>
                 <p class="text-gray-600 mb-4">Ensuring the gospel is seen and heard clearly through technology and streaming.</p>
-               <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+               <a href="{% url 'media_ministry' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
 
-            <!-- Ministry Card 15: Intercessory & Prayer Ministry -->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/war-room.jpg' %}" alt="Intercessory & Prayer" class="w-full h-full object-cover">
@@ -280,11 +272,11 @@
                     <i class="fas fa-hands-praying text-white text-xl"></i> 
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Intercessory & Prayer Ministry</h3>
-                <p class="text-gray-600 mb-4">Dedicated to corporate prayer, spiritual warfare, and supporting the church's needs..</p>
-               <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+                <p class="text-gray-600 mb-2">Led by <strong>Rev Odanga</strong></p>
+                <p class="text-gray-600 mb-4">Dedicated to corporate prayer, spiritual warfare, and supporting the church's needs.</p>
+               <a href="{% url 'intercessory_prayer' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
 
-            <!-- Ministry Card 16: Evangelism & Outreach-->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/mentorship.jpg' %}" alt="Evangelism & Outreach" class="w-full h-full object-cover">
@@ -296,10 +288,9 @@
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Evangelism & Outreach</h3>
                 <p class="text-gray-600 mb-4">Reaching the community with the gospel and engaging in local missions.</p>
-               <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+               <a href="{% url 'outreach_ministry' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
 
-            <!-- Ministry Card 17: Hospitality & Protocol-->
             <div class="ministry-card bg-white rounded-lg shadow-md p-6 text-center flex flex-col items-center">
                 <div class="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden relative">
                     <img src="{% static 'images/ministries/mentorship.jpg' %}" alt="Hospitality & Protocol" class="w-full h-full object-cover">
@@ -311,7 +302,7 @@
                 </div>
                 <h3 class="text-xl font-semibold mt-4 text-gray-800">Hospitality & Protocol</h3>
                 <p class="text-gray-600 mb-4">Ensuring every visitor feels welcomed and managing order during services.</p>
-               <a href="#" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transitiontext-blue-600 hover:underline font-medium">Read More</a>
+               <a href="{% url 'hospitality_ministry' %}" class="bg-white text-blue-700 border-2 border-sky-700 px-6 py-2 rounded hover:bg-blue-700 hover:text-white font-bold transition">Read More</a>
             </div>
 
         </div>

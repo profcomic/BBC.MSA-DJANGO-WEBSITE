@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}BBC Intercessory & Prayer Ministry - The War Room{% endblock %}
+
+{%block home_menu%}
+{%endblock%}
+
+{% block leaders_hero %}
+{% endblock%}
+
+{% block navmenu %}
+{% endblock %}
+
+{% block content %}
+<head> 
+    <style>
+        .prayer-hero-bg {
+            background-color: #1E3A8A; /* Navy Blue */
+            background-image: linear-gradient(135deg, #60A5FA 0%, #1E3A8A 50%, #1E293B 100%);
+            background-size: cover;
+        }
+        .text-prayer-navy {
+            color: #1E3A8A;
+        }
+        .text-prayer-blue {
+            color: #60A5FA;
+        }
+        .bg-prayer-navy {
+            background-color: #1E3A8A;
+        }
+    </style>
+</head>
+
+<b class="font-sans">
+    <!-- Hero Section -->
+    <section class="prayer-hero-bg pt-32 pb-20 text-white text-center px-4 shadow-2xl">
+        <div class="max-w-4xl mx-auto">
+            <div class="logo-placeholder inline-block mb-6 p-6 bg-white bg-opacity-10 rounded-full shadow-2xl border-4 border-blue-400">
+               <i class="fas fa-praying-hands text-7xl text-blue-400 animate-pulse"></i>
+            </div>
+            <h1 class="text-7xl font-black mb-4 tracking-tighter text-white uppercase drop-shadow-lg">INTERCESSORY & PRAYER MINISTRY</h1>
+            <p class="text-3xl font-light text-blue-300 leading-snug italic font-mono">"The War Room"</p>
+            <p class="text-xl font-semibold text-white mt-4">Led by <span class="text-blue-400">Rev Odanga</span> and the War Room Leadership</p>
+        </div>
+    </section>
+
+    
+    <!-- Main Content and Sidebar Container (3/4 and 1/4 Split) -->
+<div class="bg-gray-600 text-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+                
+                <!-- LEFT SIDE: Main Content Area (3/4 Width) -->
+            <main class="lg:col-span-3 space-y-16">
+            <!-- Overview Section -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl border-t-4 border-prayer-navy mb-12">
+                <h2 class="text-3xl font-bold text-prayer-blue mb-6 border-b border-gray-700 pb-2">
+                    <i class="fas fa-fire mr-3"></i>Ministry Overview
+                </h2>
+                <p class="text-gray-300 text-lg leading-relaxed mb-4">
+                    The Intercessory & Prayer Ministry is the spiritual powerhouse of BBC—our War Room where battles are won on our knees. 
+                    We believe that prayer is not just a religious activity but a powerful weapon that moves the hand of God and changes circumstances.
+                </p>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    Under the leadership of Rev Odanga and our dedicated War Room team, we maintain a constant atmosphere of prayer, 
+                    standing in the gap for our church, community, nation, and world. We are warriors who fight spiritual battles through 
+                    fervent, persistent, and faith-filled intercession.
+                </p>
+            </section>
+
+            <!-- Our Mission -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-12">
+                <h2 class="text-3xl font-bold text-prayer-blue mb-6">
+                    <i class="fas fa-bullseye mr-3"></i>Our Mission
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-xl font-bold text-blue-400 mb-3">Stand in the Gap</h3>
+                        <p class="text-gray-300">To intercede for the church, leaders, families, and individuals in need</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-indigo-500">
+                        <h3 class="text-xl font-bold text-indigo-400 mb-3">Wage Spiritual Warfare</h3>
+                        <p class="text-gray-300">To engage in strategic spiritual warfare against the forces of darkness</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-blue-500">
+                        <h3 class="text-xl font-bold text-blue-400 mb-3">Cultivate Prayer Culture</h3>
+                        <p class="text-gray-300">To build a praying church where prayer is the foundation of all we do</p>
+                    </div>
+                    <div class="bg-gray-700 p-6 rounded-lg border-l-4 border-indigo-500">
+                        <h3 class="text-xl font-bold text-indigo-400 mb-3">Release Breakthrough</h3>
+                        <p class="text-gray-300">To see God's power manifested through answered prayers and miracles</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Prayer Activities -->
+            <section class="bg-gray-800 p-8 rounded-xl shadow-2xl mb-12">
+                <h2 class="text-3xl font-bold text-prayer-blue mb-6">
+                    <i class="fas fa-tasks mr-3"></i>Prayer Activities
+                </h2>
+                <div class="space-y-4">
+                    <div class="bg-gradient-to-r from-blue-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-2">
+                            <i class="fas fa-clock mr-2"></i>Daily Prayer Watch
+                        </h3>
+                        <p class="text-gray-300">24/7 prayer coverage with scheduled prayer shifts throughout the day and night</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-indigo-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-2">
+                            <i class="fas fa-moon mr-2"></i>Midnight Prayer Sessions
+                        </h3>
+                        <p class="text-gray-300">Powerful midnight intercession meetings for breakthrough and deliverance</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-2">
+                            <i class="fas fa-utensils mr-2"></i>Fasting & Prayer
+                        </h3>
+                        <p class="text-gray-300">Corporate and individual fasting programs for specific prayer targets</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-indigo-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-2">
+                            <i class="fas fa-shield-alt mr-2"></i>Strategic Intercession
+                        </h3>
+                        <p class="text-gray-300">Targeted prayer for church vision, leadership, and strategic initiatives</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-2">
+                            <i class="fas fa-hands mr-2"></i>Prayer Chains
+                        </h3>
+                        <p class="text-gray-300">Coordinated prayer networks for urgent needs and emergency situations</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-indigo-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-2">
+                            <i class="fas fa-book-open mr-2"></i>Prayer School
+                        </h3>
+                        <p class="text-gray-300">Training believers in the principles and practice of effective prayer</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-indigo-400 mb-2">
+                            <i class="fas fa-walking mr-2"></i>Prayer Walks
+                        </h3>
+                        <p class="text-gray-300">Walking through neighborhoods and communities while praying for transformation</p>
+                    </div>
+                    <div class="bg-gradient-to-r from-indigo-900 to-gray-800 p-6 rounded-lg">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-2">
+                            <i class="fas fa-envelope mr-2"></i>Prayer Requests
+                        </h3>
+                        <p class="text-gray-300">Receiving and praying over prayer requests from church members and the community</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Get Involved -->
+            <section class="bg-gradient-to-r from-prayer-navy to-blue-600 p-8 rounded-xl shadow-2xl text-center">
+                <h2 class="text-3xl font-bold text-white mb-4">Join the War Room</h2>
+                <p class="text-white text-lg mb-6">
+                    Are you passionate about prayer? Join our intercessory team and become a prayer warrior who changes the world on your knees!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="{% url 'contact' %}" class="inline-block bg-white text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                        <i class="fas fa-hand-point-right mr-2"></i>Join Us
+                    </a>
+                    <a href="{% url 'contact' %}" class="inline-block bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition">
+                        <i class="fas fa-info-circle mr-2"></i>Submit Prayer Request
+                    </a>
+                </div>
+            </section>
+                               <!-- Navigation Buttons (Inside Main Content) -->
+                <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
+                    <a href="{% url 'media_ministry' %}" class="px-6 py-3 bg-gray-200 text-gray-700 font-semibold rounded-lg hover:bg-gray-300 transition flex items-center"><i class="fas fa-arrow-left mr-2"></i> Prev</a>
+                    <a href="{% url 'outreach_ministry' %}" class="px-6 py-3 bg-navy text-white font-semibold rounded-lg hover:bg-blue-700 transition flex items-center">Next <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </main>
+
+                <!-- RIGHT SIDE: Sidebar Area (1/4 Width) -->
+            <aside class="lg:col-span-1 space-y-8">
+                <div class="scroll top-24 space-y-6">
+                        <!-- Quick Links -->
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-xl border-t-4 border-teal-500">
+                            <h3 class="text-xl font-bold text-teal-400 mb-4 flex items-center">
+                                <i class="fas fa-link mr-2"></i>Quick Links
+                            </h3>
+                            <ul class="space-y-3">
+                                <li>
+                                    <a href="{% url 'ministries' %}" class="text-gray-300 hover:text-teal-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>All Ministries
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'events' %}" class="text-gray-300 hover:text-teal-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>Upcoming Events
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'contact' %}" class="text-gray-300 hover:text-teal-400 transition flex items-center">
+                                        <i class="fas fa-chevron-right mr-2 text-xs"></i>Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Ministry Leader -->
+                        <div class="bg-gradient-to-br from-teal-900 to-cyan-900 p-6 rounded-xl shadow-xl">
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center">
+                                <i class="fas fa-user-tie mr-2"></i>Ministry Leader
+                            </h3>
+                            <div class="text-center">
+                                <div class="w-24 h-24 mx-auto mb-3 bg-teal-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-4xl text-white"></i>
+                                </div>
+                                <p class="text-white font-bold text-lg">Rev Odanga</p>
+                                <p class="text-teal-300 text-sm">Prayer Ministry Leader</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Prayer Times -->
+                        <div class="bg-gray-800 p-6 rounded-xl shadow-xl border-t-4 border-cyan-500">
+                            <h3 class="text-xl font-bold text-cyan-400 mb-4 flex items-center">
+                                <i class="fas fa-clock mr-2"></i>Prayer Times
+                            </h3>
+                            <div class="space-y-2 text-sm">
+                                <p class="text-gray-300 flex items-center">
+                                    <i class="fas fa-calendar mr-2 text-teal-400"></i>Daily: 5:00 AM
+                                </p>
+                                <p class="text-gray-300 flex items-center">
+                                    <i class="fas fa-calendar mr-2 text-teal-400"></i>Wednesday: 6:00 PM
+                                </p>
+                                <p class="text-gray-300 flex items-center">
+                                    <i class="fas fa-calendar mr-2 text-teal-400"></i>Friday: All Night
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Call to Action -->
+                        <div class="bg-gradient-to-br from-teal-600 to-cyan-600 p-6 rounded-xl shadow-xl text-center">
+                            <i class="fas fa-praying-hands text-4xl text-white mb-3"></i>
+                            <h3 class="text-lg font-bold text-white mb-2">Join Us in Prayer</h3>
+                            <p class="text-teal-100 text-sm mb-4">Intercede for the nations!</p>
+                            <a href="{% url 'contact' %}" class="block bg-white text-teal-700 px-4 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                                Get Involved
+                            </a>
+                        </div>         
+                </div>
+            </aside>
+        </div>
+    </div>
+</div>
+    
+{%endblock%}
+              
