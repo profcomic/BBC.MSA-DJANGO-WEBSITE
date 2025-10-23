@@ -1,0 +1,138 @@
+{% comment %}Church Merchandise Page - All content generated dynamically{% endcomment %}
+<!-- Products Grid - Merchandise Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div id="merchandise-section" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">
+                <i class="fas fa-tshirt text-sky-600 mr-3"></i>Church Merchandise
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element Reference ---
+        const productsGrid = document.querySelector('#merchandise-section .grid');
+
+        // --- 2. Mock Data Structure (Replace with API/Backend Fetch) ---
+        
+        const mockMerchandiseItems = [
+            { 
+                id: 'merch-tshirt-01', name: "BBC Branded T-Shirt", price: 1200, 
+                description: "Premium cotton, multiple colors (S-XXL). Perfect for events!", 
+                icon: "fas fa-tshirt", bgColor: "from-sky-200 to-blue-300", iconColor: "text-sky-700"
+            },
+            { 
+                id: 'merch-hoodie-01', name: "BBC Hoodie", price: 2500, 
+                description: "Warm and comfortable unisex hoodie with church logo embroidery.", 
+                icon: "fas fa-user-tie", bgColor: "from-gray-200 to-gray-400", iconColor: "text-gray-700"
+            },
+            { 
+                id: 'merch-mug-01', name: "BBC Coffee Mug", price: 500, 
+                description: "Ceramic mug with inspirational quote and church branding.", 
+                icon: "fas fa-mug-hot", bgColor: "from-yellow-200 to-orange-300", iconColor: "text-orange-700"
+            },
+            { 
+                id: 'merch-cap-01', name: "Branded Baseball Cap", price: 800, 
+                description: "Adjustable baseball cap with embroidered logo. One size fits all.", 
+                icon: "fas fa-hat-cowboy", bgColor: "from-green-200 to-lime-300", iconColor: "text-green-700"
+            },
+            { 
+                id: 'merch-lanyard-01', name: "Event Lanyard", price: 150, 
+                description: "Durable fabric lanyard for badges and keys.", 
+                icon: "fas fa-id-card", bgColor: "from-purple-200 to-indigo-300", iconColor: "text-purple-700"
+            },
+            { 
+                id: 'merch-bag-01', name: "Tote Bag", price: 750, 
+                description: "Eco-friendly canvas tote bag, great for groceries or books.", 
+                icon: "fas fa-shopping-bag", bgColor: "from-teal-200 to-cyan-300", iconColor: "text-teal-700"
+            }
+        ];
+        
+        // --- 3. HTML Generation Function ---
+
+        /**
+         * Generates the HTML for a single product card.
+         */
+        const createProductCard = (product) => {
+            // Note: The original HTML did not have tags, so we keep the structure simple.
+            return `
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 product-card" data-product-id="${product.id}">
+                    <div class="w-full h-64 bg-gradient-to-br ${product.bgColor} flex items-center justify-center">
+                        <i class="${product.icon} text-6xl ${product.iconColor}"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">${product.name}</h3>
+                        <p class="text-gray-600 mb-4 text-sm">${product.description}</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH ${product.price.toLocaleString('en-US')}</span>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.name}">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `;
+        };
+
+
+        // --- 4. Rendering & Event Listener Setup ---
+
+        /**
+         * Clears the static content and populates the grid with dynamic data.
+         */
+        const renderProducts = () => {
+            if (!productsGrid) return;
+
+            // Clear existing static HTML content
+            productsGrid.innerHTML = '';
+            
+            // Render all dynamic product items
+            mockMerchandiseItems.forEach(item => {
+                productsGrid.insertAdjacentHTML('beforeend', createProductCard(item));
+            });
+
+            // Attach event listeners after all elements are in the DOM
+            setupEventListeners();
+        };
+
+        /**
+         * Attaches 'Add to Cart' listeners.
+         */
+        const setupEventListeners = () => {
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = e.currentTarget.dataset.productId;
+                    const productName = e.currentTarget.dataset.productName;
+                    
+                    console.log(`Product ${productId} (${productName}) added to the shopping cart.`);
+                    
+                    // Simple UI Feedback
+                    const originalText = e.currentTarget.innerHTML;
+                    const originalClasses = e.currentTarget.className;
+
+                    e.currentTarget.innerHTML = '<i class="fas fa-check mr-2"></i> Added!';
+                    e.currentTarget.classList.remove('bg-sky-600', 'hover:bg-sky-700');
+                    e.currentTarget.classList.add('bg-green-600', 'hover:bg-green-700');
+
+                    setTimeout(() => {
+                        e.currentTarget.innerHTML = originalText;
+                        e.currentTarget.classList.remove('bg-green-600', 'hover:bg-green-700');
+                        e.currentTarget.classList.add('bg-sky-600', 'hover:bg-sky-700');
+                    }, 1500);
+
+                    // **IMPLEMENTATION POINT:**
+                    // Replace the console.log/UI change above with your actual cart logic (e.g.,
+                    // updating a shopping cart object, showing a cart count badge, or sending an API request).
+                });
+            });
+        };
+
+        // --- 5. Initial Execution ---
+        renderProducts();
+    });
+</script>

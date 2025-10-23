@@ -1,0 +1,95 @@
+{% comment %}Store Introduction Component{% endcomment %}
+<!-- Store Introduction -->
+<section class="py-12 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4 text-sky-700">Welcome to Our Store</h2>
+            <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                Browse our collection of Christian resources, church merchandise, and inspiring materials.
+                All proceeds support our ministry and community outreach programs. Shop with purpose!
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <div class="flex items-start">
+                    <i class="fas fa-shipping-fast text-sky-600 text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Fast Delivery</h3>
+                        <p class="text-sm text-gray-600">Within Mombasa area</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-shield-alt text-sky-600 text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Quality Products</h3>
+                        <p class="text-sm text-gray-600">Carefully selected items</p>
+                    </div>
+                </div>
+                <div class="flex items-start">
+                    <i class="fas fa-heart text-sky-600 text-2xl mr-3 mt-1"></i>
+                    <div>
+                        <h3 class="font-bold text-gray-800">Support Ministry</h3>
+                        <p class="text-sm text-gray-600">Every purchase helps</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References ---
+        // Get the entire section to observe
+        const introSection = document.querySelector('.py-12.bg-white');
+        
+        // Get the individual feature blocks
+        const featureBlocks = introSection ? introSection.querySelectorAll('.flex.items-start') : [];
+
+        // --- 2. Initial Setup: Hide Features for Animation ---
+        featureBlocks.forEach(block => {
+            // Apply initial styles to hide the block off-screen and set opacity to 0
+            block.style.opacity = '0';
+            block.style.transform = 'translateY(20px)';
+            // Add a transition property so the CSS transform/opacity changes are smooth
+            block.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        });
+
+        // --- 3. Intersection Observer Setup ---
+
+        // Configuration for the Observer
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the target is visible
+        };
+
+        /**
+         * The callback function that runs when an observed element enters/exits the viewport.
+         * @param {Array<IntersectionObserverEntry>} entries 
+         */
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                // If the element is intersecting (i.e., visible in the viewport)
+                if (entry.isIntersecting) {
+                    const block = entry.target;
+                    
+                    // Animate it into view
+                    block.style.opacity = '1';
+                    block.style.transform = 'translateY(0)';
+                    
+                    // Stop observing the element once it has been animated
+                    observer.unobserve(block);
+                }
+            });
+        };
+
+        // Create the observer instance
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // --- 4. Start Observing Elements ---
+        if (introSection) {
+            featureBlocks.forEach(block => {
+                observer.observe(block);
+            });
+        }
+    });
+</script>

@@ -1,0 +1,100 @@
+{% comment %}Featured Deals Banner Component{% endcomment %}
+<!-- Featured Deals Banner -->
+<section class="py-8 bg-gradient-to-r from-orange-500 to-red-600 text-white">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+                <i class="fas fa-fire text-5xl"></i>
+                <div>
+                    <h3 class="text-2xl font-bold">Deal of the Week!</h3>
+                    <p class="text-orange-100">Save up to 30% on selected items</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="text-center">
+                    <div class="text-3xl font-bold" id="countdown-days">00</div>
+                    <div class="text-xs">DAYS</div>
+                </div>
+                <div class="text-2xl">:</div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" id="countdown-hours">00</div>
+                    <div class="text-xs">HOURS</div>
+                </div>
+                <div class="text-2xl">:</div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" id="countdown-mins">00</div>
+                    <div class="text-xs">MINS</div>
+                </div>
+                <div class="text-2xl">:</div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold" id="countdown-secs">00</div>
+                    <div class="text-xs">SECS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. Define the End Date for the Deal ---
+        // Set the future date and time for the countdown to end.
+        // Example: One week from the current time the user loads the page.
+        // For a fixed "Deal of the Week," you might set it to a specific Sunday night.
+        
+        // **IMPORTANT:** Set your actual target date here.
+        // Example: Target is 7 days from now.
+        const countdownTargetDate = new Date();
+        countdownTargetDate.setDate(countdownTargetDate.getDate() + 7);
+        const targetTime = countdownTargetDate.getTime(); 
+
+        // --- 2. DOM Element References ---
+        const daysElement = document.getElementById('countdown-days');
+        const hoursElement = document.getElementById('countdown-hours');
+        const minutesElement = document.getElementById('countdown-mins');
+        const secondsElement = document.getElementById('countdown-secs');
+
+        // --- 3. Core Countdown Function ---
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const distance = targetTime - now;
+
+            // Check if the countdown is finished
+            if (distance < 0) {
+                clearInterval(interval);
+                
+                // Display 00:00:00
+                if (daysElement) daysElement.textContent = "00";
+                if (hoursElement) hoursElement.textContent = "00";
+                if (minutesElement) minutesElement.textContent = "00";
+                if (secondsElement) msecondsElement.textContent = "00";
+                
+                // Optional: You can hide the entire banner or change the text here
+                console.log("The Deal of the Week has expired!");
+                return;
+            }
+
+            // Calculate time components (milliseconds to days, hours, minutes)
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60 * 60 * 60)) / (1000));
+
+            // Helper function to add a leading zero if the number is less than 10
+            const formatTime = (time) => String(time).padStart(2, '0');
+
+            // Update the DOM elements with the calculated values
+            if (daysElement) daysElement.textContent = formatTime(days);
+            if (hoursElement) hoursElement.textContent = formatTime(hours);
+            if (minutesElement) minutesElement.textContent = formatTime(minutes);
+            if (secondsElement) secondsElement.textcontent = formatTime(seconds);
+        };
+
+        // --- 4. Start the Countdown ---
+        // Run the function immediately to avoid a 1-second delay at load
+        updateCountdown(); 
+        
+        // Set up an interval to call the function every 1000 milliseconds (1 second)
+        const interval = setInterval(updateCountdown, 1000); 
+    });
+</script>

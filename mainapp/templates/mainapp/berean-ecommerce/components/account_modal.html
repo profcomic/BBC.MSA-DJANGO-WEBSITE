@@ -1,0 +1,458 @@
+{% comment %}Account Modal Component{% endcomment %}
+
+<!-- Account Modal -->
+{% comment %}
+    1. Authentication Modal (Sign In / Sign Up)
+    2. Account Modal (Multi-step, including Profile Sub-steps, Addresses, Payments, Settings)
+    3. JavaScript for Logic and Local Storage Data Persistence
+{% endcomment %}
+
+<div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full">
+        <div class="bg-sky-600 text-white p-4 flex items-center justify-between">
+            <h3 id="auth-title" class="text-xl font-bold">Sign In</h3>
+            <button id="close-auth" class="text-white hover:text-gray-200 text-2xl p-1">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-8">
+            <form id="sign-in-form" class="auth-form space-y-4">
+                <input type="email" placeholder="Email" class="w-full p-3 border border-gray-300 rounded-lg">
+                <input type="password" placeholder="Password" class="w-full p-3 border border-gray-300 rounded-lg">
+                <button type="submit" class="w-full bg-sky-600 text-white p-3 rounded-lg font-semibold hover:bg-sky-700 transition">Sign In</button>
+                <p class="text-sm text-center text-gray-600">
+                    Don't have an account? <button type="button" class="text-sky-600 font-medium" data-toggle="sign-up">Sign Up</button>
+                </p>
+            </form>
+
+            <form id="sign-up-form" class="auth-form space-y-4 hidden">
+                <input type="text" placeholder="Full Name" class="w-full p-3 border border-gray-300 rounded-lg">
+                <input type="email" placeholder="Email" class="w-full p-3 border border-gray-300 rounded-lg">
+                <input type="password" placeholder="Password" class="w-full p-3 border border-gray-300 rounded-lg">
+                <button type="submit" class="w-full bg-sky-600 text-white p-3 rounded-lg font-semibold hover:bg-sky-700 transition">Create Account</button>
+                <p class="text-sm text-center text-gray-600">
+                    Already have an account? <button type="button" class="text-sky-600 font-medium" data-toggle="sign-in">Sign In</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div id="account-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+        <div class="bg-sky-600 text-white p-4 sm:p-6 flex items-center justify-between flex-shrink-0">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-user text-2xl"></i>
+                <h3 class="text-xl sm:text-2xl font-bold">My Account</h3>
+            </div>
+            <button id="close-account" class="text-white hover:text-gray-200 text-2xl p-1">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="flex flex-col md:flex-row flex-grow overflow-hidden">
+            
+            <div class="w-full md:w-56 bg-gray-50 p-4 flex-shrink-0 border-r border-gray-200">
+                <nav class="space-y-2">
+                    <button class="account-nav-item w-full text-left p-3 rounded-lg flex items-center gap-3 transition duration-150" data-step="profile">
+                        <i class="fas fa-user-circle text-xl"></i>
+                        <span class="font-semibold text-gray-700">Profile</span>
+                    </button>
+                    <button class="account-nav-item w-full text-left p-3 rounded-lg flex items-center gap-3 transition duration-150" data-step="addresses">
+                        <i class="fas fa-map-marker-alt text-xl"></i>
+                        <span class="font-semibold text-gray-700">Addresses</span>
+                    </button>
+                    <button class="account-nav-item w-full text-left p-3 rounded-lg flex items-center gap-3 transition duration-150" data-step="payment">
+                        <i class="fas fa-credit-card text-xl"></i>
+                        <span class="font-semibold text-gray-700">Payment Methods</span>
+                    </button>
+                    <button class="account-nav-item w-full text-left p-3 rounded-lg flex items-center gap-3 transition duration-150" data-step="settings">
+                        <i class="fas fa-cog text-xl"></i>
+                        <span class="font-semibold text-gray-700">Settings</span>
+                    </button>
+                </nav>
+            </div>
+
+            <div class="p-4 sm:p-8 flex-grow overflow-y-auto">
+                
+                <div id="step-profile" class="account-step-content hidden">
+                    <h4 class="text-2xl font-bold mb-6 text-sky-600">Manage Your Profile</h4>
+                    
+                    <div class="mb-6 flex items-center space-x-4 pb-4 border-b border-gray-200">
+                        <div class="relative w-20 h-20">
+                            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Profile Picture" class="w-full h-full object-cover rounded-full border-2 border-sky-400" id="profile-img">
+                            <label for="profile-upload" class="absolute bottom-0 right-0 bg-sky-600 text-white rounded-full p-1 cursor-pointer hover:bg-sky-700 transition">
+                                <i class="fas fa-camera text-xs"></i>
+                                <input type="file" id="profile-upload" class="hidden" accept="image/*">
+                            </label>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-lg">Update Profile Picture</p>
+                            <p class="text-sm text-gray-500">JPG or PNG only. Max 5MB.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="border-b border-gray-200 mb-6">
+                        <nav class="flex space-x-4 -mb-px">
+                            <button class="profile-sub-nav-item py-2 px-1 text-sm font-medium border-b-2" data-sub-step="personal-info">Personal Info</button>
+                            <button class="profile-sub-nav-item py-2 px-1 text-sm font-medium border-b-2 border-transparent" data-sub-step="security">Security</button>
+                            <button class="profile-sub-nav-item py-2 px-1 text-sm font-medium border-b-2 border-transparent" data-sub-step="preferences">Email Preferences</button>
+                        </nav>
+                    </div>
+
+                    <div id="sub-step-personal-info" class="profile-sub-step">
+                        <h5 class="text-xl font-semibold mb-3">Update Personal Details</h5>
+                        <form class="space-y-4">
+                            <input type="text" id="full-name" placeholder="Full Name" class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+                            <input type="email" id="email-address" placeholder="Email Address" class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+                            <button type="submit" class="bg-sky-600 text-white p-3 rounded-lg font-semibold hover:bg-sky-700 transition">Save Changes</button>
+                        </form>
+                    </div>
+
+                    <div id="sub-step-security" class="profile-sub-step hidden">
+                        <h5 class="text-xl font-semibold mb-3">Change Password</h5>
+                        <form class="space-y-4">
+                            <input type="password" placeholder="Current Password" class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+                            <input type="password" placeholder="New Password" class="mt-1 w-full p-3 border border-gray-300 rounded-lg">
+                            <button type="submit" class="bg-sky-600 text-white p-3 rounded-lg font-semibold hover:bg-sky-700 transition">Update Password</button>
+                        </form>
+                    </div>
+
+                    <div id="sub-step-preferences" class="profile-sub-step hidden">
+                        <h5 class="text-xl font-semibold mb-3">Manage Email Subscriptions</h5>
+                        <form class="space-y-4">
+                            <div class="flex items-center"><input id="newsletter" type="checkbox" class="h-4 w-4 text-sky-600 rounded"><label for="newsletter" class="ml-3 text-sm text-gray-700">Promotions and Offers</label></div>
+                            <div class="flex items-center"><input id="updates" type="checkbox" class="h-4 w-4 text-sky-600 rounded"><label for="updates" class="ml-3 text-sm text-gray-700">Feature Updates</label></div>
+                            <button type="submit" class="bg-sky-600 text-white p-3 rounded-lg font-semibold hover:bg-sky-700 transition">Save Preferences</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="step-addresses" class="account-step-content hidden">
+                    <h4 class="text-2xl font-bold mb-4 text-sky-600">Your Shipping Addresses</h4>
+                    <p class="text-gray-700 mb-6">You can ADD, EDIT, or REMOVE the addresses used for shipping.</p>
+                    <button class="bg-green-600 text-white p-3 rounded-lg font-semibold hover:bg-green-700 transition mb-6">
+                        <i class="fas fa-plus mr-2"></i>Add New Address
+                    </button>
+                    <div id="address-list" class="space-y-4">
+                        <div class="border p-4 rounded-lg shadow-sm bg-white flex justify-between items-center">
+                            <div>
+                                <p class="font-bold">Home (Default)</p>
+                                <p class="text-sm text-gray-600">123 Main St, Apt 4B, New York, NY 10001</p>
+                            </div>
+                            <div class="space-x-2">
+                                <button class="text-sky-600 hover:text-sky-800"><i class="fas fa-edit"></i> Edit</button>
+                                <button class="text-red-600 hover:text-red-800"><i class="fas fa-trash"></i> Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step-payment" class="account-step-content hidden">
+                    <h4 class="text-2xl font-bold mb-4 text-sky-600">Your Payment Methods</h4>
+                    <p class="text-gray-700 mb-6">Manage your stored credit cards or other payment options for faster checkout.</p>
+                    <button class="bg-green-600 text-white p-3 rounded-lg font-semibold hover:bg-green-700 transition mb-6">
+                        <i class="fas fa-plus mr-2"></i>Add New Card
+                    </button>
+                    <div id="payment-list" class="space-y-4">
+                        <div class="border p-4 rounded-lg shadow-sm bg-white flex justify-between items-center">
+                            <div>
+                                <p class="font-bold"><i class="fab fa-cc-visa mr-2 text-xl text-indigo-600"></i> Visa ending in 4242 (Default)</p>
+                                <p class="text-sm text-gray-600">Expires 08/2028</p>
+                            </div>
+                            <div class="space-x-2">
+                                <button class="text-red-600 hover:text-red-800"><i class="fas fa-trash"></i> Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step-settings" class="account-step-content hidden">
+                    <h4 class="text-2xl font-bold mb-6 text-sky-600">Account Preferences, Notifications, and Privacy</h4>
+                    
+                    <div class="space-y-6">
+                        <div class="border-b pb-4">
+                            <h5 class="text-xl font-semibold mb-3">Notification Settings</h5>
+                            <div class="flex justify-between items-center py-2">
+                                <label class="text-gray-700">Order Status Updates</label>
+                                <input type="checkbox" id="setting-order-updates" class="h-6 w-11 appearance-none rounded-full bg-gray-300 transition duration-200 checked:bg-sky-600">
+                            </div>
+                            <div class="flex justify-between items-center py-2">
+                                <label class="text-gray-700">Marketing Emails</label>
+                                <input type="checkbox" id="setting-marketing-emails" class="h-6 w-11 appearance-none rounded-full bg-gray-300 transition duration-200 checked:bg-sky-600">
+                            </div>
+                        </div>
+                        
+                        <div class="border-b pb-4">
+                            <h5 class="text-xl font-semibold mb-3">Privacy</h5>
+                            <div class="flex justify-between items-center py-2">
+                                <label class="text-gray-700">Share Anonymous Data</label>
+                                <input type="checkbox" id="setting-share-data" class="h-6 w-11 appearance-none rounded-full bg-gray-300 transition duration-200 checked:bg-sky-600">
+                            </div>
+                            <p class="text-sm text-gray-500 mt-2">Data is used to improve our services and products.</p>
+                        </div>
+
+                        <div class="pt-4 border-t border-red-200">
+                            <h5 class="text-xl font-semibold mb-3 text-red-600">Account Management</h5>
+                            <p class="text-gray-700 mb-4">Permanently deactivate your account. This action cannot be undone.</p>
+                            <button class="bg-red-600 text-white p-3 rounded-lg font-semibold hover:bg-red-700 transition">
+                                Deactivate Account
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- AUTH MODAL REFERENCES ---
+        const authModal = document.getElementById('auth-modal');
+        const closeAuthButton = document.getElementById('close-auth');
+        const signInForm = document.getElementById('sign-in-form');
+        const signUpForm = document.getElementById('sign-up-form');
+        const authTitle = document.getElementById('auth-title');
+        const authToggles = document.querySelectorAll('.auth-form button[data-toggle]');
+
+        // --- ACCOUNT MODAL REFERENCES ---
+        const accountModal = document.getElementById('account-modal');
+        const closeModalButton = document.getElementById('close-account');
+        const navItems = document.querySelectorAll('.account-nav-item');
+        const stepContents = document.querySelectorAll('.account-step-content');
+        const profileSubNavItems = document.querySelectorAll('.profile-sub-nav-item');
+        const profileSubSteps = document.querySelectorAll('.profile-sub-step');
+        const profileImg = document.getElementById('profile-img');
+        
+        // ASSUMED: These buttons must exist in your header/layout to open the modals
+        const openAccountModalButton = document.getElementById('open-account-button'); 
+        const openAuthModalButton = document.getElementById('open-auth-modal'); 
+
+        // --- DATA PERSISTENCE FUNCTIONS (Local Storage) ---
+        const saveData = () => {
+            const data = {
+                // Profile Info
+                fullName: document.getElementById('full-name')?.value || '',
+                email: document.getElementById('email-address')?.value || '',
+                
+                // Email Preferences (Profile Sub-Tab)
+                newsletter: document.getElementById('newsletter')?.checked || false,
+                updates: document.getElementById('updates')?.checked || false,
+
+                // Main Settings (Settings Tab)
+                orderUpdates: document.getElementById('setting-order-updates')?.checked || false,
+                marketingEmails: document.getElementById('setting-marketing-emails')?.checked || false,
+                shareData: document.getElementById('setting-share-data')?.checked || false,
+            };
+            localStorage.setItem('userData', JSON.stringify(data));
+        };
+
+        const loadData = () => {
+            const dataString = localStorage.getItem('userData');
+            if (!dataString) return;
+
+            const data = JSON.parse(dataString);
+
+            // Load Profile Inputs
+            if (document.getElementById('full-name')) document.getElementById('full-name').value = data.fullName;
+            if (document.getElementById('email-address')) document.getElementById('email-address').value = data.email;
+            
+            // Load Email Preferences
+            if (document.getElementById('newsletter')) document.getElementById('newsletter').checked = data.newsletter;
+            if (document.getElementById('updates')) document.getElementById('updates').checked = data.updates;
+
+            // Load Main Settings Toggles
+            if (document.getElementById('setting-order-updates')) document.getElementById('setting-order-updates').checked = data.orderUpdates;
+            if (document.getElementById('setting-marketing-emails')) document.getElementById('setting-marketing-emails').checked = data.marketingEmails;
+            if (document.getElementById('setting-share-data')) document.getElementById('setting-share-data').checked = data.shareData;
+        };
+        
+        const loadProfileImage = () => {
+            const storedImage = localStorage.getItem('profileImage');
+            const defaultImage = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI0QxRDVFNSI+PHBhdGggZD0iTTEyIDBDNS4zNzMgMCAwIDUuMzczIDAgMTJzNS4zNzMgMTIgMTIgMTIgMTItNS4zNzMgMTItMTJTMTguNjI3IDAgMTIgMHptMCAzYTMgMyAwIDEgMSAwIDYgMyAzIDAgMCAxIDAtNnptMCAyLjQ1YTEuNDUgMS40NSAwIDEgMCAwIDIuOSAxLjQ1IDEuNDUgMCAwIDAgMC0yLjkxem0wIDE0LjU1Yy00LjAyNSAwLTcuMjkyLTcuMDkxLTcuMjkyLTguODMgMCAxLjgyOSA3LjI5MiA4LjgzIDcuMjkyIDguODNzNy4yOTItNy4wMDEgNy4yOTItOC44M2MwIDEuNzM5LTMuMDI2IDguODMtNy4yOTIgOC44M3oiLz48L3N2Zz4=";
+            
+            if (profileImg) {
+                profileImg.src = storedImage || defaultImage;
+            }
+        };
+
+        // --- AUTH MODAL FUNCTIONS ---
+        const showAuthForm = (formType) => {
+            if (formType === 'sign-in') {
+                signUpForm.classList.add('hidden');
+                signInForm.classList.remove('hidden');
+                authTitle.textContent = 'Sign In';
+            } else if (formType === 'sign-up') {
+                signInForm.classList.add('hidden');
+                signUpForm.classList.remove('hidden');
+                authTitle.textContent = 'Create Account';
+            }
+        };
+
+        const closeAuthModal = () => {
+             if (authModal) {
+                authModal.classList.add('hidden');
+            }
+        };
+
+        // --- PROFILE PICTURE FUNCTION ---
+        const handleProfilePictureUpload = (event) => {
+            const file = event.target.files[0];
+            if (file && profileImg) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    profileImg.src = e.target.result;
+                    // Save image to Local Storage (Base64 string)
+                    localStorage.setItem('profileImage', e.target.result); 
+                };
+                reader.readAsDataURL(file);
+            }
+        };
+
+
+        // --- ACCOUNT MODAL NAVIGATION FUNCTIONS ---
+        const showProfileSubStep = (subStepName) => {
+            profileSubSteps.forEach(content => { content.classList.add('hidden'); });
+            profileSubNavItems.forEach(nav => {
+                nav.classList.remove('text-sky-600', 'border-sky-600');
+                nav.classList.add('text-gray-500', 'border-transparent', 'hover:text-gray-700', 'hover:border-gray-300');
+            });
+
+            const targetContent = document.getElementById(`sub-step-${subStepName}`);
+            if (targetContent) { targetContent.classList.remove('hidden'); }
+
+            const targetNav = document.querySelector(`.profile-sub-nav-item[data-sub-step="${subStepName}"]`);
+            if (targetNav) {
+                targetNav.classList.remove('text-gray-500', 'border-transparent', 'hover:text-gray-700', 'hover:border-gray-300');
+                targetNav.classList.add('text-sky-600', 'border-sky-600');
+            }
+        };
+
+        const showStep = (stepName) => {
+            stepContents.forEach(content => { content.classList.add('hidden'); });
+            navItems.forEach(nav => {
+                nav.classList.remove('bg-sky-100', 'text-sky-800');
+                nav.classList.add('text-gray-700', 'hover:bg-gray-100');
+            });
+
+            const targetContent = document.getElementById(`step-${stepName}`);
+            if (targetContent) { targetContent.classList.remove('hidden'); }
+
+            const targetNav = document.querySelector(`.account-nav-item[data-step="${stepName}"]`);
+            if (targetNav) {
+                targetNav.classList.remove('text-gray-700', 'hover:bg-gray-100');
+                targetNav.classList.add('bg-sky-100', 'text-sky-800');
+            }
+
+            if (stepName === 'profile') {
+                showProfileSubStep('personal-info');
+            }
+        };
+
+        const openModal = (modalElement) => {
+            if (modalElement) {
+                modalElement.classList.remove('hidden');
+                // Load data when account modal opens
+                if (modalElement.id === 'account-modal') {
+                    loadData(); 
+                }
+            }
+        };
+
+        const closeModal = (modalElement) => {
+            if (modalElement) {
+                // Save data before account modal closes
+                if (modalElement.id === 'account-modal') {
+                    saveData();
+                }
+                modalElement.classList.add('hidden');
+                if (modalElement.id === 'account-modal') {
+                    showStep('profile'); 
+                }
+            }
+        };
+
+        // --- INITIALIZATION & LISTENERS ---
+        loadData(); // Load data on page load
+        loadProfileImage(); // Load profile image on page load
+        showStep('profile'); 
+        showAuthForm('sign-in'); 
+
+        // 1. Auth Modal Listeners
+        if (openAuthModalButton) {
+            openAuthModalButton.addEventListener('click', () => openModal(authModal));
+        }
+        if (closeAuthButton) {
+            closeAuthButton.addEventListener('click', () => closeModal(authModal));
+        }
+        authToggles.forEach(toggle => {
+            toggle.addEventListener('click', (event) => {
+                showAuthForm(event.target.dataset.toggle);
+            });
+        });
+
+        // 2. Account Modal Listeners
+        if (openAccountModalButton) {
+            openAccountModalButton.addEventListener('click', () => openModal(accountModal));
+        }
+        if (closeModalButton) {
+            closeModalButton.addEventListener('click', () => closeModal(accountModal));
+        }
+
+        // 3. Main Step Navigation
+        navItems.forEach(item => {
+            item.addEventListener('click', (event) => {
+                showStep(event.currentTarget.dataset.step);
+            });
+        });
+
+        // 4. Profile Sub-Step Navigation
+        profileSubNavItems.forEach(item => {
+            item.addEventListener('click', (event) => {
+                showProfileSubStep(event.currentTarget.dataset.subStep);
+            });
+        });
+
+        // 5. Profile Picture Upload Preview & Storage
+        const profileUploadInput = document.getElementById('profile-upload');
+        if (profileUploadInput) {
+            profileUploadInput.addEventListener('change', handleProfilePictureUpload);
+        }
+
+        // 6. Backdrop Close (Both Modals)
+        [accountModal, authModal].forEach(modal => {
+            if (modal) {
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeModal(modal);
+                    }
+                });
+            }
+        });
+        
+        // 7. Save data on form submission (prevents page reload and saves)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault(); 
+                
+                if (accountModal && !accountModal.classList.contains('hidden')) {
+                    saveData();
+                    console.log('Account changes saved to Local Storage.');
+                }
+                // NOTE: For a real app, successful auth/submit logic would go here.
+            });
+        });
+
+        // 8. Save data when any relevant input changes (for continuous save on toggles)
+        document.querySelectorAll('#step-settings input[type="checkbox"], #sub-step-preferences input[type="checkbox"], #full-name, #email-address').forEach(input => {
+             input.addEventListener('change', saveData);
+             input.addEventListener('input', saveData); // Catch text input changes
+        });
+
+        // *** NOTE: ESC Key Listener is OMITTED as requested. ***
+    });
+</script>

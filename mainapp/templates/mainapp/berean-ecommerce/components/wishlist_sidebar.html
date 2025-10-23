@@ -1,0 +1,161 @@
+{% comment %}Wishlist Sidebar Component{% endcomment %}
+<!-- Wishlist Sidebar -->
+<div id="wishlist-sidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300">
+    <div class="flex flex-col h-full">
+        <div class="bg-pink-600 text-white p-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-heart text-2xl"></i>
+                <h3 class="text-2xl font-bold">My Wishlist</h3>
+            </div>
+            <button id="close-wishlist" class="text-white hover:text-gray-200 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="wishlist-items" class="flex-1 overflow-y-auto p-6">
+            <div id="empty-wishlist-message" class="text-center text-gray-500 py-12">
+                <i class="fas fa-heart text-6xl mb-4 opacity-30"></i>
+                <p class="text-lg">Your wishlist is empty</p>
+                <p class="text-sm mt-2">Save items you love!</p>
+            </div>
+            <div id="wishlist-items-list" class="space-y-4 hidden"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References ---
+        const wishlistSidebar = document.getElementById('wishlist-sidebar');
+        const closeButton = document.getElementById('close-wishlist');
+        const emptyMessage = document.getElementById('empty-wishlist-message');
+        const itemsListContainer = document.getElementById('wishlist-items-list');
+
+        // **IMPORTANT:** Get the button that opens this sidebar from your navigation (e.g., from the Navbar component).
+        const openButton = document.getElementById('wishlist-btn'); 
+
+        // --- 2. Core Sidebar Open/Close Functions ---
+        
+        /**
+         * Opens the sidebar by removing the Tailwind translate-x-full class.
+         */
+        const openWishlist = () => {
+            if (wishlistSidebar) {
+                // Remove 'translate-x-full' to slide it in
+                wishlistSidebar.classList.remove('translate-x-full');
+                // Optional: Prevent background scrolling
+                document.body.style.overflow = 'hidden';
+                // Load/refresh the content every time it opens
+                loadWishlistItems();
+            }
+        };
+
+        /**
+         * Closes the sidebar by adding the Tailwind translate-x-full class.
+         */
+        const closeWishlist = () => {
+            if (wishlistSidebar) {
+                // Add 'translate-x-full' to slide it out
+                wishlistSidebar.classList.add('translate-x-full');
+                // Optional: Restore background scrolling
+                document.body.style.overflow = '';
+            }
+        };
+
+        // --- 3. Dynamic Content Loading Function (Mock Data) ---
+
+        // Mock data structure for demonstration
+        const mockWishlistData = [
+            { id: 1, name: "Christian Living Devotional", price: 650.00, image: "fas fa-book-open" },
+            { id: 2, name: "Premium Hoodie (Gray)", price: 1800.00, image: "fas fa-hood-pin" },
+            { id: 3, name: "Worship CD Collection", price: 1200.00, image: "fas fa-compact-disc" }
+        ];
+
+        /**
+         * Clears the current list and populates the sidebar with new items.
+         */
+        const loadWishlistItems = (items = mockWishlistData) => {
+            itemsListContainer.innerHTML = ''; // Clear previous items
+
+            if (items.length === 0) {
+                emptyMessage.classList.remove('hidden');
+                itemsListContainer.classList.add('hidden');
+            } else {
+                emptyMessage.classList.add('hidden');
+                itemsListContainer.classList.remove('hidden');
+
+                items.forEach(item => {
+                    const itemHtml = `
+                        <div id="wishlist-item-${item.id}" class="flex items-center gap-4 p-3 border border-gray-100 rounded-lg bg-white shadow-sm">
+                            <div class="w-16 h-16 bg-pink-50 rounded-lg flex items-center justify-center text-pink-600 text-2xl">
+                                <i class="${item.image}"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-800">${item.name}</p>
+                                <p class="text-pink-600 font-bold">KSH ${item.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}</p>
+                            </div>
+                            <div class="flex flex-col gap-2">
+                                <button data-item-id="${item.id}" class="move-to-cart-btn text-white bg-sky-600 hover:bg-sky-700 text-xs px-2 py-1 rounded transition">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                                <button data-item-id="${item.id}" class="remove-wishlist-btn text-pink-600 hover:text-red-700 text-xs px-2 py-1 transition">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    itemsListContainer.insertAdjacentHTML('beforeend', itemHtml);
+                });
+                
+                // Attach event listeners to the newly created buttons
+                setupItemActionListeners();
+            }
+        };
+        
+        // --- 4. Item Action Listeners Setup ---
+        const setupItemActionListeners = () => {
+            document.querySelectorAll('.remove-wishlist-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const itemId = e.currentTarget.dataset.itemId;
+                    console.log(`Removing item ${itemId} from wishlist.`);
+                    // **IMPLEMENT your AJAX call to remove item here**
+                    // After successful removal, re-run loadWishlistItems() to refresh UI
+                    // Example: loadWishlistItems(mockWishlistData.filter(item => item.id != itemId));
+                });
+            });
+
+            document.querySelectorAll('.move-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const itemId = e.currentTarget.dataset.itemId;
+                    console.log(`Moving item ${itemId} to cart.`);
+                    // **IMPLEMENT your AJAX call to move item here**
+                });
+            });
+        };
+
+        // --- 5. Global Event Listeners (Open/Close) ---
+
+        // Listener for the open button
+        if (openButton) {
+            openButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                openWishlist();
+            });
+        }
+
+        // Listener for the internal close button
+        if (closeButton) {
+            closeButton.addEventListener('click', closeWishlist);
+        }
+
+        // Listener to close the sidebar when ESC key is pressed
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !wishlistSidebar.classList.contains('translate-x-full')) {
+                closeWishlist();
+            }
+        });
+
+        // Optional: Close on backdrop click (requires detecting if click is outside the sidebar)
+        // If the sidebar is fixed and not full width, you might use a backdrop div behind it.
+        // Since this sidebar is w-full on mobile, backdrop click is complex without a dedicated backdrop.
+    });
+</script>

@@ -1,0 +1,180 @@
+{% comment %}Magazines & Calendars Page{% endcomment %}
+<!-- Products Grid - Magazines Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div id="magazines-section" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">
+                <i class="fas fa-newspaper text-sky-600 mr-3"></i>Magazines & Calendars
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-full h-64 bg-gradient-to-br from-indigo-200 to-purple-300 flex items-center justify-center">
+                        <i class="fas fa-newspaper text-6xl text-indigo-700"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Berean Quarterly Magazine</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Latest edition with inspiring articles</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH 300</span>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-full h-64 bg-gradient-to-br from-blue-200 to-indigo-300 flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-6xl text-blue-700"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">BBC Wall Calendar 2025</h3>
+                        <p class="text-gray-600 mb-4 text-sm">12 months with daily scripture verses</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH 600</span>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-full h-64 bg-gradient-to-br from-purple-200 to-pink-300 flex items-center justify-center">
+                        <i class="fas fa-book-open text-6xl text-purple-700"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Faith Planner 2025</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Daily planner with prayer journal</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH 1,000</span>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element Reference ---
+        const productsGrid = document.querySelector('#magazines-section .grid');
+
+        // --- 2. Mock Data Structure (Replace with API/Backend Fetch) ---
+        
+        const mockMagazineItems = [
+            { 
+                id: 'mag-001', name: "Berean Quarterly Magazine", price: 300, 
+                description: "Latest edition with inspiring articles and devotionals", 
+                icon: "fas fa-newspaper", bgColor: "from-indigo-200 to-purple-300", iconColor: "text-indigo-700"
+            },
+            { 
+                id: 'cal-001', name: "BBC Wall Calendar 2025", price: 600, 
+                description: "12 months with daily scripture verses and beautiful photos", 
+                icon: "fas fa-calendar-alt", bgColor: "from-blue-200 to-indigo-300", iconColor: "text-blue-700"
+            },
+            { 
+                id: 'plan-001', name: "Faith Planner 2025", price: 1000, 
+                description: "Daily planner with integrated prayer journal and goal setting", 
+                icon: "fas fa-book-open", bgColor: "from-purple-200 to-pink-300", iconColor: "text-purple-700"
+            },
+            { 
+                id: 'mag-002', name: "Youth Impact Magazine", price: 250, 
+                description: "Features, interviews, and news focused on youth activities and missions", 
+                icon: "fas fa-graduation-cap", bgColor: "from-teal-200 to-cyan-300", iconColor: "text-teal-700"
+            },
+            { 
+                id: 'cal-002', name: "Desk Calendar: Daily Promise", price: 450, 
+                description: "Perpetual desk calendar with a new biblical promise for every day", 
+                icon: "fas fa-quote-right", bgColor: "from-amber-200 to-yellow-300", iconColor: "text-amber-700"
+            },
+            { 
+                id: 'plan-002', name: "Sermon Notes Journal", price: 800, 
+                description: "A specially designed notebook for taking sermon notes and reflections", 
+                icon: "fas fa-feather-alt", bgColor: "from-gray-200 to-slate-300", iconColor: "text-gray-700"
+            }
+        ];
+        
+        // --- 3. HTML Generation Function ---
+
+        /**
+         * Generates the HTML for a single product card.
+         */
+        const createProductCard = (product) => {
+            // Note: The original HTML did not have tags, so we keep the structure simple.
+            return `
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 product-card" data-product-id="${product.id}">
+                    <div class="w-full h-64 bg-gradient-to-br ${product.bgColor} flex items-center justify-center">
+                        <i class="${product.icon} text-6xl ${product.iconColor}"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">${product.name}</h3>
+                        <p class="text-gray-600 mb-4 text-sm">${product.description}</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH ${product.price.toLocaleString('en-US')}</span>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition add-to-cart-btn" data-product-id="${product.id}" data-product-name="${product.name}">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `;
+        };
+
+
+        // --- 4. Rendering & Event Listener Setup ---
+
+        /**
+         * Clears the static content and populates the grid with dynamic data.
+         */
+        const renderProducts = () => {
+            if (!productsGrid) return;
+
+            // Clear existing static HTML content
+            productsGrid.innerHTML = '';
+            
+            // Render all dynamic product items
+            mockMagazineItems.forEach(item => {
+                productsGrid.insertAdjacentHTML('beforeend', createProductCard(item));
+            });
+
+            // Attach event listeners after all elements are in the DOM
+            setupEventListeners();
+        };
+
+        /**
+         * Attaches 'Add to Cart' listeners.
+         */
+        const setupEventListeners = () => {
+            document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = e.currentTarget.dataset.productId;
+                    const productName = e.currentTarget.dataset.productName;
+                    
+                    console.log(`Product ${productId} (${productName}) added to the shopping cart.`);
+                    
+                    // Simple UI Feedback
+                    const originalText = e.currentTarget.innerHTML;
+                    e.currentTarget.innerHTML = '<i class="fas fa-check mr-2"></i> Added!';
+                    e.currentTarget.classList.remove('bg-sky-600', 'hover:bg-sky-700');
+                    e.currentTarget.classList.add('bg-green-600', 'hover:bg-green-700');
+
+                    setTimeout(() => {
+                        e.currentTarget.innerHTML = originalText;
+                        e.currentTarget.classList.remove('bg-green-600', 'hover:bg-green-700');
+                        e.currentTarget.classList.add('bg-sky-600', 'hover:bg-sky-700');
+                    }, 1500);
+
+                    // **IMPLEMENTATION POINT:**
+                    // Replace the console.log/alert above with your actual cart logic (e.g.,
+                    // updating a cart object, sending an AJAX request, or showing a cart modal).
+                });
+            });
+        };
+
+        // --- 5. Initial Execution ---
+        renderProducts();
+    });
+</script>

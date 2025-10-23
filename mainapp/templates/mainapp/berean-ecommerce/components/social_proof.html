@@ -1,0 +1,122 @@
+{% comment %}Social Proof Ticker Component{% endcomment %}
+<!-- Social Proof Ticker -->
+<section class="py-4 bg-sky-50 border-b border-sky-100">
+    <div class="container mx-auto px-4">
+        <div class="flex items-center justify-center gap-8 text-sm text-gray-600">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-users text-sky-600"></i>
+                <span><strong id="viewers-count">12</strong> people viewing now</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <i class="fas fa-shopping-bag text-green-600"></i>
+                <span><strong id="sales-count">47</strong> items sold this week</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <i class="fas fa-star text-yellow-500"></i>
+                <span><strong>4.8/5</strong> average rating</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References ---
+        const viewersCountElement = document.getElementById('viewers-count');
+        const salesCountElement = document.getElementById('sales-count');
+        const socialProofContainer = document.querySelector('.container.mx-auto.px-4 > div'); // The flex container holding the three items
+
+        // --- 2. Random Count Updater Function ---
+        
+        // Define a base range for the numbers
+        const baseViewers = 10;
+        const baseSales = 40;
+
+        /**
+         * Updates the viewers and sales count with a slight, random fluctuation.
+         */
+        const updateRandomCounts = () => {
+            if (viewersCountElement) {
+                // Generate a random number between baseViewers - 5 and baseViewers + 10
+                const newViewers = Math.floor(Math.random() * 16) + (baseViewers - 5);
+                viewersCountElement.textContent = Math.max(1, newViewers); // Ensure count is at least 1
+            }
+
+            if (salesCountElement) {
+                // Generate a random number between baseSales - 10 and baseSales + 10
+                const newSales = Math.floor(Math.random() * 21) + (baseSales - 10);
+                salesCountElement.textContent = Math.max(20, newSales); // Ensure count is at least 20
+            }
+        };
+
+        // Run the update every 10 seconds to make it feel "live"
+        if (viewersCountElement || salesCountElement) {
+            updateRandomCounts(); // Initial run
+            setInterval(updateRandomCounts, 10000); // Update every 10 seconds
+        }
+
+        // --- 3. Timed Sales Notification (Pop-up/Ticker Item) ---
+
+        // List of recent mock sales (for rotating through)
+        const recentSales = [
+            { item: "Berean Study Bible", time: "just now", location: "Nairobi" },
+            { item: "Church Merchandise T-shirt", time: "1 min ago", location: "Mombasa" },
+            { item: "Media Service Plan", time: "2 mins ago", location: "Nakuru" },
+            { item: "Children's Sunday School Book", time: "3 mins ago", location: "Kisumu" },
+            { item: "Bhajia Snack", time: "4 mins ago", location: "Mombasa-CBD" }
+
+        ];
+        
+        let salesIndex = 0;
+        let notificationElement = null;
+
+        /**
+         * Creates a temporary, attention-grabbing notification to show a recent sale.
+         */
+        const showSaleNotification = () => {
+            const sale = recentSales[salesIndex];
+
+            // 1. Create the notification element if it doesn't exist
+            if (!notificationElement) {
+                notificationElement = document.createElement('div');
+                notificationElement.id = 'sale-notification';
+                // Tailwind classes for styling (using orange for urgency/attention)
+                notificationElement.className = 'flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-lg shadow-lg opacity-0 transition-opacity duration-500 transform scale-95';
+                
+                // Insert it into the container (as a new sibling to the other metrics)
+                socialProofContainer.appendChild(notificationElement);
+            }
+
+            // 2. Update content
+            notificationElement.innerHTML = `
+                <i class="fas fa-bell text-lg"></i>
+                <span class="font-semibold">${sale.item}</span>
+                <span class="text-xs text-orange-100 hidden sm:inline">purchased in ${sale.location} ${sale.time}!</span>
+            `;
+
+            // 3. Show the notification (smooth transition)
+            setTimeout(() => {
+                notificationElement.style.opacity = '1';
+                notificationElement.style.transform = 'scale(1)';
+            }, 50);
+
+            // 4. Hide the notification after 5 seconds
+            setTimeout(() => {
+                notificationElement.style.opacity = '0';
+                notificationElement.style.transform = 'scale(0.95)';
+                
+                // Prepare for the next sale in the sequence
+                salesIndex = (salesIndex + 1) % recentSales.length; 
+            }, 5000);
+        };
+
+        // Start the rotation: show a notification every 15 seconds
+        // (5s visible + 10s waiting time)
+        const notificationInterval = 15000; 
+
+        if (socialProofContainer) {
+            showSaleNotification(); // Initial run
+            setInterval(showSaleNotification, notificationInterval);
+        }
+    });
+</script>

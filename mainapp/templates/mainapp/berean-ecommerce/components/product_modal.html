@@ -1,0 +1,265 @@
+{% comment %}Product Details Modal Component{% endcomment %}
+<!-- Product Details Modal -->
+<div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <div class="bg-sky-600 text-white p-6 flex items-center justify-between">
+            <h3 class="text-2xl font-bold">Product Details</h3>
+            <button id="close-product-modal" class="text-white hover:text-gray-200 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-8 overflow-y-auto max-h-[calc(90vh-100px)]">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Product Image -->
+                <div>
+                    <div id="modal-product-image" class="w-full h-96 bg-gradient-to-br from-sky-100 to-blue-200 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-box text-8xl text-sky-600"></i>
+                    </div>
+                    <div class="flex gap-2">
+                        <button class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition">
+                            <i class="fas fa-image text-gray-400"></i>
+                        </button>
+                        <button class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition">
+                            <i class="fas fa-image text-gray-400"></i>
+                        </button>
+                        <button class="w-20 h-20 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition">
+                            <i class="fas fa-image text-gray-400"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div>
+                    <h2 id="modal-product-name" class="text-3xl font-bold text-gray-800 mb-4">Product Name</h2>
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="flex items-center text-yellow-500">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span class="text-gray-600">(24 reviews)</span>
+                    </div>
+                    <p id="modal-product-price" class="text-4xl font-bold text-sky-600 mb-6">KSH 0</p>
+                    <p id="modal-product-description" class="text-gray-600 mb-6 leading-relaxed">
+                        This is a detailed description of the product. It includes all the features, benefits, and specifications that customers need to know before making a purchase decision.
+                    </p>
+
+                    <!-- Product Features -->
+                    <div class="mb-6">
+                        <h4 class="font-bold text-gray-800 mb-3">Features:</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span class="text-gray-600">High quality materials</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span class="text-gray-600">Durable and long-lasting</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="fas fa-check text-green-600 mt-1"></i>
+                                <span class="text-gray-600">Perfect for ministry use</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-3">
+                        <button id="modal-add-to-cart" class="flex-1 bg-sky-600 text-white py-4 rounded-lg font-bold hover:bg-sky-700 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                        <button id="modal-add-to-wishlist" class="px-6 py-4 border-2 border-sky-600 text-sky-600 rounded-lg font-bold hover:bg-sky-50 transition">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer Reviews -->
+            <div class="mt-8 border-t pt-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">Customer Reviews</h3>
+                <div class="space-y-4">
+                    <!-- Review 1 -->
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-10 h-10 bg-sky-600 rounded-full flex items-center justify-center text-white font-bold">
+                                    JM
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">John M.</p>
+                                    <div class="flex items-center text-yellow-500 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500">2 days ago</span>
+                        </div>
+                        <p class="text-gray-600">Excellent quality! Highly recommended for anyone looking for quality Christian resources.</p>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold">
+                                    SK
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-gray-800">Sarah K.</p>
+                                    <div class="flex items-center text-yellow-500 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="text-sm text-gray-500">1 week ago</span>
+                        </div>
+                        <p class="text-gray-600">Great product! Fast delivery and excellent customer service.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References ---
+        const productModal = document.getElementById('product-modal');
+        const closeModalButton = document.getElementById('close-product-modal');
+        const addToCartButton = document.getElementById('modal-add-to-cart');
+        const addToWishlistButton = document.getElementById('modal-add-to-wishlist');
+
+        // References for dynamic content
+        const productNameElement = document.getElementById('modal-product-name');
+        const productPriceElement = document.getElementById('modal-product-price');
+        const productDescriptionElement = document.getElementById('modal-product-description');
+        const productImagePlaceholder = document.getElementById('modal-product-image');
+
+        // **IMPORTANT:** You'll need to define how your product listings open this modal.
+        // For demonstration, we'll listen for clicks on elements with the class 'open-product-modal'.
+        document.querySelectorAll('.open-product-modal').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Assume the product ID is stored in a data attribute
+                const productId = button.dataset.productId; 
+                loadProductDetails(productId);
+                openProductModal();
+            });
+        });
+
+        // --- 2. Core Modal Functions ---
+        
+        const openProductModal = () => {
+            if (productModal) {
+                productModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scroll
+            }
+        };
+
+        const closeProductModal = () => {
+            if (productModal) {
+                productModal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore background scroll
+            }
+        };
+
+        // --- 3. Mock Data & Content Loading Function ---
+        
+        // Mock database/API response structure
+        const mockProductData = {
+            1: {
+                name: "The Berean Study Bible",
+                price: 1599.00,
+                description: "A deep, insightful study Bible with commentary focused on original Greek and Hebrew texts. Perfect for serious learners.",
+                image: "fas fa-book-bible", // Font Awesome icon as placeholder
+                imageBg: "bg-green-100 from-green-300 to-teal-400",
+            },
+            2: {
+                name: "Church Logo T-Shirt (Blue)",
+                price: 750.00,
+                description: "Comfortable cotton t-shirt featuring the official church logo. Available in S, M, L, XL.",
+                image: "fas fa-tshirt",
+                imageBg: "bg-indigo-100 from-indigo-300 to-sky-400",
+            }
+        };
+
+        /**
+         * Loads product data into the modal's elements.
+         * @param {string} productId - The ID of the product to load.
+         */
+        const loadProductDetails = (productId) => {
+            const product = mockProductData[productId] || mockProductData[1]; // Use first product as default
+
+            if (productNameElement) productNameElement.textContent = product.name;
+            if (productPriceElement) productPriceElement.textContent = `KSH ${product.price.toLocaleString('en-US', { minimumFractionDigits: 2 })}`;
+            if (productDescriptionElement) productDescriptionElement.textContent = product.description;
+            
+            // Update image/placeholder
+            if (productImagePlaceholder) {
+                // Clear existing background and icon classes
+                productImagePlaceholder.className = 'w-full h-96 rounded-xl flex items-center justify-center mb-4';
+                
+                // Add new background gradient and icon classes
+                productImagePlaceholder.classList.add('bg-gradient-to-br', product.imageBg);
+                productImagePlaceholder.innerHTML = `<i class="${product.image} text-8xl text-sky-600"></i>`;
+                
+                // NOTE: For real images, you'd set: productImagePlaceholder.style.backgroundImage = `url(${product.imageUrl})`;
+            }
+
+            // You would also dynamically load reviews, variants, etc. here
+        };
+
+        // --- 4. Event Listeners ---
+
+        // Close button listener
+        if (closeModalButton) {
+            closeModalButton.addEventListener('click', closeProductModal);
+        }
+
+        // Close on backdrop click
+        if (productModal) {
+            productModal.addEventListener('click', (event) => {
+                if (event.target === productModal) {
+                    closeProductModal();
+                }
+            });
+        }
+
+        // Close on ESC key press
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && productModal && !productModal.classList.contains('hidden')) {
+                closeProductModal();
+            }
+        });
+
+        // Action Buttons Listeners
+        if (addToCartButton) {
+            addToCartButton.addEventListener('click', () => {
+                // Implement your cart addition logic here
+                console.log('Product added to Cart!');
+                // Optional: Close modal after adding
+                // closeProductModal(); 
+            });
+        }
+
+        if (addToWishlistButton) {
+            addToWishlistButton.addEventListener('click', () => {
+                // Implement your wishlist logic here
+                console.log('Product added to Wishlist!');
+                // Optional: Change icon class to 'fas fa-heart' (filled)
+                addToWishlistButton.innerHTML = '<i class="fas fa-heart"></i>'; 
+            });
+        }
+    });
+</script>

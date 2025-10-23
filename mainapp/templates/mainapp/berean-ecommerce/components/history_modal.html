@@ -1,0 +1,96 @@
+{% comment %}Purchase History Modal Component{% endcomment %}
+<!-- Purchase History Modal -->
+<div id="history-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <div class="bg-sky-600 text-white p-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-history text-2xl"></i>
+                <h3 class="text-2xl font-bold">Purchase History</h3>
+            </div>
+            <button id="close-history" class="text-white hover:text-gray-200 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-6 overflow-y-auto max-h-[calc(90vh-100px)]">
+            <div class="text-center text-gray-500 py-12">
+                <i class="fas fa-receipt text-6xl mb-4 opacity-30"></i>
+                <p class="text-lg">No purchase history yet</p>
+                <p class="text-sm mt-2">Your completed orders will appear here</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References ---
+        const historyModal = document.getElementById('history-modal');
+        const closeModalButton = document.getElementById('close-history');
+        
+        // **IMPORTANT:** Replace 'open-history-button' with the ID of your link/button
+        // that is supposed to trigger the modal opening (e.g., from your navbar).
+        const openModalButton = document.getElementById('open-history-button'); 
+
+        // --- 2. Core Open/Close Functions ---
+        
+        /**
+         * Opens the modal by removing the Tailwind 'hidden' class.
+         */
+        const openHistoryModal = () => {
+            if (historyModal) {
+                // Show the modal
+                historyModal.classList.remove('hidden');
+                // Optional: Prevent background scrolling
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        /**
+         * Closes the modal by adding the Tailwind 'hidden' class.
+         */
+        const closeHistoryModal = () => {
+            if (historyModal) {
+                // Hide the modal
+                historyModal.classList.add('hidden');
+                // Optional: Restore background scrolling
+                document.body.style.overflow = '';
+            }
+        };
+
+        // --- 3. Event Listeners ---
+
+        // Listener for the button that opens the modal
+        if (openModalButton) {
+            openModalButton.addEventListener('click', (e) => {
+                e.preventDefault(); // Stop the link from navigating if it's an anchor tag
+                openHistoryModal();
+            });
+        } else {
+             // Optional: Log a warning if the open button is missing
+             console.warn("Element with ID 'open-history-button' not found. Modal can only be closed/opened manually.");
+        }
+
+        // Listener for the 'X' button inside the modal
+        if (closeModalButton) {
+            closeModalButton.addEventListener('click', closeHistoryModal);
+        }
+
+        // Listener to close the modal when clicking outside of it (the dark backdrop)
+        if (historyModal) {
+            historyModal.addEventListener('click', (event) => {
+                // Check if the click occurred directly on the modal's backdrop (the outer div)
+                if (event.target === historyModal) {
+                    closeHistoryModal();
+                }
+            });
+        }
+
+        // Listener to close the modal when the ESC key is pressed (for accessibility)
+        document.addEventListener('keydown', (event) => {
+            // Check if the key is 'Escape' and the modal is currently visible
+            if (event.key === 'Escape' && historyModal && !historyModal.classList.contains('hidden')) {
+                closeHistoryModal();
+            }
+        });
+    });
+</script>

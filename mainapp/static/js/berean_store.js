@@ -1,355 +1,630 @@
-// store.js
-
+console.log('Berean Store JavaScript loaded');
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Store functionalities script loaded.");
 
-    // --- Utility Functions for Modals/Sidebars ---
-    const sidebarOverlay = document.getElementById('sidebar-overlay');
-    const cartSidebar = document.getElementById('cart-sidebar');
-    const historyModal = document.getElementById('history-modal');
-    const pendingModal = document.getElementById('pending-modal');
-    const accountModal = document.getElementById('account-modal');
-    const productModal = document.getElementById('product-modal');
+  // ============================================================================
+  // UTILITY FUNCTIONS
+  // ============================================================================
 
-    // Utility function to open a modal/sidebar
-    function openPanel(panel) {
-        // Close all other panels first (optional, but good for single-panel UI)
-        closeAllPanels();
-        
-        if (panel === cartSidebar) {
-            panel.classList.remove('translate-x-full');
-            panel.classList.add('translate-x-0');
-        } else {
-            panel.classList.remove('hidden');
-            panel.classList.add('flex');
-        }
-        sidebarOverlay.classList.remove('hidden');
+  // Utility function to toggle visibility
+  function toggleVisibility(element, show = true) {
+    if (show) {
+      element.classList.remove('hidden');
+      element.classList.remove('translate-x-full');
+      element.classList.remove('opacity-0');
+      element.classList.add('flex', 'opacity-100', 'translate-x-0');
+    } else {
+      element.classList.add('hidden');
+      element.classList.remove('flex', 'opacity-100', 'translate-x-0');
+    }
+  }
+
+  // ============================================================================
+  // MODAL AND SIDEBAR MANAGEMENT
+  // ============================================================================
+
+  function initializeModalsAndSidebars() {
+    // Overlay toggle functions
+    const overlays = {
+      sidebar: document.getElementById('sidebar-overlay'),
+      cartSidebar: document.getElementById('cart-sidebar'),
+      wishlistSidebar: document.getElementById('wishlist-sidebar'),
+      historyModal: document.getElementById('history-modal'),
+      pendingModal: document.getElementById('pending-modal'),
+      accountModal: document.getElementById('account-modal'),
+      productModal: document.getElementById('product-modal'),
+    };
+
+    // Button references
+    const btns = {
+      wishlistBtn: document.getElementById('wishlist-btn'),
+      cartBtn: document.getElementById('cart-btn'),
+      historyBtn: document.getElementById('history-btn'),
+      pendingBtn: document.getElementById('pending-btn'),
+      accountBtn: document.getElementById('account-btn'),
+      closeCart: document.getElementById('close-cart'),
+      closeWishlist: document.getElementById('close-wishlist'),
+      closeHistory: document.getElementById('close-history'),
+      closePending: document.getElementById('close-pending'),
+      closeAccount: document.getElementById('close-account'),
+      productCloseBtn: document.getElementById('close-product-modal'),
+      continueShopping: document.getElementById('continue-shopping'),
+    };
+
+    // Event listeners for opening modals/sidebars
+    if (btns.wishlistBtn) {
+      btns.wishlistBtn.addEventListener('click', () => {
+        toggleVisibility(overlays.wishlistSidebar, true);
+      });
     }
 
-    // Utility function to close all modals and sidebars
-    function closeAllPanels() {
-        // Sidebar
-        cartSidebar.classList.remove('translate-x-0');
-        cartSidebar.classList.add('translate-x-full');
-
-        // Modals
-        historyModal.classList.add('hidden');
-        historyModal.classList.remove('flex');
-        pendingModal.classList.add('hidden');
-        pendingModal.classList.remove('flex');
-        accountModal.classList.add('hidden');
-        accountModal.classList.remove('flex');
-        productModal.classList.add('hidden');
-        productModal.classList.remove('flex');
-
-        sidebarOverlay.classList.add('hidden');
+    if (btns.cartBtn) {
+      btns.cartBtn.addEventListener('click', () => {
+        toggleVisibility(overlays.cartSidebar, true);
+      });
     }
-    
-    // Attach event listeners to close buttons and overlay
-    document.getElementById('close-cart')?.addEventListener('click', closeAllPanels);
-    document.getElementById('close-history')?.addEventListener('click', closeAllPanels);
-    document.getElementById('close-pending')?.addEventListener('click', closeAllPanels);
-    document.getElementById('close-account')?.addEventListener('click', closeAllPanels);
-    document.getElementById('close-product-modal')?.addEventListener('click', closeAllPanels);
-    sidebarOverlay?.addEventListener('click', (e) => {
-        // Only close if the click is directly on the overlay
-        if (e.target === sidebarOverlay) {
-            closeAllPanels();
-        }
-    });
-    
-    // --- Store Navigation & E-commerce Actions ---
-    
-    // Toggle Cart Sidebar
-    document.getElementById('cart-btn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        openPanel(cartSidebar);
-        updateCartDisplay(); // Call to ensure cart state is rendered
-    });
 
-    // Toggle History Modal
-    document.getElementById('history-btn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        openPanel(historyModal);
-    });
-    
-    // Toggle Pending Orders Modal
-    document.getElementById('pending-btn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        openPanel(pendingModal);
-    });
+    if (btns.historyBtn) {
+      btns.historyBtn.addEventListener('click', () => {
+        toggleVisibility(overlays.historyModal, true);
+      });
+    }
 
-    // Toggle Account Modal
-    document.getElementById('account-btn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        openPanel(accountModal);
-    });
+    if (btns.pendingBtn) {
+      btns.pendingBtn.addEventListener('click', () => {
+        toggleVisibility(overlays.pendingModal, true);
+      });
+    }
 
-    // NOTE: Wishlist button and other account links are placeholders as they
-    // typically require backend routes, but they open the Account Modal for now.
-    document.getElementById('wishlist-btn')?.addEventListener('click', (e) => {
-        e.preventDefault();
-        // For a simple demo, we'll open the account modal
-        openPanel(accountModal);
-        // In a real app, this would redirect to a wishlist page/modal.
-        console.log("Simulating redirection to Wishlist page...");
-    });
-    
-    // Continue Shopping button (closes cart)
-    document.getElementById('continue-shopping')?.addEventListener('click', closeAllPanels);
+    if (btns.accountBtn) {
+      btns.accountBtn.addEventListener('click', () => {
+        toggleVisibility(overlays.accountModal, true);
+      });
+    }
 
-    // Placeholder for Checkout button logic
-    document.getElementById('proceed-checkout-btn')?.addEventListener('click', () => {
-        alert("Proceeding to Checkout! (Integration with M-Pesa/Payment Gateway would go here)");
-        // In a real application, this would typically be a form submission or an API call.
-    });
+    // Close buttons
+    if (btns.closeCart) {
+      btns.closeCart.addEventListener('click', () => {
+        toggleVisibility(overlays.cartSidebar, false);
+      });
+    }
 
+    if (btns.closeWishlist) {
+      btns.closeWishlist.addEventListener('click', () => {
+        toggleVisibility(overlays.wishlistSidebar, false);
+      });
+    }
 
-    // --- Search & Filter Logic ---
-    const filterToggle = document.getElementById('filter-toggle');
-    const filterPanel = document.getElementById('filter-panel');
-    const applyFiltersBtn = document.getElementById('apply-filters');
-    const clearFiltersBtn = document.getElementById('clear-filters');
-    const searchInput = document.getElementById('search-input');
-    const categoryFilters = document.querySelectorAll('.category-filter');
-    const priceFilters = document.querySelectorAll('.price-filter');
-    const sortSelect = document.getElementById('sort-select');
+    if (btns.closeHistory) {
+      btns.closeHistory.addEventListener('click', () => {
+        toggleVisibility(overlays.historyModal, false);
+      });
+    }
 
-    // Toggle Filter Panel
-    filterToggle?.addEventListener('click', () => {
-        filterPanel.classList.toggle('hidden');
-    });
+    if (btns.closePending) {
+      btns.closePending.addEventListener('click', () => {
+        toggleVisibility(overlays.pendingModal, false);
+      });
+    }
 
-    // Apply Filters - Simulation
-    applyFiltersBtn?.addEventListener('click', () => {
-        const searchTerm = searchInput.value.trim().toLowerCase();
-        const selectedCategories = Array.from(categoryFilters).filter(cb => cb.checked).map(cb => cb.dataset.category);
-        const selectedPrices = Array.from(priceFilters).filter(cb => cb.checked).map(cb => ({
-            min: parseInt(cb.dataset.min),
-            max: parseInt(cb.dataset.max)
-        }));
-        const sortBy = sortSelect.value;
+    if (btns.closeAccount) {
+      btns.closeAccount.addEventListener('click', () => {
+        toggleVisibility(overlays.accountModal, false);
+      });
+    }
 
-        console.log({
-            searchTerm,
-            selectedCategories,
-            selectedPrices,
-            sortBy
+    if (btns.productCloseBtn) {
+      btns.productCloseBtn.addEventListener('click', () => {
+        toggleVisibility(overlays.productModal, false);
+      });
+    }
+
+    // Continue shopping closes cart sidebar
+    const continueBtn = document.getElementById('continue-shopping');
+    if (continueBtn) {
+      continueBtn.addEventListener('click', () => {
+        toggleVisibility(overlays.cartSidebar, false);
+      });
+    }
+
+    // Overlay click to close
+    Object.values(overlays).forEach(overlay => {
+      if (overlay) {
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            toggleVisibility(overlay, false);
+          }
         });
-
-        alert("Applying Filters and Search... (This is where you'd re-render the product list via AJAX)");
-        filterPanel.classList.add('hidden'); // Hide panel after applying
+      }
     });
 
-    // Clear Filters - Simulation
-    clearFiltersBtn?.addEventListener('click', () => {
-        searchInput.value = '';
-        categoryFilters.forEach(cb => cb.checked = false);
-        priceFilters.forEach(cb => cb.checked = false);
-        sortSelect.value = 'featured';
+    // Optional: Close modals with ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        Object.values(overlays).forEach(overlay => {
+          if (overlay) {
+            toggleVisibility(overlay, false);
+          }
+        });
+      }
+    });
+  }
 
-        alert("Filters Cleared! (You'd typically re-render the full product list)");
+  // ============================================================================
+  // WISHLIST FUNCTIONALITY
+  // ============================================================================
+
+  function initializeWishlist() {
+    const wishlistItemsContainer = document.getElementById('wishlist-items-list');
+    const wishlistCountSpan = document.getElementById('wishlist-count');
+    const wishlistEmptyMsg = document.getElementById('empty-wishlist-message');
+
+    if (!wishlistItemsContainer || !wishlistCountSpan) return;
+
+    // Sample wishlist array
+    let wishlistItems = [];
+
+    // Product database - this should ideally come from your Django backend
+    const productDatabase = {
+      // Books
+      101: { name: "The Berean Study Bible", price: 1500, category: "Books" },
+      102: { name: "Prayer Warrior's Guide", price: 800, category: "Books" },
+      103: { name: "Faith & Purpose", price: 650, category: "Books" },
+      104: { name: "Mission Minded", price: 900, category: "Books" },
+      105: { name: "Youth Ministry Handbook", price: 1250, category: "Books" },
+      106: { name: "History of the Early Church", price: 1100, category: "Books" },
+
+      // Merchandise
+      'merch-tshirt-01': { name: "BBC Branded T-Shirt", price: 1200, category: "Merchandise" },
+      'merch-hoodie-01': { name: "BBC Hoodie", price: 2500, category: "Merchandise" },
+      'merch-mug-01': { name: "BBC Coffee Mug", price: 500, category: "Merchandise" },
+      'merch-cap-01': { name: "Branded Baseball Cap", price: 800, category: "Merchandise" },
+      'merch-lanyard-01': { name: "Event Lanyard", price: 150, category: "Merchandise" },
+      'merch-bag-01': { name: "Tote Bag", price: 750, category: "Merchandise" },
+
+      // Food & Snacks
+      'food-101': { name: "Fresh Watermelon", price: 150, category: "Food & Snacks" },
+      'food-102': { name: "Pilau Rice", price: 200, category: "Food & Snacks" },
+      'food-103': { name: "Chicken Biryani", price: 250, category: "Food & Snacks" },
+      'food-104': { name: "Crispy Bhajia", price: 100, category: "Food & Snacks" },
+      'food-105': { name: "Fried Potatoes", price: 80, category: "Food & Snacks" },
+      'food-106': { name: "Fresh Doughnuts", price: 50, category: "Food & Snacks" },
+      'food-107': { name: "Beef Samosas", price: 30, category: "Food & Snacks" },
+      'food-108': { name: "Mandazi", price: 20, category: "Food & Snacks" },
+      'food-109': { name: "Soft Chapati", price: 30, category: "Food & Snacks" },
+      'pack-301': { name: "Mixed Snacks Pack", price: 200, category: "Food & Snacks" },
+      'service-401': { name: "Event Catering", price: 500, category: "Services" },
+
+      // Beverages
+      'drink-201': { name: "Fresh Orange Juice", price: 100, category: "Beverages" },
+      'drink-202': { name: "Passion Fruit Juice", price: 120, category: "Beverages" },
+      'drink-203': { name: "Fresh Mango Juice", price: 130, category: "Beverages" },
+      'drink-204': { name: "Pineapple Juice", price: 110, category: "Beverages" },
+      'drink-205': { name: "Mixed Fruit Juice", price: 140, category: "Beverages" },
+      'drink-206': { name: "Fresh Lemon Water", price: 60, category: "Beverages" },
+      'drink-207': { name: "Herbal Tea", price: 80, category: "Beverages" },
+      'drink-208': { name: "Ginger Tea", price: 70, category: "Beverages" }
+    };
+
+    // Add to wishlist function
+    document.querySelectorAll('.wishlist-icon, #modal-add-to-wishlist').forEach(btn => {
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const productId = btn.dataset.productId || btn.closest('[data-product-id]')?.dataset.productId;
+          if (productId && productDatabase[productId]) {
+            const product = productDatabase[productId];
+            const newItem = {
+              id: productId,
+              name: product.name,
+              price: product.price,
+              category: product.category
+            };
+            wishlistItems.push(newItem);
+            updateWishlist();
+          } else {
+            // Fallback for demo purposes
+            const newItem = {
+              id: Date.now(),
+              name: 'Sample Wishlist Item',
+              price: 500,
+              category: 'General'
+            };
+            wishlistItems.push(newItem);
+            updateWishlist();
+          }
+        });
+      }
     });
 
-    // --- Simulated Cart/Wishlist State Management ---
-    // In a real app, this data would come from the Django backend (user session/DB)
-    let cartItems = []; // [{ id: 1, name: '...', price: 500, quantity: 1, ... }]
-    let wishlistCount = 0;
-    
-    const cartCountEl = document.getElementById('cart-count');
-    const wishlistCountEl = document.getElementById('wishlist-count');
-    const cartTotalEl = document.getElementById('cart-total');
-    const cartItemsListEl = document.getElementById('cart-items-list');
-    const emptyCartMessageEl = document.getElementById('empty-cart-message');
+    function updateWishlist() {
+      wishlistCountSpan.textContent = wishlistItems.length;
+      if (wishlistItems.length === 0) {
+        wishlistEmptyMsg.classList.remove('hidden');
+        wishlistItemsContainer.classList.add('hidden');
+      } else {
+        wishlistEmptyMsg.classList.add('hidden');
+        wishlistItemsContainer.classList.remove('hidden');
+        // Render wishlist items with proper product information
+        wishlistItemsContainer.innerHTML = wishlistItems.map(item => `
+          <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
+            <div>
+              <p class="font-semibold">${item.name}</p>
+              <p class="text-sm text-gray-500">KSH ${item.price.toLocaleString()}</p>
+            </div>
+            <button class="text-red-500 remove-wishlist-item" data-id="${item.id}">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        `).join('');
+      }
+
+      // Attach remove event
+      document.querySelectorAll('.remove-wishlist-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          wishlistItems = wishlistItems.filter(i => i.id !== id);
+          updateWishlist();
+        });
+      });
+    }
+
+    // Initialize wishlist
+    updateWishlist();
+  }
+
+  // ============================================================================
+  // CART FUNCTIONALITY
+  // ============================================================================
+
+  function initializeCart() {
+    const cartItemsContainer = document.getElementById('cart-items-list');
+    const cartCountSpan = document.getElementById('cart-count');
+    const cartTotalSpan = document.getElementById('cart-total');
+    const emptyCartMsg = document.getElementById('empty-cart-message');
     const clearCartBtn = document.getElementById('clear-cart-btn');
+    const checkoutBtn = document.getElementById('proceed-checkout-btn');
 
-    function updateCartCounts() {
-        const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-        const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        
-        cartCountEl.textContent = totalItems;
-        cartTotalEl.textContent = `KSH ${totalAmount.toLocaleString()}`;
-        
-        // Show/Hide relevant elements based on cart state
-        if (totalItems > 0) {
-            emptyCartMessageEl.classList.add('hidden');
-            cartItemsListEl.classList.remove('hidden');
-            clearCartBtn.classList.remove('hidden');
-        } else {
-            emptyCartMessageEl.classList.remove('hidden');
-            cartItemsListEl.classList.add('hidden');
-            clearCartBtn.classList.add('hidden');
-        }
-    }
-    
-    function updateWishlistCount(newCount) {
-        wishlistCount = newCount;
-        wishlistCountEl.textContent = newCount;
-    }
+    if (!cartItemsContainer || !cartCountSpan) return;
 
-    // Example function to add an item (simulated, needs to be attached to product cards)
-    window.addToCart = (productId, name, price) => {
-        const existingItem = cartItems.find(item => item.id === productId);
-        
-        if (existingItem) {
-            existingItem.quantity += 1;
-        } else {
-            cartItems.push({ id: productId, name, price, quantity: 1 });
-        }
-        
-        updateCartCounts();
-        updateCartDisplay();
-        alert(`${name} added to cart!`);
+    let cartItems = [];
+
+    // Product database - this should ideally come from your Django backend
+    const productDatabase = {
+      // Books
+      101: { name: "The Berean Study Bible", price: 1500, category: "Books" },
+      102: { name: "Prayer Warrior's Guide", price: 800, category: "Books" },
+      103: { name: "Faith & Purpose", price: 650, category: "Books" },
+      104: { name: "Mission Minded", price: 900, category: "Books" },
+      105: { name: "Youth Ministry Handbook", price: 1250, category: "Books" },
+      106: { name: "History of the Early Church", price: 1100, category: "Books" },
+
+      // Merchandise
+      'merch-tshirt-01': { name: "BBC Branded T-Shirt", price: 1200, category: "Merchandise" },
+      'merch-hoodie-01': { name: "BBC Hoodie", price: 2500, category: "Merchandise" },
+      'merch-mug-01': { name: "BBC Coffee Mug", price: 500, category: "Merchandise" },
+      'merch-cap-01': { name: "Branded Baseball Cap", price: 800, category: "Merchandise" },
+      'merch-lanyard-01': { name: "Event Lanyard", price: 150, category: "Merchandise" },
+      'merch-bag-01': { name: "Tote Bag", price: 750, category: "Merchandise" },
+
+      // Food & Snacks
+      'food-101': { name: "Fresh Watermelon", price: 150, category: "Food & Snacks" },
+      'food-102': { name: "Pilau Rice", price: 200, category: "Food & Snacks" },
+      'food-103': { name: "Chicken Biryani", price: 250, category: "Food & Snacks" },
+      'food-104': { name: "Crispy Bhajia", price: 100, category: "Food & Snacks" },
+      'food-105': { name: "Fried Potatoes", price: 80, category: "Food & Snacks" },
+      'food-106': { name: "Fresh Doughnuts", price: 50, category: "Food & Snacks" },
+      'food-107': { name: "Beef Samosas", price: 30, category: "Food & Snacks" },
+      'food-108': { name: "Mandazi", price: 20, category: "Food & Snacks" },
+      'food-109': { name: "Soft Chapati", price: 30, category: "Food & Snacks" },
+      'pack-301': { name: "Mixed Snacks Pack", price: 200, category: "Food & Snacks" },
+      'service-401': { name: "Event Catering", price: 500, category: "Services" },
+
+      // Beverages
+      'drink-201': { name: "Fresh Orange Juice", price: 100, category: "Beverages" },
+      'drink-202': { name: "Passion Fruit Juice", price: 120, category: "Beverages" },
+      'drink-203': { name: "Fresh Mango Juice", price: 130, category: "Beverages" },
+      'drink-204': { name: "Pineapple Juice", price: 110, category: "Beverages" },
+      'drink-205': { name: "Mixed Fruit Juice", price: 140, category: "Beverages" },
+      'drink-206': { name: "Fresh Lemon Water", price: 60, category: "Beverages" },
+      'drink-207': { name: "Herbal Tea", price: 80, category: "Beverages" },
+      'drink-208': { name: "Ginger Tea", price: 70, category: "Beverages" }
     };
 
-    // Clears the cart
-    clearCartBtn?.addEventListener('click', () => {
-        if(confirm("Are you sure you want to clear your cart?")) {
-            cartItems = [];
-            updateCartCounts();
-            updateCartDisplay();
-        }
+    // Sample add to cart buttons
+    document.querySelectorAll('.bg-sky-600, #modal-add-to-cart, .add-to-cart-btn').forEach(btn => {
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const productId = btn.dataset.productId || btn.closest('[data-product-id]')?.dataset.productId;
+          if (productId && productDatabase[productId]) {
+            const product = productDatabase[productId];
+            const newItem = {
+              id: productId,
+              name: product.name,
+              price: product.price,
+              quantity: 1,
+              category: product.category
+            };
+
+            // Check if item exists, update quantity if so
+            const existing = cartItems.find(i => i.id === newItem.id);
+            if (existing) {
+              existing.quantity += 1;
+            } else {
+              cartItems.push(newItem);
+            }
+            updateCart();
+          } else {
+            // Fallback for demo purposes
+            const newItem = {
+              id: Date.now(),
+              name: 'Sample Product',
+              price: 500,
+              quantity: 1,
+              category: 'General'
+            };
+            const existing = cartItems.find(i => i.id === newItem.id);
+            if (existing) {
+              existing.quantity += 1;
+            } else {
+              cartItems.push(newItem);
+            }
+            updateCart();
+          }
+        });
+      }
     });
 
-    // Renders the cart items in the sidebar
-    function updateCartDisplay() {
-        cartItemsListEl.innerHTML = ''; // Clear current items
-        
-        cartItems.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('flex', 'items-center', 'justify-between', 'border-b', 'py-3');
-            itemElement.innerHTML = `
-                <div class="flex items-center gap-3">
-                    <div class="w-16 h-16 bg-gray-100 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-box text-xl text-sky-500"></i>
-                    </div>
-                    <div>
-                        <p class="font-semibold text-gray-800">${item.name}</p>
-                        <p class="text-sm text-gray-500">KSH ${item.price.toLocaleString()} x ${item.quantity}</p>
-                    </div>
-                </div>
-                <div class="flex flex-col items-end">
-                    <p class="font-bold text-sky-600">KSH ${(item.price * item.quantity).toLocaleString()}</p>
-                    <button data-id="${item.id}" class="remove-item text-red-500 text-xs mt-1 hover:text-red-700">Remove</button>
-                </div>
-            `;
-            cartItemsListEl.appendChild(itemElement);
-        });
+    function updateCart() {
+      cartCountSpan.textContent = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+      const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      cartTotalSpan.textContent = `KSH ${total.toLocaleString()}`;
+      if (cartItems.length === 0) {
+        emptyCartMsg.classList.remove('hidden');
+        cartItemsContainer.classList.add('hidden');
+      } else {
+        emptyCartMsg.classList.add('hidden');
+        cartItemsContainer.classList.remove('hidden');
+        // Render cart items
+        cartItemsContainer.innerHTML = cartItems.map(item => `
+          <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
+            <div>
+              <p class="font-semibold">${item.name}</p>
+              <p class="text-sm text-gray-500">KSH ${item.price.toLocaleString()} x ${item.quantity}</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="decrease-qty bg-gray-200 px-2 rounded" data-id="${item.id}">-</button>
+              <span>${item.quantity}</span>
+              <button class="increase-qty bg-gray-200 px-2 rounded" data-id="${item.id}">+</button>
+              <button class="remove-cart-item text-red-500 ml-2" data-id="${item.id}">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
 
-        // Re-attach listeners for new remove buttons
-        cartItemsListEl.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const itemId = parseInt(e.target.dataset.id);
-                cartItems = cartItems.filter(item => item.id !== itemId);
-                updateCartCounts();
-                updateCartDisplay();
-            });
+        // Attach quantity buttons
+        document.querySelectorAll('.increase-qty').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = parseInt(btn.dataset.id);
+            const item = cartItems.find(i => i.id === id);
+            if (item) {
+              item.quantity += 1;
+              updateCart();
+            }
+          });
         });
+        document.querySelectorAll('.decrease-qty').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = parseInt(btn.dataset.id);
+            const item = cartItems.find(i => i.id === id);
+            if (item && item.quantity > 1) {
+              item.quantity -= 1;
+              updateCart();
+            }
+          });
+        });
+        document.querySelectorAll('.remove-cart-item').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = parseInt(btn.dataset.id);
+            cartItems = cartItems.filter(i => i.id !== id);
+            updateCart();
+          });
+        });
+      }
     }
 
-    // Initialize counts on load
-    updateCartCounts();
-    updateWishlistCount(3); // Start with a simulated wishlist count
+    // Clear cart
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener('click', () => {
+        cartItems = [];
+        updateCart();
+      });
+    }
 
+    // Proceed to checkout
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', () => {
+        alert('Proceeding to checkout... (implement your checkout process)');
+      });
+    }
 
-    // --- Featured Deals Countdown Timer ---
+    // Initialize cart
+    updateCart();
+  }
+
+  // ============================================================================
+  // SEARCH AND FILTER FUNCTIONALITY
+  // ============================================================================
+
+  function initializeSearchAndFilters() {
+    // Toggle Filter Panel
+    const filterToggleBtn = document.getElementById('filter-toggle');
+    const filterPanel = document.getElementById('filter-panel');
+    if (filterToggleBtn && filterPanel) {
+      filterToggleBtn.addEventListener('click', () => {
+        filterPanel.classList.toggle('hidden');
+      });
+    }
+
+    // Filter application
+    document.getElementById('apply-filters')?.addEventListener('click', () => {
+      const selectedPriceFilters = Array.from(document.querySelectorAll('.price-filter:checked')).map(cb => ({
+        min: parseFloat(cb.dataset.min),
+        max: parseFloat(cb.dataset.max),
+      }));
+      const selectedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.dataset.category);
+      const sortBy = document.getElementById('sort-select')?.value;
+
+      console.log('Filters applied:', selectedPriceFilters, selectedCategories, sortBy);
+      // Implement filtering logic based on your product data
+    });
+
+    document.getElementById('clear-filters')?.addEventListener('click', () => {
+      document.querySelectorAll('.price-filter, .category-filter').forEach(cb => (cb.checked = false));
+      document.getElementById('sort-select').value = 'featured';
+    });
+
+    // Search input
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const query = searchInput.value.toLowerCase();
+        console.log('Searching for:', query);
+        // Implement search filtering on your product list
+      });
+    }
+  }
+
+  // ============================================================================
+  // FAQ FUNCTIONALITY
+  // ============================================================================
+
+  function initializeFAQ() {
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach((btn) => {
+      if (btn) {
+        btn.addEventListener('click', () => {
+          const answer = btn.nextElementSibling;
+          answer.classList.toggle('hidden');
+        });
+      }
+    });
+  }
+
+  // ============================================================================
+  // COUNTDOWN TIMER FUNCTIONALITY
+  // ============================================================================
+
+  function initializeCountdown() {
+    const countdownDays = document.getElementById('countdown-days');
+    const countdownHours = document.getElementById('countdown-hours');
+    const countdownMins = document.getElementById('countdown-mins');
+    const countdownSecs = document.getElementById('countdown-secs');
+
+    if (!countdownDays || !countdownHours || !countdownMins) return;
+
+    // Set your deal end date here
+    const dealEndDate = new Date('2024-12-31T23:59:59');
+
     function updateCountdown() {
-        // Target date: Next Saturday at 11:59:59 PM (Example)
-        const now = new Date();
-        const nextSaturday = new Date(now);
-        nextSaturday.setDate(now.getDate() + (6 - now.getDay() + 7) % 7);
-        nextSaturday.setHours(23, 59, 59, 999);
-        
-        const distance = nextSaturday - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        // const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        // Display the results
-        document.getElementById("countdown-days").textContent = days < 10 ? '0' + days : days;
-        document.getElementById("countdown-hours").textContent = hours < 10 ? '0' + hours : hours;
-        document.getElementById("countdown-mins").textContent = minutes < 10 ? '0' + minutes : minutes;
-        // The seconds element isn't in the HTML, only days, hours, and mins
-        
-        // If the countdown is finished, clear the interval
-        if (distance < 0) {
-            clearInterval(countdownInterval);
-            document.getElementById("countdown-days").textContent = '00';
-            document.getElementById("countdown-hours").textContent = '00';
-            document.getElementById("countdown-mins").textContent = '00';
-        }
-    }
-    
-    // Update the countdown every minute for performance, or every second for precision.
-    const countdownInterval = setInterval(updateCountdown, 60000); // Update every minute
-    updateCountdown(); // Initial call to display immediately
-
-
-    // --- Social Proof Ticker Simulation ---
-    // Simulate real-time updates for social proof elements
-    const viewersCountEl = document.getElementById('viewers-count');
-    const salesCountEl = document.getElementById('sales-count');
-    
-    function updateSocialProof() {
-        // Randomly adjust viewers count (between 10 and 25)
-        const newViewers = Math.floor(Math.random() * (25 - 10 + 1)) + 10;
-        viewersCountEl.textContent = newViewers;
-
-        // Simulate new sales (increase by 1 or 0)
-        let currentSales = parseInt(salesCountEl.textContent);
-        if (Math.random() < 0.2) { // 20% chance of a new sale
-            currentSales += 1;
-            salesCountEl.textContent = currentSales;
-        }
+      const now = new Date();
+      const diff = dealEndDate - now;
+      if (diff <= 0) {
+        // Deal expired
+        countdownDays.textContent = '00';
+        countdownHours.textContent = '00';
+        countdownMins.textContent = '00';
+        countdownSecs.textContent = '00';
+        clearInterval(countdownInterval);
+        return;
+      }
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const mins = Math.floor((diff / (1000 * 60)) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+      countdownDays.textContent = days.toString().padStart(2, '0');
+      countdownHours.textContent = hours.toString().padStart(2, '0');
+      countdownMins.textContent = mins.toString().padStart(2, '0');
+      countdownSecs.textContent = secs.toString().padStart(2, '0');
     }
 
-    // Update social proof every 10 seconds
-    setInterval(updateSocialProof, 10000);
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+  }
 
-    // --- Product Card Interaction (Simulated) ---
-    // Since the HTML only provides the *structure* for the product modal,
-    // this function demonstrates how a click on a product card would show details.
-    
-    // In a real Django setup, you'd add a class/ID to your product cards, like 'product-card'
-    // and attach a click listener to all of them to call this function.
-    window.showProductDetails = (productData) => {
-        document.getElementById('modal-product-name').textContent = productData.name;
-        document.getElementById('modal-product-price').textContent = `KSH ${productData.price.toLocaleString()}`;
-        document.getElementById('modal-product-description').textContent = productData.description;
-        // Update image, features, etc. here
+  // ============================================================================
+  // BADGE UPDATE FUNCTIONALITY
+  // ============================================================================
 
-        // Update Add to Cart button to use this product's data
-        document.getElementById('modal-add-to-cart').onclick = () => {
-            window.addToCart(productData.id, productData.name, productData.price);
-            closeAllPanels(); // Optionally close modal after adding to cart
-        };
+  function initializeBadgeUpdates() {
+    const wishlistCount = document.getElementById('wishlist-count');
+    const cartCount = document.getElementById('cart-count');
+    const pendingCountBadge = document.getElementById('pending-count');
 
-        // Update Add to Wishlist button to use this product's data
-        document.getElementById('modal-add-to-wishlist').onclick = () => {
-             // Simulated: Add item ID to wishlist in backend
-            console.log(`Added product ID ${productData.id} to wishlist.`);
-            updateWishlistCount(wishlistCount + 1); // Simulate increment
-            alert(`${productData.name} added to wishlist!`);
-        };
-
-        openPanel(productModal);
+    let state = {
+      wishlist: 3,
+      cart: 1,
+      pendingOrders: 0
     };
 
-    // Example of how you would call showProductDetails from a product card:
-    /*
-    // Product data (would come from Django template loop)
-    const sampleProduct = {
-        id: 101,
-        name: "Holy Bible NKJV - Study Edition",
-        price: 3500,
-        description: "A comprehensive New King James Version Bible with study notes, concordance, and maps. Perfect for deeper devotional study.",
-        // ... more data
+    const updateBadges = () => {
+      if (wishlistCount) {
+        wishlistCount.textContent = state.wishlist;
+        wishlistCount.classList.toggle('hidden', state.wishlist === 0);
+      }
+
+      if (cartCount) {
+        cartCount.textContent = state.cart;
+      }
+
+      if (pendingCountBadge) {
+        pendingCountBadge.textContent = state.pendingOrders;
+        pendingCountBadge.classList.toggle('hidden', state.pendingOrders === 0);
+      }
     };
-    
-    // To simulate a product card click on page load:
-    // setTimeout(() => showProductDetails(sampleProduct), 3000); 
-    */
-    
+
+    // Make functions available globally
+    window.BereanStoreBadges = {
+      updateBadges,
+      getState: () => state,
+      setState: (newState) => {
+        state = { ...state, ...newState };
+        updateBadges();
+      }
+    };
+
+    // Initialize badges
+    updateBadges();
+  }
+
+  // ============================================================================
+  // INITIALIZE ALL FUNCTIONALITY BASED ON PRESENT ELEMENTS
+  // ============================================================================
+
+  // Initialize core functionality
+  initializeModalsAndSidebars();
+  initializeWishlist();
+  initializeCart();
+  initializeSearchAndFilters();
+  initializeFAQ();
+  initializeCountdown();
+  initializeBadgeUpdates();
+
+  // ============================================================================
+  // EXPOSE FUNCTIONS FOR COMPONENT-LEVEL INITIALIZATION
+  // ============================================================================
+
+  // Make functions available globally for component-specific initialization
+  window.BereanStore = {
+    initializeModalsAndSidebars,
+    initializeWishlist,
+    initializeCart,
+    initializeSearchAndFilters,
+    initializeFAQ,
+    initializeCountdown,
+    initializeBadgeUpdates,
+    toggleVisibility
+  };
+
+  console.log('All Berean Store functionality initialized successfully');
+
 });

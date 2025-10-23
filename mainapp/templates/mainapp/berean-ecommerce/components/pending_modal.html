@@ -1,0 +1,96 @@
+{% comment %}Pending Orders Modal Component{% endcomment %}
+<!-- Pending Orders Modal -->
+<div id="pending-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden">
+        <div class="bg-orange-600 text-white p-6 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-clock text-2xl"></i>
+                <h3 class="text-2xl font-bold">Pending Orders</h3>
+            </div>
+            <button id="close-pending" class="text-white hover:text-gray-200 text-2xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="p-6 overflow-y-auto max-h-[calc(90vh-100px)]">
+            <div class="text-center text-gray-500 py-12">
+                <i class="fas fa-hourglass-half text-6xl mb-4 opacity-30"></i>
+                <p class="text-lg">No pending orders</p>
+                <p class="text-sm mt-2">Orders awaiting payment or processing will appear here</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References ---
+        const pendingModal = document.getElementById('pending-modal');
+        const closeModalButton = document.getElementById('close-pending');
+        
+        // **IMPORTANT:** Replace 'open-pending-button' with the ID of your link/button
+        // that triggers the modal opening (e.g., from your e-commerce navigation).
+        const openModalButton = document.getElementById('open-pending-button'); 
+
+        // --- 2. Core Open/Close Functions ---
+        
+        /**
+         * Opens the modal by removing the Tailwind 'hidden' class.
+         */
+        const openPendingModal = () => {
+            if (pendingModal) {
+                // Show the modal
+                pendingModal.classList.remove('hidden');
+                // Optional: Prevent background scrolling for better focus
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        /**
+         * Closes the modal by adding the Tailwind 'hidden' class.
+         */
+        const closePendingModal = () => {
+            if (pendingModal) {
+                // Hide the modal
+                pendingModal.classList.add('hidden');
+                // Optional: Restore background scrolling
+                document.body.style.overflow = '';
+            }
+        };
+
+        // --- 3. Event Listeners ---
+
+        // Listener for the button that opens the modal
+        if (openModalButton) {
+            openModalButton.addEventListener('click', (e) => {
+                e.preventDefault(); // Stop the link from navigating if it's an anchor tag
+                openPendingModal();
+            });
+        } else {
+             // Optional: Log a warning if the open button is missing
+             console.warn("Element with ID 'open-pending-button' not found. Ensure the correct ID is set for the button that opens the modal.");
+        }
+
+        // Listener for the 'X' button inside the modal
+        if (closeModalButton) {
+            closeModalButton.addEventListener('click', closePendingModal);
+        }
+
+        // Listener to close the modal when clicking outside of it (the dark backdrop)
+        if (pendingModal) {
+            pendingModal.addEventListener('click', (event) => {
+                // Check if the click occurred directly on the modal's backdrop (the outer div)
+                if (event.target === pendingModal) {
+                    closePendingModal();
+                }
+            });
+        }
+
+        // Listener to close the modal when the ESC key is pressed (for accessibility)
+        document.addEventListener('keydown', (event) => {
+            // Check if the key is 'Escape' and the modal is currently visible
+            if (event.key === 'Escape' && pendingModal && !pendingModal.classList.contains('hidden')) {
+                closePendingModal();
+            }
+        });
+    });
+</script>

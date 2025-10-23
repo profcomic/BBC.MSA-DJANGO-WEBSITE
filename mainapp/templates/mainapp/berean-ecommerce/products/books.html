@@ -1,0 +1,153 @@
+{% comment %}Books & Literature Page{% endcomment %}
+<!-- Products Grid - Books Section -->
+<section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div id="books-section" class="mb-16">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8">
+                <i class="fas fa-book text-sky-600 mr-3"></i>Books & Literature
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="relative">
+                        <div class="w-full h-64 bg-gradient-to-br from-sky-100 to-blue-200 flex items-center justify-center">
+                            <i class="fas fa-book text-6xl text-sky-600"></i>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">NEW</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Prayer Warrior's Guide</h3>
+                        <p class="text-gray-600 mb-4 text-sm">A comprehensive guide to effective prayer and intercession</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH 800</span>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="w-full h-64 bg-gradient-to-br from-purple-100 to-pink-200 flex items-center justify-center">
+                        <i class="fas fa-book text-6xl text-purple-600"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Faith & Purpose</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Discovering God's plan for your life</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH 650</span>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <div class="relative">
+                        <div class="w-full h-64 bg-gradient-to-br from-green-100 to-emerald-200 flex items-center justify-center">
+                            <i class="fas fa-book text-6xl text-green-600"></i>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold">BESTSELLER</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">Mission Minded</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Fulfilling the Great Commission</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH 900</span>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References ---
+        const productsGrid = document.querySelector('#books-section > .grid');
+
+        // --- 2. Mock Data (Replace with API/Backend Fetch) ---
+        const mockBooks = [
+            { id: 101, name: "The Berean Study Bible", price: 1500, description: "Deep commentary focusing on original texts.", icon: "fas fa-bible", color: "from-yellow-100 to-orange-200", tag: "NEW", tagColor: "bg-red-500" },
+            { id: 102, name: "Prayer Warrior's Guide", price: 800, description: "A comprehensive guide to effective prayer.", icon: "fas fa-hands-praying", color: "from-sky-100 to-blue-200", tag: null },
+            { id: 103, name: "Faith & Purpose", price: 650, description: "Discovering God's plan for your life.", icon: "fas fa-lightbulb", color: "from-purple-100 to-pink-200", tag: null },
+            { id: 104, name: "Mission Minded", price: 900, description: "Fulfilling the Great Commission in your daily life.", icon: "fas fa-globe-africa", color: "from-green-100 to-emerald-200", tag: "BESTSELLER", tagColor: "bg-green-500" },
+            { id: 105, name: "Youth Ministry Handbook", price: 1250, description: "Practical tools for leading young believers.", icon: "fas fa-people-carry", color: "from-indigo-100 to-violet-200", tag: null },
+            { id: 106, name: "History of the Early Church", price: 1100, description: "An insightful look at the first centuries of Christianity.", icon: "fas fa-scroll", color: "from-gray-100 to-gray-300", tag: null }
+        ];
+
+        // --- 3. Rendering Function ---
+
+        /**
+         * Generates the HTML for a single product card.
+         * @param {Object} product - The product data object.
+         * @returns {string} The HTML string for the product card.
+         */
+        const createProductCard = (product) => {
+            const tagHtml = product.tag ? 
+                `<span class="absolute top-4 right-4 ${product.tagColor} text-white px-3 py-1 rounded-full text-sm font-bold">${product.tag}</span>` : '';
+
+            return `
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 product-card" data-product-id="${product.id}">
+                    <div class="relative">
+                        <div class="w-full h-64 bg-gradient-to-br ${product.color} flex items-center justify-center">
+                            <i class="${product.icon} text-6xl text-sky-600"></i>
+                        </div>
+                        ${tagHtml}
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-gray-800">${product.name}</h3>
+                        <p class="text-gray-600 mb-4 text-sm">${product.description}</p>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-2xl font-bold text-sky-600">KSH ${product.price.toLocaleString('en-US')}</span>
+                            <button class="text-sm text-sky-500 hover:text-sky-700 font-semibold quick-view-btn" data-product-id="${product.id}">
+                                Quick View
+                            </button>
+                        </div>
+                        <button class="w-full bg-sky-600 text-white py-3 rounded-lg font-semibold hover:bg-sky-700 transition add-to-cart-btn" data-product-id="${product.id}">
+                            <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `;
+        };
+
+        /**
+         * Clears the static content and populates the grid with dynamic data.
+         */
+        const renderProducts = (products) => {
+            if (!productsGrid) return;
+            
+            // Clear any static content in the grid
+            productsGrid.innerHTML = '';
+            
+            products.forEach(product => {
+                productsGrid.insertAdjacentHTML('beforeend', createProductCard(product));
+            });
+
+            // After rendering, attach event listeners
+            setupEventListeners();
+        };
+
+        // --- 4. Event Listener Setup ---
+
+        const setupEventListeners = () => {
+            // Add to Cart Listeners - Main JavaScript (berean_store.js) handles this
+            // The buttons already have the correct class "add-to-cart-btn" that the main JS looks for
+
+            // Quick View Listeners
+            document.querySelectorAll('.quick-view-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = e.currentTarget.dataset.productId;
+                    console.log(`Quick View requested for Product ${productId}.`);
+                    // **To complete this:** Trigger the Product Details Modal (e.g., call openProductModal(productId))
+                });
+            });
+        };
+
+        // --- 5. Initial Execution ---
+        renderProducts(mockBooks);
+    });
+</script>

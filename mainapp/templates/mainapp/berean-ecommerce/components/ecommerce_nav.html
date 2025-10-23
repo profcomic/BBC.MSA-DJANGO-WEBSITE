@@ -1,0 +1,146 @@
+{% comment %}E-Commerce Navigation Menu Component{% endcomment %}
+<!-- E-Commerce Navigation Menu -->
+<section class="py-4 bg-white border-b-2 border-gray-200 sticky top-0 z-40 shadow-md">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col gap-4">
+            <!-- Top Row: Store Info and E-Commerce Actions -->
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <!-- Left Side - Store Info -->
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-store text-sky-600 text-2xl"></i>
+                    <span class="font-bold text-gray-800 text-lg">Berean Store</span>
+                </div>
+
+                <!-- Right Side - E-Commerce Menu -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- Wishlist -->
+                    <a href="#" id="wishlist-btn" class="flex items-center gap-2 bg-pink-600 text-white px-4 py-2 rounded-lg hover:bg-pink-700 transition relative">
+                        <i class="fas fa-heart text-lg"></i>
+                        <span class="font-semibold hidden sm:inline">Wishlist</span>
+                        <span id="wishlist-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">0</span>
+                    </a>
+
+                    <!-- Shopping Cart -->
+                    <a href="#" id="cart-btn" class="flex items-center gap-2 bg-sky-600 text-white px-4 py-2 rounded-lg hover:bg-sky-700 transition relative">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span class="font-semibold">Cart</span>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">0</span>
+                    </a>
+
+                    <!-- Purchase History -->
+                    <a href="#" id="history-btn" class="flex items-center gap-2 bg-white text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition border border-gray-300">
+                        <i class="fas fa-history text-lg"></i>
+                        <span class="font-semibold hidden sm:inline">History</span>
+                    </a>
+
+                    <!-- Pending Orders -->
+                    <a href="#" id="pending-btn" class="flex items-center gap-2 bg-white text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition border border-gray-300 relative">
+                        <i class="fas fa-clock text-lg"></i>
+                        <span class="font-semibold hidden sm:inline">Pending</span>
+                        <span id="pending-count" class="absolute -top-2 -right-2 bg-orange-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center hidden">0</span>
+                    </a>
+
+                    <!-- My Account -->
+                    <a href="#" id="account-btn" class="flex items-center gap-2 bg-white text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-50 transition border border-gray-300">
+                        <i class="fas fa-user text-lg"></i>
+                        <span class="font-semibold hidden sm:inline">Account</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Category Navigation -->
+            <div class="flex flex-wrap items-center gap-3 border-t pt-3">
+                <span class="text-sm font-semibold text-gray-600 hidden md:inline">Browse:</span>
+                <a href="#books-section" class="flex items-center gap-2 text-gray-700 px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky-700 transition text-sm font-medium">
+                    <i class="fas fa-book"></i>
+                    <span>Books</span>
+                </a>
+                <a href="#merchandise-section" class="flex items-center gap-2 text-gray-700 px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky-700 transition text-sm font-medium">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Merchandise</span>
+                </a>
+                <a href="#magazines-section" class="flex items-center gap-2 text-gray-700 px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky-700 transition text-sm font-medium">
+                    <i class="fas fa-newspaper"></i>
+                    <span>Magazines</span>
+                </a>
+                <a href="#media-services-section" class="flex items-center gap-2 text-gray-700 px-3 py-2 rounded-lg hover:bg-sky-50 hover:text-sky-700 transition text-sm font-medium">
+                    <i class="fas fa-video"></i>
+                    <span>Media Services</span>
+                </a>
+                <a href="#food-section" class="flex items-center gap-2 text-gray-700 px-3 py-2 rounded-lg hover:bg-orange-50 hover:text-orange-700 transition text-sm font-medium">
+                    <i class="fas fa-utensils"></i>
+                    <span>Food & Snacks</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References for Action Buttons and Badges ---
+        const cartButton = document.getElementById('cart-btn');
+        const accountButton = document.getElementById('account-btn');
+
+        // Count Badges
+        const wishlistCount = document.getElementById('wishlist-count');
+        const cartCount = document.getElementById('cart-count');
+        const pendingCountBadge = document.getElementById('pending-count');
+
+        // --- 2. State Variables (Replace with actual data fetching/state management) ---
+        let state = {
+            wishlist: 3, // Example number
+            cart: 1,     // Example number
+            pendingOrders: 0 // Example number
+        };
+
+        // --- 3. Core Function to Update Badges ---
+
+        /**
+         * Updates the count displayed on the respective badge elements.
+         * Hides the badge if the count is zero.
+         */
+        const updateBadges = () => {
+            // Update Wishlist Badge
+            if (wishlistCount) {
+                wishlistCount.textContent = state.wishlist;
+                wishlistCount.classList.toggle('hidden', state.wishlist === 0);
+            }
+
+            // Update Cart Badge
+            if (cartCount) {
+                cartCount.textContent = state.cart;
+                // Cart badge is typically never fully hidden, even if 0, but we'll manage it
+                // based on the presence of the default '0' you provided in HTML.
+            }
+
+            // Update Pending Orders Badge
+            if (pendingCountBadge) {
+                pendingCountBadge.textContent = state.pendingOrders;
+                // Only show the badge if the count is greater than zero
+                pendingCountBadge.classList.toggle('hidden', state.pendingOrders === 0);
+            }
+        };
+
+        // --- 4. Event Listeners for Actions (Modal/Sidebar Triggers) ---
+
+        // The main JavaScript file (berean_store.js) handles the modal opening functionality
+        // These event listeners are now just for preventing default behavior and logging
+        // The actual modal opening is handled by the main JavaScript file
+
+        // --- 5. Initial Call ---
+        updateBadges();
+
+        // --- Example Function for Demonstration ---
+        // You would typically call 'updateBadges()' every time a product is added/removed.
+        window.simulateItemAdded = () => {
+            state.cart++;
+            state.wishlist = Math.max(0, state.wishlist - 1); // Move from wishlist to cart for demo
+            state.pendingOrders = Math.min(3, state.pendingOrders + 1); // Cap pending at 3 for demo
+            updateBadges();
+            console.log(`Simulated: Cart: ${state.cart}, Wishlist: ${state.wishlist}, Pending: ${state.pendingOrders}`);
+        };
+
+        // You can call simulateItemAdded() in your console to see the badges update!
+    });
+</script>

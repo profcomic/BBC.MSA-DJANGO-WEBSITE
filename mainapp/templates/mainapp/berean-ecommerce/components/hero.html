@@ -1,0 +1,97 @@
+{% comment %}Hero Section Component{% endcomment %}
+<!--hero section-->
+<section class="relative w-full h-[400px] flex items-center justify-center text-center overflow-hidden">
+    <div class="absolute inset-0 z-0 bg-gradient-to-br from-sky-600 via-blue-600 to-indigo-700"></div>
+    <div class="absolute inset-0 z-0 opacity-10">
+        <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
+        <div class="absolute bottom-20 right-20 w-40 h-40 bg-white rounded-full"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 text-white">
+        <div class="flex items-center justify-center text-sm mb-4">
+            <a href="{% url 'berean_store' %}" class="text-sky-200 hover:text-white">Home</a>
+            <span class="mx-2"> ▣ </span>
+            <span class="text-white">E-Commerce Corner</span>
+        </div>
+        <h1 class="text-5xl font-bold mb-4 drop-shadow-lg">BEREAN STORE</h1>
+        <p class="text-xl text-sky-100 max-w-2xl mx-auto">
+            <i class="fas fa-shopping-bag mr-2"></i>Quality Christian Resources & Church Merchandise
+        </p>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. DOM Element References ---
+        const heroSection = document.querySelector('.relative.w-full.h-\\[400px\\]');
+        // Select the container for the white circle background elements
+        const backgroundLayer = heroSection.querySelector('.absolute.inset-0.z-0.opacity-10'); 
+
+        // Get references to the individual background circles
+        const circleTop = backgroundLayer.querySelector('.absolute.top-10.left-10');
+        const circleBottom = backgroundLayer.querySelector('.absolute.bottom-20.right-20');
+
+        // --- 2. Parallax Configuration ---
+        // Adjust these values to control the intensity of the movement
+        const intensity = 20; // Max movement in pixels for the circles
+        const circleFactor = 0.5; // Controls how much the circles move relative to the mouse
+
+        // --- 3. Mouse Move Event Listener ---
+        if (heroSection && backgroundLayer) {
+            heroSection.addEventListener('mousemove', (e) => {
+                // Get the center point of the hero section
+                const centerX = heroSection.offsetWidth / 2;
+                const centerY = heroSection.offsetHeight / 2;
+
+                // Calculate the deviation of the mouse cursor from the center
+                // X: Negative when mouse is left of center, Positive when right
+                // Y: Negative when mouse is above center, Positive when below
+                const moveX = (e.clientX - heroSection.offsetLeft - centerX) / centerX;
+                const moveY = (e.clientY - heroSection.offsetTop - centerY) / centerY;
+
+                // --- Apply Parallax Effect to Background Layer ---
+
+                // Move the background *opposite* to the mouse direction
+                const finalX = moveX * intensity;
+                const finalY = moveY * intensity;
+                
+                // Use CSS transform for performance
+                // The main background layer moves slightly
+                backgroundLayer.style.transform = `translate(${finalX * 0.1}px, ${finalY * 0.1}px)`;
+                
+                // The individual circles move more intensely for better depth illusion
+                if (circleTop) {
+                    circleTop.style.transform = `translate(${finalX * circleFactor}px, ${finalY * circleFactor}px)`;
+                }
+                
+                if (circleBottom) {
+                    // Moving the second circle in the opposite direction enhances the 3D effect
+                    circleBottom.style.transform = `translate(${-finalX * circleFactor}px, ${-finalY * circleFactor}px)`;
+                }
+            });
+
+            // --- 4. Reset on Mouse Leave (Optional but Recommended) ---
+            heroSection.addEventListener('mouseleave', () => {
+                // Smoothly transition all elements back to their original position
+                backgroundLayer.style.transition = 'transform 0.5s ease-out';
+                backgroundLayer.style.transform = 'translate(0, 0)';
+
+                if (circleTop) {
+                    circleTop.style.transition = 'transform 0.5s ease-out';
+                    circleTop.style.transform = 'translate(0, 0)';
+                }
+                
+                if (circleBottom) {
+                    circleBottom.style.transition = 'transform 0.5s ease-out';
+                    circleBottom.style.transform = 'translate(0, 0)';
+                }
+
+                // Remove the transition property after it's complete to restore real-time tracking
+                setTimeout(() => {
+                    backgroundLayer.style.transition = '';
+                    if (circleTop) circleTop.style.transition = '';
+                    if (circleBottom) circleBottom.style.transition = '';
+                }, 500);
+            });
+        }
+    });
+</script>
