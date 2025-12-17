@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // 3. COUNTDOWN SCRIPT (Event Timer)
     // ==========================================================
    
-    // Target date: November 15, 2025 at 10:00 PM (22:00:00) EAT is +03:00 from UTC.
+    // Target date: December 5, 2025 at 9:00 PM (21:00:00) EAT is +03:00 from UTC.
     // Since we don't know the local time zone of the server/user, specifying the full date
     // with time is best, and JS handles the calculation relative to the user's clock.
     function pad(num) {
@@ -144,9 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initialize the countdown here, inside DOMContentLoaded
-    // Ensure this date is in the future relative to the current time: 2025-10-03 10:07:16 PM EAT
-    startCountdown("2025-11-15T19:00:00Z", "youth-countdown-timer");
-    // If you think the problem might be the date format, try a simple, very near date:
+    startCountdown("2025-12-05T18:00:00Z", "youth-countdown-timer");
     
 });
 
